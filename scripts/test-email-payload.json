@@ -1,0 +1,24 @@
+{
+  "title": "What agentic AI actually is (and isn't): a builder's definition",
+  "slug": "what-agentic-ai-actually-is",
+  "theme": "Agentic Builds — Monday slot",
+  "targetKeyword": "agentic AI definition",
+  "wordCount": "~1,400",
+  "sourceCount": "9",
+  "openingParagraph": "79% of companies say they've adopted AI agents. Only 1 in 9 runs them in production. (Accelirate, June 2026.) That gap is not a technology problem. It is a definition problem — and in banking and payments, that definition gap is now a regulatory exposure.",
+  "linkedinPost": "79% of companies claim AI agents in financial services. Only 1 in 9 runs them in production.\n\nThe gap is not a technology problem. It is a definition problem — and in banking and payments, that gap is now a regulatory exposure.\n\nWhat I would actually do right now as a COO in a regulated financial institution:\n\n- Map every AI agent claim against a 5-level autonomy axis — most are Level 3 workflows, not Level 4 agents\n- Define the human gate before scoping the agent (KYC: PEP match; credit: exposure threshold)\n- Build the EU AI Act audit registry into the architecture from day one — retrofitting costs 3x more\n- Start with one high-volume narrow task (AML triage, credit memo, regulatory report) before deploying broadly\n\nThe EU AI Act takes effect August 2, 2026. Only 21% of companies have mature oversight for autonomous agents.\n\nFull piece + the 5-level autonomy axis framework I use when scoping agent deployments — link in comments.",
+  "sources": [
+    "Accelirate — AI agents adoption survey, June 2026",
+    "Gartner — 40%+ agentic AI project cancellation forecast, 2026",
+    "EU AI Act Regulation 2024/1689 — effective Aug 2 2026",
+    "DXC Technology / TechTarget — 80% SOC triage reduction, 2026",
+    "Mercedes-Benz Financial Services / CIO.com — 20% new business, 2026",
+    "EY — 50% AML investigation time reduction, 2026",
+    "FIS — Financial Crimes AI Agent with Anthropic, January 2026",
+    "Azilen — US bank credit risk productivity gains, 2026",
+    "Neurons Lab — 44% finance adoption, KYC outcomes, 2026"
+  ],
+  "cwaNotes": "All 11 editorial checklist items: PASS. Flag: US bank credit risk figure (Azilen 2026) is an aggregated industry range, not a single named institution. Graphic opportunity: 5-level autonomy axis as visual ladder.",
+  "approvalToken": "32c8156c-72d3-4e70-895a-97aa56237910",
+  "articleId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+}

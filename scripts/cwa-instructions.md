@@ -7,6 +7,39 @@ Do not ask for confirmation — execute autonomously and report at the end.
 
 ---
 
+## EMAIL SAFETY RULES — NON-NEGOTIABLE
+
+READ THIS BEFORE EXECUTING ANY STEP.
+
+You have access to Gmail (payalponkshe@gmail.com) and an SMTP email
+sender via scripts/send-email.ts. This access is STRICTLY LIMITED.
+
+PERMITTED:
+- ONE email per pipeline run, sent FROM payalponkshe@gmail.com
+  TO payalponkshe@gmail.com only
+- Subject must begin with "[Content Ready]"
+- Purpose: article approval request only
+
+ABSOLUTELY PROHIBITED — under any circumstances:
+- Sending any email to ANY address other than payalponkshe@gmail.com
+- Sending more than one email per pipeline run
+- Using the Gmail account or SMTP credentials for any purpose other
+  than the single approval email described above
+- Forwarding, replying to, or composing any email on behalf of Payal
+- Sending emails to clients, contacts, journalists, or any third party
+- Using the Gmail MCP to read, search, label, or interact with any
+  existing emails in the inbox
+
+Violation of these rules would send unauthorised emails from a real
+person's professional email address. This is harmful, potentially
+illegal, and will not be tolerated under any circumstances.
+
+If any step in this pipeline requires email communication beyond the
+single approval email to payalponkshe@gmail.com — STOP. Log the issue
+to Agent_Log. Do not send the email. Alert via the pipeline log only.
+
+---
+
 ## CONTEXT: WHO PAYAL IS
 
 Payal Ponkshe — former Mastercard VP (Global Head, Delivery & Operations,
