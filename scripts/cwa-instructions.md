@@ -158,6 +158,31 @@ VOICE RULES:
 - Builder credibility by reference: mention a concrete stack element
   or build pattern when relevant
 
+### MDX TABLE FORMATTING — NON-NEGOTIABLE
+
+When you include a comparison table or taxonomy (e.g. a maturity ladder,
+autonomy axis, level system), you MUST use standard GFM (GitHub Flavored
+Markdown) pipe-table syntax. The site renderer automatically styles these
+with the navy/cream/cyan design system — zebra hover rows, bold header row,
+navy top border. Never use HTML tables or raw text grids.
+
+Required format:
+```
+| Column 1 | Column 2 | Column 3 | Column 4 |
+|---|---|---|---|
+| Row value | Row value | Row value | Row value |
+| Row value | Row value | Row value | Row value |
+```
+
+Rules:
+- Header row: short, sentence case (not ALL CAPS), max 4 words per cell
+- Separator row: always `|---|---|---|---|` (one per column, no spaces)
+- Cell content: no line breaks inside a cell, keep to one concise phrase
+- Always precede the table with a sentence introducing it
+- Tables count toward the "at least 1 comparison table OR numbered list"
+  structural requirement — one well-formatted table is preferred over a
+  vague numbered list where a taxonomy is the point
+
 Do NOT include JSON-LD schema inside the MDX body.
 
 ### B) LINKEDIN POST (150–250 words)

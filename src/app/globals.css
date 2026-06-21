@@ -2,26 +2,386 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens ─────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-cream: #F5F1E8;
+  --cream-card: #EDE8DC;
+  --cream-deep: #E4DFD0;
+  --navy: #24356e;
+  --navy-80: rgba(36, 53, 110, 0.8);
+  --navy-20: rgba(36, 53, 110, 0.2);
+  --cyan: #2dfff8;
+  --red-wrong: #D94F4F;
+  --slate: #5A6A8A;
+  --rule: rgba(36, 53, 110, 0.25);
+  --live-bg: #E8F5F0;
+  --live-dot: #2D9E6B;
+  --inbuild-bg: #F0F0EE;
+  --inbuild-dot: #9B9B9B;
+
+  --font-jakarta: "Inter", sans-serif;
+
+  --max-width: 1200px;
+  --section-padding: 80px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Base reset ─────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-cream);
+    color: var(--navy);
+    font-family: var(--font-jakarta);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* No dark mode */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--bg-cream);
+      color: var(--navy);
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jakarta);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  p {
+    font-family: var(--font-jakarta);
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Reduced motion — all animations off */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Framer Motion SSR safety ───────────────────────────────────────────── */
+@layer base {
+  @media (scripting: none) {
+    [style*="opacity: 0"] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 }
 
+/* ─── Typography utilities ───────────────────────────────────────────────── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Section label — "WHAT I DO", "SELECTED WORK" etc — navy, uppercase */
+  .section-label {
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* Meta labels — slate, uppercase */
+  .label-meta {
+    font-family: var(--font-jakarta);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  /* Cyan underline accent — one per section, key phrases only */
+  .underline-cyan {
+    text-decoration: underline;
+    text-decoration-color: var(--cyan);
+    text-decoration-thickness: 6px;
+    text-underline-offset: 4px;
+  }
+
+  /* Section divider rule */
+  .rule-navy {
+    border-color: var(--rule);
+  }
+
+  /* Content max-width wrapper */
+  .content-width {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .content-width {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .content-width {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  /* Section vertical padding */
+  .section-spacing {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  /* Card hover — background deepens, no border trick */
+  .card-hover {
+    transition: background-color 200ms ease-out;
+  }
+
+  .card-hover:hover {
+    background-color: var(--cream-deep);
+  }
+
+  /* Stat number — large Plus Jakarta Sans ExtraBold */
+  .stat-number {
+    font-family: var(--font-jakarta);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  @media (min-width: 768px) {
+    .stat-number {
+      font-size: 52px;
+    }
+  }
+
+  /* Suffix on stat numbers (the +, M+, etc) */
+  .stat-suffix {
+    color: var(--navy);
+  }
+
+  /* Stack tag pill — light, recessed */
+  .stack-tag {
+    font-family: var(--font-jakarta);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--slate);
+    background: var(--bg-cream);
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: inline-block;
+  }
+
+  /* Status pill — Live */
+  .status-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--live-bg);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--live-dot);
+  }
+
+  .status-live::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--live-dot);
+    flex-shrink: 0;
+  }
+
+  /* Status pill — In Build */
+  .status-build {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--inbuild-bg);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--inbuild-dot);
+  }
+
+  .status-build::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--inbuild-dot);
+    flex-shrink: 0;
+  }
+
+  /* Status pill — Prototype (same as In Build styling) */
+  .status-prototype {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--inbuild-bg);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--inbuild-dot);
+  }
+
+  .status-prototype::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--inbuild-dot);
+    flex-shrink: 0;
+  }
+
+  /* Status pill — Concept */
+  .status-concept {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(36, 53, 110, 0.25);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--slate);
+  }
+
+  /* Status pill — Delivered */
+  .status-delivered {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(36, 53, 110, 0.25);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--navy);
+  }
+
+  /* Primary button — navy filled, rounded */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--navy);
+    color: var(--bg-cream);
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #2d4080;
+  }
+
+  /* Secondary button — outlined, rounded */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    color: var(--navy);
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(36, 53, 110, 0.05);
+  }
+
+  /* Cream button — used inside navy CTA card */
+  .btn-cream {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-cream);
+    color: var(--navy);
+    font-family: var(--font-jakarta);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+    text-decoration: none;
+  }
+
+  .btn-cream:hover {
+    background-color: #ffffff;
   }
 }
