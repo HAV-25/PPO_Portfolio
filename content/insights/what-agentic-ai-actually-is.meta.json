@@ -1,0 +1,23 @@
+{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "title": "What agentic AI actually is (and isn't): a builder's definition",
+  "slug": "what-agentic-ai-actually-is",
+  "publishDate": "2026-06-23",
+  "category": "agentic_builds",
+  "topicNumber": 1,
+  "targetKeyword": "agentic AI definition",
+  "status": "awaiting_approval",
+  "approvalToken": "32c8156c-72d3-4e70-895a-97aa56237910",
+  "sources": [
+    { "name": "Accelirate", "date": "June 2026", "verified": true },
+    { "name": "Gartner", "date": "2026", "verified": true },
+    { "name": "EU AI Act Regulation 2024/1689", "date": "2026", "verified": true },
+    { "name": "DXC Technology / TechTarget", "date": "2026", "verified": true },
+    { "name": "Mercedes-Benz Financial Services / CIO.com", "date": "2026", "verified": true },
+    { "name": "EY", "date": "2026", "verified": true },
+    { "name": "FIS", "date": "January 2026", "verified": true },
+    { "name": "Azilen", "date": "2026", "verified": true },
+    { "name": "Neurons Lab", "date": "2026", "verified": true }
+  ],
+  "cwaNotes": "All 11 checklist items pass. One flag: US bank credit risk figure (Azilen 2026) is an aggregated industry range, not a single named institution. Graphic opportunity: 5-level autonomy axis as visual ladder."
+}
