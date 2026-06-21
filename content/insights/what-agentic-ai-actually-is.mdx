@@ -1,9 +1,9 @@
 ---
 title: "What agentic AI actually is (and isn't): a builder's definition"
-description: "Agentic AI means a system that plans, acts, and loops — not just generates text. Here's the builder's definition that separates signal from hype, with EU context."
+description: "Agentic AI means a system that plans, acts, and loops — not just generates text. Here's the builder's definition for financial services, with EU regulatory context."
 publishDate: "2026-06-23"
 category: "agentic_builds"
-readTime: "7 min"
+readTime: "8 min"
 targetKeyword: "agentic AI definition"
 slug: "what-agentic-ai-actually-is"
 status: "draft"
@@ -13,7 +13,7 @@ status: "draft"
 
 That gap is not a technology problem. It is a definition problem. Most teams deploying "agentic AI" are deploying something else entirely — and the confusion is costing them money, time, and credibility with boards who are already sceptical.
 
-Here is the definition that actually works. Not for a conference keynote. For someone deciding whether to build, buy, or wait.
+Here is the definition that actually works. Not for a conference keynote. For someone deciding whether to build, buy, or wait — in a bank, a payments company, or a regulated financial services operation.
 
 ---
 
@@ -23,17 +23,19 @@ An agentic AI system is one that plans steps, calls tools, observes results, and
 
 That sounds simple. It is not. The word "agentic" has been applied to everything from a chatbot with a few preset buttons to a fully autonomous multi-agent system running in production with no human in the loop. These are not the same thing. Not even close.
 
-The useful distinction is the **autonomy axis**.
+The useful distinction is the **autonomy axis** — a 5-level taxonomy that maps system type to decision-making authority.
 
-| System type | What it does | Who decides next action |
-|---|---|---|
-| Chatbot | Answers a question | Human |
-| Copilot | Suggests an action, waits | Human |
-| Workflow tool | Runs a fixed sequence you defined | Fixed logic |
-| AI agent | Plans steps, calls tools, observes, adjusts | The agent |
-| Multi-agent system | Multiple agents hand off tasks, specialise, coordinate | Agent network |
+| Level | System type | What it does | Who decides next action |
+|---|---|---|---|
+| Level 1 | Chatbot | Answers a question | Human |
+| Level 2 | Copilot | Suggests an action, waits | Human |
+| Level 3 | Workflow tool | Runs a fixed sequence you defined | Fixed logic |
+| Level 4 | AI agent | Plans steps, calls tools, observes, adjusts | The agent |
+| Level 5 | Multi-agent system | Multiple agents hand off tasks, specialise, coordinate | Agent network |
 
-A chatbot that says "here are 3 options" is not an agent. A copilot that drafts an email and waits for approval is not an agent. A Zapier workflow that fires when a form is submitted is not an agent. An agent is the system that looks at what just happened and decides what to do next — without you writing that decision into a flowchart in advance.
+A chatbot that says "here are 3 options" is not an agent. A copilot that drafts a credit memo and waits for approval is not an agent. A Zapier workflow that fires when a compliance form is submitted is not an agent. An agent is the system that looks at what just happened and decides what to do next — without you writing that decision into a flowchart in advance.
+
+Most enterprise "AI agent" deployments in 2026 are Level 3 at best. Naming them Level 4 is where the failures begin.
 
 ---
 
@@ -51,6 +53,8 @@ The anatomy is consistent across implementations, whether you are running this i
 Remove any one of these and you do not have an agent. You have a component of an agent.
 
 The AI content pipeline I run in production processes carousels through a 7-stage workflow: ingest → analyse → deconstruct → reconstruct → caption → CTA → queue. Each stage is a model call or tool call. The orchestration layer in n8n routes between them, handles failures, and holds state across the run. No stage is "agentic" in isolation. The system is agentic because the stages are connected by a planning and routing layer that can handle what it did not expect.
+
+In a financial services context, this same architecture pattern — model + tools + memory + orchestration — is what separates a document classifier from a KYC agent that can adapt mid-process when a customer's identity documents are inconsistent.
 
 ---
 
@@ -71,6 +75,36 @@ Most enterprise "AI agent" deployments in 2026 are workflows with better UX. Tha
 
 ---
 
+## Agentic AI in financial services: where it creates real commercial value
+
+This is the section most "agentic AI explainers" skip. Abstract definitions matter less than knowing where the architecture generates measurable returns in a regulated financial context.
+
+44% of finance teams are using agentic AI in 2026 — a 600%+ increase from 2025. (Neurons Lab, 2026.) The use cases driving that growth are not experimental. They are operational.
+
+**KYC and AML investigation**
+
+Agentic AI agents for compliance work by autonomously gathering data from multiple sources — identity documents, sanctions lists, PEP databases, transaction histories — synthesising them, flagging inconsistencies, and presenting a structured case for analyst review. The agent decides which sources to query based on what it finds, rather than following a fixed sequence.
+
+82% of financial institutions are already using AI to automate KYC and AML processes. (Neurons Lab, 2026.) EY found that agentic AI applied to manual AML investigations delivered a 50% reduction in time per investigation. (EY, 2026.) A large Dutch financial institution combined multiple AI innovations across its KYC workflows, achieving a 90% reduction in onboarding time and 30% reduction in staff workload. (Neurons Lab, 2026.)
+
+FIS is building a Financial Crimes AI Agent in partnership with Anthropic's Claude, specifically designed for financial crime detection in banking. (FIS, January 2026.) This is agentic AI for compliance being productised at the infrastructure layer — not a pilot. A production direction.
+
+**Credit risk assessment**
+
+Credit analysis is a natural agent use case: gather financial data, extract key metrics, apply risk frameworks, generate a structured memo, escalate to a human at defined thresholds. The agent completes the full workflow — data extraction, spreading, risk assessment, memo generation — with human review at the output, not at every step.
+
+A US bank that deployed AI agents across its credit risk memo process achieved a 20%–60% productivity increase and a 30% improvement in credit turnaround time. (Azilen, 2026.) This is the Revenue Per Employee gain that the business case for agentic AI in financial services should be anchored to: same analysts, more decisions, faster cycle.
+
+**Regulatory reporting**
+
+Regulatory reporting — DORA incident reporting, PSD3 compliance submissions, AML suspicious activity reports — is high-volume, structured, and rule-bound. Exactly the profile where Level 4 agents outperform manual workflows and Level 3 automation.
+
+Agents can gather the required data, apply the relevant regulatory framework, draft the submission, flag exceptions for human review, and maintain the audit trail required by the EU AI Act. The human gate is review and sign-off — not data gathering and formatting.
+
+The commercial case: agentic AI investments in financial services are returning an average 2.3x ROI within 13 months. (Azilen, 2026.) For a COO evaluating a deployment, that is the number to pressure-test in your specific context.
+
+---
+
 ## Why does the EU regulatory context change this?
 
 If you are deploying in Europe, the definition of "agentic AI" is not just a conceptual question. It is a legal one.
@@ -79,9 +113,11 @@ The EU AI Act's general-purpose AI obligations take effect on August 2, 2026. (R
 
 That last requirement is architecturally significant. An agent system where you cannot enumerate what each agent can do, and cannot trace each action back to a specific agent instance, is not EU-compliant. Not as a technicality — as a fundamental design choice.
 
-Only 21% of companies currently have a mature oversight model for autonomous agents. (Accelirate, 2026.) For EU-based organisations, that is not just a governance gap. After August 2, 2026, it is a regulatory exposure.
+Only 21% of companies currently have a mature oversight model for autonomous agents. (Accelirate, 2026.) For EU-based financial institutions, that is not just a governance gap. After August 2, 2026, it is a regulatory exposure — and a potential barrier to deployment approval under the Act's financial services provisions.
 
 The practical implication: every agentic system you build in or for the EU needs an audit trail. Every tool call logged. Every agent instance identifiable. Every human gate documented. This is not expensive to build if you design for it from the start. It is extremely expensive to retrofit.
+
+For AI agents for compliance specifically, this is also where EU agentic systems have a structural advantage over US-built platforms: EU-native implementations built with GDPR data residency, AI Act audit registries, and PSD3 open banking standards baked in from day one are not just compliant — they are more trustworthy to European institutional buyers than retrofitted global platforms.
 
 ---
 
@@ -95,40 +131,40 @@ Mercedes-Benz Financial Services used a multi-agent CRM system for personalised 
 
 The pattern is consistent: **narrow scope, defined escalation gates, full observability.**
 
-The teams that fail are deploying agents with broad, undefined scope and no mechanism for the agent to say "I do not know what to do here." Agents that cannot escalate will hallucinate a path forward. At production scale, that is not a demo problem. It is a legal and commercial problem.
+The teams that fail are deploying agents with broad, undefined scope and no mechanism for the agent to say "I do not know what to do here." Agents that cannot escalate will hallucinate a path forward. At production scale, in a regulated financial institution, that is not a demo problem. It is a legal and commercial problem.
 
 ---
 
 ## What I would do
 
-If you are deciding right now whether and how to deploy agentic AI — in your product, your operations, or for a client — here are 5 concrete moves:
+If you are deciding right now whether and how to deploy agentic AI — in your product, your operations, or for a financial services client — here are 5 concrete moves:
 
-1. **Map every "AI agent" claim to the autonomy axis.** For each system you are evaluating or building: can it decide what to do next when it encounters something not in your flowchart? If no — call it a workflow and size it accordingly.
+1. **Map every "AI agent" claim to the autonomy axis.** For each system you are evaluating or building: can it decide what to do next when it encounters something not in your flowchart? If no — call it a workflow and size it accordingly. In financial services, this distinction matters at the risk committee.
 
-2. **Define the human gate first.** Before scoping the agent, define the conditions under which it must stop and escalate to a human. No human gate = no production readiness. Start with gates too conservative and loosen them as you build trust in the system.
+2. **Define the human gate first.** Before scoping the agent, define the conditions under which it must stop and escalate to a human. For KYC, that is typically any case where a document is inconsistent or a PEP match is found. For credit risk, it is any case above a defined exposure threshold. No human gate = no production readiness.
 
-3. **Pick one narrow, high-volume task.** The teams succeeding with agents in 2026 are not deploying general-purpose assistants. They are deploying a triage agent, or a contract-review agent, or a data-extraction agent. One thing, done reliably, at volume.
+3. **Pick one narrow, high-volume task.** The teams succeeding with agents in financial services are not deploying general-purpose assistants. They are deploying a triage agent for AML alerts, or a credit memo agent, or a regulatory reporting agent. One thing, done reliably, at volume.
 
-4. **Build the audit log into the architecture.** Not as a feature — as infrastructure. Every tool call, every model output, every decision point. If you are in the EU, this is a legal requirement from August 2026. If you are not, it is still how you build trust with the board.
+4. **Build the audit log into the architecture.** Not as a feature — as infrastructure. Every tool call, every model output, every decision point. If you are in the EU, this is a legal requirement from August 2026. In n8n, this means structured execution logs with agent instance IDs attached to every workflow run — not post-hoc logging.
 
-5. **Separate orchestration from logic.** The orchestration layer (n8n, LangGraph, Temporal) should be swappable without rewriting your agent logic. If your pipeline logic lives inside your orchestration tool's proprietary format, you have technical debt baked into your architecture from day one.
+5. **Separate orchestration from logic.** The orchestration layer (n8n, LangGraph, Temporal) should be swappable without rewriting your agent logic. If your pipeline logic lives inside your orchestration tool's proprietary format, you have technical debt baked into your architecture from day one. In financial services, where infrastructure decisions are reviewed by risk and compliance, this separation is also a governance argument.
 
 ---
 
 ## FAQ
 
 **What is the simplest definition of agentic AI?**
-An agentic AI system plans steps, calls tools, observes results, and adjusts — looping until a task is complete. The key difference from a workflow: the agent decides what to do next based on what just happened, rather than following a fixed sequence you defined in advance.
+An agentic AI system plans steps, calls tools, observes results, and adjusts — looping until a task is complete or a human gate is reached. The key difference from a workflow: the agent decides what to do next based on what just happened, rather than following a fixed sequence you defined in advance.
 
 **How is an AI agent different from a chatbot?**
-A chatbot generates a response to a prompt and waits for the next one. An agent can take a goal ("research this topic and draft a briefing"), break it into steps, run web searches, read documents, synthesise the results, and return a finished output — without a human directing each step. The chatbot answers. The agent acts.
+A chatbot generates a response to a prompt and waits for the next one. An agent can take a goal ("review this AML alert and prepare a case summary"), break it into steps, query multiple data sources, cross-reference findings, and return a structured output — without a human directing each step. The chatbot answers. The agent acts.
 
 **Do AI agents work in regulated industries like financial services?**
-Yes, but the architecture requirements are higher. Under the EU AI Act (effective August 2026), agentic systems in regulated contexts require risk classification, human-oversight mechanisms, and a full audit registry of agent actions. This is achievable — but it must be designed in from the start, not bolted on after deployment.
+Yes — and adoption is accelerating. 44% of finance teams are using agentic AI in 2026, up 600%+ from 2025. (Neurons Lab, 2026.) Under the EU AI Act (effective August 2026), agentic systems in regulated contexts require risk classification, human-oversight mechanisms, and a full audit registry of agent actions. This is achievable — but it must be designed in from the start, not bolted on after deployment. Institutions that do this correctly gain a compliance advantage, not just an efficiency one.
 
 **What makes most agentic AI deployments fail?**
-Gartner projects more than 40% of agentic AI projects will be cancelled by end of 2027. The primary causes: scope too broad, no defined human escalation gates, and outputs the business cannot verify or audit. The fix is not better AI — it is tighter architecture: narrow scope, defined thresholds, full observability.
+Gartner projects more than 40% of agentic AI projects will be cancelled by end of 2027. The primary causes: scope too broad, no defined human escalation gates, and outputs the business cannot verify or audit. In financial services, add a fourth: no audit trail compatible with regulatory requirements. The fix is not better AI — it is tighter architecture: narrow scope, defined thresholds, full observability, and a registry that satisfies the EU AI Act from day one.
 
 ---
 
-If you are building agentic systems for fintech or regulated markets and want the full operating architecture — including agent scoping, EU compliance design, and audit trail patterns — [read the Agentic Commerce Operating Manual](/work/agentic-commerce-venture-studio) or [book a 30-minute discovery call](/book) to apply this to your specific build.
+If you are building agentic AI for compliance, credit risk, or financial services operations and want the full operating architecture — including agent scoping, EU AI Act compliance design, and audit trail patterns — [read the Agentic Commerce Operating Manual](/work/agentic-commerce-venture-studio) or [book a 30-minute discovery call](/book) to apply this to your specific build.
