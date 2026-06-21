@@ -308,6 +308,120 @@ Friday fires at 07:00 CET. Same steps, but:
 
 ---
 
+## EDITORIAL QUALITY STANDARDS
+## (Applied to every article — non-negotiable)
+
+These principles are derived from editorial review of published content.
+Check every article against all of them before completing Step 3.
+
+### 1. Dual positioning check
+
+Every article must demonstrate BOTH identities — not just one:
+- BUILDER: a concrete stack element, build pattern, or tradeoff (n8n,
+  Claude API, Supabase, MCP integration, typed contracts, etc.)
+- FINTECH STRATEGIST: the business/regulatory/financial services
+  implication of that build — what it means for a bank, a payments
+  company, or a regulated operator
+
+If an article shows builder credential without fintech business
+application, it reads as a developer tutorial. If it shows strategy
+without build credential, it reads as analyst commentary.
+Payal's moat is the intersection. Both must appear in every article.
+
+DO NOT reduce builder references. Anchor every builder reference to
+a fintech business outcome instead.
+
+### 2. Fintech application section (required in every article)
+
+Every article must include at least one section or subsection that
+translates the topic into financial services context. Cover one or more
+of these domains where relevant:
+
+- KYC / AML / fraud detection
+- Credit risk assessment / credit memos
+- Regulatory reporting (DORA, PSD2/3, MiCA, EU AI Act)
+- Customer onboarding
+- Payments infrastructure (ISO 20022, instant payments, stablecoins)
+- ESG / sustainable finance reporting
+- Core banking / embedded finance
+- Treasury / cash management
+
+Named example format: "[Named company or institution] used [approach]
+to achieve [specific outcome with number]." Always sourced.
+
+### 3. Fintech-specific SEO layer
+
+Every article targets a primary keyword (from the topic bank).
+Additionally, identify 2–3 fintech-specific long-tail variants and
+use them naturally in the body. Pattern: "[topic] in financial services",
+"[topic] banking", "[topic] fintech", "[topic] compliance",
+"[topic] regulated industries". Include at least one in an H2 heading.
+
+### 4. Commercial impact anchoring
+
+Every article must contain at least one commercial impact anchor:
+a concrete number tied to business value in financial services terms.
+Examples: cost reduction %, time saved, revenue uplift, risk reduction,
+headcount efficiency. The Revenue Per Employee frame (Payal's franchise
+line) is the primary lens — use it where it fits, but supplement with
+sector-specific metrics (cost-to-serve, cost-per-transaction, NPS, etc.)
+
+### 5. One named framework per article
+
+Each article should introduce or reinforce ONE named framework or
+taxonomy that readers can remember and attribute to Payal. Examples:
+the Autonomy Axis, the Revenue Per Employee frame, the Build-Operate-
+Advise model. Named frameworks are the primary mechanism for GEO
+citation — AI systems extract and attribute them by name.
+
+Format options (all work well for LLM extraction):
+- Numbered levels (Level 1 → Level 5)
+- A named matrix or table
+- A named decision test ("the [X] test")
+- A named progression ("the [X] ladder")
+
+If a topic doesn't naturally introduce a new framework, reinforce
+an existing Payal framework (e.g. Revenue Per Employee, autonomy axis).
+
+### 6. LinkedIn title vs site title — write them differently
+
+Site article title: SEO-optimised, informational intent, matches how
+someone searches. Example: "What agentic AI actually is (and isn't)"
+
+LinkedIn hook (line 1 of LinkedIn post): curiosity/provocation-based,
+stat-led or gap-led. Example: "79% of companies claim AI agents.
+1 in 9 runs them in production. Here's why the gap is a definition
+problem, not a technology one."
+
+Never write both to the same formula. The site title answers the
+search query. The LinkedIn hook stops the scroll.
+
+### 7. Graphics note (human task — not CWA responsibility)
+
+In the CWA notes, flag where a visual framework would strengthen the
+article (e.g. a numbered maturity ladder, a 2x2 matrix, a process
+diagram). Label it: [GRAPHIC OPPORTUNITY: description]. This is a
+post-editing task for the human — the CWA cannot produce images.
+
+### 8. Self-assessment before submitting
+
+Before finalising Step 3, run this internal checklist:
+- [ ] Opens with a sourced statistic in the first 50 words
+- [ ] Builder identity referenced with a specific stack element
+- [ ] Fintech/regulated industry application section present
+- [ ] At least 2–3 fintech-specific keywords used naturally
+- [ ] One named framework or taxonomy introduced or reinforced
+- [ ] Commercial impact number in financial services terms present
+- [ ] LinkedIn hook is curiosity/stat-led (not same as site title)
+- [ ] FAQ block has exactly 4 questions phrased as ChatGPT queries
+- [ ] "What I would do" section has 3–5 concrete actions (first person)
+- [ ] No buzzwords, no title case, numbers in numerals throughout
+- [ ] Every factual claim has named source + date inline
+
+Report pass/fail on each in cwa_notes.
+
+---
+
 ## VOICE CALIBRATION REFERENCE
 
 Study these 6 published articles for tone, structure and rhythm before writing.
