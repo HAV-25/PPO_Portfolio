@@ -296,49 +296,44 @@ available. Record what was updated.
 
 ## STEP 6 — SEND APPROVAL EMAIL
 
-Use the Gmail MCP to send an email to payalponkshe@gmail.com.
+Do NOT use Gmail MCP. Send via scripts/send-email.ts (nodemailer, Gmail SMTP port 587).
 
-Subject: [Content Ready] [article_title] — approve to publish
+Write email credentials to .env.local before running:
+```
+GMAIL_USER=payalponkshe@gmail.com
+GMAIL_APP_PASSWORD=gnbn ipiz eysd stue
+PAYAL_EMAIL=payalponkshe@gmail.com
+APPROVAL_WEBHOOK_URL=http://localhost:3000/api/content/approve
+```
 
-Body:
----
-Hi Payal,
+Write payload to /tmp/email-payload.json:
+```json
+{
+  "title": "[article_title]",
+  "slug": "[article_slug]",
+  "theme": "[weekday_theme]",
+  "targetKeyword": "[target_keyword]",
+  "wordCount": "[approximate word count]",
+  "sourceCount": "[number of verified sources]",
+  "openingParagraph": "[first paragraph of the article]",
+  "linkedinPost": "[full linkedin post text]",
+  "sources": ["source 1 — name, date", "source 2 — name, date"],
+  "cwaNotes": "[self-assessment checklist results]",
+  "approvalToken": "[approval_token]",
+  "articleId": "[article_id]"
+}
+```
 
-Today's article is ready for your review.
+Then send:
+```bash
+npm install --silent
+npx tsx scripts/send-email.ts /tmp/email-payload.json
+```
 
-TITLE: [article_title]
-THEME: [weekday_theme]
-KEYWORD: [target_keyword]
-WORD COUNT: [approximate count]
-SOURCES: [N] verified sources
+Subject sent: [Content Ready] [article_title] — approve to publish
+Recipient: payalponkshe@gmail.com (self-send only — see EMAIL SAFETY RULES above)
 
-OPENING PARAGRAPH:
-[first paragraph of the article]
-
-─────────────────────────────────
-
-APPROVE & PUBLISH:
-http://localhost:3000/api/content/approve?token=[approval_token]&action=approve&slug=[article_slug]
-
-REJECT & REVISE:
-http://localhost:3000/api/content/approve?token=[approval_token]&action=reject&slug=[article_slug]
-
-─────────────────────────────────
-
-LINKEDIN POST (copy-ready):
-[full linkedin post text]
-
-─────────────────────────────────
-
-SOURCES USED:
-[list each source: name, date, URL if available]
-
-CWA NOTES:
-[self-assessment: gaps, confidence level, any directional claims flagged]
-
----
-
-(When the site is live, replace localhost:3000 with https://payalponkshe.com)
+(When site is live, update APPROVAL_WEBHOOK_URL to https://payalponkshe.com)
 
 ---
 
@@ -484,7 +479,7 @@ Report pass/fail on each in cwa_notes.
 
 Study these 6 published articles for tone, structure and rhythm before writing.
 They are the ground truth for Payal's voice.
-Path: C:\Users\arunv\Downloads\portfolio_articles.md
+Path: content-agent/portfolio_articles.md
 
 Key patterns to replicate:
 - Opens with a problem statement or bold claim, no preamble

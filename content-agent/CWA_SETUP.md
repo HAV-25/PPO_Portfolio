@@ -76,8 +76,8 @@ Voice reference — 6 published articles in Payal's exact tone: `content-agent/p
    - JSON-LD schema (Article + FAQPage + Person)
 4. **Write the LinkedIn post** (150–250 words, hook line 1, 3–5 bullets, soft CTA)
 5. **Commit to GitHub branch** `content/[slug]`:
-   - `content/insights/[slug]/index.mdx` — the article
-   - `content/insights/[slug]/linkedin.md` — the LinkedIn post
+   - `content/insights/[slug].mdx` — the article (flat file, not subdirectory)
+   - `content/insights/[slug].meta.json` — metadata, JSON-LD schema, LinkedIn post, sources, approval token
 6. **Update Google Sheet** — Articles tab (new row) + Calendar tab (status → draft_ready)
 7. **Send approval email** directly to payalponkshe@gmail.com via `npx tsx scripts/send-email.ts` (nodemailer, Gmail SMTP port 587) — email is **sent**, not saved as a draft. Subject: `[Content Ready] [title] — approve to publish`. Styled HTML email with approve/reject links, opening paragraph, LinkedIn post, and verified sources list.
 
