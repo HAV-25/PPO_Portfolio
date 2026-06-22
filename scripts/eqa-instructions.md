@@ -17,21 +17,21 @@ Execute autonomously. Do not ask for confirmation.
 
 READ THIS BEFORE EXECUTING ANY STEP.
 
-You have SMTP email access via scripts/send-email.ts. This access is STRICTLY LIMITED.
+Email is delivered via Gmail MCP `create_draft` tool. ONE draft per pipeline run only.
 
 PERMITTED:
-- ONE email per pipeline run, sent FROM payalponkshe@gmail.com TO payalponkshe@gmail.com
+- ONE Gmail draft per pipeline run, to payalponkshe@gmail.com only
 - Subject must begin with "[Content Ready]" (approval path) or "[EQA Escalation]" (escalation)
 - Purpose: article approval request OR escalation alert
 
 ABSOLUTELY PROHIBITED:
-- Sending ANY email to any address other than payalponkshe@gmail.com
-- Sending more than one email per pipeline run
-- Using Gmail MCP to read, search, or interact with any existing emails
+- Creating drafts to any address other than payalponkshe@gmail.com
+- Creating more than one draft per pipeline run
+- Using Gmail MCP to read, search, list, or interact with existing emails or inbox
 - Forwarding, composing, or replying to any email on behalf of Payal
-- Sending emails to clients, contacts, journalists, or any third party
+- Using scripts/send-email.ts (SMTP port 587 is blocked in this execution environment)
 
-If any step requires email beyond these — STOP. Log to Agent_Log. Do not send.
+If any step requires email beyond these — STOP. Log to Agent_Log. Do not create draft.
 
 ---
 
@@ -67,8 +67,6 @@ GITHUB_REPO=HAV-25/PPO_Portfolio
 GOOGLE_SERVICE_ACCOUNT_EMAIL=INJECTED_AT_TRIGGER_CREATION
 GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY=INJECTED_AT_TRIGGER_CREATION
 GOOGLE_SHEETS_ID=1iNPzPaQetRZh9QrUDsaYSW5NYrX9GcR3HbeXIpWAxX4
-GMAIL_USER=payalponkshe@gmail.com
-GMAIL_APP_PASSWORD=INJECTED_AT_TRIGGER_CREATION
 PAYAL_EMAIL=payalponkshe@gmail.com
 APPROVAL_WEBHOOK_URL=http://localhost:3000/api/content/approve
 ```
@@ -263,32 +261,42 @@ npx tsx scripts/update-sheet.ts set-qa-status /tmp/qa-pass-payload.json
 npx tsx scripts/update-sheet.ts log-agent /tmp/eqa-log-pass.json
 ```
 
-### 4A-5: Send approval email
+### 4A-5: Create approval email draft via Gmail MCP
 
-Write payload to /tmp/email-payload.json:
-```json
-{
-  "title": "[article_title]",
-  "slug": "[article_slug]",
-  "theme": "[weekday_theme]",
-  "targetKeyword": "[target_keyword from meta.json]",
-  "wordCount": "[approximate word count]",
-  "sourceCount": "[number of verified sources in sources array]",
-  "openingParagraph": "[first paragraph of the article]",
-  "linkedinPost": "[full linkedin post text from meta.json]",
-  "sources": ["source 1 — name, date", "source 2 — name, date"],
-  "cwaNotes": "[eqa checklist evaluation — pass/fail per item]",
-  "approvalToken": "[approval_token]",
-  "articleId": "[article_id]"
-}
-```
+Use the `mcp__claude_ai_Gmail__create_draft` tool with these exact parameters:
 
-```bash
-npx tsx scripts/send-email.ts /tmp/email-payload.json
-```
+- **to**: `["payalponkshe@gmail.com"]`
+- **subject**: `[Content Ready] [article_title] — approve to publish`
+- **body**: Compose plain-text body containing:
+  ```
+  Article ready for approval.
 
-Subject sent: [Content Ready] [article_title] — approve to publish
-Recipient: payalponkshe@gmail.com (self-send only)
+  Title: [article_title]
+  Publish date: [publish_date]
+  Theme: [weekday_theme]
+  Branch: content/[article_slug]
+  Article ID: [article_id]
+
+  --- OPENING PARAGRAPH ---
+  [first paragraph of the article]
+
+  --- LINKEDIN POST ---
+  [full linkedin_post text]
+
+  --- VERIFIED SOURCES ---
+  [one source per line: Name — date — claim it supports]
+
+  --- EQA CHECKLIST ---
+  [pass/fail per item, one line each]
+  Revision cycles: [N]
+
+  --- APPROVAL ---
+  Token: [approval_token]
+  To approve: merge branch content/[article_slug] → main on GitHub.
+  To reject: update Articles tab status → rejected, delete branch.
+  ```
+
+Do NOT use scripts/send-email.ts — SMTP is blocked in this environment.
 
 ---
 
@@ -436,45 +444,36 @@ npx tsx scripts/update-sheet.ts set-qa-status /tmp/qa-escalate-payload.json
 npx tsx scripts/update-sheet.ts log-agent /tmp/eqa-log-escalate.json
 ```
 
-### 4C-2: Send escalation email
+### 4C-2: Create escalation email draft via Gmail MCP
 
-Write payload to /tmp/escalation-payload.json. The email script reads the same
-fields as approval email — the subject prefix controls routing.
+Use the `mcp__claude_ai_Gmail__create_draft` tool:
 
-Construct the cwaNotes field to include:
-- Full checklist evaluation for the final cycle
-- Which items failed across ALL revision cycles (if multiple)
-- Specific evidence for each failure (quoted text from the article)
-- Revision instructions that were applied (from feedback files)
+- **to**: `["payalponkshe@gmail.com"]`
+- **subject**: `[EQA Escalation] [article_title] — manual review required`
+- **body**: Compose plain-text body containing:
+  ```
+  EQA could not bring this article to quality standard in [N] revision cycles.
+  Manual review required.
 
-Write a file /tmp/escalation-payload.json:
-```json
-{
-  "title": "[ESCALATION] [article_title]",
-  "slug": "[article_slug]",
-  "theme": "[weekday_theme]",
-  "targetKeyword": "[target_keyword]",
-  "wordCount": "[word count]",
-  "sourceCount": "[source count]",
-  "openingParagraph": "[first paragraph of the final draft]",
-  "linkedinPost": "[linkedin post from meta.json]",
-  "sources": ["source 1", "source 2"],
-  "cwaNotes": "[full multi-cycle QA evaluation — all failed items with evidence and revision history]",
-  "approvalToken": "[approval_token]",
-  "articleId": "[article_id]"
-}
-```
+  Article ID: [article_id]
+  Draft branch: content/draft/[article_slug]
+  Final revision count: [N]
 
-```bash
-npx tsx scripts/send-email.ts /tmp/escalation-payload.json
-```
+  --- FAILED ITEMS (FINAL CYCLE) ---
+  [each failed item with specific evidence quoted from the article]
 
-Note: scripts/send-email.ts will send this with subject:
-"[Content Ready] [ESCALATION] [article_title] — approve to publish"
+  --- REVISION HISTORY ---
+  [summary of what was changed in each revision cycle and what still failed]
 
-The "[ESCALATION]" prefix in the title field causes it to be clearly identifiable
-in Payal's inbox. The draft branch content/draft/[article_slug] remains on GitHub
-for Payal to review directly.
+  --- FULL CHECKLIST (FINAL STATE) ---
+  [all 15 items, pass/fail with evidence]
+
+  --- DRAFT LOCATION ---
+  GitHub: https://github.com/HAV-25/PPO_Portfolio/tree/content/draft/[article_slug]
+  ```
+
+Do NOT use scripts/send-email.ts — SMTP is blocked in this environment.
+The draft branch remains on GitHub for Payal to review directly.
 
 ---
 

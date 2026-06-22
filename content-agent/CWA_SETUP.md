@@ -174,4 +174,26 @@ No Supabase, no Brave Search API, no n8n in this pipeline. All state lives in Go
 
 ---
 
+## Session log — 2026-06-22 (two-agent pipeline test run)
+
+**Agents tested:** PP_CWA_v2 (`trig_01PRZiJPiL8NHzzKB6Td8MCX`) + PP_EQA (`trig_016QAk1Z2RJqjcyMMCwBxYaq`) — both manually fired.
+
+**CWA-v2 result:** PASS. Topic 21 article written, Sheet updated (Articles row appended, Calendar → draft_ready, Agent_Log written), draft pushed to `content/draft/revenue-per-employee-north-star-metric-ai-first-fintech`. Self-assessment 11/11.
+
+**EQA result:** PASS after 1 revision cycle.
+- Cycle 1 evaluation: 3 items failed (11 — missing inline citations for DORA/EU AI Act; 13 — 2 unused sources in .meta.json sources array; 15 — DORA undefined on first use).
+- Revision applied: added inline citations, cleaned sources array, expanded acronym.
+- Cycle 2 evaluation: 15/15 PASS. Final branch committed: `content/revenue-per-employee-north-star-metric-ai-first-fintech`.
+
+**Email issue discovered and fixed:**
+- SMTP port 587 is blocked by network policy in the remote Claude Code execution environment (ETIMEDOUT).
+- EQA correctly fell back to Gmail MCP `create_draft` (draft id `r-8462919615856552839` in Payal's drafts).
+- **Fix applied:** EQA trigger updated — `mcp__claude_ai_Gmail__create_draft` added to `allowed_tools`, all SMTP references removed from prompt. Gmail MCP `create_draft` is now the primary and only email mechanism.
+- `scripts/eqa-instructions.md` updated to match.
+- **Note:** The original single-agent CWA trigger (`trig_01CjjAZo2vPE2h4WGDp5Fvh1`) also uses SMTP for its approval email step — same block will occur on its next run. Consider disabling it once two-agent pipeline is confirmed stable.
+
+**Two-agent pipeline status:** Validated end-to-end. Both triggers remain `enabled: false` until explicit decision to go live.
+
+---
+
 *Last updated: 2026-06-22. Update this file whenever trigger config, Sheet structure, or approval workflow changes.*
