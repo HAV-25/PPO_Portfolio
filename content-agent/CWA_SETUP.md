@@ -90,9 +90,6 @@ The agent sends an email to payalponkshe@gmail.com. On receipt:
 - **To approve:** merge branch `content/[slug]` → `main` in GitHub. The `/insights/[slug]` route on the site will pick it up once the MDX pipeline is wired (Phase 4 of site build).
 - **To reject:** log the reason in the Articles tab (status → rejected), delete the branch.
 
-- **To approve:** merge branch `content/[slug]` → `main` in GitHub. The `/insights/[slug]` route on the site will pick it up once the MDX pipeline is wired (Phase 4 of site build).
-- **To reject:** log the reason in the Articles tab (status → rejected), delete the branch.
-
 **Email sender:** `scripts/send-email.ts` (nodemailer, port 587). Takes a JSON payload file, sends a styled HTML email with approve/reject links. The agent writes credentials to a temp `.env.local` before calling the script — credentials are embedded in the trigger prompt. If the app password is rotated, update the trigger via RemoteTrigger update.
 
 **Email guardrails (non-negotiable, enforced in trigger prompt):**
@@ -147,12 +144,33 @@ Trigger creation happened: **2026-06-22** via Claude Code session in project `C:
 
 | Service | Access method |
 |---|---|
-| Google Sheets | Google Drive MCP connector (connector_uuid: `911da9bf-b382-4262-872c-b9b4b37f21d1`) |
-| Gmail | Gmail MCP connector (connector_uuid: `ba57d484-9bc7-43ea-9b0f-ac8951599124`) |
-| GitHub | Cloned via remote trigger session — HAV-25/PPO_Portfolio |
+| Google Sheets | Service account via `scripts/update-sheet.ts` (googleapis npm) — NOT Google Drive MCP (MCP can read only, cannot write cells) |
+| Gmail | SMTP via `scripts/send-email.ts` (nodemailer, port 587, app password) — NOT Gmail MCP |
+| GitHub | `git push` with GITHUB_TOKEN embedded in trigger prompt |
 | Web research | Built-in WebSearch tool (no API key needed) |
 
+**Service account:** `payal-professional@payal-professional.iam.gserviceaccount.com`
+**Google Sheets API** must be enabled in GCP project `payal-professional` (project number `813264193667`).
+Sheet must be shared with the service account email as Editor.
+
 No Supabase, no Brave Search API, no n8n in this pipeline. All state lives in Google Sheets + GitHub.
+
+---
+
+## Session log — 2026-06-22 (diagnosis & fixes)
+
+**Issue:** Cron fired Mon 2026-06-22 at 09:00 UTC but Step 5 (Sheet writes) was wired to Google Drive MCP which has NO cell-write capability. Agent_Log and Articles tabs stayed empty. Calendar tab also had wrong data (Topic 1 on wrong date, Topic 21 on wrong date).
+
+**Root causes fixed:**
+1. **Step 5 rewritten** — now uses `npx tsx scripts/update-sheet.ts` with service account credentials embedded in trigger prompt instead of Google Drive MCP. Three operations: `append-article`, `update-calendar`, `log-agent`.
+2. **`scripts/update-sheet.ts` created and pushed** — CLI wrapper around `src/lib/content/sheets.ts`. Accepts JSON string or file path. Loads `.env.local` manually before any API calls. SHA `c2f558a6e371133ff1f0af5518d543fb2d9a5a26` at time of update.
+3. **Google Sheets API enabled** — was blocked with "has not been used in project 813264193667". User enabled it at GCP console.
+4. **Calendar data verified** — `2026-06-23 | Tuesday | operating_model | 21 | Revenue Per Employee | D | long_form | scheduled` confirmed correct in Sheet.
+5. **Trigger prompt updated** — full body (events + session_context) updated via RemoteTrigger. Important: always include BOTH fields in any trigger update or the events array silently drops.
+
+**Verified working (2026-06-22):** Google Sheets API read (Calendar tab, 3 rows) and write (Agent_Log append + clear) both confirmed with service account auth.
+
+**Next scheduled run:** 2026-06-23 09:00 UTC — Topic 21 "Revenue Per Employee".
 
 ---
 
