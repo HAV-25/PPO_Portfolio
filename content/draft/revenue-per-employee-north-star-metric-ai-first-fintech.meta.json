@@ -76,11 +76,9 @@
   "sources": [
     "Computer Weekly, May 2026 — Artificial intelligence helps Klarna double revenues with half the staff; $1.24M RPE, 3.6x since 2022, headcount -49%",
     "CX Dive, 2025 — Klarna says its AI agent is doing the work of 853 employees; $60M operational saving",
-    "TechCrunch, May 2025 — Klarna's revenue per employee soars to nearly $1M thanks to AI efficiency push",
     "PwC, 2026 AI Jobs Barometer — Productivity growth 40% higher at companies most exposed to AI vs least",
     "Venture benchmark data, 2026 — AI-native unicorns average $814K RPE vs $446K for older unicorns (83% premium)",
-    "NVIDIA/PwC, 2026 — RPE projected to increase 30–50% in tech and finance sectors with AI adoption",
-    "EU Official — EU AI Act high-risk AI provisions enforcement deadline: 2 August 2026",
+    "EU Official Journal — EU AI Act high-risk AI provisions enforcement deadline: 2 August 2026",
     "DORA (Regulation EU 2022/2554) — applies from 17 January 2025"
   ],
   "cwaNotes": "Self-assessment 11/11 PASS. [PASS] sourced stat in first 50 words (Klarna $1.24M RPE, Computer Weekly May 2026). [PASS] builder identity — Claude API + n8n credit memo pipeline referenced with specifics. [PASS] fintech/regulated industry section — KYC/AML, credit memos, DORA/EU AI Act domain applications table. [PASS] fintech SEO keywords — revenue per employee fintech, AI operating model financial services, agentic AI fintech, revenue per employee banking. [PASS] named framework — RPE Maturity Ladder (4-level GFM table: Tracking, Benchmarking, Designing, Optimising). [PASS] commercial impact numbers — KYC ~5x throughput, credit memo ~8x throughput, merchant onboarding ~3x capacity. [PASS] LinkedIn hook curiosity/stat-led, different formula from site title. [PASS] FAQ block exactly 4 questions phrased as ChatGPT queries. [PASS] What I would do section — 5 concrete actions, first person. [PASS] no buzzwords, sentence case throughout, numbers in numerals. [PASS] all factual claims have named source + date inline. Run note: no slot for 2026-06-22 (today), running for next scheduled 2026-06-23. GRAPHIC OPPORTUNITY: RPE Maturity Ladder as stepped visual with level descriptions."
