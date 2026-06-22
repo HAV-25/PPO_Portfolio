@@ -63,12 +63,13 @@ const CAL_COLS = {
 // Articles: A=id B=created_at C=publish_date D=weekday_theme E=topic_number
 //           F=article_title G=article_slug H=status I=rejection_reason J=revision_count
 //           K=preview_url L=production_url M=approval_token N=cwa_notes
-//           O=cda_review_notes P=linkedin_post
+//           O=cda_review_notes P=linkedin_post Q=qa_status R=eqa_notes S=draft_branch
 const ART_COLS = {
   id: 0, created_at: 1, publish_date: 2, weekday_theme: 3, topic_number: 4,
   article_title: 5, article_slug: 6, status: 7, rejection_reason: 8, revision_count: 9,
   preview_url: 10, production_url: 11, approval_token: 12,
   cwa_notes: 13, cda_review_notes: 14, linkedin_post: 15,
+  qa_status: 16, eqa_notes: 17, draft_branch: 18,
 };
 
 const colLetter = (index: number) => String.fromCharCode(65 + index);
@@ -150,6 +151,9 @@ export interface ArticleRow {
   cwa_notes: string;
   cda_review_notes: string;
   linkedin_post: string;
+  qa_status: string;
+  eqa_notes: string;
+  draft_branch: string;
 }
 
 function rowToArticle(row: string[]): ArticleRow {
@@ -170,6 +174,9 @@ function rowToArticle(row: string[]): ArticleRow {
     cwa_notes: row[ART_COLS.cwa_notes] ?? '',
     cda_review_notes: row[ART_COLS.cda_review_notes] ?? '',
     linkedin_post: row[ART_COLS.linkedin_post] ?? '',
+    qa_status: row[ART_COLS.qa_status] ?? '',
+    eqa_notes: row[ART_COLS.eqa_notes] ?? '',
+    draft_branch: row[ART_COLS.draft_branch] ?? '',
   };
 }
 
@@ -179,16 +186,21 @@ export async function createArticleRow(data: {
   weekday_theme: string;
   topic_number: string;
   approval_token: string;
+  status?: string;
+  qa_status?: string;
+  draft_branch?: string;
 }) {
-  const row: string[] = new Array(16).fill('');
+  const row: string[] = new Array(19).fill('');
   row[ART_COLS.id] = data.id;
   row[ART_COLS.created_at] = new Date().toISOString();
   row[ART_COLS.publish_date] = data.publish_date;
   row[ART_COLS.weekday_theme] = data.weekday_theme;
   row[ART_COLS.topic_number] = data.topic_number;
-  row[ART_COLS.status] = 'draft';
+  row[ART_COLS.status] = data.status ?? 'draft';
   row[ART_COLS.revision_count] = '0';
   row[ART_COLS.approval_token] = data.approval_token;
+  row[ART_COLS.qa_status] = data.qa_status ?? '';
+  row[ART_COLS.draft_branch] = data.draft_branch ?? '';
   await appendRows('Articles', [row]);
 }
 
@@ -196,7 +208,7 @@ export async function updateArticleRow(
   id: string,
   updates: Partial<Omit<ArticleRow, 'id' | 'created_at'>>
 ) {
-  const rows = await readRows('Articles', 'A2:P500');
+  const rows = await readRows('Articles', 'A2:S500');
   const idx = rows.findIndex(r => r[ART_COLS.id] === id);
   if (idx === -1) throw new Error(`Article not found: ${id}`);
   const sheetRow = idx + 2;
@@ -214,19 +226,19 @@ export async function updateArticleRow(
 }
 
 export async function getArticleById(id: string): Promise<ArticleRow | null> {
-  const rows = await readRows('Articles', 'A2:P500');
+  const rows = await readRows('Articles', 'A2:S500');
   const row = rows.find(r => r[ART_COLS.id] === id);
   return row ? rowToArticle(row) : null;
 }
 
 export async function getArticleByToken(token: string): Promise<ArticleRow | null> {
-  const rows = await readRows('Articles', 'A2:P500');
+  const rows = await readRows('Articles', 'A2:S500');
   const row = rows.find(r => r[ART_COLS.approval_token] === token);
   return row ? rowToArticle(row) : null;
 }
 
 export async function getRecentArticles(limit = 10): Promise<ArticleRow[]> {
-  const rows = await readRows('Articles', 'A2:P500');
+  const rows = await readRows('Articles', 'A2:S500');
   return rows
     .map(rowToArticle)
     .filter(a => a.id)
@@ -235,16 +247,22 @@ export async function getRecentArticles(limit = 10): Promise<ArticleRow[]> {
 }
 
 export async function getDeployedArticles(): Promise<ArticleRow[]> {
-  const rows = await readRows('Articles', 'A2:P500');
+  const rows = await readRows('Articles', 'A2:S500');
   return rows
     .map(rowToArticle)
     .filter(a => a.status === 'deployed' && a.article_slug);
 }
 
+export async function getArticlePendingQA(): Promise<ArticleRow | null> {
+  const rows = await readRows('Articles', 'A2:S500');
+  const row = rows.find(r => r[ART_COLS.qa_status] === 'draft_pending_qa');
+  return row ? rowToArticle(row) : null;
+}
+
 // ── Agent log ─────────────────────────────────────────────────────────────────
 
 export async function logAgent(data: {
-  agent: 'CWA' | 'CDA' | 'APPROVAL';
+  agent: 'CWA' | 'CWA-v2' | 'EQA' | 'CDA' | 'APPROVAL';
   article_id: string;
   action: string;
   result?: string;
