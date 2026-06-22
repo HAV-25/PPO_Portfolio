@@ -1,0 +1,29 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-06-22T17:45:00.000Z",
+  "fail_count": 3,
+  "failed_items": [11, 13, 15],
+  "checklist": {
+    "1_sourced_stat": "PASS — Klarna $1.24M RPE with (Computer Weekly, May 2026) cited by word ~22",
+    "2_builder_stack": "PASS — Claude API + n8n credit memo pipeline; Supabase RLS referenced with specifics",
+    "3_fintech_section": "PASS — Dedicated section with KYC/AML, credit memo, DORA, merchant onboarding domain table",
+    "4_fintech_keywords": "PASS — revenue per employee fintech, AI operating model financial services, agentic AI fintech, cost-to-income ratio, regulated financial services",
+    "5_named_framework": "PASS — RPE Maturity Ladder explicitly named, 4-level GFM table present",
+    "6_commercial_impact": "PASS — KYC ~5x throughput, credit memo ~8x throughput, Klarna $60M saving, PwC 40% productivity differential",
+    "7_linkedin_hook": "PASS — Site title is informational/SEO; LinkedIn hook is stat-led and punchy — clearly different formulas",
+    "8_faq_count": "PASS — Exactly 4 FAQ questions present",
+    "9_what_i_would_do": "PASS — 5 numbered concrete actions, all first person",
+    "10_no_buzzwords": "PASS — No buzzwords, sentence case throughout, all numbers in numerals",
+    "11_sourced_claims": "FAIL — (1) 'DORA (applied from January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026)' — both regulatory dates stated without inline citations in the article body, though both sources exist in sources array. (2) 'venture benchmark data, 2026' for the $814K/$446K figures — not a named organisation or publication, vague attribution.",
+    "12_voice_authenticity": "PASS — Data-first open, short punchy sentences, direct. No preamble. 'That number is not a talking point. It is an operating model outcome.' Matches portfolio_articles.md voice patterns.",
+    "13_source_verifiability": "FAIL — DORA (January 2025) and EU AI Act (August 2026) appear in sources array but lack inline citations where facts appear in article body. TechCrunch (source 3) and NVIDIA/PwC (source 6) are in sources array but not cited anywhere in the article body — either add inline citations or remove from sources array to maintain array integrity.",
+    "14_linkedin_native_value": "PASS — Action bullets deliver standalone value; 'Claude API + n8n cuts 4h to 30min review' is specific native detail. Not just a teaser.",
+    "15_self_contained": "FAIL — 'DORA' appears repeatedly starting at first use 'DORA (applied from January 2025)' without ever expanding to 'Digital Operational Resilience Act'. Cold readers outside EU financial regulation would not know the acronym. Secondary minor note: 'PII' used without definition though target audience would know it."
+  },
+  "revision_instructions": [
+    "Item 15 (DORA acronym): On the FIRST appearance of DORA in the article body — in the line 'DORA (applied from January 2025) and the EU AI Act' — expand to 'Digital Operational Resilience Act (DORA, Regulation EU 2022/2554, from January 2025)'. All subsequent mentions can remain as 'DORA'. This single change resolves the undefined acronym failure.",
+    "Items 11 + 13 (inline citations for regulatory dates): On the same first mention of DORA and EU AI Act in the article body, add inline citations that match the sources array. Change 'DORA (applied from January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026)' to 'Digital Operational Resilience Act (DORA, Regulation EU 2022/2554, January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026, EU Official Journal)'. Also add '(EU Official Journal)' to the EU AI Act enforcement date in the FAQ section: 'The EU AI Act's August 2026 enforcement deadline' → 'The EU AI Act's August 2026 enforcement deadline (EU Official Journal)'.",
+    "Items 11 + 13 (unused sources in array): Remove TechCrunch (source 3) and NVIDIA/PwC (source 6) from the sources array in the meta.json file if they are not cited inline in the article body, OR add their data as inline citations where relevant. Since neither figure from these sources appears in the article body, removing them from the sources array is the cleaner fix.",
+    "Item 11 (venture benchmark attribution): 'venture benchmark data, 2026' is vague. If the actual source is a named VC firm or analyst report, use that name. If no more specific attribution is available, clarify as 'venture intelligence benchmark, 2026' — this is a softer fix; the existing attribution is noted but does not require a rewrite."
+  ]
+}
