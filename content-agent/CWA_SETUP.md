@@ -79,16 +79,21 @@ Voice reference — 6 published articles in Payal's exact tone: `content-agent/p
    - `content/insights/[slug]/index.mdx` — the article
    - `content/insights/[slug]/linkedin.md` — the LinkedIn post
 6. **Update Google Sheet** — Articles tab (new row) + Calendar tab (status → draft_ready)
-7. **Draft approval email** to payalponkshe@gmail.com via Gmail MCP — subject: `[APPROVE] PP Content Draft: [title] — [date]`, body includes article angle, key stat used, word count, branch name, and LinkedIn post text inline
+7. **Send approval email** directly to payalponkshe@gmail.com via Python smtplib (Gmail SMTP port 465 SSL) — email is **sent**, not saved as a draft. Subject: `[APPROVE] PP Content Draft: [title] — [date]`. Body includes article angle, key stat used, word count, branch name, and LinkedIn post text inline.
 
 ---
 
-## Approval workflow (current: manual — Phase 3 will automate)
+## Approval workflow (current: manual merge — Phase 3 will automate)
 
-The agent creates a **Gmail draft** (not sent automatically). Payal reviews and sends it, then:
+The agent sends an email to payalponkshe@gmail.com. On receipt:
 
 - **To approve:** merge branch `content/[slug]` → `main` in GitHub. The `/insights/[slug]` route on the site will pick it up once the MDX pipeline is wired (Phase 4 of site build).
 - **To reject:** log the reason in the Articles tab (status → rejected), delete the branch.
+
+- **To approve:** merge branch `content/[slug]` → `main` in GitHub. The `/insights/[slug]` route on the site will pick it up once the MDX pipeline is wired (Phase 4 of site build).
+- **To reject:** log the reason in the Articles tab (status → rejected), delete the branch.
+
+**Email credentials:** Gmail app password (`GMAIL_APP_PASSWORD`) is stored in `.env.local` (not in repo) and embedded directly in the trigger prompt. If the app password is rotated, update the trigger prompt via RemoteTrigger update.
 
 **Phase 3 (not yet built):** A Next.js API route at `/api/content/approve` will handle one-tap approve/reject links in the email — merging or flagging automatically. When built, update the agent prompt's Step 6 accordingly.
 
