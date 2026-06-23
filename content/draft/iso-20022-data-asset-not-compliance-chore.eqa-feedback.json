@@ -1,0 +1,35 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-06-23T00:00:00.000Z",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_first_50_words": "PASS — '44% of banks will miss the next SWIFT ISO 20022 structured address deadline in November 2026 (Montran, June 2026)' — named source, month/year, within first 50 words",
+    "2_builder_stack_first_person": "PASS — 'I have built analogous pipelines: ISO 20022-structured remittance data processed through an n8n workflow, with Claude API generating a structured exception query' — explicit first-person, n8n and Claude API",
+    "3_fintech_regulated_section": "PASS — dedicated sections on AML/fraud detection (NICE Actimize, EU AI Act high-risk AI), DORA Article 17, and commercial banking invoice reconciliation",
+    "4_fintech_keywords": "PASS — 'ISO 20022 data richness' (target keyword + FAQ H2), 'AML screening', 'DORA-aligned', 'financial crime screening', 'ISO 20022 in financial services' (FAQ heading)",
+    "5_named_framework": "PASS — 'The Payments Data Value Ladder' — 4-level GFM table from Compliant to Commercial, named and attributable to Payal",
+    "6_commercial_impact_number": "PASS — 44% miss rate (Montran), 20–40% false positive reduction (NICE Actimize), 30–50% reduction in manual exceptions (table), 300% remittance field growth (RedCompass Labs)",
+    "7_linkedin_hook_differs_from_title": "PASS — site title is declarative reframe; LinkedIn line 1 is stat-led '300% field growth' — different formula, not a rephrasing",
+    "8_faq_exactly_4_questions": "PASS — counted: 4 questions, all phrased as ChatGPT queries",
+    "9_what_i_would_do_3to5_actions": "PASS — 5 numbered concrete first-person actions in the 'What I would do' section",
+    "10_no_buzzwords_sentence_case_numerals": "PASS — no prohibited buzzwords found; sentence case throughout; all numbers in numerals; 'capability unlock' is contextually specific, not on prohibited list",
+    "11_every_claim_sourced_inline": "FAIL — 3 specific factual claims lack inline citations: (a) 'A single pacs.008 credit transfer message now contains over 900 fields — mandatory and optional' — RedCompass Labs cited in same paragraph for other claims but not explicitly attached to this sentence; (b) 'In a legacy MT103 message, remittance information was 140 characters of free text' — no inline citation; (c) 'SWIFT cross-border payments moved from November 2022' — no inline citation",
+    "12_voice_authenticity": "PASS — opens with stat → implication → framing ('That distinction determines who captures the value'); uses 'That is not X. It is Y.' structure consistent with portfolio articles; technical specificity (pacs.008, MT103, creditor references, purpose codes) is authentic Payal voice",
+    "13_source_verifiability": "FAIL — 8 sources in meta.json are all matched to inline citations, but 2 factual claims in the article have no corresponding entry in the sources array: (a) SWIFT cross-border November 2022 migration date — not in sources array (SWIFT entries cover 2026 documents only); (b) MT103 140-character field limit — not in sources array",
+    "14_linkedin_native_value": "PASS — LinkedIn conclusion 'Revenue per employee rises when payment data works harder. ISO 20022 is the mechanism. The November 2026 deadline is the forcing function.' is a native synthesis not phrased this way in the article body",
+    "15_self_contained_cold_reader": "PASS — DORA defined inline; EU AI Act given sufficient context; SWIFT/MT/SEPA/AML terminology appropriate for target audience (fintech/payments COOs)"
+  },
+  "revision_instructions": {
+    "item_11_inline_citations": {
+      "fix_a": "Paragraph 2 (stat band intro): After 'A single pacs.008 credit transfer message now contains over 900 fields — mandatory and optional.' add '(RedCompass Labs, 2026)' before the period. Full sentence should read: 'A single pacs.008 credit transfer message now contains over 900 fields — mandatory and optional (RedCompass Labs, 2026).'",
+      "fix_b": "H2 section 'What does ISO 20022 data richness actually mean for financial services?': After 'In a legacy MT103 message, remittance information was 140 characters of free text' add '(SWIFT MT Standards)' before the period. Full sentence: 'In a legacy MT103 message, remittance information was 140 characters of free text (SWIFT MT Standards).'",
+      "fix_c": "H2 section 'Why is 2026 the real inflection point...': After 'SWIFT cross-border payments moved from November 2022.' change to 'SWIFT cross-border payments moved from November 2022 (SWIFT ISO 20022 Migration Programme, 2022).'"
+    },
+    "item_13_sources_array": {
+      "fix_a": "Add to sources array: 'SWIFT ISO 20022 Migration Programme — Cross-border payment co-existence period and migration to ISO 20022 — November 2022'",
+      "fix_b": "Add to sources array: 'SWIFT MT Standards — MT103 Single Customer Credit Transfer specification, Field 70 (Remittance Information) maximum 4×35 characters = 140 characters'"
+    },
+    "scope": "Revise ONLY the 3 inline citation additions in the MDX and the 2 source additions in meta.json. Do not alter structure, word count, voice, or any passing content."
+  }
+}
