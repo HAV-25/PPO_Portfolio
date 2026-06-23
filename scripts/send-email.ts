@@ -147,4 +147,5 @@ if (payloadArg) {
   process.exit(1)
 }
 
-export { sendApprovalEmail, EmailPayload }
+export { sendApprovalEmail }
+export type { EmailPayload }

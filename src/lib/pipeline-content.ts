@@ -54,7 +54,7 @@ export function getAllPipelineArticles(): PipelineArticleMeta[] {
     .map((slug) => {
       const a = getPipelineArticle(slug)
       if (!a) return null
-      const { content: _content, ...meta } = a
+      const { content: _content, ...meta } = a // eslint-disable-line @typescript-eslint/no-unused-vars
       return meta
     })
     .filter(Boolean) as PipelineArticleMeta[]

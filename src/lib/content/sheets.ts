@@ -282,7 +282,6 @@ export async function logAgent(data: {
 
 export async function getWeeklyStatus() {
   const rows = await readRows('Calendar', 'A2:L500');
-  const today = new Date().toISOString().split('T')[0];
   const weekStart = new Date();
   weekStart.setDate(weekStart.getDate() - weekStart.getDay() + 1);
   const weekEnd = new Date(weekStart);
