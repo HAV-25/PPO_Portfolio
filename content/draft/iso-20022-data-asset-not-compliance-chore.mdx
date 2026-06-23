@@ -11,17 +11,17 @@ status: "draft"
 
 44% of banks will miss the next SWIFT ISO 20022 structured address deadline in November 2026 (Montran, June 2026). The ones who miss it have been treating ISO 20022 as a migration project. The ones ahead of it are treating it as a data infrastructure investment. That distinction determines who captures the value.
 
-ISO 20022 is the largest single expansion of structured payment data in the history of the industry. Remittance information grew by approximately 300% in available fields compared to legacy MT messages (RedCompass Labs, 2026). Party and agent data grew 40–70% (RedCompass Labs, 2026). A single pacs.008 credit transfer message now contains over 900 fields — mandatory and optional. That is not a compliance burden. It is a data asset. The question is whether your operating model is built to use it.
+ISO 20022 is the largest single expansion of structured payment data in the history of the industry. Remittance information grew by approximately 300% in available fields compared to legacy MT messages (RedCompass Labs, 2026). Party and agent data grew 40–70% (RedCompass Labs, 2026). A single pacs.008 credit transfer message now contains over 900 fields — mandatory and optional (RedCompass Labs, 2026). That is not a compliance burden. It is a data asset. The question is whether your operating model is built to use it.
 
 ## What does ISO 20022 data richness actually mean for financial services?
 
-In a legacy MT103 message, remittance information was 140 characters of free text. What the payment was for, what invoice it referenced, who it was really from — all unstructured, all requiring human interpretation or probabilistic parsing. In ISO 20022, that information arrives in typed, validated, machine-readable fields: creditor references, structured purpose codes, validated postal addresses with country and town as separate indexed fields.
+In a legacy MT103 message, remittance information was 140 characters of free text (SWIFT MT Standards). What the payment was for, what invoice it referenced, who it was really from — all unstructured, all requiring human interpretation or probabilistic parsing. In ISO 20022, that information arrives in typed, validated, machine-readable fields: creditor references, structured purpose codes, validated postal addresses with country and town as separate indexed fields.
 
 For compliance and fraud teams in banking, this is not a quality-of-life improvement. It is a capability unlock. The same screening logic operating on structured ISO 20022 inputs performs materially better than on legacy MT free text — because the model is matching against validated data types, not parsing ambiguous strings.
 
 ## Why is 2026 the real inflection point for EU payments infrastructure?
 
-ISO 20022 adoption in Europe has been uneven. SEPA Credit Transfer and SEPA Instant Credit Transfer have mandated ISO 20022 since their inception. TARGET2 and EBA Clearing completed migration in March 2023 (SWIFT/European Central Bank). SWIFT cross-border payments moved from November 2022.
+ISO 20022 adoption in Europe has been uneven. SEPA Credit Transfer and SEPA Instant Credit Transfer have mandated ISO 20022 since their inception. TARGET2 and EBA Clearing completed migration in March 2023 (SWIFT/European Central Bank). SWIFT cross-border payments moved from November 2022 (SWIFT ISO 20022 Migration Programme, 2022).
 
 What changes in November 2026 is not adoption — it is data quality enforcement. From November 2026, SWIFT rejects cross-border payments that do not carry fully structured or hybrid postal addresses (SWIFT, 2026). Unstructured address fields, previously accepted as a migration concession, are blocked. From 1 January 2026, SWIFT also applies additional charges to MT message senders who use contingency processing rather than native ISO 20022 (SWIFT, 2026).
 
