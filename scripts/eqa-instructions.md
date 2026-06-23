@@ -291,10 +291,8 @@ Use the `mcp__claude_ai_Gmail__create_draft` tool with these exact parameters:
   Revision cycles: [N]
 
   --- APPROVAL ---
-  APPROVE: http://localhost:3000/api/content/approve?token=[approval_token]&action=approve&slug=[article_slug]
-  REJECT:  http://localhost:3000/api/content/approve?token=[approval_token]&action=reject&slug=[article_slug]
-
-  Note: click the link while the dev server is running locally (npm run dev).
+  APPROVE: https://ppo-personal.netlify.app/api/content/approve?token=[approval_token]&action=approve&slug=[article_slug]
+  REJECT:  https://ppo-personal.netlify.app/api/content/approve?token=[approval_token]&action=reject&slug=[article_slug]
   ```
 
 Do NOT use scripts/send-email.ts — SMTP is blocked in this environment.

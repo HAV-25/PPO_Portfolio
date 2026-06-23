@@ -13,6 +13,7 @@ export interface PipelineArticleMeta {
   readTime: string
   targetKeyword: string
   status: string
+  heroImage?: string
 }
 
 export interface PipelineArticle extends PipelineArticleMeta {
@@ -45,6 +46,7 @@ export function getPipelineArticle(slug: string): PipelineArticle | null {
     readTime: data.readTime ?? '8 min',
     targetKeyword: data.targetKeyword ?? '',
     status: data.status ?? 'draft',
+    heroImage: data.heroImage,
     content,
   }
 }

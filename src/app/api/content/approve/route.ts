@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { google } from 'googleapis'
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const GITHUB_REPO = process.env.GITHUB_REPO || 'HAV-25/PPO_Portfolio'
 const [OWNER, REPO] = GITHUB_REPO.split('/')
+const CDA_TRIGGER_URL = process.env.CDA_TRIGGER_URL
+
+// ─── GitHub helpers ────────────────────────────────────────────────────────────
 
 async function githubFetch(path: string, options: RequestInit = {}) {
   return fetch(`https://api.github.com${path}`, {
@@ -45,7 +49,6 @@ async function updateMetaStatus(slug: string, status: string) {
   const branch = `content/${slug}`
   const path = `content/insights/${slug}.meta.json`
 
-  // Get current file SHA
   const getRes = await githubFetch(
     `/repos/${OWNER}/${REPO}/contents/${path}?ref=${branch}`
   )
@@ -66,6 +69,61 @@ async function updateMetaStatus(slug: string, status: string) {
   })
   return putRes.ok
 }
+
+// ─── Google Sheets helper ──────────────────────────────────────────────────────
+
+async function updateSheetStatus(articleId: string, status: string) {
+  try {
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      },
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    })
+    const sheets = google.sheets({ version: 'v4', auth })
+    const sheetId = process.env.GOOGLE_SHEETS_ID
+
+    // Find the row for this article ID (column A)
+    const findRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: 'Articles!A2:A500',
+    })
+    const rows = findRes.data.values ?? []
+    const rowIndex = rows.findIndex((r) => r[0] === articleId)
+    if (rowIndex === -1) return false
+
+    const rowNum = rowIndex + 2 // 1-indexed + header row
+    // Column H = status (index 7)
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: sheetId,
+      range: `Articles!H${rowNum}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[status]] },
+    })
+    return true
+  } catch {
+    return false
+  }
+}
+
+// ─── CDA trigger ──────────────────────────────────────────────────────────────
+
+async function triggerCDA(payload: { slug: string; title: string; approvalToken: string }) {
+  if (!CDA_TRIGGER_URL) return false
+  try {
+    const res = await fetch(CDA_TRIGGER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    return res.ok
+  } catch {
+    return false
+  }
+}
+
+// ─── HTML response page ────────────────────────────────────────────────────────
 
 function htmlPage(title: string, message: string, colour: string) {
   return new NextResponse(
@@ -97,6 +155,8 @@ function htmlPage(title: string, message: string, colour: string) {
   )
 }
 
+// ─── Route handler ─────────────────────────────────────────────────────────────
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const token = searchParams.get('token')
@@ -115,7 +175,6 @@ export async function GET(request: NextRequest) {
     return htmlPage('Configuration error', 'GitHub token not configured.', '#D94F4F')
   }
 
-  // Fetch meta.json from the article branch to validate token
   const meta = await getMetaFromBranch(slug)
   if (!meta) {
     return htmlPage(
@@ -146,15 +205,31 @@ export async function GET(request: NextRequest) {
         '#D94F4F'
       )
     }
-    return htmlPage(
-      'Published',
-      `"${meta.title}" has been merged to main. The article will be live once the site deploys.`,
-      '#2dfff8'
-    )
+
+    // Update Sheet status — fire and forget, don't block the response
+    if (meta.id) {
+      updateSheetStatus(meta.id as string, 'approved_pending_cda').catch(() => {})
+    }
+
+    // Trigger CDA agent
+    const cdaFired = await triggerCDA({
+      slug,
+      title: meta.title as string,
+      approvalToken: token,
+    })
+
+    const cdaMessage = cdaFired
+      ? 'Formatting and generating hero image — the article will be live on the site in approximately 5 minutes.'
+      : 'Merged to main. The CDA agent was not triggered (CDA_TRIGGER_URL not configured). Deploy manually via Netlify.'
+
+    return htmlPage('Approved', `"${meta.title}" has been approved. ${cdaMessage}`, '#2dfff8')
   }
 
   if (action === 'reject') {
     await updateMetaStatus(slug, 'rejected')
+    if (meta.id) {
+      updateSheetStatus(meta.id as string, 'rejected').catch(() => {})
+    }
     return htmlPage(
       'Rejected',
       `"${meta.title}" has been marked as rejected. Reply to the approval email with your revision notes and the agent will rewrite it.`,

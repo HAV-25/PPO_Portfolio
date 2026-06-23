@@ -183,6 +183,23 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
         </div>
       </section>
 
+      {/* Hero image */}
+      {article.heroImage && (
+        <div className="content-width pb-0">
+          <div className="max-w-3xl">
+            <img
+              src={article.heroImage}
+              alt={article.title}
+              width={1200}
+              height={630}
+              className="w-full object-cover"
+              style={{ maxHeight: '420px' }}
+              loading="eager"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Article body */}
       <section className="section-spacing">
         <div className="content-width">
