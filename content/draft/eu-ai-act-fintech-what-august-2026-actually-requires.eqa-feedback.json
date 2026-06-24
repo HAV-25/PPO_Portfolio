@@ -1,0 +1,28 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-06-24T10:00:00.000Z",
+  "fail_count": 4,
+  "failed_items": [2, 11, 13, 15],
+  "checklist": {
+    "1": {"pass": true, "note": "EBA November 2025 stat within first 30 words, named source and date present"},
+    "2": {"pass": false, "evidence": "An n8n-based audit pipeline writing to Supabase with row-level security can satisfy both simultaneously", "note": "Third-person recommendation ('can satisfy') rather than first-person builder credential. Published portfolio articles make builder credential explicit. Fix: change to first-person voice in the DORA section."},
+    "3": {"pass": true, "note": "AML, credit scoring, DORA, GDPR Art.22, Article 5 prohibited practices — all explicitly covered. Entire article is fintech regulatory application."},
+    "4": {"pass": true, "note": "EU AI Act fintech 2026, high-risk AI financial services, credit scoring AI regulation, DORA fintech, Annex III — multiple in H2 headings."},
+    "5": {"pass": true, "note": "4-Phase Compliance Build: Phase 1 Inventory (Q3 2026), Phase 2 Classification (Q4 2026), Phase 3 Documentation (Q1-Q2 2027), Phase 4 Conformity (Q3 2027). Named, structured, attributable."},
+    "6": {"pass": true, "note": "EUR 15M/3% and EUR 35M/7% fines; 12-18 month implementation timeline; Revenue Per Employee frame in What I Would Do section."},
+    "7": {"pass": true, "note": "Site title informational-intent format; LinkedIn L1 curiosity/provocation-based — clearly different formulas."},
+    "8": {"pass": true, "note": "Exactly 4 FAQ questions: high-risk systems classification, Omnibus deadline change, fines, DORA intersection."},
+    "9": {"pass": true, "note": "5 numbered first-person concrete actions in What I Would Do."},
+    "10": {"pass": true, "note": "Sentence case throughout. All numbers as numerals. No buzzwords found."},
+    "11": {"pass": false, "evidence": "(a) 'DORA — the Digital Operational Resilience Act — has been fully applicable since January 17, 2025' — no inline citation; (b) FAQ Q3 penalty figures EUR 15M/3% and EUR 35M/7% — no inline citation", "note": "Two factual claims with no inline named source + date. DORA applicability date and penalty threshold figures are both verifiable and should be cited inline."},
+    "12": {"pass": true, "note": "Opening paragraphs authentic: punchy post-stat follow-through sentences match portfolio pattern. 'Here is what actually changed, what did not' is Payal's signature framing. Third paragraph under H2 uses 'The result:' construction consistent with portfolio voice."},
+    "13": {"pass": false, "evidence": "Sources array items 4 (DORA, EU 2022/2554) and 6 (EU AI Act Article 99 penalties) have no corresponding inline citation in article body or FAQ", "note": "Same underlying issue as item 11: two sources declared in meta but not cited inline. Fix resolves both 11 and 13 simultaneously."},
+    "14": {"pass": true, "note": "LinkedIn post delivers 4 action bullets and RPE frame as standalone value beyond article opening preview. Reader can act without clicking through."},
+    "15": {"pass": false, "evidence": "(a) 'AML profiling at most regulated firms' — AML not expanded; (b) 'GDPR Article 22, which restricts...' — GDPR not expanded; (c) 'third-party ICT risk management' — ICT not expanded", "note": "Three domain acronyms common to fintech professionals but undefined on first use. Criterion is strict: expand on first occurrence regardless of audience assumption."}
+  },
+  "revision_instructions": {
+    "item_2": "In the DORA intersection section, change 'An n8n-based audit pipeline writing to Supabase with row-level security can satisfy both simultaneously — one infrastructure layer, two output schemas.' to 'The implementation I would build: n8n writing to Supabase with row-level security — one infrastructure layer, two output schemas.' This makes the stack reference first-person ('I would build') without overclaiming.",
+    "item_11_and_13": "Two targeted citation additions: (1) After 'January 17, 2025' on the DORA applicability sentence, append '(DORA, EU 2022/2554)'; (2) In FAQ Q3 answer, after the high-risk fine figure append '(EU AI Act, Article 99)' — this covers both thresholds since Article 99 governs both.",
+    "item_15": "Three first-occurrence acronym expansions: (1) 'AML profiling' → 'AML (anti-money laundering) profiling' in paragraph 1; (2) 'GDPR Article 22' → 'GDPR (General Data Protection Regulation) Article 22' at first use in the GDPR/DORA section heading; (3) 'third-party ICT risk management' → 'third-party ICT (information and communications technology) risk management' in the DORA paragraph."
+  }
+}

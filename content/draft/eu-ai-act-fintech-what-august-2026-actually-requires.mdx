@@ -9,7 +9,7 @@ slug: "eu-ai-act-fintech-what-august-2026-actually-requires"
 status: "draft"
 ---
 
-The European Banking Authority's November 2025 report on AI Act implications found that the majority of AI use cases at EBA-supervised institutions fall into the high-risk classification (EBA, November 2025). Not experimental systems. Not proof-of-concept pilots. The production AI running credit scoring, fraud detection, and AML profiling at most regulated firms.
+The European Banking Authority's November 2025 report on AI Act implications found that the majority of AI use cases at EBA-supervised institutions fall into the high-risk classification (EBA, November 2025). Not experimental systems. Not proof-of-concept pilots. The production AI running credit scoring, fraud detection, and AML (anti-money laundering) profiling at most regulated firms.
 
 That is the compliance exposure. The headline deadline — August 2, 2026 — was when those obligations were scheduled to become fully enforceable. Then the Digital Omnibus changed the timeline. Here is what actually changed, what did not, and what a fintech operator needs to do in the window that remains.
 
@@ -27,7 +27,7 @@ The Omnibus deferred high-risk compliance. It did not defer everything. Two obli
 
 **Prohibited practices:** Article 5 prohibitions are active. Real-time remote biometric surveillance in public spaces, AI that exploits psychological vulnerabilities, and social scoring by public authorities are banned outright. AML and fraud detection systems that use behavioural pattern scoring need to be checked against this list — not as a paperwork exercise, but as a design review.
 
-DORA — the Digital Operational Resilience Act — has been fully applicable since January 17, 2025. DORA requires incident logging, operational resilience testing, and third-party ICT risk management. The overlap with EU AI Act Article 12 (record-keeping) and Article 14 (human oversight) is not incidental. Building AI Act compliance infrastructure in isolation from DORA is creating duplicated work.
+DORA — the Digital Operational Resilience Act — has been fully applicable since January 17, 2025 (DORA, EU 2022/2554). DORA requires incident logging, operational resilience testing, and third-party ICT (information and communications technology) risk management. The overlap with EU AI Act Article 12 (record-keeping) and Article 14 (human oversight) is not incidental. Building AI Act compliance infrastructure in isolation from DORA is creating duplicated work.
 
 ## What does high-risk AI compliance actually require in financial services?
 
@@ -46,13 +46,13 @@ A financial institution with 5–10 high-risk AI systems typically takes 12–18
 
 ## How does EU AI Act compliance intersect with GDPR Article 22 and DORA?
 
-High-risk AI in fintech frequently overlaps with GDPR Article 22, which restricts solely automated decisions that produce legal or similarly significant effects. Credit scoring and loan approval are the canonical examples.
+High-risk AI in fintech frequently overlaps with GDPR (General Data Protection Regulation) Article 22, which restricts solely automated decisions that produce legal or similarly significant effects. Credit scoring and loan approval are the canonical examples.
 
 The overlap creates a dual compliance obligation. GDPR Article 22 requires an opt-out from purely automated decisions and a right to human review. EU AI Act Article 14 requires override and stop capability. The technical implementation is similar — a human review queue, an override audit trail, a documented escalation path — but the documentation and notification requirements are distinct frameworks with different authorities checking them.
 
 Firms building GDPR Article 22 compliance that does not also satisfy AI Act Article 12 logging requirements will need to retrofit. The correct approach: build the logging layer once, map it to both frameworks' output schemas, and avoid the rework.
 
-For DORA: the Article 12 record-keeping requirement and DORA's incident log requirement both demand timestamped, queryable decision records. An n8n-based audit pipeline writing to Supabase with row-level security can satisfy both simultaneously — one infrastructure layer, two output schemas. Building separately is waste.
+For DORA: the Article 12 record-keeping requirement and DORA's incident log requirement both demand timestamped, queryable decision records. The implementation I would build: n8n writing to Supabase with row-level security — one infrastructure layer, two output schemas. Building separately is waste.
 
 ## The 4-phase compliance build
 
@@ -87,7 +87,7 @@ Credit scoring, loan approval, AML risk profiling, fraud detection, insurance un
 The Omnibus deferred high-risk obligations for stand-alone Annex III systems from August 2, 2026 to December 2, 2027. For AI embedded in regulated Annex I products, the deadline moves to August 2, 2028. AI literacy (Article 4) and prohibited practice rules (Article 5) were not deferred — both applied from February 2, 2025.
 
 **What are the fines for EU AI Act non-compliance in financial services?**
-Non-compliance with high-risk AI obligations (Articles 9–14) carries fines of up to €15 million or 3% of total annual global turnover, whichever is higher. Prohibited practice violations under Article 5 carry a ceiling of €35 million or 7% of global turnover. Both thresholds apply per violation, not per firm.
+Non-compliance with high-risk AI obligations (Articles 9–14) carries fines of up to €15 million or 3% of total annual global turnover, whichever is higher (EU AI Act, Article 99). Prohibited practice violations under Article 5 carry a ceiling of €35 million or 7% of global turnover (EU AI Act, Article 99). Both thresholds apply per violation, not per firm.
 
 **How does EU AI Act compliance intersect with DORA for fintech?**
 Both require incident logging, operational resilience frameworks, and third-party ICT risk management. AI Act Article 12 record-keeping and DORA incident reporting demand overlapping infrastructure — timestamped, queryable decision logs. Building one logging layer that satisfies both frameworks' output schemas is the correct design. Building separately creates duplicated cost and audit risk.
