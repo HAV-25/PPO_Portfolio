@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type ButtonProps = {
+type LinkButtonProps = {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "cream";
@@ -8,13 +8,13 @@ type ButtonProps = {
   className?: string;
 };
 
-export default function Button({
+export default function LinkButton({
   href,
   children,
   variant = "primary",
   external = false,
   className = "",
-}: ButtonProps) {
+}: LinkButtonProps) {
   const styles = {
     primary: "btn-primary",
     secondary: "btn-secondary",

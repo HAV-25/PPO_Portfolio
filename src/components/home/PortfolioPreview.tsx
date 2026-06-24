@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import Tag from "@/components/ui/tag";
+import Tag from "@/components/ui/StatusTag";
 import StackIcon from "@/components/ui/StackIcon";
 
 const featured = [
