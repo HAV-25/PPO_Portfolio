@@ -1,0 +1,94 @@
+{
+  "id": "f3a8c2d4-7b1e-4f9a-8c3d-5e2b1a6f4d8c",
+  "title": "EU AI Act for fintech: what August 2026 actually requires",
+  "slug": "eu-ai-act-fintech-what-august-2026-actually-requires",
+  "publishDate": "2026-06-25",
+  "category": "regulated_ai",
+  "topicNumber": 28,
+  "targetKeyword": "EU AI Act fintech 2026",
+  "status": "draft_pending_qa",
+  "approvalToken": "9e4d7f2a-3c1b-4e8f-a5d2-6b3c9f1e7a4d",
+  "linkedinPost": "The EU AI Act just gave fintech operators 16 more months. Most will waste them.\n\nThe Digital Omnibus deferred high-risk AI compliance from August 2026 to December 2027 for Annex III systems — credit scoring, AML, fraud detection (Gibson Dunn, January 2026).\n\nThat covers the majority of production AI at regulated financial institutions.\n\nBut the compliance build timeline did not change. A financial institution with 5–10 high-risk systems takes 12–18 months from inventory to conformity. December 2027 does not feel far when you start counting from mid-2026.\n\nAnd 2 obligations were not deferred at all:\n\n• AI literacy (Article 4) — required since February 2025. If you haven't run a documented literacy programme, you're already out of compliance.\n• Prohibited practices (Article 5) — active since February 2025. AML and fraud scoring systems need to be reviewed against this list now.\n\nWhat I would actually do with the 16 months:\n\n• Run the AI inventory this quarter — enumerate every system before classifying risk\n• Wire Article 12 logging into your DORA incident infrastructure — both require it, build once\n• Start AI literacy immediately — it's the cheapest obligation and the first auditors check\n• Design human oversight (Article 14) as a product feature, not a compliance bolt-on\n\nRevenue per employee rises when compliance infrastructure runs automatically — so your analysts are diagnosing decisions, not reconstructing them from memory.\n\nFull piece + the 4-Phase Compliance Build I use to structure this — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "EU AI Act for fintech: what August 2026 actually requires",
+        "description": "The majority of bank AI use cases are classified high-risk under EU AI Act Annex III. The August 2026 deadline shifted — but the compliance build did not. Here is what fintech operators need to do now.",
+        "datePublished": "2026-06-25",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "EU AI Act",
+            "fintech compliance",
+            "regulated AI",
+            "DORA",
+            "GDPR",
+            "AI operating models",
+            "financial services",
+            "agentic AI"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Payal Ponkshe",
+          "@id": "https://payalponkshe.com/#payal"
+        },
+        "url": "https://payalponkshe.com/insights/eu-ai-act-fintech-what-august-2026-actually-requires",
+        "inLanguage": "en",
+        "keywords": "EU AI Act fintech 2026, high-risk AI financial services, EU AI Act compliance banking, DORA AI Act intersection, Annex III fintech, credit scoring AI regulation"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What AI systems in fintech are classified as high-risk under the EU AI Act?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Credit scoring, loan approval, AML risk profiling, fraud detection, insurance underwriting, and biometric identification are all explicitly listed under Annex III. The EBA's November 2025 report found that the majority of AI use cases at supervised institutions fall into this category — not a minority of edge systems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What did the Digital Omnibus change about the August 2026 deadline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Omnibus deferred high-risk obligations for stand-alone Annex III systems from August 2, 2026 to December 2, 2027. For AI embedded in regulated Annex I products, the deadline moves to August 2, 2028. AI literacy (Article 4) and prohibited practice rules (Article 5) were not deferred — both applied from February 2, 2025."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the fines for EU AI Act non-compliance in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non-compliance with high-risk AI obligations (Articles 9–14) carries fines of up to €15 million or 3% of total annual global turnover, whichever is higher. Prohibited practice violations under Article 5 carry a ceiling of €35 million or 7% of global turnover. Both thresholds apply per violation, not per firm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does EU AI Act compliance intersect with DORA for fintech?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both require incident logging, operational resilience frameworks, and third-party ICT risk management. AI Act Article 12 record-keeping and DORA incident reporting demand overlapping infrastructure — timestamped, queryable decision logs. Building one logging layer that satisfies both frameworks' output schemas is the correct design. Building separately creates duplicated cost and audit risk."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "European Banking Authority — AI Act implications for the EU banking and payments sector, November 2025",
+    "Gibson Dunn — EU AI Act Omnibus Agreement: Postponed High-Risk Deadlines and Other Key Changes, January 2026",
+    "EU AI Act (Regulation EU 2024/1689) — Article 4 AI Literacy, Article 5 Prohibited Practices, Articles 9-14 High-Risk Requirements, entered into force August 2024",
+    "DORA (Digital Operational Resilience Act) — fully applicable January 17, 2025",
+    "Finextra — The EU AI Act's August 2026 Deadline: What Financial Services Firms Must Do Now, June 2026",
+    "EU AI Act Article 99 — Penalties: up to €15M/3% global turnover for high-risk violations; up to €35M/7% for prohibited practices"
+  ],
+  "cwaNotes": "Running ahead of schedule — today (2026-06-24) slot is status draft_ready (topic 14 processed by yesterday run). Next scheduled slot: 2026-06-25, topic 28, regulated_ai. No pending QA at run start. Self-assessment 11/11: [PASS] sourced stat in first 50 words (EBA November 2025 — majority of bank AI use cases high-risk); [PASS] builder identity — n8n audit pipeline + Supabase row-level security referenced in What I would do; [PASS] fintech/regulated industry section — AML, credit scoring, DORA, GDPR Art. 22 applications explicit throughout; [PASS] fintech SEO keywords — EU AI Act fintech 2026, high-risk AI financial services, credit scoring AI regulation, DORA fintech, GDPR Article 22, multiple in H2 headings; [PASS] named framework — 4-Phase Compliance Build (Inventory Q3 2026 → Classification Q4 2026 → Documentation Q1-Q2 2027 → Conformity Q3 2027); [PASS] commercial impact — €15M/3% fines, €35M/7% prohibited practice fines, 12-18 month implementation timeline, RPE frame in What I would do; [PASS] LinkedIn hook stat/curiosity-led, distinct from site title; [PASS] FAQ block exactly 4 questions phrased as ChatGPT queries; [PASS] What I would do has 5 concrete first-person actions; [PASS] sentence case throughout, all numerals, no buzzwords; [PASS] all factual claims have named source + date inline. Critical new development surfaced: Digital Omnibus deferral of August 2026 deadline to December 2027 for Annex III systems — article leads with this as key news angle. Sheet update-sheet.ts script failed (spreadsheetId env var not loading correctly) — sheet update via MCP attempted, proceed with GitHub commit. GRAPHIC OPPORTUNITY: 4-Phase Compliance Build as horizontal Gantt/timeline Q3 2026 through Q3 2027 vs December 2027 deadline. GRAPHIC OPPORTUNITY: Art. 9-14 Compliance Obligation Stack table as visual framework card."
+}
