@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import Link from "next/link";
 
 const CONTACT_EMAIL = "payalponkshe@gmail.com";

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import Tag from "@/components/ui/Tag";
-import Button from "@/components/ui/Button";
+import Tag from "@/components/ui/tag";
+import Button from "@/components/ui/button";
 import StackIcon from "@/components/ui/StackIcon";
 
 type StatusVariant = "live" | "build" | "prototype" | "concept" | "delivered";

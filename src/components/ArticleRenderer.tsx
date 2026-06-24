@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import type { Article, Block, StatItem } from "@/lib/articles";
 
 function Reveal({

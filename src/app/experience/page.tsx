@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 
 const roles = [
   {
