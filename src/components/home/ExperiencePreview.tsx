@@ -30,15 +30,27 @@ export default function ExperiencePreview() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-spacing">
+    <section className="section-spacing" id="experience">
       <div className="content-width" ref={ref}>
-        <span className="section-label">Career highlights</span>
+        <span className="section-label">Career</span>
 
-        <h2 className="font-jakarta font-extrabold text-navy text-[36px] md:text-[48px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-10">
-          Two decades turning{" "}
-          <br className="hidden sm:block" />
-          ambition into delivery
-        </h2>
+        <motion.h2
+          className="font-jakarta font-extrabold text-navy text-[36px] md:text-[48px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-4"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          From payment infrastructure to AI systems
+        </motion.h2>
+
+        <motion.p
+          className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] max-w-2xl mb-10"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+        >
+          My career has focused on one recurring challenge: how do you scale complex systems across people, technology, partnerships, and markets? From global payments infrastructure and commercial ecosystems to AI-native platforms, the underlying problem remains remarkably consistent.
+        </motion.p>
 
         <div className="flex flex-col border-t border-rule">
           {highlights.map((item, i) => (
@@ -46,7 +58,7 @@ export default function ExperiencePreview() {
               key={item.role}
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.1 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + i * 0.1 }}
               className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 py-6 border-b border-rule"
             >
               <div className="flex-1">

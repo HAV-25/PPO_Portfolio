@@ -3,11 +3,39 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-const stats = [
-  { value: 18, suffix: "+", label: "Years experience", sublabel: "In fintech & payments" },
-  { value: 25, prefix: "$", suffix: "M+", label: "Partnerships delivered", sublabel: "At Mastercard · 4 regions" },
-  { value: 120, suffix: "+", label: "Team scale managed", sublabel: "Cross-regional, at VP level" },
-  { value: 6, suffix: "", label: "AI ventures built", sublabel: "Independently, since 2024" },
+type Stat =
+  | { kind: "counter"; value: number; prefix?: string; suffix: string; label: string; sublabel: string }
+  | { kind: "text"; display: string; label: string; sublabel: string };
+
+const stats: Stat[] = [
+  {
+    kind: "counter",
+    value: 18,
+    suffix: "+",
+    label: "Years",
+    sublabel: "Building products, partnerships, and operations across fintech and technology.",
+  },
+  {
+    kind: "counter",
+    value: 120,
+    suffix: "+",
+    label: "Global Leadership",
+    sublabel: "Specialists across Europe, North America, APAC, and MEA.",
+  },
+  {
+    kind: "counter",
+    value: 25,
+    prefix: "$",
+    suffix: "M+",
+    label: "Strategic Partnerships",
+    sublabel: "Ecosystem investments spanning cloud, telecom, and financial services.",
+  },
+  {
+    kind: "text",
+    display: "Multiple",
+    label: "Builder Mindset",
+    sublabel: "AI-native products designed, launched, or actively being developed.",
+  },
 ];
 
 function Counter({
@@ -67,16 +95,22 @@ export default function StatBand() {
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
               className="flex flex-col"
             >
-              <Counter
-                value={stat.value}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
-                started={inView}
-              />
+              {stat.kind === "counter" ? (
+                <Counter
+                  value={stat.value}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  started={inView}
+                />
+              ) : (
+                <span className="stat-number" style={{ fontVariantNumeric: "normal" }}>
+                  {stat.display}
+                </span>
+              )}
               <p className="font-jakarta font-semibold text-navy text-[14px] mt-2 leading-tight">
                 {stat.label}
               </p>
-              <p className="font-jakarta text-slate text-[13px] mt-0.5">
+              <p className="font-jakarta text-slate text-[13px] mt-1 leading-[1.5]">
                 {stat.sublabel}
               </p>
             </motion.div>

@@ -8,25 +8,25 @@ import StackIcon from "@/components/ui/StackIcon";
 
 const featured = [
   {
-    title: "AI content intelligence pipeline",
-    problem:
-      "A fully automated pipeline that ingests viral slideshows, understands why they work, and reconstructs them at volume in a proprietary brand system — without legal risk or platform detection.",
+    title: "Content Intelligence & Reconstruction Engine",
+    subtitle:
+      "AI system for analysing, deconstructing, and reconstructing high-performing content within defined brand frameworks.",
     stack: ["n8n", "Claude API", "GPT Image", "Supabase"],
     status: "live" as const,
     capability: "AI Pipeline Architecture",
   },
   {
-    title: "AI-native language exam prep — CEFR A1–B1",
-    problem:
-      "Adult learners preparing for German-language certification lack affordable, exam-accurate tools combining authentic test formats with reliable automated scoring.",
+    title: "Adaptive Language Learning Platform",
+    subtitle:
+      "AI-native certification preparation platform combining content generation, scoring, and learning progression.",
     stack: ["React Native", "Supabase", "Claude API", "OpenAI Realtime"],
     status: "live" as const,
     capability: "Product Ownership · Mobile · AI",
   },
   {
-    title: "AI carousel generation platform",
-    problem:
-      "Content creators stitch together 4–5 disconnected tools to produce a single carousel — the highest-converting format on Instagram and TikTok. One pipeline, end to end.",
+    title: "Automated Content Production System",
+    subtitle:
+      "AI-assisted workflow for transforming content strategy into structured, production-ready media assets.",
     stack: ["Next.js", "Supabase", "OpenAI", "n8n"],
     status: "build" as const,
     capability: "AI Product Strategy · Full-Stack",
@@ -40,16 +40,10 @@ export default function PortfolioPreview() {
   return (
     <section className="section-spacing" id="work">
       <div className="content-width" ref={ref}>
-        <span className="section-label">Selected work — independently built</span>
+        <span className="section-label">Systems I&apos;m building</span>
 
-        <h2 className="font-jakarta font-extrabold text-navy text-[36px] md:text-[48px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-3">
-          AI ventures,{" "}
-          <br className="hidden sm:block" />
-          shipped end to end
-        </h2>
-        <p className="font-jakarta text-slate text-[15px] leading-[1.65] mb-8 max-w-lg">
-          Self-funded, solo-built since 2024 — demonstrating what hands-on AI systems work
-          looks like in practice, not just in a strategy deck.
+        <p className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] mb-10 max-w-2xl">
+          Alongside my leadership career in payments and financial infrastructure, I actively design and build AI-native systems, automation platforms, and venture concepts. These projects serve as laboratories for exploring how emerging technologies move from concept to scalable adoption.
         </p>
 
         <div className="grid md:grid-cols-3 gap-5">
@@ -61,7 +55,6 @@ export default function PortfolioPreview() {
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.1 }}
               className="group bg-cream-card rounded-card p-7 flex flex-col card-hover"
             >
-              {/* Status + capability */}
               <div className="flex items-center gap-2 flex-wrap">
                 <Tag variant="status" status={project.status}>
                   {project.status === "live" ? "Live" : "In build"}
@@ -76,7 +69,7 @@ export default function PortfolioPreview() {
               </h3>
 
               <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 flex-1">
-                {project.problem}
+                {project.subtitle}
               </p>
 
               <div className="mt-5 pt-4 border-t border-rule flex flex-wrap gap-1.5">

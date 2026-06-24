@@ -18,18 +18,17 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <h2 className="font-jakarta font-extrabold text-cream text-[32px] md:text-[40px] leading-[1.15]">
-            Ready to work together?
+            Let&apos;s start with the work.
           </h2>
           <p
             className="font-jakarta text-[16px] md:text-[17px] leading-[1.65] mt-4 max-w-md"
             style={{ color: "rgba(245,241,232,0.75)" }}
           >
-            Book a free 30-minute discovery call. No pitch, no pressure — just
-            an honest conversation about where I can help.
+            Explore selected projects, leadership experience, and areas of current research. If there&apos;s alignment, we can continue the conversation.
           </p>
           <div className="mt-8">
             <Link href="/book" className="btn-cream">
-              Book your discovery call <span aria-hidden="true">→</span>
+              Get in touch <span aria-hidden="true">→</span>
             </Link>
           </div>
         </motion.div>
