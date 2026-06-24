@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 
-const SHEET_ID = process.env.GOOGLE_SHEETS_ID!;
+const getSheetId = () => process.env.GOOGLE_SHEETS_ID!;
 
 function getAuth() {
   return new google.auth.GoogleAuth({
@@ -19,7 +19,7 @@ function getClient() {
 async function readRows(tab: string, range: string): Promise<string[][]> {
   const client = getClient();
   const res = await client.spreadsheets.values.get({
-    spreadsheetId: SHEET_ID,
+    spreadsheetId: getSheetId(),
     range: `${tab}!${range}`,
   });
   return (res.data.values as string[][]) || [];
@@ -28,7 +28,7 @@ async function readRows(tab: string, range: string): Promise<string[][]> {
 async function batchUpdate(tab: string, updates: { range: string; values: string[][] }[]) {
   const client = getClient();
   await client.spreadsheets.values.batchUpdate({
-    spreadsheetId: SHEET_ID,
+    spreadsheetId: getSheetId(),
     requestBody: {
       valueInputOption: 'RAW',
       data: updates.map(u => ({
@@ -42,7 +42,7 @@ async function batchUpdate(tab: string, updates: { range: string; values: string
 export async function appendRows(tab: string, values: string[][]) {
   const client = getClient();
   await client.spreadsheets.values.append({
-    spreadsheetId: SHEET_ID,
+    spreadsheetId: getSheetId(),
     range: `${tab}!A1`,
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS',
