@@ -1,0 +1,94 @@
+---
+title: "The agentic AI use-case map for financial services"
+description: "A 4-tier framework for sequencing agentic AI deployments in regulated financial institutions — mapped by readiness, EU AI Act exposure, and revenue per employee impact."
+publishDate: "2026-06-30"
+category: "agentic_builds"
+readTime: "7 min"
+targetKeyword: "agentic AI use cases financial services"
+slug: "agentic-ai-use-case-map-financial-services"
+status: "draft"
+---
+
+99% of financial institutions plan to deploy AI agents. Only 11% have done so (Accenture Banking Blog, 2026). The gap is not technology. It is decision-paralysis — institutions that have agreed AI agents matter but cannot agree on where to start, in what order, and at what regulatory exposure.
+
+This is the use-case selection problem. Solving it requires a map, not a list.
+
+## Why is choosing the wrong first agentic AI use case so damaging in a regulated institution?
+
+A failed first deployment raises the internal cost of every subsequent one. In regulated financial services, the first agentic AI deployment sets the compliance, legal, and governance precedent for everything that follows. Get it wrong — not in a technical sense, but in a business and regulatory sense — and the AI programme stalls for 18 months while the post-mortem runs.
+
+The pattern is well-documented. In 2025 alone, 50 of the world's largest banks announced more than 160 agentic AI use cases (Citi Research, 2025). Fewer than half reached production (Citi Research, 2025). The bottleneck was not model capability. It was use-case selection: high-ambition, high-risk projects chosen for board-level visibility rather than operational readiness.
+
+The institutions moving fastest in 2026 — JPMorgan with 450+ active AI agent deployments, HSBC, UBS, DBS, and ING with 20–40% documented cost reductions (Accenture Banking Blog, April 2026) — all share the same starting principle: high-volume, low-judgment tasks first.
+
+## What does the Financial Services Agent Deployment Ladder look like?
+
+Use-case selection in financial services maps to four tiers. Each tier represents a different combination of operational readiness, regulatory exposure, and revenue-per-employee impact.
+
+| Tier | Use case examples | EU AI Act exposure | Time to value | RPE impact |
+|---|---|---|---|---|
+| 1 — Operational backbone | Document processing, regulatory data assembly, payment reconciliation, internal policy retrieval | Minimal — no Annex III classification | 4–8 weeks | Moderate — frees analyst capacity |
+| 2 — Analytical co-pilot | Credit memo first-drafts, portfolio alert triage, complaint classification, financial crime research | Low — human gate required | 8–16 weeks | High — multiplies skilled output |
+| 3 — Decision support | KYC documentation review, AML case management, credit pre-screening | Moderate — Annex III adjacent, oversight mandatory | 12–24 weeks | Very high — changes unit economics |
+| 4 — Customer-facing | Onboarding automation, personalised offers, dispute resolution | High — Annex III high-risk classification | 18–36 weeks | Highest RPE impact; compliance overhead is significant |
+
+The correct starting point for most regulated institutions is Tier 1 or Tier 2. Not because Tier 3 and 4 are less valuable — they carry the highest RPE impact — but because Tier 1 and 2 build the data infrastructure, governance frameworks, and institutional confidence that make Tier 3 and 4 succeed.
+
+JPMorgan's 450+ agent deployments did not start with customer-facing systems. They started with internal document workflows: drafting investment banking presentations in seconds, automating trade settlement documentation, structuring internal research. The customer-facing systems came after the infrastructure was proven.
+
+## Which agentic AI use cases in banking are returning measurable results right now?
+
+The clearest evidence comes from credit operations. A US bank deploying AI agents to first-draft credit risk memos reported 20–60% productivity improvement and 30% faster credit turnaround (Neurons Lab Research Roundup, April 2026). The agent does not make the credit decision. It assembles the documentation, cross-references borrower data, and produces a structured memo for analyst review. The human owns the judgment. The agent owns the assembly.
+
+This is the Tier 2 pattern working correctly. The agent multiplies analyst output without touching the credit decision — which means the EU AI Act Annex III high-risk classification for credit scoring does not apply to the agent, only to the downstream decision system. The distinction matters enormously for sequencing.
+
+For KYC and AML, early Tier 3 deployments are returning even more significant structural change. When AI agents handle documentation assembly and case file construction — not the risk decision — onboarding cycles at some institutions have fallen from weeks to hours (Kore.ai Banking Blog, 2026).
+
+At the programme level: KPMG documents an average 2.3x return on agentic AI investments within 13 months, with top performers reaching $8 for every $1 invested (KPMG Global AI in Financial Services Report, 2026).
+
+## How does EU AI Act exposure shape deployment sequencing in financial services?
+
+More significantly than most compliance teams have communicated to their technology counterparts. Under Annex III of the EU AI Act (Regulation 2024/1689), the following financial services AI use cases carry explicit high-risk classification:
+
+- Credit scoring and creditworthiness assessment
+- AML risk profiling
+- Fraud detection affecting individual decisions
+- Customer onboarding with automated acceptance or rejection
+
+High-risk classification means mandatory conformity assessments, technical documentation, human oversight by design, Article 12 logging, and audit trails — all required before August 2, 2026. Fines for non-compliance reach €30 million or 6% of global annual revenue (EU AI Act, Article 99).
+
+This does not mean avoid Tier 3 and 4 use cases. It means sequence them deliberately.
+
+An institution that starts with Tier 1 and 2 in early 2026 builds its Article 12 logging infrastructure, human oversight protocols, and governance frameworks as part of lower-risk deployments. When Tier 3 and 4 follow in H2 2026 and 2027, the compliance infrastructure already exists. The conformity assessment is an extension of practice, not a greenfield build.
+
+The institutions that will miss the August deadline are the ones that started with Tier 4 ambitions in Tier 1 governance readiness.
+
+## What I would do
+
+1. **Run a use-case audit against the ladder.** Not a wishlist — a two-column audit of what is in flight against which tier it maps to. Any Tier 3 or 4 projects without Tier 1 or 2 infrastructure underneath them are at delivery risk.
+
+2. **Stand up one Tier 2 deployment in the next 8 weeks.** The credit memo pattern is the fastest path to demonstrated ROI with the lowest regulatory exposure. I would build the first-draft agent in n8n with Claude API handling document synthesis and Supabase as the structured data layer. Deploy to one credit team. Measure time-to-memo before and after. That measurement is the business case for every subsequent deployment.
+
+3. **Wire Article 12 logging into every agent from day one.** Not as a retrofit. The EU AI Act requires traceable logs of AI inputs, outputs, and human interventions. Build the logging infrastructure into Tier 1 and 2 agents now, and every subsequent deployment inherits it automatically.
+
+4. **Map Annex III exposure before adding Tier 3 use cases.** Credit scoring, AML profiling, fraud detection — all explicitly high-risk. Run the classification before committing to build. Know which systems require conformity assessments and budget the timeline accordingly. August 2026 is 8 weeks away.
+
+5. **Set a revenue-per-employee target by function, not company-wide.** Agentic AI deployments that cannot be linked to a measurable RPE improvement in a specific function within 12 months are visibility projects, not business ones. The target is the filter.
+
+## Frequently asked questions
+
+**What are the best agentic AI use cases for a bank to start with?**
+Start with Tier 1 and 2: document processing, regulatory data assembly, and credit memo first-drafts. These build governance infrastructure, demonstrate ROI, and do not trigger EU AI Act Annex III high-risk classification. JPMorgan's approach — 450+ internal workflow deployments before customer-facing automation — is the proven template.
+
+**How long does it take to deploy an agentic AI agent in a regulated financial institution?**
+Tier 1 deployments run 4–8 weeks from scoping to production with appropriate governance. Tier 2 typically 8–16 weeks. Tier 3 and 4 — which require conformity assessments under the EU AI Act — typically 12–36 weeks depending on existing compliance infrastructure. Starting now means being live on Tier 2 before the August 2026 deadline creates pressure on Tier 3 ambitions.
+
+**What is the EU AI Act risk classification for credit scoring and AML AI agents?**
+Both are explicitly high-risk under Annex III of the EU AI Act (Regulation 2024/1689). Requirements include technical documentation, mandatory human oversight by design, Article 12 logging, and formal conformity assessments. Fines for non-compliance reach €30 million or 6% of global annual revenue, applicable from August 2, 2026.
+
+**What return on investment should a financial institution expect from agentic AI agents?**
+KPMG documents an average 2.3x return within 13 months of deployment, with top performers reaching $8 per $1 invested (KPMG Global AI in Financial Services Report, 2026). The highest returns come from Tier 2 and 3 deployments — credit operations, KYC, and compliance automation — where agentic AI multiplies skilled analyst output without replacing the judgment that regulators require to remain human.
+
+---
+
+→ If you are a COO or transformation lead sequencing your institution's agentic AI deployments and want to map use-case selection against regulatory exposure and RPE impact, [read about my AI Implementation & Operating Model Design service](/services/ai-implementation) — or [book a 30-minute discovery call](/book) to work through your specific roadmap.

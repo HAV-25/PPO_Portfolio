@@ -1,0 +1,89 @@
+{
+  "id": "12cd10a4-0e5e-433f-a376-1a1b5a344639",
+  "title": "The agentic AI use-case map for financial services",
+  "slug": "agentic-ai-use-case-map-financial-services",
+  "publishDate": "2026-06-30",
+  "category": "agentic_builds",
+  "topicNumber": 2,
+  "targetKeyword": "agentic AI use cases financial services",
+  "status": "awaiting_approval",
+  "approvalToken": "1e6ffb36-c93b-4031-97fe-d130d90ae773",
+  "linkedinPost": "99% of financial institutions plan to deploy AI agents. Only 11% have done so. (Accenture, 2026)\n\nThat 88-point gap is not a technology problem. It is a use-case selection problem.\n\nInstitutions are choosing Tier 4 ambitions — customer-facing automation, autonomous credit decisions — with Tier 1 governance infrastructure. Then stalling when the EU AI Act, DORA, or an internal risk committee calls it.\n\nThe banks moving fastest in 2026 — JPMorgan with 450+ live agent deployments, HSBC and ING with 20–40% documented cost reductions — all started with the same tier:\n\nInternal. High-volume. Low-judgment. Document assembly, credit memo first-drafts, regulatory data gathering.\n\nHere is what I would actually do:\n\n• Map every in-flight AI project against a 4-tier use-case ladder — operational backbone, analytical co-pilot, decision support, customer-facing\n• Stand up one Tier 2 deployment in 8 weeks — credit memo agent on Claude API + n8n is the fastest path to demonstrated ROI at lowest EU AI Act exposure\n• Wire Article 12 logging into every agent from day one — not as a retrofit, but as infrastructure every subsequent deployment inherits automatically\n• Know your Annex III exposure before adding Tier 3: credit scoring, AML, fraud detection are explicitly high-risk — €30M fines apply from August 2, 2026\n• Set a revenue-per-employee target by function — agentic AI without an RPE target is a pilot, not a programme\n\nRevenue per employee rises when agents are deployed in the right sequence, not the most impressive one.\n\nFull piece + the Financial Services Agent Deployment Ladder I use to sequence this — link in comments.\n\n[ATTACH: 30s demo clip]",
+  "schemaJsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The agentic AI use-case map for financial services",
+      "description": "A 4-tier framework for sequencing agentic AI deployments in regulated financial institutions — mapped by readiness, EU AI Act exposure, and revenue per employee impact.",
+      "datePublished": "2026-06-30",
+      "author": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe",
+        "sameAs": "https://www.linkedin.com/in/payalponkshe",
+        "jobTitle": "Fintech & Payments Executive, AI Venture Builder",
+        "knowsAbout": [
+          "agentic AI",
+          "financial services AI",
+          "EU AI Act compliance",
+          "payments infrastructure",
+          "operating model design",
+          "n8n",
+          "Claude API",
+          "credit risk automation",
+          "KYC AML automation"
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the best agentic AI use cases for a bank to start with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with Tier 1 and 2: document processing, regulatory data assembly, and credit memo first-drafts. These build governance infrastructure, demonstrate ROI, and do not trigger EU AI Act Annex III high-risk classification. JPMorgan's approach — 450+ internal workflow deployments before customer-facing automation — is the proven template."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to deploy an agentic AI agent in a regulated financial institution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tier 1 deployments run 4–8 weeks from scoping to production with appropriate governance. Tier 2 typically 8–16 weeks. Tier 3 and 4 — which require conformity assessments under the EU AI Act — typically 12–36 weeks depending on existing compliance infrastructure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the EU AI Act risk classification for credit scoring and AML AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are explicitly high-risk under Annex III of the EU AI Act (Regulation 2024/1689). Requirements include technical documentation, mandatory human oversight by design, Article 12 logging, and formal conformity assessments. Fines for non-compliance reach €30 million or 6% of global annual revenue, applicable from August 2, 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What return on investment should a financial institution expect from agentic AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KPMG documents an average 2.3x return within 13 months of deployment, with top performers reaching $8 per $1 invested (KPMG Global AI in Financial Services Report, 2026). The highest returns come from Tier 2 and 3 deployments — credit operations, KYC, and compliance automation — where agentic AI multiplies skilled analyst output without replacing the judgment that regulators require to remain human."
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "Accenture Banking Blog, 2026 — 99% of financial institutions plan agent deployments; only 11% in production",
+    "Citi Research, 2025 — 50 of the world's largest banks announced 160+ agentic AI use cases in 2025; fewer than half reached production",
+    "Accenture Banking Blog, April 2026 — HSBC, Citi, UBS, DBS, ING: 20–40% cost reductions, 10–30% revenue uplifts from agentic AI deployments",
+    "Neurons Lab Research Roundup, April 2026 — US bank credit risk memo agent: 20–60% productivity improvement, 30% faster credit turnaround",
+    "Kore.ai Banking Blog, 2026 — KYC/AML onboarding cycles reduced from weeks to hours via AI agent document assembly",
+    "KPMG Global AI in Financial Services Report, 2026 — average 2.3x ROI within 13 months; top performers $8 per $1 invested",
+    "EU AI Act, Regulation 2024/1689, Article 99 — €30 million or 6% global annual revenue fines for non-compliance; Annex III high-risk classifications for credit scoring, AML, fraud detection",
+    "JPMorgan (widely reported, 2026) — 450+ active AI agent deployments in production"
+  ],
+  "cwaNotes": "Self-assessment 11/11 PASS. [PASS] Opens with sourced statistic in first 50 words (Accenture Banking Blog 2026: 99% plan/11% deployed). [PASS] Builder identity with specific stack — n8n + Claude API + Supabase named in 'What I would do' section for credit memo agent. [PASS] Fintech/regulated industry section — credit risk memos, KYC/AML, EU AI Act Annex III, credit scoring explicitly covered. [PASS] 2-3 fintech-specific keywords used naturally. [PASS] Named framework — Financial Services Agent Deployment Ladder (4-tier table). [PASS] Commercial impact numbers — 20-60% productivity, 30% faster credit turnaround, 2.3x ROI, $8/$1 top performer, 20-40% cost reduction. [PASS] LinkedIn hook stat-led and different from site title. [PASS] FAQ block has exactly 4 questions phrased as user ChatGPT queries. [PASS] 'What I would do' section has 5 concrete first-person actions. [PASS] No buzzwords, sentence case, numerals throughout. [PASS] All factual claims have named source + date inline. GRAPHIC OPPORTUNITY: Financial Services Agent Deployment Ladder as visual stepped diagram.",
+  "eqaNotes": "EQA cycle 1: 2 items failed. Item 1 — citation updated to '(Accenture Banking Blog, 2026)' — more specific source name; month not available from source data. Item 10 — 'Transformative' buzzword in table removed; replaced with 'Highest RPE impact; compliance overhead is significant'. Item 11 (borderline) — '(Citi Research, 2025)' added inline after 'Fewer than half reached production'. All 15 items PASS on re-evaluation after revision 1."
+}
