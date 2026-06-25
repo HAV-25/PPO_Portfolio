@@ -1,8 +1,6 @@
-import nodemailer from 'nodemailer'
 import * as fs from 'fs'
 import * as path from 'path'
 
-// Load .env.local manually (not using dotenv to keep deps minimal)
 function loadEnv() {
   const envPath = path.join(process.cwd(), '.env.local')
   if (!fs.existsSync(envPath)) return
@@ -19,9 +17,9 @@ function loadEnv() {
 
 loadEnv()
 
-const GMAIL_USER = process.env.GMAIL_USER!
-const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD!
-const APPROVAL_WEBHOOK_URL = process.env.APPROVAL_WEBHOOK_URL || 'http://localhost:3000/api/content/approve'
+const RESEND_API_KEY = process.env.RESEND_API_KEY!
+const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'pipeline@payalponkshe.com'
+const APPROVAL_WEBHOOK_URL = process.env.APPROVAL_WEBHOOK_URL || 'https://ppo-personal.netlify.app/api/content/approve'
 const PAYAL_EMAIL = process.env.PAYAL_EMAIL || 'payalponkshe@gmail.com'
 
 interface EmailPayload {
@@ -37,18 +35,13 @@ interface EmailPayload {
   cwaNotes: string
   approvalToken: string
   articleId: string
+  subject?: string
 }
 
 async function sendApprovalEmail(payload: EmailPayload) {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: GMAIL_USER,
-      pass: GMAIL_APP_PASSWORD,
-    },
-  })
+  if (!RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not set. Add it to .env.local.')
+  }
 
   const approveUrl = `${APPROVAL_WEBHOOK_URL}?token=${payload.approvalToken}&action=approve&slug=${payload.slug}`
   const rejectUrl = `${APPROVAL_WEBHOOK_URL}?token=${payload.approvalToken}&action=reject&slug=${payload.slug}`
@@ -121,15 +114,30 @@ async function sendApprovalEmail(payload: EmailPayload) {
 </body>
 </html>`
 
-  const info = await transporter.sendMail({
-    from: `"PP Content Pipeline" <${GMAIL_USER}>`,
-    to: PAYAL_EMAIL,
-    subject: `[Content Ready] ${payload.title} — approve to publish`,
-    html,
+  const subject = payload.subject || `[Content Ready] ${payload.title} — approve to publish`
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: `PP Content Pipeline <${RESEND_FROM_EMAIL}>`,
+      to: [PAYAL_EMAIL],
+      subject,
+      html,
+    }),
   })
 
-  console.log('Email sent:', info.messageId)
-  return info
+  if (!response.ok) {
+    const error = await response.text()
+    throw new Error(`Resend API error ${response.status}: ${error}`)
+  }
+
+  const data = await response.json() as { id: string }
+  console.log('Email sent via Resend:', data.id)
+  return data
 }
 
 // CLI usage: tsx scripts/send-email.ts <path-to-json-file>
