@@ -3,18 +3,19 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Tag from "@/components/ui/StatusTag";
-import Button from "@/components/ui/LinkButton";
 import StackIcon from "@/components/ui/StackIcon";
+import Link from "next/link";
 
 type StatusVariant = "live" | "build" | "prototype" | "concept" | "delivered";
 
 type Project = {
   id: string;
   title: string;
+  subtitle: string;
   status: StatusVariant;
   statusLabel: string;
   capability: string;
-  group: "ai" | "enterprise";
+  group: "ai" | "enterprise" | "framework";
   problem: string;
   approach: string;
   stack: string[];
@@ -24,9 +25,57 @@ type Project = {
 };
 
 const projects: Project[] = [
+  // ─── Enterprise Systems ───────────────────────────────────────────────────
+  {
+    id: "thyssenkrupp",
+    title: "Automotive Circularity Operating Model",
+    subtitle: "Designing the commercial, regulatory, and ecosystem architecture required to industrialize automotive circularity across Europe.",
+    status: "delivered",
+    statusLabel: "Delivered",
+    capability: "Operating Model · GTM Architecture · EU Regulatory",
+    group: "enterprise",
+    problem:
+      "A major European industrial group needed to translate EU regulatory requirements for product circularity into a viable go-to-market blueprint — spanning partner economics, operational structure, compliance design, and commercialisation roadmap across a new venture.",
+    approach:
+      "Architected commercialisation strategy and ecosystem framework for the circularity initiative. Translated EU regulatory requirements into a go-to-market blueprint. Designed partner economics, operational structure, and compliance design as an integrated system rather than separate workstreams.",
+    stack: ["Operating Model Design", "GTM Architecture", "EU Regulatory Framework", "Ecosystem Design", "Commercial Modelling"],
+    keyDecisions: [
+      "Integrated design over sequential workstreams — partner economics, operational structure, and compliance were designed as a single system to avoid incentive misalignment at go-live",
+      "Regulatory-first commercialisation — EU circularity requirements were treated as the commercial brief, not a compliance constraint layered on top",
+    ],
+    outcome:
+      "Full blueprint delivered — commercialisation strategy, ecosystem framework, partner economics, operational structure, compliance design, and regulatory roadmap.",
+    capabilitySignal:
+      "Enterprise advisory at strategic level; EU regulatory translation into commercial design; ecosystem orchestration; operating model design for new ventures; cross-functional navigation (legal, compliance, commercial, operational).",
+  },
+  {
+    id: "skyllfull",
+    title: "Emerging Technology Talent Operating Model",
+    subtitle: "Building an operating model connecting specialised talent with emerging sectors across digital banking, DeFi, and Web3.",
+    status: "delivered",
+    statusLabel: "Delivered",
+    capability: "Operating Model · Commercial Architecture · Zero-to-One GTM",
+    group: "enterprise",
+    problem:
+      "Digital assets, DeFi protocols, and digital banking clients lacked a specialised talent platform connecting them with vetted technical and non-technical professionals in an emerging sector with no established recruiting infrastructure.",
+    approach:
+      "Co-founded and scaled a specialised talent platform from zero. Designed the end-to-end operating model — commercial structure, delivery, vendor and partner integrations. Validated product-market fit through pilots and design partnerships with startup and enterprise clients across markets.",
+    stack: ["Platform Design", "Operating Model", "Go-to-Market Design", "Partnership Architecture", "Commercial Modelling"],
+    keyDecisions: [
+      "Niche first, then breadth — locked to DeFi/Web3/digital banking to build credibility and pipeline density before expanding; validated in 30 days",
+      "Design partnerships as GTM — used design partnerships (not paid pilots) to reduce friction for early enterprise clients and generate evidence faster",
+    ],
+    outcome:
+      "€250K+ qualified pipeline within 30 days of launch. Zero-to-one go-to-market execution. Pilots with startup and enterprise clients across multiple markets.",
+    capabilitySignal:
+      "Founder-operator execution; zero-to-one go-to-market velocity; operating model design from scratch; commercial modelling; partnership and ecosystem development; validated product-market fit in an emerging sector.",
+  },
+
+  // ─── AI Systems ──────────────────────────────────────────────────────────
   {
     id: "ai-content-pipeline",
-    title: "AI Content Intelligence Pipeline — Brand-Locked Reconstruction at Scale",
+    title: "Content Intelligence & Reconstruction Engine",
+    subtitle: "AI system for analysing, deconstructing, and reconstructing high-performing content within defined brand frameworks.",
     status: "live",
     statusLabel: "Live",
     capability: "AI Pipeline Architecture · Prompt Engineering · Production Automation",
@@ -48,7 +97,8 @@ const projects: Project[] = [
   },
   {
     id: "german-exam-app",
-    title: "AI-Native Language Exam Prep Platform — CEFR A1–B1",
+    title: "Adaptive Language Learning Platform",
+    subtitle: "AI-native certification preparation platform combining content generation, scoring, learning progression, and mobile delivery.",
     status: "live",
     statusLabel: "Live",
     capability: "Product Ownership · AI Systems · Mobile · Monetisation",
@@ -70,7 +120,8 @@ const projects: Project[] = [
   },
   {
     id: "spaarker",
-    title: "AI Carousel Generation Platform — Content Intelligence at Creator Scale",
+    title: "Automated Content Production System",
+    subtitle: "An AI-powered workflow designed to transform content strategy into structured, production-ready media assets.",
     status: "build",
     statusLabel: "In Build",
     capability: "AI Product Strategy · Pipeline Architecture · Full-Stack",
@@ -92,7 +143,8 @@ const projects: Project[] = [
   },
   {
     id: "humanlyreal",
-    title: "Natural Language → Deployable Automation — AI Workflow Generator",
+    title: "Intent-to-Automation Platform",
+    subtitle: "Translating business intent into deployable workflow architecture through AI-assisted system design.",
     status: "prototype",
     statusLabel: "Prototype",
     capability: "Multi-Agent Architecture · Product Design · AI Systems",
@@ -114,7 +166,8 @@ const projects: Project[] = [
   },
   {
     id: "wyngs",
-    title: "AI Literacy & Community Platform — Positioning Older Adults as Knowledge Contributors",
+    title: "AI Literacy & Knowledge Contribution Platform",
+    subtitle: "Helping older adults participate meaningfully in an AI-enabled economy through learning, storytelling, and community contribution.",
     status: "build",
     statusLabel: "In Build",
     capability: "Zero-to-One Product · AI Curriculum · Automation",
@@ -134,13 +187,16 @@ const projects: Project[] = [
     capabilitySignal:
       "Zero-to-one product architecture; evidence-based product decisions (35-feature backlog tied to named academic sources); technical specification depth; AI toolchain fluency; investor-grade positioning; senior UX standards fluency; content quality governance.",
   },
+
+  // ─── Operating Frameworks ─────────────────────────────────────────────────
   {
     id: "agentic-commerce",
-    title: "EU-Specific Operating System for Agentic Commerce — Solo AI Studio Architecture",
+    title: "Agentic Commerce Operating Framework",
+    subtitle: "A structured operating model for launching and scaling AI-enabled businesses within European regulatory environments.",
     status: "concept",
     statusLabel: "Concept",
     capability: "Venture Design · EU Regulatory · GTM Architecture",
-    group: "ai",
+    group: "framework",
     problem:
       "European SMEs are underserved by AI automation tooling that is both commercially viable and EU regulatory-compliant. No ready-made playbook exists for a solo founder to launch, price, and scale a multi-product AI automation studio across the fragmented EU market.",
     approach:
@@ -149,54 +205,12 @@ const projects: Project[] = [
     keyDecisions: [
       "Geography scope lock — pivoted from DACH/UK to EU-wide, requiring full rebuild of regulatory framework, payment rails, language stack, and niche targeting. Not a patch — a rebuild.",
       "Offer architecture — designed 15 sellable agent offers with integration specs, ROI hooks, and a prioritisation matrix for which 4 to lead with first.",
-      "Pricing discipline — kept pricing illustrative with explicit discovery-call validation gates rather than presenting unvalidated figures as market-ready.",
+      "Pricing discipline — kept pricing illustrative with explicit validation gates rather than presenting unvalidated figures as market-ready.",
     ],
     outcome:
-      "Comprehensive operating manual delivered — 9 sections, 3 appendices, 90-day launch checklist, EUR pricing reference, discovery call question bank. Pre-launch, not yet tested against live clients.",
+      "Comprehensive operating manual delivered — 9 sections, 3 appendices, 90-day launch checklist, EUR pricing reference, question bank. Pre-launch, not yet tested against live clients.",
     capabilitySignal:
       "Venture design from first principles; EU regulatory fluency (GDPR, EU AI Act, PSD2/3, DAC7); productisation thinking (bespoke-to-SaaS ladder, white-label channel model); agentic AI stack literacy with EU-residency constraints; GTM discipline with niche selection framework.",
-  },
-  {
-    id: "thyssenkrupp",
-    title: "Commercialisation Strategy & Ecosystem Framework — Automotive Circularity Venture",
-    status: "delivered",
-    statusLabel: "Delivered",
-    capability: "Operating Model · GTM Architecture · EU Regulatory",
-    group: "enterprise",
-    problem:
-      "A major European industrial group needed to translate EU regulatory requirements for product circularity into a viable go-to-market blueprint — spanning partner economics, operational structure, compliance design, and commercialisation roadmap across a new venture.",
-    approach:
-      "Architected commercialisation strategy and ecosystem framework for the circularity initiative. Translated EU regulatory requirements into a go-to-market blueprint. Designed partner economics, operational structure, and compliance design as an integrated system rather than separate workstreams.",
-    stack: ["Operating Model Design", "GTM Architecture", "EU Regulatory Framework", "Ecosystem Design", "Commercial Modelling"],
-    keyDecisions: [
-      "Integrated design over sequential workstreams — partner economics, operational structure, and compliance were designed as a single system to avoid incentive misalignment at go-live",
-      "Regulatory-first commercialisation — EU circularity requirements were treated as the commercial brief, not a compliance constraint layered on top",
-    ],
-    outcome:
-      "Full blueprint delivered — commercialisation strategy, ecosystem framework, partner economics, operational structure, compliance design, and regulatory roadmap.",
-    capabilitySignal:
-      "Enterprise advisory at strategic level; EU regulatory translation into commercial design; ecosystem orchestration; operating model design for new ventures; cross-functional navigation (legal, compliance, commercial, operational).",
-  },
-  {
-    id: "skyllfull",
-    title: "Zero-to-One Talent Platform — DeFi, Web3 & Digital Banking",
-    status: "delivered",
-    statusLabel: "Delivered",
-    capability: "Co-Founder · Operating Model · Zero-to-One GTM",
-    group: "enterprise",
-    problem:
-      "Digital assets, DeFi protocols, and digital banking clients lacked a specialised talent platform connecting them with vetted technical and non-technical professionals in an emerging sector with no established recruiting infrastructure.",
-    approach:
-      "Co-founded and scaled a specialised talent platform from zero. Designed the end-to-end operating model — commercial structure, delivery, vendor and partner integrations. Validated product-market fit through pilots and design partnerships with startup and enterprise clients across markets.",
-    stack: ["Platform Design", "Operating Model", "Go-to-Market Design", "Partnership Architecture", "Commercial Modelling"],
-    keyDecisions: [
-      "Niche first, then breadth — locked to DeFi/Web3/digital banking to build credibility and pipeline density before expanding; validated in 30 days",
-      "Design partnerships as GTM — used design partnerships (not paid pilots) to reduce friction for early enterprise clients and generate evidence faster",
-    ],
-    outcome:
-      "€250K+ qualified pipeline within 30 days of launch. Zero-to-one go-to-market execution. Pilots with startup and enterprise clients across multiple markets.",
-    capabilitySignal:
-      "Founder-operator execution; zero-to-one go-to-market velocity; operating model design from scratch; commercial modelling; partnership and ecosystem development; validated product-market fit in an emerging sector.",
   },
 ];
 
@@ -223,31 +237,26 @@ function ProjectCard({
       role="button"
       tabIndex={0}
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen(project)}
-      aria-label={`View case study: ${project.title}`}
+      aria-label={`View system: ${project.title}`}
     >
-      {/* Status pill */}
       <div className="flex items-center gap-2 flex-wrap mb-1">
         <Tag variant="status" status={project.status}>
           {project.statusLabel}
         </Tag>
       </div>
 
-      {/* Capability tags */}
       <p className="font-jakarta font-medium text-slate text-[11px] tracking-[0.06em] uppercase mt-3">
         {project.capability}
       </p>
 
-      {/* Title */}
       <h3 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] mt-3">
         {project.title}
       </h3>
 
-      {/* Problem */}
-      <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 flex-1 line-clamp-4">
-        {project.problem}
+      <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 flex-1">
+        {project.subtitle}
       </p>
 
-      {/* Stack tags */}
       <div className="mt-5 pt-4 border-t border-rule flex flex-wrap gap-1.5">
         {project.stack.slice(0, 5).map((t) => (
           <span key={t} className="stack-tag inline-flex items-center gap-1.5">
@@ -260,10 +269,9 @@ function ProjectCard({
         )}
       </div>
 
-      {/* View link */}
       <div className="mt-5">
         <span className="font-jakarta font-semibold text-[13px] text-navy flex items-center gap-1.5 group-hover:opacity-70 transition-opacity">
-          View case study <span aria-hidden="true">→</span>
+          View system <span aria-hidden="true">→</span>
         </span>
       </div>
     </motion.div>
@@ -273,9 +281,11 @@ function ProjectCard({
 function CaseStudyModal({
   project,
   onClose,
+  allProjects,
 }: {
   project: Project;
   onClose: () => void;
+  allProjects: Project[];
 }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -287,6 +297,9 @@ function CaseStudyModal({
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
+
+  const currentIndex = allProjects.findIndex((p) => p.id === project.id);
+  const nextProject = allProjects[currentIndex + 1] ?? null;
 
   return (
     <motion.div
@@ -312,7 +325,7 @@ function CaseStudyModal({
           <button
             onClick={onClose}
             className="font-jakarta font-bold text-navy text-[18px] leading-none w-10 h-10 flex items-center justify-center hover:opacity-60 transition-opacity"
-            aria-label="Close case study"
+            aria-label="Close"
           >
             ✕
           </button>
@@ -325,10 +338,12 @@ function CaseStudyModal({
           <h2 className="font-jakarta font-extrabold text-navy text-[28px] md:text-[36px] leading-[1.15] tracking-[-0.01em]">
             {project.title}
           </h2>
+          <p className="font-jakarta text-slate text-[16px] leading-[1.65] mt-3">
+            {project.subtitle}
+          </p>
 
           <div className="w-16 h-[3px] bg-cyan mt-6 mb-10" />
 
-          {/* Problem */}
           <div className="mb-10">
             <span className="section-label">The problem</span>
             <p className="font-jakarta text-navy text-[16px] leading-[1.75]">
@@ -336,17 +351,15 @@ function CaseStudyModal({
             </p>
           </div>
 
-          {/* Approach */}
           <div className="mb-10">
-            <span className="section-label">My approach</span>
+            <span className="section-label">The approach</span>
             <p className="font-jakarta text-navy text-[16px] leading-[1.75]">
               {project.approach}
             </p>
           </div>
 
-          {/* Stack */}
           <div className="mb-10">
-            <span className="section-label">Tech stack & tools</span>
+            <span className="section-label">Stack & tools</span>
             <div className="flex flex-wrap gap-2">
               {project.stack.map((t) => (
                 <span key={t} className="stack-tag inline-flex items-center gap-1.5">
@@ -357,7 +370,6 @@ function CaseStudyModal({
             </div>
           </div>
 
-          {/* Key decisions */}
           <div className="mb-10">
             <span className="section-label">Key decisions</span>
             <ul className="flex flex-col gap-4">
@@ -370,7 +382,6 @@ function CaseStudyModal({
             </ul>
           </div>
 
-          {/* Outcome */}
           <div
             className="mb-10 p-6 rounded-card border-l-4"
             style={{ borderLeftColor: "#2dfff8", background: "rgba(36,53,110,0.04)" }}
@@ -381,7 +392,6 @@ function CaseStudyModal({
             </p>
           </div>
 
-          {/* Capability signal */}
           <div className="mb-12">
             <span className="section-label">Capability signal</span>
             <p className="font-jakarta text-slate text-[15px] leading-[1.75]">
@@ -389,11 +399,18 @@ function CaseStudyModal({
             </p>
           </div>
 
-          {/* Micro-CTA */}
-          <div className="border-t border-rule pt-8">
-            <Button href="/book">
-              Book a discovery call to discuss this →
-            </Button>
+          <div className="border-t border-rule pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <button
+              onClick={onClose}
+              className="font-jakarta font-semibold text-[14px] text-navy hover:opacity-70 transition-opacity flex items-center gap-1.5"
+            >
+              <span aria-hidden="true">←</span> Back to all systems
+            </button>
+            {nextProject && (
+              <span className="font-jakarta text-slate text-[13px]">
+                Next: {nextProject.title} →
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -401,11 +418,33 @@ function CaseStudyModal({
   );
 }
 
+const whereNext = [
+  {
+    title: "Financial Infrastructure",
+    body: "Payments, digital commerce, ecosystem partnerships, regulated platforms, and market-scale operating models.",
+  },
+  {
+    title: "AI Systems",
+    body: "Agentic workflows, automation platforms, AI-native products, and intelligent operating systems.",
+  },
+  {
+    title: "Physical AI & Robotics",
+    body: "Exploring how intelligence moves from software into the physical world through embodied AI, human-machine collaboration, and commercial robotics ecosystems. Areas of interest include consumer robotics, service robotics, industrial robotics platforms, edge intelligence, multi-agent physical systems, and the infrastructure required for large-scale deployment.",
+  },
+];
+
 export default function WorkPage() {
   const [selected, setSelected] = useState<Project | null>(null);
 
-  const aiProjects = projects.filter((p) => p.group === "ai");
   const enterpriseProjects = projects.filter((p) => p.group === "enterprise");
+  const aiProjects = projects.filter((p) => p.group === "ai");
+  const frameworkProjects = projects.filter((p) => p.group === "framework");
+
+  const principlesRef = useRef<HTMLDivElement>(null);
+  const principlesInView = useInView(principlesRef, { once: true, margin: "-80px" });
+
+  const whereRef = useRef<HTMLDivElement>(null);
+  const whereInView = useInView(whereRef, { once: true, margin: "-80px" });
 
   return (
     <>
@@ -418,47 +457,37 @@ export default function WorkPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            Work &amp; Ventures
+            Building Systems
           </motion.h1>
-          <motion.p
-            className="font-jakarta text-slate text-[17px] leading-[1.65] mt-5 max-w-xl"
+          <motion.div
+            className="mt-6 max-w-2xl space-y-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
           >
-            A record of what I&apos;ve built, led, and shipped. The AI ventures below
-            are independently self-funded builds — proof of technical depth and
-            product thinking, not client-commissioned work. The enterprise entries
-            are where I delivered for organisations at scale.
-          </motion.p>
+            <p className="font-jakarta text-slate text-[17px] leading-[1.75]">
+              The systems below span enterprise organisations, venture environments, and independently developed platforms.
+            </p>
+            <p className="font-jakarta text-slate text-[17px] leading-[1.75]">
+              Across each context, the challenge has remained consistent: designing operating models that connect technology, people, and commercial outcomes at scale.
+            </p>
+            <p className="font-jakarta text-slate text-[17px] leading-[1.75]">
+              From payment ecosystems and market frameworks to AI-native products and intelligent systems, the work reflects a single belief:
+            </p>
+            <blockquote className="font-jakarta font-bold text-navy text-[24px] md:text-[28px] leading-[1.35] pl-6 border-l-[4px] border-cyan mt-6 mb-2">
+              Technology only creates value when it can be operationalized.
+            </blockquote>
+          </motion.div>
         </div>
       </section>
 
-      {/* AI Ventures */}
+      {/* Enterprise Systems */}
       <section className="section-spacing">
         <div className="content-width">
-          <span className="section-label">AI Ventures — Independently Built</span>
+          <span className="section-label">Enterprise Systems</span>
           <p className="font-jakarta text-slate text-[15px] leading-[1.65] mt-2 mb-8 max-w-2xl">
-            Self-funded, solo-built ventures designed and shipped since 2024.
-            These demonstrate hands-on AI systems capability — not advisory at a distance.
+            Enterprise systems where commercial outcomes, operational execution, and ecosystem alignment mattered as much as the underlying technology.
           </p>
-          <div className="grid md:grid-cols-2 gap-5">
-            {aiProjects.map((project, i) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={i}
-                onOpen={setSelected}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprise & Venture */}
-      <section className="section-spacing">
-        <div className="content-width">
-          <span className="section-label">Enterprise & Venture</span>
           <div className="grid md:grid-cols-2 gap-5">
             {enterpriseProjects.map((project, i) => (
               <ProjectCard
@@ -472,22 +501,245 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Bottom CTA band */}
-      <section className="bg-cream-card">
-        <div className="content-width py-14 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <p className="font-jakarta font-extrabold text-navy text-[26px] md:text-[32px] leading-[1.2] max-w-sm">
-            See something relevant to your challenge?
+      {/* AI Systems */}
+      <section className="section-spacing border-t border-rule">
+        <div className="content-width">
+          <span className="section-label">AI Systems & Platforms</span>
+          <p className="font-jakarta text-slate text-[15px] leading-[1.65] mt-2 mb-10 max-w-2xl">
+            Designed and developed independently as applied explorations of AI-native product design, intelligent workflows, and emerging operating models.
+            These systems serve as working laboratories for understanding how AI moves beyond experimentation into repeatable products, scalable workflows, and commercial operating models.
           </p>
-          <Button href="/book">
-            Book a discovery call →
-          </Button>
+
+          {/* Featured system */}
+          <div className="mb-6">
+            <p className="label-meta mb-5">Featured system</p>
+            {aiProjects.filter((p) => p.id === "german-exam-app").map((project) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="group bg-navy rounded-card flex flex-col md:flex-row gap-0 cursor-pointer overflow-hidden card-hover-invert"
+                onClick={() => setSelected(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setSelected(project)}
+                aria-label={`View featured system: ${project.title}`}
+              >
+                <div className="flex-1 p-8 md:p-10">
+                  <div className="flex items-center gap-2 flex-wrap mb-4">
+                    <Tag variant="status" status={project.status}>
+                      {project.statusLabel}
+                    </Tag>
+                    <span className="font-jakarta font-medium text-[11px] tracking-[0.06em] uppercase" style={{ color: "rgba(45,255,248,0.8)" }}>
+                      {project.capability}
+                    </span>
+                  </div>
+                  <h3 className="font-jakarta font-bold text-cream text-[22px] md:text-[26px] leading-[1.25] mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="font-jakarta text-[15px] leading-[1.65]" style={{ color: "rgba(245,241,232,0.7)" }}>
+                    {project.subtitle}
+                  </p>
+                </div>
+                <div className="md:w-64 px-8 md:px-10 pb-8 md:py-10 md:border-l flex flex-col justify-center gap-3" style={{ borderColor: "rgba(36,53,110,0.3)" }}>
+                  {[
+                    "Live on Google Play",
+                    "850+ exam-aligned questions",
+                    "Hybrid AI + deterministic scoring",
+                    "Subscription business model",
+                  ].map((h) => (
+                    <div key={h} className="flex items-start gap-2.5">
+                      <span style={{ color: "#2dfff8" }} className="mt-[3px] flex-shrink-0 text-[12px]">•</span>
+                      <span className="font-jakarta text-[13px] leading-[1.5]" style={{ color: "rgba(245,241,232,0.75)" }}>{h}</span>
+                    </div>
+                  ))}
+                  <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(245,241,232,0.15)" }}>
+                    <span className="font-jakarta font-semibold text-[13px] flex items-center gap-1.5 group-hover:opacity-70 transition-opacity" style={{ color: "#2dfff8" }}>
+                      View system <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="label-meta mt-10 mb-5">Applied AI systems</p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {aiProjects.filter((p) => p.id !== "german-exam-app").map((project, i) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={i}
+                onOpen={setSelected}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Operating Frameworks */}
+      <section className="section-spacing border-t border-rule">
+        <div className="content-width">
+          <span className="section-label">Operating Frameworks</span>
+          <p className="font-jakarta text-slate text-[15px] leading-[1.65] mt-2 mb-8 max-w-2xl">
+            Not every system becomes a product. Some begin as operating models, market frameworks, or commercial architectures designed to test how emerging technologies can be adopted responsibly and at scale.
+          </p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {frameworkProjects.map((project, i) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={i}
+                onOpen={setSelected}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Principles */}
+      <section className="section-spacing border-t border-rule" ref={principlesRef}>
+        <div className="content-width">
+          <motion.p
+            className="font-jakarta font-medium text-navy text-[17px] leading-[1.65] mb-8"
+            initial={{ opacity: 0, y: 16 }}
+            animate={principlesInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            The technologies evolve. The underlying principles rarely do.
+          </motion.p>
+          <motion.span
+            className="section-label"
+            initial={{ opacity: 0, y: 16 }}
+            animate={principlesInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.06 }}
+          >
+            Principles that shape my work
+          </motion.span>
+          <motion.p
+            className="font-jakarta text-slate text-[16px] leading-[1.75] max-w-2xl mt-3 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={principlesInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+          >
+            Across payments, AI systems, and emerging technologies, these ideas consistently shape how I approach products, operating models, and long-term adoption.
+          </motion.p>
+          <div className="flex flex-col divide-y divide-rule">
+            {[
+              "Systems matter more than individual tools.",
+              "Operating models are often a stronger competitive advantage than technology itself.",
+              "Regulation should inform design rather than slow innovation.",
+              "The future belongs to organisations that combine human judgment with intelligent systems.",
+            ].map((principle, i) => (
+              <motion.p
+                key={i}
+                className="font-jakarta font-medium text-navy text-[18px] md:text-[20px] leading-[1.5] py-6"
+                initial={{ opacity: 0, x: -12 }}
+                animate={principlesInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.12 + i * 0.08 }}
+              >
+                {principle}
+              </motion.p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Where I'm Building Next */}
+      <section className="section-spacing border-t border-rule" ref={whereRef}>
+        <div className="content-width">
+          <motion.h2
+            className="font-jakarta font-extrabold text-navy text-[28px] md:text-[36px] leading-[1.15] tracking-[-0.01em]"
+            initial={{ opacity: 0, y: 16 }}
+            animate={whereInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            Where I&apos;m building next
+          </motion.h2>
+
+          <motion.p
+            className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] max-w-2xl mt-4 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={whereInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+          >
+            Technology evolves in waves. My career began in payments infrastructure, expanded into digital platforms and AI systems, and is increasingly focused on technologies that move intelligence beyond software.
+          </motion.p>
+
+          <div className="grid md:grid-cols-3 gap-0 border-t border-rule">
+            {whereNext.map((domain, i) => (
+              <motion.div
+                key={domain.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={whereInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + i * 0.1 }}
+                className={`py-8 pr-8 ${i > 0 ? "md:pl-8 md:border-l border-rule" : ""}`}
+              >
+                <div
+                  className="w-2 h-2 rounded-full mb-5"
+                  style={{ background: "#2dfff8" }}
+                  aria-hidden="true"
+                />
+                <h3 className="font-jakarta font-bold text-navy text-[18px] leading-tight mb-3">
+                  {domain.title}
+                </h3>
+                <p className="font-jakarta text-slate text-[14px] leading-[1.7]">
+                  {domain.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p
+            className="font-jakarta font-medium text-navy text-[15px] leading-[1.65] mt-10 pt-8 border-t border-rule max-w-2xl"
+            initial={{ opacity: 0, y: 16 }}
+            animate={whereInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.42 }}
+          >
+            The common thread across all three domains is systems: understanding how technology moves from concept to scalable adoption.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Beyond the Systems */}
+      <section className="border-t border-rule">
+        <div className="content-width py-14 md:py-16">
+          <p className="label-meta mb-5">Beyond the systems</p>
+          <p className="font-jakarta text-navy text-[17px] leading-[1.75] max-w-xl mb-8">
+            My work spans enterprise leadership, AI-native products, and emerging technology research. You can explore that journey through my experience, writing, and ongoing areas of exploration.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6">
+            <Link
+              href="/experience"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Experience <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/insights"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Research &amp; insights <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/about"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Current areas of focus <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Case study modal */}
       <AnimatePresence>
         {selected && (
-          <CaseStudyModal project={selected} onClose={() => setSelected(null)} />
+          <CaseStudyModal
+            project={selected}
+            onClose={() => setSelected(null)}
+            allProjects={projects}
+          />
         )}
       </AnimatePresence>
     </>

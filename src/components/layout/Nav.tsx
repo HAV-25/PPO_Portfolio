@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { href: "/work", label: "Work" },
+  { href: "/work", label: "Building" },
   { href: "/experience", label: "Experience" },
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Research" },
   { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
 ];
@@ -87,7 +87,7 @@ export default function Nav() {
                 href="/book"
                 className="inline-flex items-center gap-2 bg-navy text-cream font-jakarta font-semibold text-[14px] px-5 py-2.5 rounded-btn transition-colors duration-150 hover:bg-[#2d4080]"
               >
-                Book a Call <span aria-hidden="true">→</span>
+                Connect <span aria-hidden="true">→</span>
               </Link>
             </div>
 
@@ -144,7 +144,7 @@ export default function Nav() {
                 href="/book"
                 className="inline-flex items-center gap-2 bg-navy text-cream font-jakarta font-medium text-[15px] px-6 py-3"
               >
-                Book a Call <span aria-hidden="true">→</span>
+                Connect <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

@@ -52,7 +52,7 @@ export default function Footer() {
             <div>
               <p className="label-meta mb-4">Connect</p>
               <ul className="flex flex-col gap-2.5">
-                <li><Link href="/book" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Book a Discovery Call</Link></li>
+                <li><Link href="/book" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Connect</Link></li>
               </ul>
             </div>
           </div>

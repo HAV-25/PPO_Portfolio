@@ -187,6 +187,15 @@
     background-color: var(--cream-deep);
   }
 
+  /* Featured card on dark navy bg */
+  .card-hover-invert {
+    transition: opacity 200ms ease-out;
+  }
+
+  .card-hover-invert:hover {
+    opacity: 0.92;
+  }
+
   /* Stat number — large Plus Jakarta Sans ExtraBold */
   .stat-number {
     font-family: var(--font-jakarta);
