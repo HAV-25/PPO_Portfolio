@@ -1,0 +1,76 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-06-25",
+  "fail_count": 2,
+  "failed_items": [1, 10],
+  "checklist": {
+    "1": {
+      "result": "FAIL",
+      "evidence": "First citation reads '(Accenture, 2026)' — named source present, year present, but no month. Standard requires 'Source Name, Month Year' format.",
+      "instruction": "Change '(Accenture, 2026)' to '(Accenture Banking Blog, 2026)' at minimum, using the more specific source name from meta.json sources array. If the original publication has a month, add it."
+    },
+    "2": {
+      "result": "PASS",
+      "evidence": "'I would build the first-draft agent in n8n with Claude API handling document synthesis and Supabase as the structured data layer' — explicit first-person builder reference with specific stack."
+    },
+    "3": {
+      "result": "PASS",
+      "evidence": "Credit risk memos (Tier 2), KYC documentation review, AML case management (Tier 3), EU AI Act Annex III high-risk classifications, credit scoring — all present in article body."
+    },
+    "4": {
+      "result": "PASS",
+      "evidence": "'agentic AI use cases financial services' (target keyword), 'agentic AI in banking' (H2), 'credit memo AI automation', 'EU AI Act financial services' — used naturally throughout."
+    },
+    "5": {
+      "result": "PASS",
+      "evidence": "'Financial Services Agent Deployment Ladder' — 4-tier table, named in context, attributable to Payal."
+    },
+    "6": {
+      "result": "PASS",
+      "evidence": "20–60% productivity improvement, 30% faster credit turnaround, 2.3x ROI, $8 per $1 invested, 20–40% cost reductions — all present with named sources."
+    },
+    "7": {
+      "result": "PASS",
+      "evidence": "Site title: 'The agentic AI use-case map for financial services' (informational/SEO). LinkedIn line 1: '99% of financial institutions plan to deploy AI agents. Only 11% have done so.' (stat-led). Clearly different formulas."
+    },
+    "8": {
+      "result": "PASS",
+      "evidence": "Exactly 4 FAQ questions: (1) best use cases to start, (2) deployment timeline, (3) EU AI Act risk classification, (4) expected ROI."
+    },
+    "9": {
+      "result": "PASS",
+      "evidence": "5 concrete first-person actions: use-case audit against ladder, Tier 2 deployment in 8 weeks, Article 12 logging, Annex III exposure mapping, RPE target by function."
+    },
+    "10": {
+      "result": "FAIL",
+      "evidence": "Table row for Tier 4 (Customer-facing), RPE impact column: 'Transformative, but compliance overhead is real'. 'Transformative' is explicitly banned in CWA voice rules: 'No buzzwords: no transformative...'",
+      "instruction": "Replace 'Transformative, but compliance overhead is real' with 'Highest RPE impact; compliance overhead is significant' — removes banned buzzword, preserves factual content."
+    },
+    "11": {
+      "result": "BORDERLINE",
+      "evidence": "Sentence 'Fewer than half reached production.' follows the Citi Research citation in the same paragraph but lacks its own inline reference. Could be read as same-source attribution, but strictly requires explicit inline citation.",
+      "instruction": "Add '(Citi Research, 2025)' directly after 'Fewer than half reached production' to make attribution explicit."
+    },
+    "12": {
+      "result": "PASS",
+      "evidence": "Opening paragraphs: data-first, no preamble, short punchy sentences. 'The gap is not technology. It is decision-paralysis.' 'This is the use-case selection problem. Solving it requires a map, not a list.' Matches Payal's voice from portfolio articles precisely."
+    },
+    "13": {
+      "result": "PASS",
+      "evidence": "All 8 sources in meta.json traceable to inline citations in article body. Minor discrepancy: JPMorgan cited via Accenture Blog inline but listed separately as 'widely reported' in meta.json — acceptable dual attribution for a widely-reported deployment count."
+    },
+    "14": {
+      "result": "PASS",
+      "evidence": "LinkedIn post includes 'Tier 4 ambitions — customer-facing automation, autonomous credit decisions — with Tier 1 governance infrastructure. Then stalling when the EU AI Act, DORA, or an internal risk committee calls it.' This framing and the DORA reference are native LinkedIn value not in the article body."
+    },
+    "15": {
+      "result": "PASS",
+      "evidence": "RPE spelled out as 'revenue-per-employee impact' before table. Article 12 explained inline as 'traceable logs of AI inputs, outputs, and human interventions'. KYC, AML are standard terminology for target audience (COOs, founders in regulated financial services). No undefined acronyms for the intended reader."
+    }
+  },
+  "revision_instructions": {
+    "item_1": "In the first paragraph of the article body, change '(Accenture, 2026)' to '(Accenture Banking Blog, 2026)'. This uses the more specific source name recorded in meta.json. The month is not available from the source research; year-only is the best available citation for this annual publication.",
+    "item_10": "In the 4-tier comparison table, Tier 4 row, last column (RPE impact): change 'Transformative, but compliance overhead is real' to 'Highest RPE impact; compliance overhead is significant'. This removes the banned buzzword while preserving the informational content.",
+    "item_11": "In the second paragraph under the first H2 (starting 'The pattern is well-documented'), add '(Citi Research, 2025)' inline after 'Fewer than half reached production' so it reads: 'Fewer than half reached production (Citi Research, 2025).'"
+  }
+}
