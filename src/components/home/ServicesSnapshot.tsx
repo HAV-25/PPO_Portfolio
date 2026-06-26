@@ -9,7 +9,7 @@ const services = [
     title: "Scale complex initiatives",
     description:
       "Operating models, transformation programmes, PMOs, delivery organisations, and cross-functional execution across multiple markets and stakeholder groups.",
-    href: "/services#transformation",
+    href: "/expertise#operating-models",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="5" r="2" />
@@ -25,7 +25,7 @@ const services = [
     title: "Build new products",
     description:
       "From opportunity identification through architecture, launch, and commercialisation — applied across AI systems, automation platforms, and regulated financial products.",
-    href: "/services#ai-implementation",
+    href: "/expertise#ai-systems",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -38,7 +38,7 @@ const services = [
     title: "Design systems",
     description:
       "Creating repeatable operating structures that align people, technology, and business outcomes — from governance frameworks to agentic workflow architecture.",
-    href: "/services#fractional",
+    href: "/expertise#venture-operating-systems",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="3" width="7" height="7" />

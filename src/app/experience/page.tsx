@@ -2,86 +2,114 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Button from "@/components/ui/LinkButton";
+import Link from "next/link";
 
-const roles = [
+// ─── Data ──────────────────────────────────────────────────────────────────
+
+const credibilityStrip = [
   {
-    title: "Independent AI Venture Builder & Strategic Advisor",
-    period: "Aug 2024 – Present",
+    stat: "18+ years",
+    label: "Payments, fintech, and regulated financial services",
+  },
+  {
+    stat: "120+ team scale",
+    label: "Global delivery and implementation teams across four regions",
+  },
+  {
+    stat: "$25M+ partnerships",
+    label: "Strategic ecosystem programmes with Microsoft and Verizon",
+  },
+  {
+    stat: "Zero-to-one builder",
+    label: "AI-native ventures, automation systems, and operating frameworks",
+  },
+];
+
+const chapters = [
+  {
+    chapterLabel: "Current Chapter",
+    id: "current",
+    title: "Independent AI Systems Builder & Strategic Advisor",
     company: "AppsBrite UG (Founder)",
     location: "Germany",
+    period: "August 2024 – Present",
+    intro:
+      "Building AI-native systems and advising selected regulated fintech and AI ventures on operating model design, GTM architecture, and implementation.",
     bullets: [
-      "Operating independently: building AI ventures and advising regulated fintech companies on operating model transformation and AI implementation",
-      "6 AI ventures in build or live across B2B and B2C — agentic commerce, content intelligence, conversational AI, and workflow automation",
-      "Advisory engagements: operating model design and GTM architecture for regulated ventures in fintech and payments",
+      "Building AI-native systems across conversational AI, content intelligence, agentic commerce, and workflow automation.",
+      "Designed operating models and GTM architecture for regulated ventures across fintech and payments.",
+      "Developed hands-on system fluency across automation, Supabase, AI coding tools, workflow orchestration, and applied AI product design.",
     ],
+    featured: false,
   },
   {
-    title: "Co-Founder & Head of Operations",
-    period: "Jul 2022 – Aug 2024",
-    company: "Skyllfull",
-    location: "Germany",
-    bullets: [
-      "Co-founded specialised talent platform for DeFi, Web3, and digital banking clients",
-      "Designed end-to-end operating model: commercial structure, delivery, vendor and partner integrations",
-      "€250K+ qualified pipeline within 30 days of launch — validated product-market fit with startup and enterprise clients",
-      "Made a deliberate transition to AI venture building in 2024 when the opportunity in agentic systems became clear",
-    ],
-  },
-  {
+    chapterLabel: "Enterprise Scale",
+    id: "mastercard-vp",
     title: "Vice President, Global Head Delivery & Operations",
-    period: "Jan 2020 – Jul 2022",
     company: "Global Card Scheme (Mastercard)",
     location: "Ireland",
+    period: "January 2020 – July 2022",
+    intro:
+      "Led the global delivery and operating model for Mastercard's R&D and innovation organisation across four regions, connecting emerging technology partnerships, implementation teams, client engagement, and scalable execution governance.",
     bullets: [
-      "Led $25M+ technology partnerships (Microsoft, Verizon) across 4 regions — Europe, North America, Middle East/Africa, Asia-Pacific",
-      "120+ technical implementation team members managed across regions",
-      "30% reduction in development cycles, 35% improvement in resource allocation efficiency",
-      "200% YoY client engagement growth",
-      "Pioneered multi-region Innovation Hub with 100+ live demos",
+      "Structured the operating model for a 120+ person technical implementation organisation across Europe, North America, MEA, and APAC.",
+      "Managed $25M+ strategic technology partnerships with Microsoft and Verizon, accelerating cloud, 5G, and emerging payment infrastructure initiatives.",
+      "Reduced development cycles by 30% through scalable programme governance and delivery redesign.",
+      "Supported 200% year-over-year client engagement growth through multi-region innovation hub execution and executive-facing client experiences.",
+      "Supported the evolution of Mastercard's multi-region Innovation Hub environment, including 100+ live client and partner demonstrations.",
     ],
+    featured: true,
   },
   {
+    chapterLabel: "Market Expansion",
+    id: "mastercard-bd",
     title: "Director, Business Development — Digital Payments",
-    period: "Apr 2017 – Dec 2019",
     company: "Global Card Scheme (Mastercard)",
     location: "Germany",
+    period: "April 2017 – December 2019",
+    intro:
+      "Built market development and digital payments adoption across Germany, connecting fintechs, merchants, and enterprise partners into Mastercard's digital ecosystem.",
     bullets: [
-      "Led $12M+ market development funds using digital-first strategy",
-      "Nationwide German rollout of API-first digital wallet solution — 4x conversion rate improvement",
-      "6 new customer segments in 12 months, 20% revenue growth",
-      "30% reduction in deployment times, 10% cost reduction",
+      "Led $12M+ market development programmes using a digital-first growth strategy.",
+      "Drove nationwide German rollout of an API-first digital wallet solution, contributing to a 4x conversion rate improvement.",
+      "Expanded the customer portfolio into six new segments within 12 months, supporting 20% revenue growth.",
+      "Reduced deployment timelines by 30% and implementation costs by 10% through onboarding and delivery optimisation.",
     ],
+    featured: false,
   },
   {
+    chapterLabel: "Payment Infrastructure Implementation",
+    id: "wirecard",
     title: "Team Lead, Professional Services — Customer Implementation",
-    period: "Apr 2013 – Apr 2017",
-    company: "Wirecard AG (departed Apr 2017 — three years before the company's 2020 collapse)",
+    company: "Wirecard AG",
     location: "Germany",
+    period: "April 2013 – April 2017",
+    intro:
+      "Led professional services and customer implementation across issuing, wallet, and payment infrastructure programmes for enterprise clients across Europe.",
     bullets: [
-      "Led strategic integration between Wirecard's issuing platform and Visa/Mastercard Digital Enablement Services",
-      "Launched the UK's first fully digitised Apple Wallet implementation",
-      "Financial services implementation projects $5–10M annually",
-      "Clients: Orange, SFR, Deutsche Telekom",
+      "Led strategic integrations between Wirecard issuing infrastructure and Visa/Mastercard Digital Enablement Services.",
+      "Supported the UK's first fully digitized Apple Wallet implementation.",
+      "Directed financial services implementation programmes valued at $5–10M annually.",
+      "Delivered payment and wallet solutions for Orange, SFR, and Deutsche Telekom across European telecom markets.",
     ],
+    featured: false,
   },
   {
-    title: "Senior Consultant",
-    period: "2011 – 2012",
-    company: "NEOS Management Consulting",
-    location: "USA",
+    chapterLabel: "Zero-to-One Operating Models",
+    id: "skyllfull",
+    title: "Co-Founder & Head of Operations",
+    company: "Skyllfull",
+    location: "Germany",
+    period: "July 2022 – August 2024",
+    intro:
+      "Co-founded a specialised talent ecosystem for digital assets, DeFi, Web3, and digital banking clients, translating market demand into a zero-to-one operating model.",
     bullets: [
-      "Business process architecture modernisation for S&P Global Ratings and Enterprise Car Rental",
+      "Designed the end-to-end operating model across commercial structure, delivery, vendor partnerships, and client onboarding.",
+      "Validated product-market fit through pilots and design partnerships with startup and enterprise clients.",
+      "Generated €250K+ qualified pipeline within 30 days of launch.",
+      "Transitioned focus toward AI systems and venture building as agentic workflows and intelligent automation became a clearer long-term opportunity.",
     ],
-  },
-  {
-    title: "Team Leader, PMO",
-    period: "2006 – 2010",
-    company: "Dell Technologies",
-    location: "USA & India",
-    bullets: [
-      "Led PMO for Harvard Pilgrim Healthcare — Oracle E-Business Suite implementation",
-    ],
+    featured: false,
   },
 ];
 
@@ -100,34 +128,104 @@ const education = [
   },
 ];
 
-function RoleEntry({ role, index }: { role: (typeof roles)[0]; index: number }) {
+// ─── Sub-components ─────────────────────────────────────────────────────────
+
+function CredibilityStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 border-t border-b border-rule">
+      {credibilityStrip.map((item, i) => (
+        <motion.div
+          key={item.stat}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+          className={`py-7 px-6 ${i > 0 ? "border-l border-rule" : ""}`}
+        >
+          <p className="font-jakarta font-bold text-navy text-[18px] md:text-[20px] leading-tight mb-1.5">
+            {item.stat}
+          </p>
+          <p className="font-jakarta text-slate text-[13px] leading-[1.55]">
+            {item.label}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function ChapterEntry({
+  chapter,
+  index,
+}: {
+  chapter: (typeof chapters)[0];
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <motion.div
       ref={ref}
-      className="relative"
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, ease: "easeOut", delay: index === 0 ? 0.1 : 0 }}
+      className="relative"
     >
-      {/* Dot */}
-      <div className="absolute -left-6 md:-left-10 top-[6px] w-2.5 h-2.5 rounded-full bg-navy" />
+      {/* Timeline dot */}
+      <div
+        className="absolute -left-6 md:-left-10 top-[7px] w-2.5 h-2.5 rounded-full flex-shrink-0"
+        style={{ background: chapter.featured ? "#2dfff8" : "#24356e", opacity: chapter.featured ? 1 : 0.35 }}
+      />
 
+      {/* Chapter label */}
+      <p className="label-meta mb-3">{chapter.chapterLabel}</p>
+
+      {/* Period */}
       <p className="font-jakarta font-bold text-slate text-[12px] tracking-[0.04em] mb-2">
-        {role.period}
+        {chapter.period}
       </p>
-      <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.2] mb-1">
-        {role.title}
+
+      {/* Role title */}
+      <h2
+        className={`font-jakarta font-bold text-navy leading-[1.2] mb-1 ${
+          chapter.featured
+            ? "text-[22px] md:text-[26px]"
+            : "text-[19px] md:text-[21px]"
+        }`}
+      >
+        {chapter.title}
       </h2>
+
+      {/* Company line */}
       <p className="font-jakarta font-medium text-slate text-[14px] mb-4">
-        {role.company} &middot; {role.location}
+        {chapter.company} &middot; {chapter.location}
       </p>
-      <ul className="flex flex-col gap-2">
-        {role.bullets.map((b, j) => (
-          <li key={j} className="font-jakarta text-navy text-[15px] leading-[1.65] flex gap-3">
-            <span className="text-slate mt-[2px] flex-shrink-0">→</span>
+
+      {/* Role intro */}
+      {chapter.featured ? (
+        <p
+          className="font-jakarta text-navy text-[16px] leading-[1.75] mb-5 max-w-2xl pl-5 border-l-[3px]"
+          style={{ borderLeftColor: "#2dfff8" }}
+        >
+          {chapter.intro}
+        </p>
+      ) : (
+        <p className="font-jakarta text-slate text-[15px] leading-[1.7] mb-5 max-w-2xl">
+          {chapter.intro}
+        </p>
+      )}
+
+      {/* Bullets */}
+      <ul className="flex flex-col gap-2.5">
+        {chapter.bullets.map((b, j) => (
+          <li
+            key={j}
+            className="font-jakarta text-navy text-[15px] leading-[1.65] flex gap-3"
+          >
+            <span className="text-slate mt-[3px] flex-shrink-0 text-[12px]">→</span>
             <span>{b}</span>
           </li>
         ))}
@@ -136,7 +234,7 @@ function RoleEntry({ role, index }: { role: (typeof roles)[0]; index: number }) 
   );
 }
 
-function BottomSection({ children, label }: { children: React.ReactNode; label: string }) {
+function EarlierFoundations() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -146,12 +244,60 @@ function BottomSection({ children, label }: { children: React.ReactNode; label: 
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, ease: "easeOut" }}
+      className="relative"
     >
-      <span className="section-label">{label}</span>
+      <div
+        className="absolute -left-6 md:-left-10 top-[7px] w-2.5 h-2.5 rounded-full"
+        style={{ background: "#24356e", opacity: 0.25 }}
+      />
+
+      <p className="label-meta mb-3">Earlier Foundations</p>
+
+      <h2 className="font-jakarta font-bold text-navy text-[19px] md:text-[21px] leading-[1.2] mb-4">
+        Consulting & Delivery Foundations
+      </h2>
+
+      <p className="font-jakarta text-slate text-[15px] leading-[1.7] mb-5 max-w-2xl">
+        Earlier roles built the foundation in business process architecture, PMO leadership, enterprise systems implementation, and cross-market delivery.
+      </p>
+
+      <ul className="flex flex-col gap-2.5">
+        <li className="font-jakarta text-navy text-[15px] leading-[1.65] flex gap-3">
+          <span className="text-slate mt-[3px] flex-shrink-0 text-[12px]">→</span>
+          <span>
+            <span className="font-medium">Senior Consultant, NEOS Management Consulting</span>
+            {" "}| USA | 2011–2012 — modernised business process architecture for S&P Global Ratings and Enterprise Car Rental.
+          </span>
+        </li>
+        <li className="font-jakarta text-navy text-[15px] leading-[1.65] flex gap-3">
+          <span className="text-slate mt-[3px] flex-shrink-0 text-[12px]">→</span>
+          <span>
+            <span className="font-medium">Team Leader, Dell Technologies</span>
+            {" "}| USA & India | 2006–2010 — led PMO work for Harvard Pilgrim Healthcare, supporting Oracle E-Business Suite implementation.
+          </span>
+        </li>
+      </ul>
+    </motion.div>
+  );
+}
+
+function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.45, ease: "easeOut", delay }}
+    >
       {children}
     </motion.div>
   );
 }
+
+// ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function ExperiencePage() {
   return (
@@ -160,27 +306,33 @@ export default function ExperiencePage() {
       <section className="section-spacing pt-[140px] md:pt-[160px] pb-0">
         <div className="content-width">
           <motion.h1
-            className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
+            className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.08] tracking-[-0.02em]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            Professional Experience
+            Operating Experience
           </motion.h1>
           <motion.p
-            className="font-jakarta text-slate text-[18px] leading-[1.6] mt-5 max-w-xl"
+            className="font-jakarta text-slate text-[17px] leading-[1.7] mt-5 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
           >
-            18+ years leading transformation, partnerships, and delivery across
-            regulated financial services, payments, and fintech.
+            18+ years building, scaling, and operationalizing systems across payments, regulated financial services, AI ventures, and emerging technology environments.
           </motion.p>
         </div>
       </section>
 
-      {/* Current focus callout */}
-      <section className="pb-0">
+      {/* Credibility strip */}
+      <section className="section-spacing pt-10 pb-0">
+        <div className="content-width">
+          <CredibilityStrip />
+        </div>
+      </section>
+
+      {/* Current chapter callout */}
+      <section className="pt-10 pb-0">
         <div className="content-width">
           <motion.div
             className="border-l-4 p-6 rounded-card"
@@ -189,13 +341,14 @@ export default function ExperiencePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut", delay: 0.25 }}
           >
-            <p className="font-jakarta font-semibold text-[11px] tracking-[0.1em] uppercase mb-2" style={{ color: "#2dfff8" }}>
-              Now
+            <p
+              className="font-jakarta font-semibold text-[11px] tracking-[0.1em] uppercase mb-2"
+              style={{ color: "#2dfff8" }}
+            >
+              Current chapter
             </p>
-            <p className="font-jakarta font-bold text-navy text-[16px] leading-[1.5]">
-              Operating independently since August 2024 — building AI ventures under AppsBrite UG
-              and advising regulated fintech companies on operating model transformation and AI
-              implementation. Available for fractional and advisory engagements.
+            <p className="font-jakarta font-bold text-navy text-[16px] leading-[1.6]">
+              Since August 2024, I have been building AI-native systems through AppsBrite UG while advising selected regulated fintech and AI ventures on operating model design, GTM architecture, and AI implementation.
             </p>
           </motion.div>
         </div>
@@ -206,11 +359,13 @@ export default function ExperiencePage() {
         <div className="content-width">
           <div className="relative pl-6 md:pl-10">
             {/* Vertical rule */}
-            <div className="absolute left-0 top-2 bottom-2 w-px bg-navy opacity-20" />
-            <div className="flex flex-col gap-14 md:gap-16">
-              {roles.map((role, i) => (
-                <RoleEntry key={i} role={role} index={i} />
+            <div className="absolute left-0 top-2 bottom-2 w-px bg-navy opacity-15" />
+
+            <div className="flex flex-col gap-16 md:gap-20">
+              {chapters.map((chapter, i) => (
+                <ChapterEntry key={chapter.id} chapter={chapter} index={i} />
               ))}
+              <EarlierFoundations />
             </div>
           </div>
         </div>
@@ -219,8 +374,9 @@ export default function ExperiencePage() {
       {/* Education */}
       <section className="section-spacing border-t border-rule">
         <div className="content-width">
-          <BottomSection label="Education">
-            <div className="flex flex-col gap-8 md:flex-row md:gap-16">
+          <FadeSection>
+            <span className="section-label">Education</span>
+            <div className="flex flex-col gap-8 md:flex-row md:gap-16 mt-6">
               {education.map((ed, i) => (
                 <div key={i}>
                   <p className="font-jakarta font-bold text-navy text-[17px] mb-1">{ed.degree}</p>
@@ -231,33 +387,54 @@ export default function ExperiencePage() {
                 </div>
               ))}
             </div>
-          </BottomSection>
+          </FadeSection>
         </div>
       </section>
 
-      {/* Languages */}
+      {/* Languages & Citizenship */}
       <section className="section-spacing border-t border-rule">
         <div className="content-width">
-          <BottomSection label="Languages & Citizenship">
-            <div className="flex flex-col gap-2">
+          <FadeSection>
+            <span className="section-label">Languages & Citizenship</span>
+            <div className="flex flex-col gap-2 mt-6">
               <p className="font-jakarta text-navy text-[16px] leading-[1.65]">
-                English (Full Professional) &middot; German (Limited Working)
+                English: Full professional proficiency &middot; German: Working proficiency
               </p>
               <p className="font-jakarta text-navy text-[16px] leading-[1.65]">
-                German Citizen &middot; Based in Germany &middot; Open to Europe and Remote
+                German citizen &middot; Based in Germany &middot; Open to Europe and remote
               </p>
             </div>
-          </BottomSection>
+          </FadeSection>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-spacing border-t border-b border-rule">
-        <div className="content-width flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="font-jakarta font-bold text-navy text-[20px] md:text-[24px] max-w-md leading-[1.3]">
-            Want to work together?
+      {/* Beyond the Timeline */}
+      <section className="border-t border-rule">
+        <div className="content-width py-14 md:py-16">
+          <p className="label-meta mb-5">Beyond the timeline</p>
+          <p className="font-jakarta text-navy text-[17px] leading-[1.75] max-w-xl mb-8">
+            My experience spans enterprise delivery, financial infrastructure, operating model design, and AI-native systems. You can explore how that experience translates into current systems, research, and areas of focus.
           </p>
-          <Button href="/book">Book a discovery call →</Button>
+          <div className="flex flex-col sm:flex-row gap-6">
+            <Link
+              href="/work"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Building <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/insights"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Research &amp; insights <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/book"
+              className="font-jakarta font-semibold text-[15px] text-navy hover:opacity-60 transition-opacity flex items-center gap-1.5"
+            >
+              Connect <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

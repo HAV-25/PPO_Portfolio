@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Professional Experience",
+  title: "Operating Experience — Payal Ponkshe",
   description:
-    "18+ years of fintech and payments leadership across Mastercard, Wirecard, DeFi, and regulated financial services. Senior fintech executive with a track record in agentic transformation, enterprise delivery, and AI venture building.",
+    "18+ years building, scaling, and operationalizing systems across payments, regulated financial services, AI ventures, and emerging technology environments. VP-level delivery at Mastercard, payment infrastructure at Wirecard, AI-native systems building.",
   keywords: [
-    "fintech executive career",
-    "Mastercard",
-    "payments leadership",
-    "enterprise transformation",
-    "senior fintech experience",
+    "fintech operating experience",
+    "Mastercard VP",
+    "payments infrastructure",
+    "enterprise operating model",
+    "AI systems builder",
+    "regulated financial services",
   ],
 };
 
