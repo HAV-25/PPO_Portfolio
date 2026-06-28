@@ -910,6 +910,192 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "engineering-principles-ai-coding-agents",
+    title:
+      "What I look for when I audit an AI-assisted engineering team \u2014 17 principles that determine whether agentic code compounds or collapses",
+    excerpt:
+      "Before designing an AI operating model around an engineering team, I run an architecture audit. These 17 principles are what I check. They determine whether an AI-assisted codebase stays governable or becomes a liability.",
+    topic: "AI & Technology",
+    date: "June 2026",
+    readTime: "10 min",
+    live: true,
+    keywords: [
+      "engineering principles AI coding agents fintech",
+      "AI coding agents architecture",
+      "agentic code governance",
+      "AI engineering audit",
+      "fintech AI operating model",
+      "Claude Code engineering principles",
+      "AI-assisted engineering team",
+      "EU AI Act engineering",
+      "DORA AI compliance",
+      "GDPR AI systems",
+    ],
+    blocks: [
+      {
+        type: "bold-p",
+        text: "Most conversations about AI coding agents focus on the prompt. Most problems with AI-assisted codebases exist underneath it.",
+      },
+      {
+        type: "p",
+        text: "I\u2019ve built 6 production AI systems using Claude Code, Codex, n8n, and Supabase \u2014 across language learning platforms, content pipelines, agentic commerce, and workflow automation. When I assess an AI-assisted engineering operation before advising on operating model design, I\u2019m not looking at the prompts. I\u2019m looking at the architectural decisions that were made before the first agent session opened.",
+      },
+      {
+        type: "p",
+        text: "These are the 17 principles that determine whether an AI-assisted codebase is an asset or a liability. They apply to any company letting AI agents touch production systems \u2014 and in regulated financial services, the cost of getting them wrong is not just technical debt. It\u2019s a DORA incident, a GDPR breach, or an EU AI Act audit finding.",
+      },
+      {
+        type: "labeled",
+        label: "Why AI agents make architectural principles more important, not less",
+        body: "A senior engineer accumulates institutional knowledge. They notice when a change looks architecturally wrong, push back on shortcuts, and remember the decision made three months ago about why your ingestion pipeline writes to staging before publishing. An AI agent has none of that \u2014 unless you build the scaffolding that provides it. Agents are fast, capable, and have no skin in the game. They will take the most direct path to completing the task. If that path bypasses a constraint, removes a security control, or introduces a second source of truth for the same fact, the agent will do it \u2014 not out of malice, but because nothing stopped it. The 17 principles below are calibrated for the reality of building with AI agents at v1-to-v2 scale. Not enterprise ceremony. The minimum that keeps your system governable, auditable, and changeable as it grows.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 1 \u2014 One database, one authority",
+        body: "Your primary datastore is the single source of truth. Pages render from it. Search indexes it. AI agents query it. Nothing else holds authoritative state. The failure mode is subtle: an agent tasked with making a feature faster introduces a JSON file or a CMS collection that starts holding authoritative facts. Six months later you have two sources of truth for the same data. They\u2019ve drifted. The inconsistency exists at the architecture level, not in any one piece of code, so it\u2019s nearly impossible to locate by debugging. The rule to give your agent: if a change introduces persistence that could become authoritative for any fact, it must derive from the primary datastore and be invalidatable from it. In financial services this principle isn\u2019t optional. A payments system with two sources of truth for transaction state is a settlement risk, not a code smell.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 2 \u2014 Automation writes to staging. Publishing is a gate.",
+        body: "Any automated pipeline \u2014 AI extraction, scheduled imports, web scraping, CSV uploads \u2014 should write to a staging or proposed-change layer, not directly to your published data. Publishing is a governed action, not the default output of an automation run. Agents given broad write access will use it. An agent tasked with \u2018importing records from this CSV\u2019 will, if not constrained, write directly to your core tables. The staging boundary is the constraint. Anti-pattern: adding a \u2018temporary\u2019 direct-write shortcut to speed up development. There are no temporary shortcuts at the architecture boundary. They stay. For DORA-regulated firms, every automated write that bypasses a staging layer is an unlogged change event.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 3 \u2014 Facts are claims with provenance",
+        body: "If your system holds facts that users rely on, those facts should carry metadata: where did this come from, when was it sourced, how confident are we, what\u2019s the verification status? This matters especially when AI is generating or processing facts. A bare column holding a value with no provenance is a liability \u2014 you can\u2019t answer \u2018why does it say this?\u2019, you can\u2019t prioritise what needs human review, and you can\u2019t safely ground AI responses in data whose reliability you can\u2019t assess. When an agent adds a new fact-bearing field to your schema, the task spec should explicitly require the claim shape \u2014 source, source date, confidence, verification status \u2014 not just the value field. For a credit decision system or a compliance record under the EU AI Act, this isn\u2019t engineering hygiene. It\u2019s a legal requirement.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 4 \u2014 Decisions live in written artifacts, not chat threads",
+        body: "Context matters enormously in an AI-assisted workflow because agents have no memory between sessions. If the rationale for a decision lives only in a chat thread, the next agent session \u2014 or the next human \u2014 will rediscover the question and potentially resolve it differently. The decision log is the institutional memory the agent lacks. If a task requires resolving an open architectural question, the agent surfaces it. It does not resolve the question in code and move on. Practically: every significant session ends with a structured handoff note \u2014 what changed, what migrations ran, what tests cover it, what assumptions were made, what risks were identified.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 5 \u2014 Every architectural decision has a written rationale",
+        body: "Architecture-Decision Records (ADRs) are the permanent record of why the architecture is the way it is \u2014 distinct from session handoffs. Three fields: the decision, the context that made it necessary, and the alternatives that were rejected. When an agent is asked to modify a component and encounters an ADR that explains why a particular constraint exists, it has the context to make a good decision. Without it, it optimises locally and breaks something globally.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 6 \u2014 No feature ships without a data-governance path",
+        body: "Before any data-touching feature goes to implementation, the spec must answer: what does this read? What does this write? Does it touch published data or only staging? Does it need row-level security? Does it need an audit event? Does it need provenance or confidence tracking? These questions take 5 minutes to answer in a spec and 5 days to retrofit into code. An agent that starts implementing a feature without these answers will make implicit choices \u2014 often wrong ones \u2014 that become architecture. Make this a mandatory block in every task spec template. In regulated financial services, this block is also your EU AI Act Article 13 transparency pre-work.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 7 \u2014 Least privilege by default",
+        body: "Row-level security on every table. Public read granted only through narrow, explicit policies. Privileged operations done server-side with scoped credentials. No path trusted because of where it comes from. AI agents will widen permissions to get things working. \u2018I\u2019ll just disable RLS on this table for now\u2019 is an agent completing a task by removing a constraint. The constraint was there for a reason the agent doesn\u2019t know and doesn\u2019t ask about. The enforcement mechanism that actually works: a CI script that checks every new table migration for security policy enablement and fails the build if it\u2019s absent. Agents will pass gates they can\u2019t argue with. Under GDPR and PSD2, least privilege isn\u2019t a best practice. It\u2019s a data-minimisation requirement.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 8 \u2014 Secrets never touch the agent context",
+        body: "The agent never holds production credentials. Production secrets are not in the repo, not in the prompt, not in the environment the agent sees. If an agent needs to call an external service, it calls a server-side wrapper that holds the credential. The agent gets the result, not the key. In a DORA-regulated environment, a credential in an agent context is an unlogged access event \u2014 a gap in your operational incident trail.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 9 \u2014 Modular monolith with real seams",
+        body: "A codebase with no clear module boundaries is hard for a human to navigate. For an agent, it\u2019s nearly impossible \u2014 the agent has no intuition about which parts of the codebase a change should touch, so it touches whatever is technically connected. What you need isn\u2019t microservices. It\u2019s clear domain separation: distinct modules for distinct concerns with explicit seams between them. An agent working on your search module should not need to touch your billing module. If a task requires changes across domains, that\u2019s a signal the task is too large or the domain boundaries are wrong. For vendor integrations, create a seam that the rest of your code calls \u2014 never the vendor SDK directly. This makes vendor-switching cheap and prevents agents from embedding vendor-specific logic throughout your codebase. Modular boundaries also make it significantly easier to isolate and document which components constitute a high-risk AI system component under the EU AI Act.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 10 \u2014 SEO and indexability are engineering requirements",
+        body: "If search engine visibility matters to your product, programmatic page generation, canonical handling, structured data, and sitemap generation are engineering requirements \u2014 not CMS features, not marketing requests, not afterthoughts. The specific failure mode for AI-assisted development: an agent building a new page type defaults to the simplest rendering approach, which may be client-side only and invisible to crawlers. You don\u2019t find out until your indexation data comes back thin. Build a quality gate: programmatic pages earn indexation by meeting content quality thresholds. Pages below the threshold get noindex treatment. Tests assert this.",
+      },
+      {
+        type: "pull-quote",
+        text: "The productivity gain from AI coding agents comes not from reducing the thinking but from eliminating the typing. The thinking \u2014 the spec \u2014 still belongs to the human.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 11 \u2014 The spec is the unit of work",
+        body: "\u2018Build the review console\u2019 is not a task. It\u2019s an invitation for the agent to make a hundred decisions you haven\u2019t made yet and present them to you as a fait accompli. A task is a spec with an objective, explicit non-goals, a list of allowed files, constraints, a data-governance block, and acceptance criteria you can grade as pass or fail. If you can\u2019t state acceptance criteria for a task, the task isn\u2019t ready to hand over. That\u2019s not a limitation \u2014 it\u2019s information. The pre-work of writing the spec is where most of the real engineering judgment lives.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 12 \u2014 Change happens in layers",
+        body: "When something changes in your system \u2014 a schema migration, a new content type, a modified API contract \u2014 the change should flow in a defined sequence: schema first, then data migration, then application code, then tests, then deployment. An agent given an open-ended change task will make all of these simultaneously in whatever order is most locally convenient. That produces a change that\u2019s hard to roll back, hard to test in isolation, and hard to trace when something breaks. Layer your changes explicitly in the spec. \u2018This task only touches the schema layer. Application code changes are a separate task.\u2019",
+      },
+      {
+        type: "labeled",
+        label: "Principle 13 \u2014 Every AI-generated output has a human review gate before it affects users",
+        body: "If AI generates content, decisions, or data that users see or rely on, there is a human gate before it reaches them. Not necessarily for every piece \u2014 but for the type, the first time, and whenever the model or prompt changes. This is Principle 2 applied to AI outputs rather than automated writes. For regulated financial services this principle is the operationalisation of EU AI Act Article 14 \u2014 human oversight for high-risk AI systems. Design the gate before the agent builds the feature.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 14 \u2014 Separate planning, implementation, and review",
+        body: "A planning pass, an implementation pass, and a review pass are three distinct modes of work. They can be done by the same agent in sequence \u2014 or by different agents (Claude Code for architecture, Codex for implementation) \u2014 but collapsing them into one unreviewed motion on any non-trivial task produces unreliable results. An agent cannot meaningfully review its own output for architectural correctness. The human is the final reviewer. That\u2019s not a limitation of the current technology \u2014 it\u2019s the appropriate allocation of judgment given where the technology is today.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 15 \u2014 Test your AI pipeline, not just your application",
+        body: "If your system uses AI to generate content, classify data, or make decisions, the AI pipeline itself needs tests: evals that define expected behaviour for a set of representative inputs, and that run against every prompt or model change. An agent changing a prompt to fix one problem will break another if there are no evals constraining the output space. Evals don\u2019t need to be exhaustive. They need to cover the failure modes that matter most \u2014 the cases where a wrong output has a real consequence.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 16 \u2014 Keep a deliberate non-scope list",
+        body: "At any point in the build, there are things you know you\u2019re not doing yet. Keep a written list: what it is, why it\u2019s deferred, and what would trigger adding it. This prevents the list from being interpreted as \u2018we forgot about this\u2019 and makes scope expansion a deliberate decision rather than an accretion. When an agent encounters something that looks like a gap, it should check the non-scope list before filling it.",
+      },
+      {
+        type: "labeled",
+        label: "Principle 17 \u2014 The right-sizing test",
+        body: "Before adding a principle to your working set, apply this test: does this principle reduce a real risk at current scale, or does it add overhead without protecting anything that matters yet? Real risks at v1 scale: losing data integrity from multiple sources of truth, having an agent undermine your security model, accumulating untraceable technical debt, building in a way that makes the next phase expensive. Not real risks at v1 scale: the absence of a distributed tracing system, a missing event bus, a dedicated audit microservice. Calibrate your principles to the risks you actually face. The principles above are the minimum for a solo builder or small team operating an AI-assisted system that touches user data or makes decisions users rely on.",
+      },
+      {
+        type: "labeled",
+        label: "What this means for founders and COOs",
+        body: "If you\u2019re a founder or COO running an AI-assisted engineering team, you don\u2019t need to author these principles yourself. But you do need to know whether they exist. The question to ask your team: \u2018Show me the task spec for the last feature an agent built.\u2019 If the answer is a chat thread, you have an architecture problem that will surface at the worst possible moment \u2014 a security incident, a data loss event, or a regulatory audit. The principles above are what I look for when I assess an AI-assisted engineering operation before designing an operating model around it. They\u2019re not a maturity framework. They\u2019re a floor. Below the floor, your AI coding agents are moving fast in a direction you can\u2019t fully see.",
+      },
+      {
+        type: "numbered",
+        items: [
+          {
+            title: "Audit the last 5 agent task handoffs",
+            body: "Count how many have a written spec with acceptance criteria. If it\u2019s fewer than 3, introduce the spec template before the next sprint.",
+          },
+          {
+            title: "Run a quick RLS audit on your primary database",
+            body: "Check whether any table was migrated in the last 90 days without a security policy. If so, find out why and fix it before it becomes a finding.",
+          },
+          {
+            title: "Map your codebase to 3\u20135 domain modules on a whiteboard",
+            body: "Ask your team to do this together. If they can\u2019t agree on the boundaries in under an hour, the modular seams need defining before the next feature build.",
+          },
+          {
+            title: "Check whether your CI pipeline has a security gate on new migrations",
+            body: "If it doesn\u2019t, add one. It takes 30 minutes and it will catch an agent\u2019s shortcut at the earliest possible moment.",
+          },
+        ],
+      },
+      {
+        type: "labeled",
+        label: "What are the most important engineering principles when using AI coding agents?",
+        body: "The 3 most critical are: single-source database authority (no second sources of truth), staging boundaries for all automated writes (publishing is a governed action, not the default output of an automation run), and spec-driven task handoffs (the spec is the unit of work, not the prompt). These three catch the failure modes most likely to create irreversible damage.",
+      },
+      {
+        type: "labeled",
+        label: "How do I prevent an AI coding agent from breaking my security model?",
+        body: "Three controls work together: row-level security on every table with CI enforcement, a least-privilege credential architecture where agents call server-side wrappers rather than holding credentials directly, and a non-goals list in every task spec that explicitly excludes security-policy changes from agent scope. Agents pass gates they can\u2019t argue with \u2014 make the gates mechanical.",
+      },
+      {
+        type: "labeled",
+        label: "How should I structure a codebase so AI agents work reliably?",
+        body: "Use a modular monolith with explicit domain separation and seams at vendor integration points. Agents work reliably within a bounded domain; they produce cascading problems when given unconstrained access to a tangled codebase. If a task requires changes across more than one domain module, it\u2019s either too large or the module boundaries are wrong.",
+      },
+      {
+        type: "labeled",
+        label: "How do I handle context between AI agent sessions?",
+        body: "Context passes through written artifacts, not chat memory. At the end of every significant session, produce a structured handoff note: what changed, what migrations ran, what tests cover it, what assumptions were made, what risks were identified. The decision log is the institutional memory the agent lacks \u2014 you have to build it explicitly.",
+      },
+      {
+        type: "labeled",
+        label: "Do these engineering principles apply to regulated financial services specifically?",
+        body: "Yes \u2014 and several are regulatory requirements in disguise. Principle 2 (staging boundaries) maps to DORA change management. Principle 3 (facts with provenance) maps to EU AI Act Article 13 transparency. Principle 6 (data-governance path per feature) is the pre-work for EU AI Act high-risk system documentation. Principle 7 (least privilege) is a GDPR data-minimisation requirement. Building these principles in from day one is cheaper than retrofitting them after a compliance audit.",
+      },
+      {
+        type: "question",
+        text: "If you\u2019re building an AI-assisted engineering operation in a regulated industry and want a practical assessment of where your current architecture stands, read about the AI Implementation & Operating Model Design advisory on the Services page \u2014 or book a 30-minute discovery call to start with your specific situation.",
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {

@@ -8,92 +8,95 @@ import type { Article } from "@/lib/articles";
 import { portfolioArticles } from "@/lib/portfolio-articles";
 import type { PortfolioArticle } from "@/lib/portfolio-articles";
 import type { PipelineArticleMeta } from "@/lib/pipeline-content";
+import {
+  ARTICLE_TYPE,
+  ARTICLE_PILLAR,
+  PILLAR_SLUGS,
+  getYear,
+} from "@/lib/insights-meta";
 
-// ─── Category dot colours ─────────────────────────────────────────────────────
-const CATEGORY_DOT_COLORS: Record<string, string> = {
-  "AI & Technology": "#2dfff8",
-  "Fintech & Payments": "#24356e",
-  "Leadership": "#5A6A8A",
-  "Venture Build": "#D94F4F",
-};
-function dotColor(topic: string): string {
-  return CATEGORY_DOT_COLORS[topic] ?? "#5A6A8A";
-}
+// ─── Static config ────────────────────────────────────────────────────────────
 
-// ─── Bento layout config ──────────────────────────────────────────────────────
-type CardVariant = "A" | "B" | "C" | "D" | "E";
-
-interface CardConfig {
-  variant: CardVariant;
-  colSpan: 1 | 2 | 3;
-  rowSpan: 1 | 2;
-}
-
-// Explicit bento order determines CSS Grid auto-placement
-const BENTO_SLUGS = [
-  "qonto-mcp-fintech-finance-teams",
-  "ai-ipo-valuations",
-  "ai-in-finance",
-  "the-right-to-begin",
-  "activity-vs-impact",
-  "ai-revenue-per-employee-data",
-  "december-recalibration",
-  "wrong-ai-problem",
-  "transformation-literacy",
-  "work-evolution-curve",
-  "how-to-set-up-a-claude-project",
-  "claude-personal-vs-project-instructions",
-  "claude-kickoff-prompt-template",
+const FILTERS = [
+  "All",
+  "Financial Infrastructure",
+  "AI Systems",
+  "Operating Models",
+  "Physical AI & Robotics",
+  "Leadership & Human Systems",
+  "Personal Essays",
 ];
 
-const BENTO_CONFIG: Record<string, CardConfig> = {
-  "qonto-mcp-fintech-finance-teams":         { variant: "A", colSpan: 3, rowSpan: 2 },
-  "ai-ipo-valuations":                      { variant: "B", colSpan: 1, rowSpan: 1 },
-  "ai-in-finance":                          { variant: "B", colSpan: 1, rowSpan: 1 },
-  "the-right-to-begin":                     { variant: "B", colSpan: 1, rowSpan: 1 },
-  "activity-vs-impact":                     { variant: "C", colSpan: 2, rowSpan: 1 },
-  "ai-revenue-per-employee-data":           { variant: "B", colSpan: 1, rowSpan: 1 },
-  "december-recalibration":                 { variant: "D", colSpan: 1, rowSpan: 2 },
-  "wrong-ai-problem":                       { variant: "E", colSpan: 1, rowSpan: 1 },
-  "transformation-literacy":                { variant: "E", colSpan: 1, rowSpan: 1 },
-  "work-evolution-curve":                   { variant: "E", colSpan: 1, rowSpan: 1 },
-  "how-to-set-up-a-claude-project":         { variant: "C", colSpan: 2, rowSpan: 1 },
-  "claude-personal-vs-project-instructions": { variant: "B", colSpan: 1, rowSpan: 1 },
-  "claude-kickoff-prompt-template":         { variant: "B", colSpan: 1, rowSpan: 1 },
-};
+const FEATURED_SLUGS = [
+  "agentic-commerce-eu-regulatory-opportunity",
+  "ai-content-pipeline-brand-consistency-at-scale",
+  "ai-workflow-automation-sme-revenue-impact",
+];
 
-// Maps colSpan → Tailwind md: class (all must be statically present for Tailwind JIT)
-const MD_COL_SPAN: Record<number, string> = {
-  1: "md:col-span-1",
-  2: "md:col-span-2",
-  3: "md:col-span-3",
-};
-const MD_ROW_SPAN: Record<number, string> = {
-  1: "md:row-span-1",
-  2: "md:row-span-2",
-};
+const PERSONAL_SLUGS = ["the-right-to-begin", "december-recalibration"];
 
-function getPullQuote(article: Article): string {
-  const block = article.blocks.find((b) => b.type === "pull-quote");
-  if (block && block.type === "pull-quote") return block.text;
-  return article.excerpt;
-}
+const CURRENT_THINKING_SLUGS = [
+  "qonto-mcp-fintech-finance-teams",
+  "engineering-principles-ai-coding-agents",
+  "how-to-set-up-a-claude-project",
+  "claude-kickoff-prompt-template",
+  "claude-personal-vs-project-instructions",
+  "activity-vs-impact",
+  "ai-revenue-per-employee-data",
+  "work-evolution-curve",
+  "wrong-ai-problem",
+  "transformation-literacy",
+  "ai-in-finance",
+  "ai-ipo-valuations",
+];
 
-// ─── Shared sub-components ────────────────────────────────────────────────────
+const PRINCIPLES = [
+  "Technology only creates value when it can be operationalised.",
+  "Operating models are often a stronger competitive advantage than technology itself.",
+  "Human judgment remains the most important component in intelligent systems.",
+  "Regulation should inform design rather than slow innovation.",
+  "The future belongs to organisations that combine people with intelligent systems.",
+];
 
-function CategoryLabel({ topic }: { topic: string }) {
-  return (
-    <div className="flex items-center gap-1.5 flex-shrink-0">
-      <span
-        className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-        style={{ backgroundColor: dotColor(topic) }}
-      />
-      <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.06em] uppercase">
-        {topic}
-      </span>
-    </div>
-  );
-}
+const RESEARCH_AREAS: {
+  title: string;
+  body: string;
+  filter: string;
+  emerging?: boolean;
+}[] = [
+  {
+    title: "Financial Infrastructure",
+    body: "Payments infrastructure, open banking, embedded finance, AI-native commerce, regulated ecosystems, and partner-led market expansion.",
+    filter: "Financial Infrastructure",
+  },
+  {
+    title: "AI Systems",
+    body: "Agentic workflows, human-in-the-loop design, automation architecture, content intelligence, and AI operating models.",
+    filter: "AI Systems",
+  },
+  {
+    title: "Physical AI & Robotics",
+    body: "Consumer robotics, service robotics, embodied intelligence, edge computing, multi-agent physical systems, human-robot collaboration, and the infrastructure required for large-scale deployment.",
+    filter: "Physical AI & Robotics",
+    emerging: true,
+  },
+  {
+    title: "Leadership & Human Systems",
+    body: "How organisations adapt to new technology, build trust, redesign work, and combine human judgement with intelligent systems.",
+    filter: "Leadership & Human Systems",
+  },
+];
+
+const ARCHIVE_PILLARS = [
+  "Financial Infrastructure",
+  "AI Systems",
+  "Operating Models",
+  "Physical AI & Robotics",
+  "Leadership & Human Systems",
+  "Personal Essays",
+];
+
+// ─── Shared components ────────────────────────────────────────────────────────
 
 function HoverBorder() {
   return (
@@ -104,60 +107,187 @@ function HoverBorder() {
   );
 }
 
-// ─── Card variants ─────────────────────────────────────────────────────────────
-
-function CardA({ article, delay }: { article: Article; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-
-  const inner = (
-    <motion.div
-      ref={ref}
-      className="group relative flex flex-col justify-between h-full p-7 md:p-8 border border-rule overflow-hidden cursor-pointer"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: "easeOut", delay: reduced ? 0 : delay }}
-    >
-      <HoverBorder />
-      <div>
-        <div className="flex items-center gap-3 mb-5 flex-wrap">
-          <CategoryLabel topic={article.topic} />
-          <span className="text-slate opacity-30">&middot;</span>
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.readTime} read
+function ArticleMeta({
+  slug,
+  readTime,
+  date,
+}: {
+  slug: string;
+  readTime: string;
+  date: string;
+}) {
+  const type = ARTICLE_TYPE[slug] ?? "Essay";
+  const pillar = ARTICLE_PILLAR[slug] ?? "";
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+        {type}
+      </span>
+      {pillar && (
+        <>
+          <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+          <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+            {pillar}
           </span>
-          <span className="text-slate opacity-30">&middot;</span>
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.date}
-          </span>
-          {article.live && <span className="status-live">Live</span>}
-        </div>
-        <h2 className="font-jakarta font-bold text-navy text-[24px] md:text-[28px] leading-[1.25] max-w-2xl group-hover:underline group-hover:decoration-cyan group-hover:decoration-[6px] group-hover:underline-offset-4 transition-all duration-150">
-          {article.title}
-        </h2>
-        <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-xl line-clamp-3">
-          {article.excerpt}
-        </p>
-      </div>
-      <div className="mt-6">
-        <span className="font-jakarta font-medium text-[13px] text-navy flex items-center gap-1.5 group-hover:gap-3 transition-[gap] duration-200">
-          Read article <span aria-hidden="true">&rarr;</span>
-        </span>
-      </div>
-    </motion.div>
-  );
-
-  return article.live ? (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      {inner}
-    </Link>
-  ) : (
-    inner
+        </>
+      )}
+      <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+      <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+        {readTime} read
+      </span>
+      <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+      <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+        {getYear(date)}
+      </span>
+    </div>
   );
 }
 
-function CardB({ article, delay }: { article: Article; delay: number }) {
+function SectionHeader({
+  label,
+  intro,
+}: {
+  label: string;
+  intro?: string;
+}) {
+  return (
+    <div className="mb-10">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="h-px w-8 bg-navy flex-shrink-0" aria-hidden="true" />
+        <p className="font-jakarta font-bold text-slate text-[11px] tracking-[0.08em] uppercase">
+          {label}
+        </p>
+      </div>
+      {intro && (
+        <p className="font-jakarta text-slate text-[16px] leading-[1.65] max-w-2xl">
+          {intro}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function FilterTab({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`relative pb-3 font-jakarta font-medium text-[13px] whitespace-nowrap transition-colors duration-150 ${
+        active ? "text-navy" : "text-slate hover:text-navy"
+      }`}
+    >
+      {label}
+      {active && (
+        <span
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-navy"
+          aria-hidden="true"
+        />
+      )}
+    </button>
+  );
+}
+
+// ─── Featured Essay Cards ─────────────────────────────────────────────────────
+
+function FeaturedLeadCard({ article }: { article: PortfolioArticle }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const reduced = useReducedMotion();
+
+  return (
+    <Link href={`/insights/${article.slug}`} className="block h-full">
+      <motion.div
+        ref={ref}
+        className="group relative flex flex-col justify-between h-full p-8 md:p-10 border border-rule overflow-hidden cursor-pointer"
+        initial={reduced ? false : { opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <HoverBorder />
+        <div>
+          <ArticleMeta
+            slug={article.slug}
+            readTime={article.readTime}
+            date={article.date}
+          />
+          <h2 className="font-jakarta font-bold text-navy text-[26px] md:text-[36px] leading-[1.1] mt-5 max-w-2xl group-hover:underline group-hover:decoration-cyan group-hover:decoration-[6px] group-hover:underline-offset-4 transition-all duration-150">
+            {article.title}
+          </h2>
+          <p className="font-jakarta text-slate text-[16px] leading-[1.75] mt-5 max-w-xl">
+            {article.excerpt}
+          </p>
+          {article.pullQuote && (
+            <blockquote className="border-l-4 border-cyan pl-5 mt-8">
+              <p className="font-jakarta font-semibold text-navy text-[18px] md:text-[20px] leading-[1.5] italic">
+                &ldquo;{article.pullQuote}&rdquo;
+              </p>
+            </blockquote>
+          )}
+        </div>
+        <div className="mt-8">
+          <span className="font-jakarta font-medium text-[14px] text-navy flex items-center gap-2 group-hover:gap-3 transition-[gap] duration-200">
+            Read essay <span aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
+function FeaturedSecondaryCard({
+  article,
+  delay,
+}: {
+  article: PortfolioArticle;
+  delay: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const reduced = useReducedMotion();
+
+  return (
+    <Link href={`/insights/${article.slug}`} className="block h-full">
+      <motion.div
+        ref={ref}
+        className="group relative flex flex-col justify-between h-full p-6 md:p-7 border border-rule overflow-hidden cursor-pointer"
+        initial={reduced ? false : { opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, ease: "easeOut", delay: reduced ? 0 : delay }}
+      >
+        <HoverBorder />
+        <div>
+          <ArticleMeta
+            slug={article.slug}
+            readTime={article.readTime}
+            date={article.date}
+          />
+          <h2 className="font-jakarta font-bold text-navy text-[19px] md:text-[21px] leading-[1.25] mt-4 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
+            {article.title}
+          </h2>
+          <p className="font-jakarta text-slate text-[14px] leading-[1.7] mt-3 line-clamp-3">
+            {article.excerpt}
+          </p>
+        </div>
+        <div className="mt-6">
+          <span className="font-jakarta font-medium text-[13px] text-navy flex items-center gap-1.5 group-hover:gap-2.5 transition-[gap] duration-200">
+            Read essay <span aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
+// ─── Current Thinking Card ────────────────────────────────────────────────────
+
+function ThinkingCard({ article, delay }: { article: Article; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduced = useReducedMotion();
@@ -165,31 +295,29 @@ function CardB({ article, delay }: { article: Article; delay: number }) {
   const inner = (
     <motion.div
       ref={ref}
-      className="group relative flex flex-col justify-between h-full p-6 border border-rule overflow-hidden cursor-pointer"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
+      className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer"
+      initial={reduced ? false : { opacity: 0, y: 18 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
     >
       <HoverBorder />
       <div>
-        <div className="flex items-center gap-2 mb-4 flex-wrap">
-          <CategoryLabel topic={article.topic} />
-          <span className="text-slate opacity-30">&middot;</span>
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.readTime}
-          </span>
-        </div>
-        <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
+        <ArticleMeta
+          slug={article.slug}
+          readTime={article.readTime}
+          date={article.date}
+        />
+        <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] mt-3 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
           {article.title}
         </h2>
-        <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 line-clamp-2">
+        <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-2">
           {article.excerpt}
         </p>
       </div>
       {article.live && (
         <div className="mt-4">
           <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-            Read article <span aria-hidden="true">&rarr;</span>
+            Read <span aria-hidden="true">&rarr;</span>
           </span>
         </div>
       )}
@@ -205,7 +333,15 @@ function CardB({ article, delay }: { article: Article; delay: number }) {
   );
 }
 
-function CardC({ article, delay }: { article: Article; delay: number }) {
+// ─── Personal Essay Card ──────────────────────────────────────────────────────
+
+function PersonalEssayCard({
+  article,
+  delay,
+}: {
+  article: Article;
+  delay: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduced = useReducedMotion();
@@ -213,135 +349,32 @@ function CardC({ article, delay }: { article: Article; delay: number }) {
   const inner = (
     <motion.div
       ref={ref}
-      className="group relative flex flex-col md:flex-row h-full border border-rule overflow-hidden cursor-pointer"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
-    >
-      <HoverBorder />
-      {/* Left column — title */}
-      <div className="flex flex-col justify-center p-6 md:w-[40%] flex-shrink-0">
-        <div className="mb-3">
-          <CategoryLabel topic={article.topic} />
-        </div>
-        <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.25] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
-          {article.title}
-        </h2>
-        {article.live && (
-          <div className="mt-4">
-            <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-              Read article <span aria-hidden="true">&rarr;</span>
-            </span>
-          </div>
-        )}
-      </div>
-      {/* Vertical divider — desktop only */}
-      <div className="hidden md:block w-px bg-rule flex-shrink-0" />
-      {/* Horizontal divider — mobile only */}
-      <div className="md:hidden h-px bg-rule mx-6" />
-      {/* Right column — excerpt */}
-      <div className="flex flex-col justify-center p-6 flex-1">
-        <p className="font-jakarta text-slate text-[15px] leading-[1.7]">
-          {article.excerpt}
-        </p>
-        <div className="flex items-center gap-2 mt-4">
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.readTime} read
-          </span>
-          <span className="text-slate opacity-30">&middot;</span>
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.date}
-          </span>
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  return article.live ? (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      {inner}
-    </Link>
-  ) : (
-    inner
-  );
-}
-
-function CardD({ article, delay }: { article: Article; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-  const pullQuote = getPullQuote(article);
-
-  const inner = (
-    <motion.div
-      ref={ref}
-      className="group relative flex flex-col justify-between h-full p-6 border border-rule overflow-hidden cursor-pointer"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
-    >
-      <HoverBorder />
-      <div className="flex-1 flex flex-col justify-center py-4">
-        <blockquote className="border-l-[6px] border-cyan pl-4">
-          <p className="font-jakarta font-bold text-navy text-[19px] md:text-[21px] leading-[1.5]">
-            &ldquo;{pullQuote}&rdquo;
-          </p>
-        </blockquote>
-      </div>
-      <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
-        <CategoryLabel topic={article.topic} />
-        {article.live && (
-          <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200 flex-shrink-0">
-            Read article <span aria-hidden="true">&rarr;</span>
-          </span>
-        )}
-      </div>
-    </motion.div>
-  );
-
-  return article.live ? (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      {inner}
-    </Link>
-  ) : (
-    inner
-  );
-}
-
-function CardE({ article, delay }: { article: Article; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-
-  const inner = (
-    <motion.div
-      ref={ref}
-      className="group relative flex flex-col justify-between h-full p-5 border border-rule overflow-hidden cursor-pointer"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
+      className="group relative flex flex-col justify-between h-full p-6 md:p-8 border border-rule overflow-hidden cursor-pointer"
+      initial={reduced ? false : { opacity: 0, y: 18 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
     >
       <HoverBorder />
       <div>
-        <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <CategoryLabel topic={article.topic} />
-          <span className="text-slate opacity-30">&middot;</span>
-          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">
-            {article.date}
-          </span>
-        </div>
-        <h2 className="font-jakarta font-bold text-navy text-[15px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-3 transition-all duration-150">
+        <ArticleMeta
+          slug={article.slug}
+          readTime={article.readTime}
+          date={article.date}
+        />
+        <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.3] mt-4 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
           {article.title}
         </h2>
+        <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-3">
+          {article.excerpt}
+        </p>
       </div>
-      <div className="mt-3 flex justify-end">
-        <span
-          aria-hidden="true"
-          className="font-jakarta font-bold text-navy text-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-150"
-        >
-          &rarr;
-        </span>
-      </div>
+      {article.live && (
+        <div className="mt-5">
+          <span className="font-jakarta font-medium text-[13px] text-navy flex items-center gap-1.5 group-hover:gap-2.5 transition-[gap] duration-200">
+            Read essay <span aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      )}
     </motion.div>
   );
 
@@ -354,275 +387,157 @@ function CardE({ article, delay }: { article: Article; delay: number }) {
   );
 }
 
-function ArticleCard({
-  article,
-  variant,
-  delay,
-}: {
-  article: Article;
-  variant: CardVariant;
-  delay: number;
-}) {
-  switch (variant) {
-    case "A": return <CardA article={article} delay={delay} />;
-    case "C": return <CardC article={article} delay={delay} />;
-    case "D": return <CardD article={article} delay={delay} />;
-    case "E": return <CardE article={article} delay={delay} />;
-    default:  return <CardB article={article} delay={delay} />;
-  }
-}
+// ─── Filtered results grid ────────────────────────────────────────────────────
 
-// ─── Filter pill ───────────────────────────────────────────────────────────────
-
-function FilterPill({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`font-jakarta font-bold text-[12px] tracking-[0.04em] px-4 py-1.5 rounded-tag border transition-colors duration-150 ${
-        active
-          ? "bg-navy text-cream border-navy"
-          : "bg-cream text-slate border-rule hover:border-navy hover:text-navy"
-      }`}
-    >
-      {label}
-    </button>
-  );
-}
-
-// ─── Portfolio bento config ───────────────────────────────────────────────────
-// 3-column grid, auto-placement order:
-// [A4 A:col1-2×2] [A3 B:col3] / [cont] [A5 B:col3]
-// [A1 A:col1-2×2] [A6 D:col3×2] / [cont] [D cont]
-// [A2 C:col1-3 full]
-
-const PORTFOLIO_BENTO_SLUGS = [
-  "agentic-commerce-eu-regulatory-opportunity",
-  "ai-workflow-automation-sme-revenue-impact",
-  "ai-literacy-platform-senior-demographic-product-strategy",
-  "ai-content-pipeline-brand-consistency-at-scale",
-  "carousel-content-platform-ai-architecture-decisions",
-  "language-learning-app-agentic-build-blueprint",
-];
-
-const PORTFOLIO_BENTO_CONFIG: Record<string, { variant: CardVariant; colSpan: 1 | 2 | 3; rowSpan: 1 | 2 }> = {
-  "agentic-commerce-eu-regulatory-opportunity":            { variant: "A", colSpan: 2, rowSpan: 2 },
-  "ai-workflow-automation-sme-revenue-impact":             { variant: "B", colSpan: 1, rowSpan: 1 },
-  "ai-literacy-platform-senior-demographic-product-strategy": { variant: "B", colSpan: 1, rowSpan: 1 },
-  "ai-content-pipeline-brand-consistency-at-scale":        { variant: "A", colSpan: 2, rowSpan: 2 },
-  "carousel-content-platform-ai-architecture-decisions":   { variant: "D", colSpan: 1, rowSpan: 2 },
-  "language-learning-app-agentic-build-blueprint":         { variant: "C", colSpan: 3, rowSpan: 1 },
+type UnifiedArticle = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+  href: string;
 };
 
-const MD_PORTFOLIO_COL_SPAN: Record<number, string> = {
-  1: "md:col-span-1",
-  2: "md:col-span-2",
-  3: "md:col-span-3",
-};
-
-// ─── Portfolio card components ────────────────────────────────────────────────
-
-function PortfolioCardA({ article, delay }: { article: PortfolioArticle; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-
-  return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      <motion.div
-        ref={ref}
-        className="group relative flex flex-col justify-between h-full p-7 md:p-8 border border-rule overflow-hidden cursor-pointer"
-        initial={reduced ? false : { opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: "easeOut", delay: reduced ? 0 : delay }}
-      >
-        <HoverBorder />
-        <div>
-          <div className="flex items-center gap-3 mb-5 flex-wrap">
-            <CategoryLabel topic={article.topic} />
-            <span className="text-slate opacity-30">&middot;</span>
-            <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">{article.readTime} read</span>
-            <span className="text-slate opacity-30">&middot;</span>
-            <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">{article.date}</span>
-          </div>
-          <h2 className="font-jakarta font-bold text-navy text-[22px] md:text-[26px] leading-[1.25] max-w-2xl group-hover:underline group-hover:decoration-cyan group-hover:decoration-[6px] group-hover:underline-offset-4 transition-all duration-150">
-            {article.title}
-          </h2>
-          <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-xl line-clamp-3">
-            {article.excerpt}
-          </p>
-        </div>
-        <div className="mt-6">
-          <span className="font-jakarta font-medium text-[13px] text-navy flex items-center gap-1.5 group-hover:gap-3 transition-[gap] duration-200">
-            Read article <span aria-hidden="true">&rarr;</span>
-          </span>
-        </div>
-      </motion.div>
-    </Link>
-  );
-}
-
-function PortfolioCardB({ article, delay }: { article: PortfolioArticle; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-
-  return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      <motion.div
-        ref={ref}
-        className="group relative flex flex-col justify-between h-full p-6 border border-rule overflow-hidden cursor-pointer"
-        initial={reduced ? false : { opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
-      >
-        <HoverBorder />
-        <div>
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
-            <CategoryLabel topic={article.topic} />
-            <span className="text-slate opacity-30">&middot;</span>
-            <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">{article.readTime}</span>
-          </div>
-          <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
-            {article.title}
-          </h2>
-          <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 line-clamp-2">
-            {article.excerpt}
-          </p>
-        </div>
-        <div className="mt-4">
-          <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-            Read article <span aria-hidden="true">&rarr;</span>
-          </span>
-        </div>
-      </motion.div>
-    </Link>
-  );
-}
-
-function PortfolioCardC({ article, delay }: { article: PortfolioArticle; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-
-  return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      <motion.div
-        ref={ref}
-        className="group relative flex flex-col md:flex-row h-full border border-rule overflow-hidden cursor-pointer"
-        initial={reduced ? false : { opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
-      >
-        <HoverBorder />
-        <div className="flex flex-col justify-center p-6 md:w-[40%] flex-shrink-0">
-          <div className="mb-3"><CategoryLabel topic={article.topic} /></div>
-          <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.25] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
-            {article.title}
-          </h2>
-          <div className="mt-4">
-            <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-              Read article <span aria-hidden="true">&rarr;</span>
-            </span>
-          </div>
-        </div>
-        <div className="hidden md:block w-px bg-rule flex-shrink-0" />
-        <div className="md:hidden h-px bg-rule mx-6" />
-        <div className="flex flex-col justify-center p-6 flex-1">
-          <p className="font-jakarta text-slate text-[15px] leading-[1.7]">{article.excerpt}</p>
-          <div className="flex items-center gap-2 mt-4">
-            <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">{article.readTime} read</span>
-            <span className="text-slate opacity-30">&middot;</span>
-            <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em]">{article.date}</span>
-          </div>
-        </div>
-      </motion.div>
-    </Link>
-  );
-}
-
-function PortfolioCardD({ article, delay }: { article: PortfolioArticle; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
-  const quote = article.pullQuote ?? article.excerpt;
-
-  return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
-      <motion.div
-        ref={ref}
-        className="group relative flex flex-col justify-between h-full p-6 border border-rule overflow-hidden cursor-pointer"
-        initial={reduced ? false : { opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
-      >
-        <HoverBorder />
-        <div className="flex-1 flex flex-col justify-center py-4">
-          <blockquote className="border-l-[6px] border-cyan pl-4">
-            <p className="font-jakarta font-bold text-navy text-[18px] md:text-[20px] leading-[1.5]">
-              &ldquo;{quote}&rdquo;
-            </p>
-          </blockquote>
-        </div>
-        <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
-          <CategoryLabel topic={article.topic} />
-          <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200 flex-shrink-0">
-            Read article <span aria-hidden="true">&rarr;</span>
-          </span>
-        </div>
-      </motion.div>
-    </Link>
-  );
-}
-
-function PortfolioCard({ article, variant, delay }: { article: PortfolioArticle; variant: CardVariant; delay: number }) {
-  switch (variant) {
-    case "A": return <PortfolioCardA article={article} delay={delay} />;
-    case "C": return <PortfolioCardC article={article} delay={delay} />;
-    case "D": return <PortfolioCardD article={article} delay={delay} />;
-    default:  return <PortfolioCardB article={article} delay={delay} />;
+function FilteredGrid({ items }: { items: UnifiedArticle[] }) {
+  if (items.length === 0) {
+    return (
+      <p className="font-jakarta text-slate text-[15px] py-16">
+        No articles in this area yet — check back soon.
+      </p>
+    );
   }
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {items.map((item, i) => (
+        <motion.div
+          key={item.slug}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut", delay: i * 0.06 }}
+          className="h-full"
+        >
+          <Link href={item.href} className="block h-full">
+            <div className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer min-h-[180px]">
+              <HoverBorder />
+              <div>
+                <ArticleMeta
+                  slug={item.slug}
+                  readTime={item.readTime}
+                  date={item.date}
+                />
+                <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] mt-3 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
+                  {item.title}
+                </h2>
+                <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-3">
+                  {item.excerpt}
+                </p>
+              </div>
+              <div className="mt-4">
+                <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
+                  Read <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  );
 }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
-export function InsightsPageClient({ pipelineArticles = [] }: { pipelineArticles?: PipelineArticleMeta[] }) {
-  const [activeCategory, setActiveCategory] = useState("All");
+export function InsightsPageClient({
+  pipelineArticles = [],
+}: {
+  pipelineArticles?: PipelineArticleMeta[];
+}) {
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const allCategories = useMemo(() => {
-    const cats = Array.from(new Set(articles.map((a) => a.topic)));
-    return ["All", ...cats];
-  }, []);
+  const articleMap = useMemo(
+    () => new Map(articles.map((a) => [a.slug, a])),
+    []
+  );
+  const portfolioMap = useMemo(
+    () => new Map(portfolioArticles.map((a) => [a.slug, a])),
+    []
+  );
 
-  const isFiltered = activeCategory !== "All";
+  const featuredArticles = useMemo(
+    () =>
+      FEATURED_SLUGS.map((s) => portfolioMap.get(s)).filter(
+        Boolean
+      ) as PortfolioArticle[],
+    [portfolioMap]
+  );
 
-  const portfolioBentoArticles = useMemo(() => {
-    const map = new Map(portfolioArticles.map((a) => [a.slug, a]));
-    return PORTFOLIO_BENTO_SLUGS.map((slug) => map.get(slug)).filter(Boolean) as PortfolioArticle[];
-  }, []);
+  const currentThinkingArticles = useMemo(
+    () =>
+      CURRENT_THINKING_SLUGS.map((s) => articleMap.get(s)).filter(
+        Boolean
+      ) as Article[],
+    [articleMap]
+  );
 
-  // Bento order — reorders articles array for correct CSS Grid auto-placement
-  const bentoArticles = useMemo(() => {
-    const map = new Map(articles.map((a) => [a.slug, a]));
-    return BENTO_SLUGS.map((slug) => map.get(slug)).filter(Boolean) as Article[];
-  }, []);
+  const personalEssays = useMemo(
+    () =>
+      PERSONAL_SLUGS.map((s) => articleMap.get(s)).filter(
+        Boolean
+      ) as Article[],
+    [articleMap]
+  );
 
-  const filteredArticles = useMemo(() => {
-    if (!isFiltered) return bentoArticles;
-    return articles.filter((a) => a.topic === activeCategory);
-  }, [activeCategory, isFiltered, bentoArticles]);
+  const allWriting = useMemo<UnifiedArticle[]>(() => {
+    const items: UnifiedArticle[] = [];
+    for (const a of portfolioArticles) {
+      items.push({
+        slug: a.slug,
+        title: a.title,
+        excerpt: a.excerpt,
+        readTime: a.readTime,
+        date: a.date,
+        href: `/insights/${a.slug}`,
+      });
+    }
+    for (const a of articles) {
+      if (a.live) {
+        items.push({
+          slug: a.slug,
+          title: a.title,
+          excerpt: a.excerpt,
+          readTime: a.readTime,
+          date: a.date,
+          href: `/insights/${a.slug}`,
+        });
+      }
+    }
+    for (const a of pipelineArticles) {
+      items.push({
+        slug: a.slug,
+        title: a.title,
+        excerpt: a.description,
+        readTime: a.readTime,
+        date: a.publishDate,
+        href: `/insights/${a.slug}`,
+      });
+    }
+    return items;
+  }, [pipelineArticles]);
+
+  const filteredItems = useMemo<UnifiedArticle[]>(() => {
+    if (activeFilter === "All" || activeFilter === "Physical AI & Robotics")
+      return [];
+    return allWriting.filter(
+      (item) => ARTICLE_PILLAR[item.slug] === activeFilter
+    );
+  }, [activeFilter, allWriting]);
+
+  const isFiltered = activeFilter !== "All";
 
   return (
     <>
       {/* ── Hero ── */}
-      <section className="section-spacing pt-[140px] md:pt-[160px]">
+      <section className="pt-[140px] md:pt-[160px] pb-0">
         <div className="content-width">
           <motion.h1
             className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
@@ -633,161 +548,318 @@ export function InsightsPageClient({ pipelineArticles = [] }: { pipelineArticles
             Insights
           </motion.h1>
           <motion.p
-            className="font-jakarta text-slate text-[18px] leading-[1.6] mt-5 max-w-xl"
+            className="font-jakarta text-slate text-[18px] leading-[1.65] mt-5 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.1 }}
           >
-            Writing on fintech, payments, AI transformation, and what it
-            actually takes to build at the intersection of enterprise delivery
-            and emerging technology.
+            Writing on financial infrastructure, AI systems, operating models,
+            and emerging technologies — grounded in what I have built, led, and
+            studied.
           </motion.p>
 
-          {/* Category filter row */}
+          {/* Editorial framing block */}
           <motion.div
-            className="flex flex-wrap gap-2 mt-8"
+            className="mt-10 pt-8 border-t border-rule max-w-2xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.24 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
           >
-            {allCategories.map((cat) => (
-              <FilterPill
-                key={cat}
-                label={cat}
-                active={activeCategory === cat}
-                onClick={() => setActiveCategory(cat)}
-              />
-            ))}
+            <p className="font-jakarta font-bold text-navy text-[11px] tracking-[0.07em] uppercase mb-4">
+              How I think about technology
+            </p>
+            <p className="font-jakarta font-semibold text-navy text-[16px] leading-[1.6]">
+              Technology, operating models, and human systems evolve together.
+            </p>
+            <p className="font-jakarta text-slate text-[15px] leading-[1.75] mt-3">
+              My writing explores how organisations adopt new capabilities, how
+              products move from experimentation to scale, and how intelligent
+              systems create lasting value in the real world.
+            </p>
+            <p className="font-jakarta text-slate text-[15px] leading-[1.75] mt-3">
+              These themes connect the work I have done in financial
+              infrastructure, the AI systems I am building today, and the
+              emerging technologies I am studying for the future.
+            </p>
+          </motion.div>
+
+          {/* Filter tabs */}
+          <motion.div
+            className="mt-10 border-b border-rule"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
+          >
+            <div className="flex flex-wrap gap-x-7 gap-y-0 overflow-x-auto">
+              {FILTERS.map((f) => (
+                <FilterTab
+                  key={f}
+                  label={f}
+                  active={activeFilter === f}
+                  onClick={() => setActiveFilter(f)}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Portfolio insights bento ── */}
-      <section className="section-spacing pt-10 md:pt-12">
-        <div className="content-width">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-4 bg-navy" aria-hidden="true" />
-            <p className="section-label">In depth</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[minmax(200px,auto)]">
-            {portfolioBentoArticles.map((article, i) => {
-              const config = PORTFOLIO_BENTO_CONFIG[article.slug] ?? { variant: "B" as CardVariant, colSpan: 1, rowSpan: 1 };
-              const colClass = MD_PORTFOLIO_COL_SPAN[config.colSpan] ?? "md:col-span-1";
-              const rowClass = MD_ROW_SPAN[config.rowSpan] ?? "md:row-span-1";
-              return (
-                <div key={article.slug} className={`col-span-1 ${colClass} ${rowClass}`}>
-                  <PortfolioCard article={article} variant={config.variant} delay={(i % 3) * 0.08} />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Thought leadership grid ── */}
-      <section className="section-spacing border-t border-rule">
-        <div className="content-width">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-4 bg-navy" aria-hidden="true" />
-            <p className="section-label">Short reads</p>
-          </div>
-          {isFiltered ? (
-            /* Filtered view — simple 3-column standard grid */
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[minmax(220px,auto)]">
-              {filteredArticles.map((article, i) => (
-                <motion.div
-                  key={article.slug}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, ease: "easeOut", delay: i * 0.06 }}
-                  className="h-full"
-                >
-                  <ArticleCard article={article} variant="B" delay={0} />
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            /* Bento grid — 4-column with variable spans */
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:auto-rows-[minmax(200px,auto)]">
-              {bentoArticles.map((article, i) => {
-                const config = BENTO_CONFIG[article.slug] ?? {
-                  variant: "B" as CardVariant,
-                  colSpan: 1,
-                  rowSpan: 1,
-                };
-                const colClass = MD_COL_SPAN[config.colSpan] ?? "md:col-span-1";
-                const rowClass = MD_ROW_SPAN[config.rowSpan] ?? "md:row-span-1";
-                const staggerDelay = (i % 4) * 0.08;
-                return (
-                  <div
-                    key={article.slug}
-                    className={`col-span-1 ${colClass} ${rowClass}`}
-                  >
-                    <ArticleCard
-                      article={article}
-                      variant={config.variant}
-                      delay={staggerDelay}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── Pipeline articles (auto-published by CWA) ── */}
-      {pipelineArticles.length > 0 && (
-        <section className="section-spacing border-t border-rule">
+      {isFiltered ? (
+        /* ── Filtered view ── */
+        <section className="section-spacing">
           <div className="content-width">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-1 h-4 bg-navy" aria-hidden="true" />
-              <p className="section-label">Weekly insights</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pipelineArticles.map((article, i) => (
-                <motion.div
-                  key={article.slug}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                  className="h-full"
-                >
-                  <Link href={`/insights/${article.slug}`} className="block h-full">
-                    <div className="group relative flex flex-col justify-between h-full p-6 border border-rule overflow-hidden cursor-pointer">
-                      <span
-                        aria-hidden="true"
-                        className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-1 bg-cyan transition-[width] duration-150 ease-in-out"
-                      />
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.06em] uppercase">
-                            {article.category.replace(/_/g, ' ')}
-                          </span>
-                          <span className="text-slate opacity-30">&middot;</span>
-                          <span className="font-jakarta font-bold text-slate text-[11px]">
-                            {article.readTime}
-                          </span>
-                        </div>
-                        <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
-                          {article.title}
-                        </h2>
-                        <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 line-clamp-2">
-                          {article.description}
-                        </p>
-                      </div>
-                      <div className="mt-4">
-                        <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-                          Read article <span aria-hidden="true">&rarr;</span>
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+            <SectionHeader
+              label={activeFilter}
+              intro={
+                activeFilter === "Physical AI & Robotics"
+                  ? "Consumer robotics, embodied intelligence, edge computing, and multi-agent physical systems. Articles in this area are coming soon."
+                  : undefined
+              }
+            />
+            <FilteredGrid items={filteredItems} />
           </div>
         </section>
+      ) : (
+        <>
+          {/* ── Featured Essays ── */}
+          <section className="section-spacing">
+            <div className="content-width">
+              <SectionHeader
+                label="Featured Essays"
+                intro="Longer-form pieces that connect market shifts, operating models, and the systems required to make emerging technology useful."
+              />
+              {featuredArticles.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[minmax(260px,auto)]">
+                  {/* Flagship lead card — dominates 2 cols × 2 rows */}
+                  <div className="md:col-span-2 md:row-span-2">
+                    <FeaturedLeadCard article={featuredArticles[0]} />
+                  </div>
+                  {/* Two supporting essays */}
+                  {featuredArticles.slice(1, 3).map((a, i) => (
+                    <div key={a.slug} className="md:col-span-1">
+                      <FeaturedSecondaryCard
+                        article={a}
+                        delay={0.12 + i * 0.08}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* ── Current Thinking ── */}
+          <section className="section-spacing border-t border-rule">
+            <div className="content-width">
+              <SectionHeader
+                label="Current Thinking"
+                intro="Shorter observations from what I am building, reading, and noticing across fintech, AI systems, and emerging technology."
+              />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {currentThinkingArticles.map((a, i) => (
+                  <ThinkingCard
+                    key={a.slug}
+                    article={a}
+                    delay={(i % 3) * 0.07}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Current Areas of Research ── */}
+          <section className="section-spacing border-t border-rule">
+            <div className="content-width">
+              <SectionHeader
+                label="Current Areas of Research"
+                intro="A few themes I am actively studying as financial infrastructure, AI systems, and intelligent technologies continue to converge."
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {RESEARCH_AREAS.map((area, i) => (
+                  <motion.div
+                    key={area.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{
+                      duration: 0.4,
+                      ease: "easeOut",
+                      delay: i * 0.07,
+                    }}
+                  >
+                    <div className="border-l-4 border-navy pl-5">
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className="font-jakarta font-bold text-navy text-[18px] leading-[1.25]">
+                          {area.title}
+                        </h3>
+                        {area.emerging && (
+                          <span className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag" style={{ background: "rgba(45,255,248,0.18)", color: "#24356e" }}>
+                            Emerging Focus
+                          </span>
+                        )}
+                      </div>
+                      <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-2">
+                        {area.body}
+                      </p>
+                      <button
+                        onClick={() => setActiveFilter(area.filter)}
+                        className="font-jakarta font-medium text-navy text-[13px] mt-3 inline-block hover:opacity-70 transition-opacity duration-150 underline-cyan"
+                      >
+                        View related writing &rarr;
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Principles That Shape My Work ── */}
+          <section className="section-spacing border-t border-rule">
+            <div className="content-width">
+              <SectionHeader label="Principles That Shape My Work" />
+              <div className="max-w-2xl flex flex-col gap-0">
+                {PRINCIPLES.map((principle, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex gap-6 py-6 border-b border-rule"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{
+                      duration: 0.35,
+                      ease: "easeOut",
+                      delay: i * 0.06,
+                    }}
+                  >
+                    <span className="font-jakarta font-bold text-slate text-[12px] tracking-[0.04em] pt-[3px] flex-shrink-0 w-6 text-right opacity-50">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="font-jakarta font-semibold text-navy text-[17px] leading-[1.55]">
+                      {principle}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Personal Essays ── */}
+          {personalEssays.length > 0 && (
+            <section className="section-spacing border-t border-rule">
+              <div className="content-width">
+                <SectionHeader
+                  label="Personal Essays"
+                  intro="Reflective essays on work, reinvention, leadership, learning, and the personal side of building through change."
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {personalEssays.map((a, i) => (
+                    <PersonalEssayCard
+                      key={a.slug}
+                      article={a}
+                      delay={i * 0.08}
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── Field Notes (pipeline articles) ── */}
+          {pipelineArticles.length > 0 && (
+            <section className="section-spacing border-t border-rule">
+              <div className="content-width">
+                <SectionHeader
+                  label="Field Notes"
+                  intro="Short observations from current projects, research, and conversations."
+                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {pipelineArticles.map((article, i) => (
+                    <motion.div
+                      key={article.slug}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{
+                        duration: 0.4,
+                        ease: "easeOut",
+                        delay: i * 0.08,
+                      }}
+                      className="h-full"
+                    >
+                      <Link
+                        href={`/insights/${article.slug}`}
+                        className="block h-full"
+                      >
+                        <div className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer">
+                          <HoverBorder />
+                          <div>
+                            <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                              <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+                                Field Note
+                              </span>
+                              <span className="text-slate opacity-30 text-[10px]">
+                                &middot;
+                              </span>
+                              <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+                                {article.readTime}
+                              </span>
+                            </div>
+                            <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
+                              {article.title}
+                            </h2>
+                            <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-2">
+                              {article.description}
+                            </p>
+                          </div>
+                          <div className="mt-4">
+                            <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
+                              Read <span aria-hidden="true">&rarr;</span>
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── Article Archive ── */}
+          <section className="section-spacing border-t border-rule">
+            <div className="content-width">
+              <SectionHeader
+                label="Article Archive"
+                intro="Browse the complete archive by topic and theme."
+              />
+              <div className="flex flex-col gap-3 max-w-xl">
+                {ARCHIVE_PILLARS.map((pillar) => (
+                  <Link
+                    key={pillar}
+                    href={`/articles#${PILLAR_SLUGS[pillar]}`}
+                    className="group flex items-center justify-between py-3 border-b border-rule hover:border-navy transition-colors duration-150"
+                  >
+                    <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.08em] uppercase group-hover:text-navy transition-colors duration-150">
+                      {pillar}
+                    </span>
+                    <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em] group-hover:text-navy transition-colors duration-150">
+                      &rarr;
+                    </span>
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-8">
+                <Link
+                  href="/articles"
+                  className="font-jakarta font-medium text-navy text-[14px] underline-cyan hover:opacity-70 transition-opacity duration-150"
+                >
+                  View full archive &rarr;
+                </Link>
+              </div>
+            </div>
+          </section>
+        </>
       )}
     </>
   );
