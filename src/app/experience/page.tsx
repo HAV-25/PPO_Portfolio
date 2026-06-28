@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
@@ -132,16 +133,16 @@ const education = [
 
 function CredibilityStrip() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 border-t border-b border-rule">
       {credibilityStrip.map((item, i) => (
         <motion.div
           key={item.stat}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+          transition={{ duration: 0.4, ease: easing, delay: i * 0.08 }}
           className={`py-7 px-6 ${i > 0 ? "border-l border-rule" : ""}`}
         >
           <p className="font-jakarta font-bold text-navy text-[18px] md:text-[20px] leading-tight mb-1.5">
@@ -164,14 +165,14 @@ function ChapterEntry({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut", delay: index === 0 ? 0.1 : 0 }}
+      transition={{ duration: 0.45, ease: easing, delay: index === 0 ? 0.1 : 0 }}
       className="relative"
     >
       {/* Timeline dot */}
@@ -236,14 +237,14 @@ function ChapterEntry({
 
 function EarlierFoundations() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+      transition={{ duration: 0.45, ease: easing }}
       className="relative"
     >
       <div
@@ -283,14 +284,14 @@ function EarlierFoundations() {
 
 function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut", delay }}
+      transition={{ duration: 0.45, ease: easing, delay }}
     >
       {children}
     </motion.div>
@@ -307,17 +308,17 @@ export default function ExperiencePage() {
         <div className="content-width">
           <motion.h1
             className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.08] tracking-[-0.02em]"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             Operating Experience
           </motion.h1>
           <motion.p
             className="font-jakarta text-slate text-[17px] leading-[1.7] mt-5 max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+            transition={{ duration: 0.55, ease: easing, delay: 0.12 }}
           >
             18+ years building, scaling, and operationalizing systems across payments, regulated financial services, AI ventures, and emerging technology environments.
           </motion.p>
@@ -337,9 +338,9 @@ export default function ExperiencePage() {
           <motion.div
             className="border-l-4 p-6 rounded-card"
             style={{ borderLeftColor: "#2dfff8", background: "rgba(36,53,110,0.04)" }}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut", delay: 0.25 }}
+            transition={{ duration: 0.45, ease: easing, delay: 0.25 }}
           >
             <p
               className="font-jakarta font-semibold text-[11px] tracking-[0.1em] uppercase mb-2"

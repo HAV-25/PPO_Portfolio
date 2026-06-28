@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Button from "@/components/ui/LinkButton";
+import { easing } from "@/lib/motion";
 
 const story = [
   {
@@ -30,14 +31,14 @@ function StorySection({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
+      transition={{ duration: 0.45, ease: easing, delay: index * 0.08 }}
     >
       <span className="section-label">{section.label}</span>
       <p className="font-jakarta text-navy text-[17px] leading-[1.8]">
@@ -49,11 +50,11 @@ function StorySection({
 
 export default function AboutPage() {
   const photoRef = useRef<HTMLDivElement>(null);
-  const photoInView = useInView(photoRef, { once: true, margin: "-60px" });
+  const photoInView = useInView(photoRef, { once: true, margin: "-80px" });
   const eduRef = useRef<HTMLDivElement>(null);
-  const eduInView = useInView(eduRef, { once: true, margin: "-60px" });
+  const eduInView = useInView(eduRef, { once: true, margin: "-80px" });
   const ctaRef = useRef<HTMLDivElement>(null);
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-60px" });
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-80px" });
 
   return (
     <>
@@ -62,9 +63,9 @@ export default function AboutPage() {
         <div className="content-width">
           <motion.h1
             className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             Builder. Executive.{" "}
             <span className="underline-cyan">Neither, fully.</span>
@@ -79,9 +80,9 @@ export default function AboutPage() {
             {/* Photo */}
             <motion.div
               ref={photoRef}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={photoInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: easing }}
             >
               {/* TODO: Replace this div with <Image> once portrait photo is available */}
               <div
@@ -112,7 +113,7 @@ export default function AboutPage() {
                 className="font-jakarta font-medium text-slate text-[15px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
+                transition={{ duration: 0.4, ease: easing, delay: 0.4 }}
               >
                 Based in Germany. German citizen. Open to Europe and remote.
               </motion.p>
@@ -126,9 +127,9 @@ export default function AboutPage() {
         <div className="content-width">
           <motion.div
             ref={eduRef}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={eduInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: easing }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
               <div>
@@ -178,9 +179,9 @@ export default function AboutPage() {
         <div className="content-width">
           <motion.div
             ref={ctaRef}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: easing }}
             className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
           >
             <p className="font-jakarta font-bold text-navy text-[20px] md:text-[24px] max-w-md leading-[1.3]">

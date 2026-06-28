@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { easing } from "@/lib/motion";
 
 /*
  * TODO — PRIORITY BEFORE LAUNCH
@@ -56,9 +57,9 @@ export default function SocialProof() {
       <div className="content-width">
         <motion.span
           className="section-label"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: easing }}
         >
           From colleagues &amp; clients
         </motion.span>
@@ -67,9 +68,9 @@ export default function SocialProof() {
           {testimonials.map((t, i) => (
             <motion.figure
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.1 }}
+              transition={{ duration: 0.45, ease: easing, delay: i * 0.1 }}
               className="bg-cream-card rounded-card p-7 flex flex-col"
             >
               <blockquote className="font-jakarta text-navy text-[15px] leading-[1.8] flex-1">

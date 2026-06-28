@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 const expertiseAreas = [
   {
@@ -129,9 +130,9 @@ function ExpertiseBlock({ area }: { area: (typeof expertiseAreas)[0] }) {
     >
       <div className="content-width">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: easing }}
         >
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-start">
             {/* Left column */}
@@ -177,7 +178,7 @@ function ExpertiseBlock({ area }: { area: (typeof expertiseAreas)[0] }) {
                       key={item}
                       initial={{ opacity: 0, x: -8 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.35, ease: "easeOut", delay: 0.1 + i * 0.06 }}
+                      transition={{ duration: 0.35, ease: easing, delay: 0.1 + i * 0.06 }}
                       className="flex gap-3 items-start"
                     >
                       <span
@@ -224,17 +225,17 @@ export default function ExpertisePage() {
         <div className="content-width">
           <motion.h1
             className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             Where I create the most value
           </motion.h1>
           <motion.div
             className="mt-6 max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+            transition={{ duration: 0.55, ease: easing, delay: 0.12 }}
           >
             <p className="font-jakarta text-slate text-[18px] leading-[1.7]">
               My work typically sits at the intersection of technology, operating models,
@@ -263,9 +264,9 @@ export default function ExpertisePage() {
       <div ref={closingRef} className="section-spacing border-t border-rule">
         <div className="content-width">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={closingInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: easing }}
             className="max-w-2xl"
           >
             <span className="section-label">How I approach complex change</span>

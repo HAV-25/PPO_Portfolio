@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { easing } from "@/lib/motion";
 
 const CALENDLY_URL = "https://calendly.com/payalponkshe/discovery-call";
 
@@ -40,9 +41,9 @@ export default function BookPage() {
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-14 md:gap-20 items-start">
           {/* Left — context */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             <h1 className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]">
               Let&apos;s talk.
@@ -62,7 +63,7 @@ export default function BookPage() {
                     key={item}
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.35, ease: "easeOut", delay: 0.2 + i * 0.07 }}
+                    transition={{ duration: 0.35, ease: easing, delay: 0.2 + i * 0.07 }}
                     className="flex gap-3 items-start"
                   >
                     <span className="text-navy font-bold flex-shrink-0 mt-[2px]">→</span>
@@ -91,9 +92,9 @@ export default function BookPage() {
 
           {/* Right — Calendly */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.15 }}
+            transition={{ duration: 0.55, ease: easing, delay: 0.15 }}
           >
             <CalendlyEmbed url={CALENDLY_URL} />
           </motion.div>

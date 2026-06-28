@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 export default function GiveBackTeaser() {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,53 +15,53 @@ export default function GiveBackTeaser() {
         <div className="max-w-2xl">
           <motion.span
             className="section-label"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: easing }}
           >
             Open office hours
           </motion.span>
 
           <motion.h2
             className="font-jakarta font-bold text-navy text-[26px] md:text-[32px] leading-[1.2] tracking-[-0.01em]"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.08 }}
           >
             A small number of conversations, each month.
           </motion.h2>
 
           <motion.p
             className="font-jakarta text-slate text-[16px] leading-[1.75] mt-4"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.15 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.15 }}
           >
             I reserve a small number of conversations each month for professionals navigating leadership transitions, fintech, AI transformation, or new venture ideas.
           </motion.p>
 
           <motion.p
             className="font-jakarta text-slate text-[16px] leading-[1.75] mt-3"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.2 }}
           >
             These discussions are informal, practical, and grounded in real-world experience building products, teams, and operating models across multiple markets.
           </motion.p>
 
           <motion.p
             className="font-jakarta font-medium text-navy text-[15px] leading-[1.65] mt-5"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.25 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.25 }}
           >
             No programme. No funnel. Just thoughtful conversation.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.3 }}
             className="mt-7"
           >
             <Link

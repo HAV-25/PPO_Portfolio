@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { easing } from "@/lib/motion";
 
 const domains = [
   {
@@ -27,18 +28,18 @@ export default function WhereImBuildingNext() {
       <div className="content-width">
         <motion.span
           className="section-label"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: easing }}
         >
           Where I&apos;m building next
         </motion.span>
 
         <motion.p
           className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] max-w-2xl mb-12"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+          transition={{ duration: 0.4, ease: easing, delay: 0.08 }}
         >
           Technology evolves in waves. My career began in payments infrastructure, expanded into digital platforms and AI systems, and is increasingly focused on technologies that move intelligence beyond software.
         </motion.p>
@@ -47,9 +48,9 @@ export default function WhereImBuildingNext() {
           {domains.map((domain, i) => (
             <motion.div
               key={domain.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + i * 0.1 }}
+              transition={{ duration: 0.4, ease: easing, delay: 0.1 + i * 0.1 }}
               className={`py-8 pr-8 ${i > 0 ? "md:pl-8 md:border-l border-rule" : ""}`}
             >
               <div
@@ -69,9 +70,9 @@ export default function WhereImBuildingNext() {
 
         <motion.p
           className="font-jakarta font-medium text-navy text-[15px] leading-[1.65] mt-10 pt-8 border-t border-rule max-w-2xl"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.42 }}
+          transition={{ duration: 0.4, ease: easing, delay: 0.42 }}
         >
           The common thread across all three domains is systems: understanding how technology moves from concept to scalable adoption.
         </motion.p>

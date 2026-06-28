@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 import Tag from "@/components/ui/StatusTag";
 import StackIcon from "@/components/ui/StackIcon";
 
@@ -50,9 +51,9 @@ export default function PortfolioPreview() {
           {featured.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.1 }}
+              transition={{ duration: 0.4, ease: easing, delay: i * 0.1 }}
               className="group bg-cream-card rounded-card p-7 flex flex-col card-hover"
             >
               <div className="flex items-center gap-2 flex-wrap">

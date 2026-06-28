@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { easing } from "@/lib/motion";
 
 type Stat =
   | { kind: "counter"; value: number; prefix?: string; suffix: string; label: string; sublabel: string }
@@ -90,9 +91,9 @@ export default function StatBand() {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+              transition={{ duration: 0.65, ease: easing, delay: i * 0.08 }}
               className="flex flex-col"
             >
               {stat.kind === "counter" ? (

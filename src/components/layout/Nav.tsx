@@ -35,9 +35,16 @@ export default function Nav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 bg-cream transition-shadow duration-200 ${
-          scrolled ? "shadow-[0_1px_0_rgba(36,53,110,0.15)]" : "border-b border-rule"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "shadow-[0_1px_0_rgba(36,53,110,0.1)]"
+            : "border-b border-rule"
         }`}
+        style={{
+          background: "rgba(251,250,247,0.88)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+        }}
       >
         <div className="content-width">
           <nav className="flex items-center justify-between h-16 md:h-[72px]">
@@ -70,7 +77,7 @@ export default function Nav() {
                       href={href}
                       className={`font-jakarta font-medium text-[14px] transition-colors duration-150 relative ${
                         active
-                          ? "text-navy after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-cyan after:rounded-none"
+                          ? "text-navy after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-[#4F7C72] after:rounded-none"
                           : "text-slate hover:text-navy"
                       }`}
                     >
@@ -120,7 +127,7 @@ export default function Nav() {
 
       {/* Mobile menu overlay */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-cream pt-16 md:hidden">
+        <div className="fixed inset-0 z-40 pt-16 md:hidden" style={{ background: "rgba(251,250,247,0.96)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)" }}>
           <div className="content-width py-10 flex flex-col h-full">
             <ul className="flex flex-col gap-1 flex-1" role="list">
               {navLinks.map(({ href, label }) => {

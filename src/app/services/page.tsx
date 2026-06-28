@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Button from "@/components/ui/LinkButton";
+import { easing } from "@/lib/motion";
 
 const services = [
   {
@@ -74,9 +75,9 @@ function ServiceBlock({
     >
       <div className="content-width">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: easing }}
         >
           <span className="label-meta block mb-2">{service.label}</span>
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-start">
@@ -121,7 +122,7 @@ function ServiceBlock({
                       key={item}
                       initial={{ opacity: 0, x: -8 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.35, ease: "easeOut", delay: 0.1 + i * 0.07 }}
+                      transition={{ duration: 0.35, ease: easing, delay: 0.1 + i * 0.07 }}
                       className="flex gap-3 items-start"
                     >
                       <span
@@ -166,17 +167,17 @@ export default function ServicesPage() {
         <div className="content-width" ref={heroRef}>
           <motion.h1
             className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             How I work with you
           </motion.h1>
           <motion.p
             className="font-jakarta text-slate text-[18px] leading-[1.65] mt-5 max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+            transition={{ duration: 0.55, ease: easing, delay: 0.12 }}
           >
             I work with a small number of clients at a time — founders, COOs, and operators
             in fintech, payments, and AI-first companies who need someone who has done it
@@ -194,9 +195,9 @@ export default function ServicesPage() {
       <div ref={dontRef} className="section-spacing border-t border-rule">
         <div className="content-width">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={dontInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: easing }}
             className="max-w-2xl"
           >
             <span className="section-label">What I don&apos;t do</span>

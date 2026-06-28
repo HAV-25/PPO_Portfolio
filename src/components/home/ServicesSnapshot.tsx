@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 const services = [
   {
@@ -63,9 +64,9 @@ export default function ServicesSnapshot() {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.1 }}
+              transition={{ duration: 0.4, ease: easing, delay: i * 0.1 }}
               className="group bg-cream-card rounded-card p-8 flex flex-col card-hover"
             >
               <div

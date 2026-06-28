@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 const highlights = [
   {
@@ -36,18 +37,18 @@ export default function ExperiencePreview() {
 
         <motion.h2
           className="font-jakarta font-extrabold text-navy text-[36px] md:text-[48px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-4"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: easing }}
         >
           From payment infrastructure to AI systems
         </motion.h2>
 
         <motion.p
           className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] max-w-2xl mb-10"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+          transition={{ duration: 0.4, ease: easing, delay: 0.08 }}
         >
           My career has focused on one recurring challenge: how do you scale complex systems across people, technology, partnerships, and markets? From global payments infrastructure and commercial ecosystems to AI-native platforms, the underlying problem remains remarkably consistent.
         </motion.p>
@@ -56,9 +57,9 @@ export default function ExperiencePreview() {
           {highlights.map((item, i) => (
             <motion.div
               key={item.role}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + i * 0.1 }}
+              transition={{ duration: 0.4, ease: easing, delay: 0.1 + i * 0.1 }}
               className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 py-6 border-b border-rule"
             >
               <div className="flex-1">

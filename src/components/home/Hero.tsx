@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { easing } from "@/lib/motion";
 
 const operatingFocus = [
   {
@@ -25,16 +26,16 @@ const previouslyAt = ["Mastercard", "Wirecard", "Skyllfull"];
 
 export default function Hero() {
   return (
-    <section className="section-spacing pt-[140px] md:pt-[160px]">
+    <section className="hero-bg section-spacing pt-[140px] md:pt-[160px]">
       <div className="content-width">
         <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-12 items-start">
           {/* Left column */}
           <div>
             <motion.h1
               className="font-jakarta font-extrabold text-navy text-[38px] md:text-[52px] lg:text-[58px] leading-[1.1] tracking-[-0.02em]"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.65, ease: easing }}
             >
               Building systems at the intersection of{" "}
               <span className="underline-cyan">fintech, AI, and emerging technology.</span>
@@ -42,9 +43,9 @@ export default function Hero() {
 
             <motion.div
               className="mt-7 space-y-4 max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+              transition={{ duration: 0.6, ease: easing, delay: 0.15 }}
             >
               <p className="font-jakarta font-normal text-slate text-[17px] md:text-[18px] leading-[1.75]">
                 For nearly two decades I&apos;ve helped organisations scale products, partnerships, and operations across payments and financial infrastructure.
@@ -59,9 +60,9 @@ export default function Hero() {
 
             <motion.div
               className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-9"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.28 }}
+              transition={{ duration: 0.6, ease: easing, delay: 0.28 }}
             >
               <Link href="#work" className="btn-primary">
                 Explore my work <span aria-hidden="true">↓</span>
@@ -75,7 +76,7 @@ export default function Hero() {
               className="flex items-center gap-3 mt-8 flex-wrap"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
+              transition={{ duration: 0.5, ease: easing, delay: 0.45 }}
             >
               <span className="font-jakarta font-medium text-slate text-[11px] tracking-[0.08em] uppercase">
                 Previously at
@@ -96,9 +97,9 @@ export default function Hero() {
           {/* Right column — Operating Focus card */}
           <motion.div
             className="bg-navy rounded-card p-8 lg:p-9"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.35 }}
+            transition={{ duration: 0.65, ease: easing, delay: 0.35 }}
           >
             <p className="font-jakarta font-semibold text-cyan text-[11px] tracking-[0.1em] uppercase mb-6">
               Operating Focus

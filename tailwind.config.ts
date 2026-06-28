@@ -9,16 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F5F1E8",
-        "cream-card": "#EDE8DC",
-        "cream-deep": "#E4DFD0",
+        cream: "#FBFAF7",
+        "cream-card": "#F2EFE9",
+        "cream-deep": "#E8E4DC",
         navy: "#24356e",
         "navy-80": "rgba(36,53,110,0.8)",
         "navy-20": "rgba(36,53,110,0.2)",
-        cyan: "#2dfff8",
-        slate: "#5A6A8A",
+        cyan: "#4F7C72",
+        "cyan-light": "rgba(79,124,114,0.12)",
+        slate: "#6B7280",
         "red-wrong": "#D94F4F",
-        rule: "rgba(36,53,110,0.25)",
+        rule: "rgba(227,222,214,0.9)",
+        "rule-strong": "rgba(36,53,110,0.15)",
         "live-bg": "#E8F5F0",
         "live-dot": "#2D9E6B",
         "inbuild-bg": "#F0F0EE",
@@ -28,6 +30,7 @@ const config: Config = {
         sans: ["var(--font-jakarta)", "sans-serif"],
         display: ["var(--font-jakarta)", "sans-serif"],
         jakarta: ["var(--font-jakarta)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       fontSize: {
         "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em" }],

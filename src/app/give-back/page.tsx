@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { easing } from "@/lib/motion";
 
 const REENTRY_URL = "https://calendly.com/payalponkshe/career-reentry";
 const PIVOT_URL = "https://calendly.com/payalponkshe/pivot-upskill-position";
@@ -60,13 +61,13 @@ function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut", delay }}
+      transition={{ duration: 0.45, ease: easing, delay }}
       className={className}
     >
       {children}
@@ -82,14 +83,14 @@ function ProfessionalCard({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+      transition={{ duration: 0.5, ease: easing, delay: index * 0.1 }}
       className="bg-cream-card rounded-card flex flex-col p-7 card-hover"
     >
       {/* Status pill */}
@@ -164,26 +165,26 @@ export default function GiveBackPage() {
             <div>
               <motion.span
                 className="section-label"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: easing }}
               >
                 Give-Back Programmes
               </motion.span>
               <motion.h1
                 className="font-jakarta font-extrabold text-navy text-[40px] md:text-[52px] leading-[1.08] tracking-[-0.02em] mt-3"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
+                transition={{ duration: 0.6, ease: easing, delay: 0.08 }}
               >
                 Giving back is not a{" "}
                 <span className="underline-cyan">side note.</span>
               </motion.h1>
               <motion.p
                 className="font-jakarta font-normal text-slate text-[17px] md:text-[18px] leading-[1.7] mt-6 max-w-xl"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.18 }}
+                transition={{ duration: 0.6, ease: easing, delay: 0.18 }}
               >
                 I run a small number of free initiatives across professional
                 career support, senior care, and education access. None of these
@@ -194,9 +195,9 @@ export default function GiveBackPage() {
             {/* Right column — navy card matching home hero */}
             <motion.div
               className="bg-navy rounded-card p-8 lg:p-9"
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.32 }}
+              transition={{ duration: 0.6, ease: easing, delay: 0.32 }}
             >
               <p className="font-jakarta font-semibold text-cyan text-[11px] tracking-[0.1em] uppercase mb-5">
                 What I run

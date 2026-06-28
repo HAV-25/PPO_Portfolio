@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { easing } from "@/lib/motion";
 import Tag from "@/components/ui/StatusTag";
 import StackIcon from "@/components/ui/StackIcon";
 import Link from "next/link";
@@ -224,14 +225,14 @@ function ProjectCard({
   onOpen: (p: Project) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, ease: "easeOut", delay: (index % 2) * 0.1 }}
+      transition={{ duration: 0.45, ease: easing, delay: (index % 2) * 0.1 }}
       className="group bg-cream-card rounded-card flex flex-col p-7 cursor-pointer card-hover"
       onClick={() => onOpen(project)}
       role="button"
@@ -307,7 +308,7 @@ function CaseStudyModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
+      transition={{ duration: 0.2, ease: easing }}
       className="fixed inset-0 z-50 bg-cream overflow-y-auto"
       role="dialog"
       aria-modal="true"
@@ -453,17 +454,17 @@ export default function WorkPage() {
         <div className="content-width">
           <motion.h1
             className="font-jakarta font-extrabold text-navy text-[40px] md:text-[52px] leading-[1.08] tracking-[-0.02em]"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: easing }}
           >
             Building Systems
           </motion.h1>
           <motion.div
             className="mt-6 max-w-2xl space-y-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+            transition={{ duration: 0.55, ease: easing, delay: 0.12 }}
           >
             <p className="font-jakarta text-slate text-[17px] leading-[1.75]">
               The systems below span enterprise organisations, venture environments, and independently developed platforms.
@@ -516,9 +517,9 @@ export default function WorkPage() {
             {aiProjects.filter((p) => p.id === "german-exam-app").map((project) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
+                transition={{ duration: 0.45, ease: easing }}
                 className="group bg-navy rounded-card flex flex-col md:flex-row gap-0 cursor-pointer overflow-hidden card-hover-invert"
                 onClick={() => setSelected(project)}
                 role="button"
@@ -603,25 +604,25 @@ export default function WorkPage() {
         <div className="content-width">
           <motion.p
             className="font-jakarta font-medium text-navy text-[17px] leading-[1.65] mb-8"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={principlesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: easing }}
           >
             The technologies evolve. The underlying principles rarely do.
           </motion.p>
           <motion.span
             className="section-label"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={principlesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.06 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.06 }}
           >
             Principles that shape my work
           </motion.span>
           <motion.p
             className="font-jakarta text-slate text-[16px] leading-[1.75] max-w-2xl mt-3 mb-12"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={principlesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.1 }}
           >
             Across payments, AI systems, and emerging technologies, these ideas consistently shape how I approach products, operating models, and long-term adoption.
           </motion.p>
@@ -637,7 +638,7 @@ export default function WorkPage() {
                 className="font-jakarta font-medium text-navy text-[18px] md:text-[20px] leading-[1.5] py-6"
                 initial={{ opacity: 0, x: -12 }}
                 animate={principlesInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.12 + i * 0.08 }}
+                transition={{ duration: 0.4, ease: easing, delay: 0.12 + i * 0.08 }}
               >
                 {principle}
               </motion.p>
@@ -651,18 +652,18 @@ export default function WorkPage() {
         <div className="content-width">
           <motion.h2
             className="font-jakarta font-extrabold text-navy text-[28px] md:text-[36px] leading-[1.15] tracking-[-0.01em]"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={whereInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: easing }}
           >
             Where I&apos;m building next
           </motion.h2>
 
           <motion.p
             className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] max-w-2xl mt-4 mb-12"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={whereInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.08 }}
           >
             Technology evolves in waves. My career began in payments infrastructure, expanded into digital platforms and AI systems, and is increasingly focused on technologies that move intelligence beyond software.
           </motion.p>
@@ -671,9 +672,9 @@ export default function WorkPage() {
             {whereNext.map((domain, i) => (
               <motion.div
                 key={domain.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={whereInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + i * 0.1 }}
+                transition={{ duration: 0.4, ease: easing, delay: 0.1 + i * 0.1 }}
                 className={`py-8 pr-8 ${i > 0 ? "md:pl-8 md:border-l border-rule" : ""}`}
               >
                 <div
@@ -693,9 +694,9 @@ export default function WorkPage() {
 
           <motion.p
             className="font-jakarta font-medium text-navy text-[15px] leading-[1.65] mt-10 pt-8 border-t border-rule max-w-2xl"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={whereInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.42 }}
+            transition={{ duration: 0.4, ease: easing, delay: 0.42 }}
           >
             The common thread across all three domains is systems: understanding how technology moves from concept to scalable adoption.
           </motion.p>

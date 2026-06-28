@@ -4,25 +4,32 @@
 
 /* ─── Design tokens ─────────────────────────────────────────────────────── */
 :root {
-  --bg-cream: #F5F1E8;
-  --cream-card: #EDE8DC;
-  --cream-deep: #E4DFD0;
+  --bg-cream: #FBFAF7;
+  --cream-card: #F2EFE9;
+  --cream-deep: #E8E4DC;
   --navy: #24356e;
   --navy-80: rgba(36, 53, 110, 0.8);
   --navy-20: rgba(36, 53, 110, 0.2);
-  --cyan: #2dfff8;
+  --cyan: #4F7C72;
+  --cyan-light: rgba(79, 124, 114, 0.12);
   --red-wrong: #D94F4F;
-  --slate: #5A6A8A;
-  --rule: rgba(36, 53, 110, 0.25);
+  --slate: #6B7280;
+  --rule: rgba(227, 222, 214, 0.9);
+  --rule-strong: rgba(36, 53, 110, 0.15);
   --live-bg: #E8F5F0;
   --live-dot: #2D9E6B;
   --inbuild-bg: #F0F0EE;
   --inbuild-dot: #9B9B9B;
 
-  --font-jakarta: "Inter", sans-serif;
+  --font-jakarta: "Manrope", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 
   --max-width: 1200px;
   --section-padding: 80px;
+
+  /* Motion easing */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ─── Base reset ─────────────────────────────────────────────────────────── */
@@ -129,12 +136,48 @@
     color: var(--slate);
   }
 
-  /* Cyan underline accent — one per section, key phrases only */
+  /* Sage underline accent — one per section, key phrases only */
   .underline-cyan {
     text-decoration: underline;
     text-decoration-color: var(--cyan);
-    text-decoration-thickness: 6px;
+    text-decoration-thickness: 3px;
     text-underline-offset: 4px;
+  }
+
+  /* Link hover — underline scaleX reveal animation */
+  .link-hover {
+    position: relative;
+    display: inline-block;
+  }
+  .link-hover::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--navy);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease-out-expo);
+  }
+  .link-hover:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Hero background — soft radial gradients */
+  .hero-bg {
+    background: var(--bg-cream);
+    position: relative;
+  }
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 80% 20%, rgba(79, 124, 114, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(36, 53, 110, 0.04) 0%, transparent 55%);
+    pointer-events: none;
   }
 
   /* Section divider rule */
@@ -178,13 +221,20 @@
     }
   }
 
-  /* Card hover — background deepens, no border trick */
+  /* Card hover — lift with translateY, border darkens, no shadow */
   .card-hover {
-    transition: background-color 200ms ease-out;
+    transition: background-color 200ms var(--ease-standard), transform 220ms var(--ease-out-expo), border-color 200ms ease;
   }
 
   .card-hover:hover {
-    background-color: var(--cream-deep);
+    background-color: var(--cream-card);
+    transform: translateY(-2px);
+  }
+
+  /* Pull quote — sage left border */
+  .pull-quote {
+    border-left: 3px solid var(--cyan);
+    padding-left: 20px;
   }
 
   /* Featured card on dark navy bg */
