@@ -105,39 +105,126 @@ function categoryLabel(category: string): string {
   return MAP[category] ?? category.replace(/_/g, ' ')
 }
 
-// ─── Main component ────────────────────────────────────────────────────────────
+// ─── Structured data builders ──────────────────────────────────────────────────
 
-export default async function PipelineArticleRenderer({ article }: { article: PipelineArticle }) {
-  const schemaJsonLd = {
+const AUTHOR_ENTITY = {
+  '@type': 'Person',
+  '@id': 'https://payalponkshe.com/#payal',
+  name: 'Payal Ponkshe',
+  jobTitle: 'Fintech & Payments Executive | AI Venture Builder',
+  url: 'https://payalponkshe.com',
+  sameAs: [
+    'https://www.linkedin.com/in/payalponkshe/',
+    'https://payalponkshe.com/about',
+  ],
+  knowsAbout: [
+    'Agentic AI',
+    'Fintech',
+    'Payments Infrastructure',
+    'AI Implementation',
+    'EU AI Act',
+    'Operating Model Design',
+    'Enterprise Transformation',
+  ],
+}
+
+function buildArticleSchema(article: PipelineArticle) {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
     description: article.description,
     datePublished: article.publishDate,
-    author: {
-      '@type': 'Person',
-      '@id': 'https://payalponkshe.com/#payal',
-      name: 'Payal Ponkshe',
-      jobTitle: 'Fintech & Payments Executive | AI Venture Builder',
-      url: 'https://payalponkshe.com',
-      sameAs: ['https://www.linkedin.com/in/payalponkshe/'],
+    dateModified: article.publishDate,
+    inLanguage: 'en-GB',
+    url: `https://payalponkshe.com/insights/${article.slug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://payalponkshe.com/insights/${article.slug}`,
     },
+    author: AUTHOR_ENTITY,
     publisher: {
       '@type': 'Person',
       name: 'Payal Ponkshe',
       url: 'https://payalponkshe.com',
     },
-    url: `https://payalponkshe.com/insights/${article.slug}`,
-    mainEntityOfPage: `https://payalponkshe.com/insights/${article.slug}`,
-    keywords: article.targetKeyword,
+    keywords: article.keywords.join(', '),
+    articleSection: categoryLabel(article.category),
+    about: {
+      '@type': 'Thing',
+      name: article.targetKeyword,
+    },
   }
+}
+
+function buildFAQSchema(faqItems: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+}
+
+function buildBreadcrumbSchema(article: PipelineArticle) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://payalponkshe.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Insights',
+        item: 'https://payalponkshe.com/insights',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.title,
+        item: `https://payalponkshe.com/insights/${article.slug}`,
+      },
+    ],
+  }
+}
+
+// ─── Main component ────────────────────────────────────────────────────────────
+
+export default async function PipelineArticleRenderer({ article }: { article: PipelineArticle }) {
+  const articleSchema = buildArticleSchema(article)
+  const breadcrumbSchema = buildBreadcrumbSchema(article)
+  const faqSchema = article.faqItems && article.faqItems.length > 0
+    ? buildFAQSchema(article.faqItems)
+    : null
 
   return (
     <>
+      {/* SEO/GEO/AEO structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       {/* Back nav */}
       <div className="pt-[100px] md:pt-[120px] border-b border-rule">

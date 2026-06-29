@@ -2,12 +2,41 @@
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "title": "What agentic AI actually is (and isn't): a builder's definition",
   "slug": "what-agentic-ai-actually-is",
-  "publishDate": "2026-06-23",
+  "publishDate": "2026-06-29",
   "category": "agentic_builds",
   "topicNumber": 1,
   "targetKeyword": "agentic AI definition",
-  "status": "awaiting_approval",
-  "approvalToken": "32c8156c-72d3-4e70-895a-97aa56237910",
+  "additionalKeywords": [
+    "agentic AI definition",
+    "what is agentic AI",
+    "AI agent definition",
+    "agentic AI financial services",
+    "AI agents vs chatbots",
+    "agentic AI EU AI Act",
+    "AI agents fintech",
+    "agentic AI compliance",
+    "multi-agent systems banking",
+    "agentic AI regulated industries"
+  ],
+  "status": "published",
+  "faqItems": [
+    {
+      "question": "What is the simplest definition of agentic AI?",
+      "answer": "An agentic AI system plans steps, calls tools, observes results, and adjusts — looping until a task is complete or a human gate is reached. The key difference from a workflow: the agent decides what to do next based on what just happened, rather than following a fixed sequence you defined in advance."
+    },
+    {
+      "question": "How is an AI agent different from a chatbot?",
+      "answer": "A chatbot generates a response to a prompt and waits for the next one. An agent can take a goal — such as reviewing an AML alert and preparing a case summary — break it into steps, query multiple data sources, cross-reference findings, and return a structured output, without a human directing each step. The chatbot answers. The agent acts."
+    },
+    {
+      "question": "Do AI agents work in regulated industries like financial services?",
+      "answer": "Yes — and adoption is accelerating. 44% of finance teams are using agentic AI in 2026, up 600%+ from 2025. Under the EU AI Act (effective August 2026), agentic systems in regulated contexts require risk classification, human-oversight mechanisms, and a full audit registry of agent actions. Institutions that design for this from the start gain a compliance advantage, not just an efficiency one."
+    },
+    {
+      "question": "What makes most agentic AI deployments fail?",
+      "answer": "Gartner projects more than 40% of agentic AI projects will be cancelled by end of 2027. The primary causes are scope too broad, no defined human escalation gates, and outputs the business cannot verify or audit. In financial services, add a fourth: no audit trail compatible with regulatory requirements. The fix is tighter architecture — narrow scope, defined thresholds, full observability, and an agent registry that satisfies the EU AI Act from day one."
+    }
+  ],
   "sources": [
     { "name": "Accelirate", "date": "June 2026", "verified": true },
     { "name": "Gartner", "date": "2026", "verified": true },

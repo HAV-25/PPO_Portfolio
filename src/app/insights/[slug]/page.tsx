@@ -65,8 +65,9 @@ export async function generateMetadata({
     return {
       title: `${pipeline.title} \u2014 Payal Ponkshe`,
       description: pipeline.description,
-      keywords: [pipeline.targetKeyword],
+      keywords: pipeline.keywords,
       authors: [{ name: "Payal Ponkshe", url: "https://payalponkshe.com" }],
+      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
       openGraph: {
         type: "article",
         title: pipeline.title,
@@ -74,13 +75,17 @@ export async function generateMetadata({
         url,
         siteName: "Payal Ponkshe",
         publishedTime: pipeline.publishDate,
+        modifiedTime: pipeline.publishDate,
         authors: ["Payal Ponkshe"],
+        tags: pipeline.keywords,
+        locale: "en_GB",
       },
       twitter: {
         card: "summary_large_image",
         title: pipeline.title,
         description: pipeline.description,
         creator: "@payalponkshe",
+        site: "@payalponkshe",
       },
       alternates: { canonical: url },
     };
