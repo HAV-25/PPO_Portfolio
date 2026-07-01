@@ -1,0 +1,89 @@
+---
+title: "The solo builder's production stack: n8n + Claude + Supabase + MCP"
+description: "How to build production AI solo: the n8n, Claude, and Supabase stack shipping agentic systems in 2026 — with EU data residency and under $100/month at scale."
+publishDate: "2026-07-03"
+category: "zero_to_one"
+readTime: "6 min"
+targetKeyword: "n8n Claude Supabase stack"
+slug: "solo-builders-production-stack-n8n-claude-supabase-mcp"
+status: "draft"
+---
+
+62% of startups now have more than half their codebase written by AI (Supabase State of Startups, 2026). The question is no longer whether to build with AI — it is which stack to commit to so that what you build actually reaches production.
+
+The answer most solo builders are landing on: n8n + Claude + Supabase + MCP. Not as a prototype layer. As the production system.
+
+## What is the best AI stack for a solo builder in 2026?
+
+The n8n + Claude + Supabase + MCP combination covers four distinct roles — orchestration, intelligence, data, and integration protocol — without overlap. Each component is independently replaceable. That matters when you are a solo builder: you cannot afford to be locked into one vendor's roadmap or one pricing change forcing a rebuild.
+
+Most alternative stacks collapse two roles into one tool, creating brittle dependencies, or require engineering infrastructure that a solo builder cannot reasonably maintain. This stack avoids both failure modes. The combined infrastructure cost runs under $100/month at thousands of workflow executions per month (MindStudio, 2026). And the MCP standard is now supported by OpenAI, Google, and the majority of IDEs — it is not a bet on one ecosystem.
+
+## What does each layer of the stack actually do?
+
+Each layer owns one responsibility cleanly: n8n owns orchestration (multi-step workflow logic, error handling, human approval gates); Claude owns intelligence (reasoning, generation, classification, scoring); Supabase owns data (Postgres with Row-Level Security, pgvector, auth, edge functions); MCP owns integration (how Claude reads and writes to live systems in real time).
+
+Here is how the four layers map in practice:
+
+| Layer | Tool | What it owns | Why not the alternative |
+|---|---|---|---|
+| Orchestration | n8n | Workflow logic, error handling, human gates | Make: weaker EU data; Zapier: no code-native AI nodes |
+| Intelligence | Claude API | Reasoning, generation, scoring, classification | Routing by cost (Haiku/Sonnet) keeps bill under $100/mo |
+| Data | Supabase | Postgres, RLS, pgvector, auth, edge functions | Firebase: no RLS; PlanetScale: no vector search |
+| Integration | MCP | Live reads/writes between Claude and any system | Custom APIs: no standard; LangChain tools: verbose |
+
+The MCP layer is the most recent addition to this stack and the one that changes build velocity most materially. In 2026 the official MCP registry holds 9,400+ servers (agence-scroll.com, June 2026). n8n exposes its own MCP server, giving Claude direct access to n8n's 2,063 automation nodes (n8n documentation, 2026). That means Claude can build, test, and modify n8n workflows directly — cutting the round-trips between intelligence and orchestration layers that previously required a developer to translate.
+
+## Why n8n over Make or Zapier for AI-native builds?
+
+n8n is the correct orchestration choice for production AI systems for 3 reasons: EU data residency built in (Frankfurt servers, SOC2 certified), code-native JavaScript function nodes where no-code tools hit their ceiling, and native MCP server support that connects Claude to orchestration without custom middleware.
+
+The EU data residency point is not cosmetic. For builders serving European customers — or operating in sectors where GDPR Article 44 data transfer rules govern third-country processing — n8n's Frankfurt-hosted infrastructure is a material compliance advantage over US-hosted alternatives. The SOC2 certificate is what a regulated client asks for in the security review. Having it built into the stack from day one means you are not retrofitting compliance after your first enterprise conversation.
+
+The code-native JavaScript nodes matter for AI pipelines specifically. When you implement typed handoff contracts between pipeline stages — parsing a structured JSON output from Claude before passing it to the next workflow node — n8n's function nodes handle this cleanly. Zapier's custom code support is limited. Make requires workarounds that break at scale.
+
+## How does this stack work in regulated financial services?
+
+Fintech and regulated financial institutions get three compliance-relevant properties from this stack by default: EU data residency (n8n Frankfurt + Supabase EU region), Row-Level Security at the database schema layer, and structured audit trail architecture compatible with DORA incident reporting and EU AI Act Article 12 logging.
+
+Papaya Global built a production HR compliance agent on Claude and Supabase with no engineers (SaaStr, 2026). The same architecture pattern applies to credit memo automation, KYC document processing, and regulatory reporting workflows — three of the highest-ROI agentic use cases in financial services today.
+
+The DORA and EU AI Act overlap is worth naming explicitly. DORA (EU 2022/2554) requires documented incident trails for ICT systems. EU AI Act Article 12 requires logging for high-risk AI decisions. Supabase's event logging — structured Postgres tables with timestamped entries and RLS access controls — satisfies both requirements with one infrastructure investment. Build it once; audit it twice.
+
+For credit memo automation specifically: the workflow is n8n triggering Claude to extract key terms from the credit file and generate a first-draft memo, writing structured output to Supabase with a human approval gate before it reaches the credit officer. That pipeline cuts analyst time from 4 hours to 30 minutes of review — a 5x throughput improvement without additional headcount. Revenue per employee rises not because the team works harder, but because the operating model is designed around what AI does well.
+
+## What I would do
+
+If I were setting up this stack for production today, this is the sequence I would follow:
+
+1. **Start with Supabase schema design.** Define the data model and Row-Level Security policies before writing a single workflow. The schema is the hardest thing to change later. Get it right first — especially the RLS rules, which are also your GDPR and EU AI Act compliance foundation.
+
+2. **Wire n8n to Supabase before adding Claude.** Build the data flow end-to-end with static test data. Confirm your reads, writes, and RLS rules work at each boundary. Only add AI into the pipeline once the plumbing is validated.
+
+3. **Add Claude at one node only for the first workflow.** Intent classification, first-draft generation, or structured extraction — one node with a typed input/output contract. No multi-step AI reasoning in v1. Ship the simple version, instrument it, then extend.
+
+4. **Add MCP integration once v1 is stable.** Connect n8n's MCP server to Claude Code. From that point, Claude can build and modify n8n workflows directly. The build velocity increase is significant — Claude running your orchestration layer is qualitatively different from Claude helping you write code for it.
+
+5. **Instrument from day one, not after.** PostHog (EU-hosted) for product analytics; Sentry with UUID-only identity for crash reporting; Supabase event logs for audit trail. The DORA and EU AI Act Article 12 obligations are meaningfully easier to satisfy when logging was designed in — not reconstructed from memory six months later when the auditor calls.
+
+## Frequently asked questions about the n8n Claude Supabase stack
+
+**What is the n8n Claude Supabase stack and why do solo builders use it?**
+
+The n8n Claude Supabase stack is a four-layer production architecture: n8n for workflow orchestration, Claude API for AI reasoning and generation, Supabase for data and auth, and MCP for live system integration. Solo builders use it because each layer is independently replaceable, total infrastructure cost is under $100/month at production scale, and EU data residency is built into both n8n and Supabase without configuration.
+
+**Is n8n better than Make or Zapier for AI workflows?**
+
+For AI-native production builds, yes. n8n has EU data residency (Frankfurt, SOC2), native MCP server support connecting Claude directly to 2,063 automation nodes, and code-native JavaScript function nodes for typed pipeline contracts. Make and Zapier are adequate for simple automations but their AI integration depth, EU compliance posture, and code extensibility are weaker for production agentic systems.
+
+**How does Supabase Row-Level Security help with GDPR and EU AI Act compliance?**
+
+Supabase RLS enforces data access rules at the database layer — no application-level middleware required. For GDPR, it ensures each user accesses only their own data without custom enforcement logic. For EU AI Act Article 12, the same Postgres infrastructure can serve as the structured audit trail for AI decision logging, satisfying both regulatory requirements from one database without duplicating infrastructure.
+
+**Can this stack handle regulated financial services workloads?**
+
+Yes. Papaya Global built a production HR compliance agent on Claude and Supabase with no engineers (SaaStr, 2026). For financial services specifically, the architecture supports credit memo automation, KYC document processing, and DORA-compliant incident logging — the three highest-ROI agentic use cases in regulated operations today. The EU data residency and RLS architecture are prerequisites most regulated clients will require anyway.
+
+---
+
+→ If you are building or evaluating an AI stack for a regulated financial services or fintech environment and want a structured assessment of architecture decisions before you commit, [read about my AI Implementation & Operating Model Design service](/services/ai-implementation) — or [book a 30-minute discovery call](/book) to pressure-test your current build approach.
