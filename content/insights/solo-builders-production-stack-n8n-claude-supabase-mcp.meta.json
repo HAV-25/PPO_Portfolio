@@ -7,6 +7,8 @@
   "topicNumber": 35,
   "targetKeyword": "n8n Claude Supabase stack",
   "status": "awaiting_approval",
+  "eqaStatus": "qa_passed",
+  "eqaRevisionCycles": 1,
   "approvalToken": "a9f3d7c2-8b4e-4c1a-9e5f-6b2d0c8a4f3e",
   "linkedinPost": "62% of startups have more than half their codebase written by AI. Half are building agents. (Supabase State of Startups, 2026.)\n\nMost are choosing tools randomly — and rebuilding their stack every 3 months.\n\nHere is what I would actually use:\n\nn8n + Claude + Supabase + MCP. Not as a prototype layer. As the production system.\n\nWhy this combination specifically:\n\n• n8n: EU data residency built in (Frankfurt, SOC2 certified). Code-native JavaScript nodes where no-code hits its ceiling. Native MCP server — Claude can orchestrate n8n workflows directly across 2,063 automation nodes.\n• Supabase: Postgres with Row-Level Security at the schema layer. pgvector for RAG. Auth and edge functions included. One database that satisfies GDPR and EU AI Act Article 12 logging simultaneously.\n• Claude API: route by cost (Haiku for simple tasks, Sonnet for complex reasoning) — keeps the inference bill under $100/month at production scale.\n• MCP: 9,400+ servers in the official registry in 2026. The integration standard that makes the stack composable across any system your clients use.\n\nIn regulated financial services, this is also the DORA incident-logging architecture. Build one Supabase event log. Satisfy two regulatory obligations.\n\nRevenue per employee rises when the operating model is designed around what AI does well — not when AI is added after the operating model is set.\n\nFull piece + the Solo Stack four-layer decision table I use to evaluate alternatives — link in comments.",
   "schemaJsonLd": {
