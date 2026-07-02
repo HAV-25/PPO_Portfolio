@@ -11,7 +11,7 @@ status: "draft"
 
 62% of startups now have more than half their codebase written by AI (Supabase State of Startups, 2026). The question is no longer whether to build with AI — it is which stack to commit to so that what you build actually reaches production.
 
-The answer most solo builders are landing on: n8n + Claude + Supabase + MCP. Not as a prototype layer. As the production system.
+The answer most solo builders are landing on — and what I run across every production AI system I build: n8n + Claude + Supabase + MCP. Not as a prototype layer. As the production system.
 
 ## What is the best AI stack for a solo builder in 2026?
 
@@ -21,7 +21,7 @@ Most alternative stacks collapse two roles into one tool, creating brittle depen
 
 ## What does each layer of the stack actually do?
 
-Each layer owns one responsibility cleanly: n8n owns orchestration (multi-step workflow logic, error handling, human approval gates); Claude owns intelligence (reasoning, generation, classification, scoring); Supabase owns data (Postgres with Row-Level Security, pgvector, auth, edge functions); MCP owns integration (how Claude reads and writes to live systems in real time).
+Each layer owns one responsibility cleanly: n8n owns orchestration (multi-step workflow logic, error handling, human approval gates); Claude owns intelligence (reasoning, generation, classification, scoring); Supabase owns data (Postgres with Row-Level Security, pgvector, auth, edge functions); MCP (Model Context Protocol) owns integration (how Claude reads and writes to live systems in real time).
 
 Here is how the four layers map in practice:
 

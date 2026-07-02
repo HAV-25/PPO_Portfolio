@@ -1,0 +1,27 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-02",
+  "fail_count": 2,
+  "checklist": {
+    "1_sourced_stat_first_50_words": "PASS — '62% of startups now have more than half their codebase written by AI (Supabase State of Startups, 2026)' appears in opening sentence.",
+    "2_builder_stack_first_person": "FAIL — n8n, Claude API, Supabase, MCP are all mentioned throughout, but not anchored to Payal's own builds. Article is written in advisory/second-person voice ('when you implement typed handoff contracts...'). The What I Would Do section uses 'If I were setting up this stack' (hypothetical), not 'I have shipped this stack.' Compared to portfolio Article 1 ('The pipeline described here is live and in production') and Article 2 ('This is the story of a German language exam preparation app built from zero'), this article lacks the first-person build anchor that establishes builder authority vs. analyst commentary.",
+    "3_fintech_regulated_section": "PASS — Dedicated H2 'How does this stack work in regulated financial services?' covers DORA (EU 2022/2554), EU AI Act Article 12, credit memo automation, KYC document processing, and Papaya Global named example.",
+    "4_fintech_keywords": "PASS — 'credit memo automation', 'KYC document processing', 'DORA incident reporting', 'EU AI Act Article 12' all used naturally in fintech context.",
+    "5_named_framework": "PASS — Revenue Per Employee frame reinforced: 'Revenue per employee rises not because the team works harder, but because the operating model is designed around what AI does well.'",
+    "6_commercial_impact": "PASS — '4 hours to 30 minutes of review — a 5x throughput improvement without additional headcount' in credit memo automation context.",
+    "7_linkedin_hook_differs": "PASS — LinkedIn hook '62% of startups have more than half their codebase written by AI...' is stat-led and distinct from informational site title.",
+    "8_faq_exactly_4": "PASS — Counted: (1) What is the n8n Claude Supabase stack; (2) Is n8n better than Make or Zapier; (3) How does Supabase RLS help with GDPR and EU AI Act; (4) Can this stack handle regulated financial services. Exactly 4.",
+    "9_what_i_would_do_3_to_5": "PASS — 5 numbered first-person actions: (1) Start with Supabase schema; (2) Wire n8n to Supabase before Claude; (3) Add Claude at one node; (4) Add MCP once v1 stable; (5) Instrument from day one.",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords found. Numbers in numerals throughout (62%, $100/month, 9,400+, 2,063, 4 hours, 30 minutes, 5x). Sentence case throughout.",
+    "11_all_claims_sourced": "PASS — All 5 factual claims have named source + date: Supabase State of Startups 2026, MindStudio 2026, agence-scroll.com June 2026, n8n documentation 2026, SaaStr 2026.",
+    "12_voice_authenticity": "PASS — Opening paragraphs are direct, data-first, punchy. 'Not as a prototype layer. As the production system.' is authentic to Payal's established voice pattern. No preamble.",
+    "13_sources_match_meta": "PASS — All 5 sources in meta.json sources array match the 5 inline citations in article body exactly.",
+    "14_linkedin_native_value": "PASS — 'Most are choosing tools randomly — and rebuilding their stack every 3 months.' is a LinkedIn-native insight not present in the article body.",
+    "15_no_undefined_acronyms": "FAIL — MCP appears in the title and throughout the body but is never expanded to 'Model Context Protocol.' A cold reader unfamiliar with MCP would need to infer from context ('MCP owns integration — how Claude reads and writes to live systems in real time'). The acronym is described but not spelled out. All other acronyms: RLS is expanded ('Row-Level Security'), DORA is cited with EU regulation number (EU 2022/2554), GDPR is widely known. Only MCP is undefined."
+  },
+  "failed_items": [2, 15],
+  "revision_instructions": {
+    "item_2": "Add one explicit first-person anchor in the opening section establishing that Payal has shipped production systems on this stack. Minimum change: modify paragraph 2 to read 'The answer most solo builders are landing on — and what I run across every production AI system I build: n8n + Claude + Supabase + MCP.' Optionally reference a specific production build (exam app, content pipeline) to match the voice pattern in portfolio articles. Do not remove the advisory framing — add one sentence that grounds it in lived experience.",
+    "item_15": "Expand MCP to 'MCP (Model Context Protocol)' on its first use in the article body. The natural insertion point is the sentence 'Each layer owns one responsibility cleanly: n8n owns orchestration... MCP owns integration (how Claude reads and writes to live systems in real time).' Change 'MCP owns integration' to 'MCP (Model Context Protocol) owns integration'."
+  }
+}
