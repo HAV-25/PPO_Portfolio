@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     default: "Payal Ponkshe — Senior Fintech & Payments Executive | Agentic AI Transformation",
   },
   description:
-    "Senior fintech and payments executive with 18+ years across Mastercard, Wirecard, and DeFi. Specialist in agentic transformation, AI operating models, and enterprise change programmes. Consulting and advisory for founders, COOs, and boards in regulated financial services. Based in Germany, open to Europe and remote.",
+    "Senior fintech and payments executive with 18+ years across Mastercard, Wirecard, and DeFi. Specialist in agentic transformation, AI operating models, and enterprise change programmes. Consulting and advisory for founders, COOs, and boards bringing emerging technology into the core of their organisations — deepest in fintech and regulated financial services. Based in Germany, open to Europe and remote.",
   keywords: [
     "senior fintech executive",
     "agentic transformation",

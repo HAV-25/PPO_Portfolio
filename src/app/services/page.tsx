@@ -179,9 +179,12 @@ export default function ServicesPage() {
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
           >
             I work with a small number of clients at a time — founders, COOs, and boards
-            in European fintech and regulated financial services. What you get is unusual:
-            someone who has run transformation at Mastercard scale and personally ships
-            production AI systems. I advise on what I can build, and build what I advise on.
+            bringing emerging technology into the heart of their organisations. My home
+            turf is European fintech and regulated financial services, and the operating
+            discipline learned there travels to any transformative programme. What you get
+            is unusual: someone who has run transformation at Mastercard scale and
+            personally ships production AI systems. I advise on what I can build, and
+            build what I advise on.
           </motion.p>
         </div>
       </section>
@@ -200,13 +203,15 @@ export default function ServicesPage() {
             transition={{ duration: 0.45, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <span className="section-label">What I don&apos;t do</span>
+            <span className="section-label">Where I do my best work</span>
             <p className="font-jakarta text-navy text-[16px] leading-[1.8] italic opacity-80">
-              &ldquo;I don&apos;t take on roles where AI is a reporting metric rather than a revenue
-              lever. I don&apos;t do one-off calls or one-week workshops — I work in engagements
-              long enough to make a real dent. I&apos;m not available for roles requiring full-time
-              office presence outside Germany. I work with a small number of clients at a time —
-              if we&apos;re not the right fit, I&apos;ll say so on the call.&rdquo;
+              &ldquo;I&apos;m genuinely excited by where the world is heading — organisations
+              treating AI as a revenue lever rather than a reporting line, and leaders willing
+              to redesign how work happens, not just add tools to it. That&apos;s where I do my
+              best work: deep engagements with time to make a real dent, working from Germany
+              with teams across Europe and remote. I keep my client list small so every
+              engagement gets real attention — and if I&apos;m not the right fit for yours,
+              I&apos;ll tell you so on the first call.&rdquo;
             </p>
           </motion.div>
         </div>

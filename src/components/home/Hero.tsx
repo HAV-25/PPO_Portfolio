@@ -53,9 +53,10 @@ export default function Hero() {
               </p>
               <p className="font-jakarta font-normal text-slate text-[18px] md:text-[19px] leading-[1.75]">
                 Since 2024, an independent AI venture builder shipping production
-                agentic systems hands-on. I help European fintech and regulated
-                financial services turn AI ambition into operating reality —
-                because I have done both sides of that work myself.
+                agentic systems hands-on. I help organisations turn emerging
+                technology into operating reality — deepest in European fintech
+                and regulated financial services, and open to transformative
+                programmes wherever AI meets the core business.
               </p>
             </motion.div>
 

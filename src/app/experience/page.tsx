@@ -348,7 +348,7 @@ export default function ExperiencePage() {
               Current chapter
             </p>
             <p className="font-jakarta font-bold text-navy text-[16px] leading-[1.6]">
-              Since August 2024 I have been building AI products through AppsBrite UG — two live in production — while advising selected fintech and regulated AI ventures on operating models, GTM architecture, and implementation. I take on a small number of engagements and, selectively, VP-level mandates.
+              Since August 2024 I have been building AI products through AppsBrite UG — two live in production — while advising organisations bringing emerging technology into their core operations on operating models, GTM architecture, and implementation. I take on a small number of engagements and, selectively, VP-level mandates.
             </p>
           </motion.div>
         </div>

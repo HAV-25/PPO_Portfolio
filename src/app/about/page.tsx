@@ -116,7 +116,8 @@ export default function AboutPage() {
               >
                 Based in Germany. German citizen. Open to Europe and remote. I take on
                 a small number of consulting engagements at a time — and, selectively,
-                VP-level executive mandates in fintech and regulated financial services.
+                VP-level executive mandates in organisations putting emerging technology
+                at the centre of their transformation.
               </motion.p>
             </div>
           </div>
