@@ -16,8 +16,8 @@ const story = [
     highlight: null,
   },
   {
-    label: "The rare overlap",
-    body: "Most executives haven't built. Most builders haven't run 120-person cross-regional programmes. I operate at the intersection — and I find that's where the most interesting problems live.",
+    label: "How I work",
+    body: "I bring both sides of that experience to every engagement: the operating discipline from running 120-person cross-regional programmes, and the practical judgment that comes from building production systems with my own hands. Clients get someone who can shape the strategy in the boardroom and then sit down and make it work.",
     highlight: "120-person",
   },
 ];
@@ -66,9 +66,19 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            I&apos;ve run technology organisations at global scale.{" "}
-            <span className="underline-cyan">And I build the systems myself.</span>
+            I&apos;m Payal Ponkshe.
           </motion.h1>
+          <motion.p
+            className="font-jakarta text-slate text-[18px] md:text-[19px] leading-[1.75] mt-6 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+          >
+            A fintech and payments executive, AI venture builder, and advisor to
+            organisations bringing emerging technology into the heart of how they
+            work. 18+ years across Mastercard, Wirecard, and regulated financial
+            services — now also designing and shipping AI products hands-on.
+          </motion.p>
         </div>
       </section>
 
