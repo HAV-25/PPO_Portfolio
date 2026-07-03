@@ -124,13 +124,6 @@ export default function Hero() {
               ))}
             </div>
 
-            <div
-              className="mt-5"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
-            />
-            <p className="font-jakarta text-[13px] leading-[1.5] mt-4" style={{ color: "rgba(245,243,239,0.5)" }}>
-              German national · Remote or onsite, as the work needs
-            </p>
           </motion.div>
         </div>
       </div>
