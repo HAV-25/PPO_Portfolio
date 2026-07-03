@@ -67,7 +67,7 @@ export default function AboutPage() {
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
             Builder. Executive.{" "}
-            <span className="underline-cyan">Neither, fully.</span>
+            <span className="underline-cyan">Both, by design.</span>
           </motion.h1>
         </div>
       </section>
