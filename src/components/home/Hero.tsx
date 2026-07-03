@@ -55,8 +55,9 @@ export default function Hero() {
                 Since 2024, an independent AI venture builder shipping production
                 agentic systems hands-on. I help organisations turn emerging
                 technology into operating reality — deepest in European fintech
-                and regulated financial services, and open to transformative
-                programmes wherever AI meets the core business.
+                and regulated financial services, and open across sectors to
+                AI-driven operating model redesign, agentic automation, and
+                new ventures built on emerging technology.
               </p>
             </motion.div>
 
@@ -128,7 +129,7 @@ export default function Hero() {
               style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
             />
             <p className="font-jakarta text-[13px] leading-[1.5] mt-4" style={{ color: "rgba(245,243,239,0.5)" }}>
-              Germany · Open to Europe &amp; Remote
+              German national · Remote or onsite, as the work needs
             </p>
           </motion.div>
         </div>

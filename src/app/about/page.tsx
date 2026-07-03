@@ -114,10 +114,11 @@ export default function AboutPage() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
               >
-                Based in Germany. German citizen. Open to Europe and remote. I take on
-                a small number of consulting engagements at a time — and, selectively,
-                VP-level executive mandates in organisations putting emerging technology
-                at the centre of their transformation.
+                German national, based in Germany — working remote or onsite as the
+                engagement needs. I take on a small number of consulting engagements
+                at a time — and, selectively, VP-level executive mandates in
+                organisations putting emerging technology at the centre of their
+                transformation.
               </motion.p>
             </div>
           </div>

@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <p className="font-jakarta font-bold text-navy text-[17px]">Payal Ponkshe</p>
             <p className="font-jakarta text-slate text-[13px] mt-1 leading-[1.6]">
-              Germany · Open to Europe &amp; Remote · German Citizen
+              German national · Based in Germany · Remote or onsite as needed
             </p>
             <div className="flex items-center gap-4 mt-4 flex-wrap">
               <a

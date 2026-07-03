@@ -402,7 +402,7 @@ export default function ExperiencePage() {
                 English: Full professional proficiency &middot; German: Limited working proficiency
               </p>
               <p className="font-jakarta text-navy text-[16px] leading-[1.65]">
-                German citizen &middot; Based in Germany &middot; Open to Europe and remote
+                German national &middot; Based in Germany &middot; Remote or onsite as needed
               </p>
             </div>
           </FadeSection>

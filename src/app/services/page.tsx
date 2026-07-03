@@ -208,10 +208,8 @@ export default function ServicesPage() {
               &ldquo;I&apos;m genuinely excited by where the world is heading — organisations
               treating AI as a revenue lever rather than a reporting line, and leaders willing
               to redesign how work happens, not just add tools to it. That&apos;s where I do my
-              best work: deep engagements with time to make a real dent, working from Germany
-              with teams across Europe and remote. I keep my client list small so every
-              engagement gets real attention — and if I&apos;m not the right fit for yours,
-              I&apos;ll tell you so on the first call.&rdquo;
+              best work: deep engagements with time to make a real dent — remote or onsite,
+              wherever the work needs me.&rdquo;
             </p>
           </motion.div>
         </div>
