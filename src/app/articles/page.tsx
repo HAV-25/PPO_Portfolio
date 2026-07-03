@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { articles } from "@/lib/articles";
 import { portfolioArticles } from "@/lib/portfolio-articles";
+import { getAllPipelineArticles } from "@/lib/pipeline-content";
 import {
   ARTICLE_TYPE,
   ARTICLE_PILLAR,
@@ -48,6 +49,20 @@ function buildArchive(): Record<string, ArchiveEntry[]> {
         readTime: a.readTime,
         date: a.date,
         year: getYear(a.date),
+        href: `/insights/${a.slug}`,
+      });
+    }
+  }
+
+  for (const a of getAllPipelineArticles()) {
+    const pillar = ARTICLE_PILLAR[a.slug];
+    if (pillar && grouped[pillar]) {
+      grouped[pillar].push({
+        slug: a.slug,
+        title: a.title,
+        readTime: a.readTime,
+        date: a.publishDate,
+        year: getYear(a.publishDate),
         href: `/insights/${a.slug}`,
       });
     }
@@ -114,7 +129,7 @@ function PillarSection({
         {isPhysical && (
           <span
             className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag"
-            style={{ background: "rgba(45,255,248,0.18)", color: "#24356e" }}
+            style={{ background: "rgba(27,175,191,0.18)", color: "#24262B" }}
           >
             Emerging Focus
           </span>
@@ -185,7 +200,7 @@ export default function ArticlesPage() {
           >
             &larr; Back to Insights
           </Link>
-          <h1 className="font-jakarta font-bold text-navy text-[36px] md:text-[48px] leading-[1.1] tracking-[-0.01em]">
+          <h1 className="font-display font-bold text-navy text-[36px] md:text-[48px] leading-[1.06]">
             Article Archive
           </h1>
           <p className="font-jakarta text-slate text-[17px] leading-[1.65] mt-5">

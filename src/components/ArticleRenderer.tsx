@@ -43,7 +43,7 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
       transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.08 }}
       className="bg-cream-card rounded-card p-6 flex flex-col gap-1"
     >
-      <span className="font-jakarta font-bold text-navy text-[26px] md:text-[30px] leading-none">
+      <span className="font-mono font-semibold text-primary text-[26px] md:text-[30px] leading-none">
         {stat.value}
       </span>
       <span className="font-jakarta font-medium text-navy text-[13px] leading-[1.4] mt-2">
@@ -65,7 +65,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
     case "p":
       return (
         <Reveal delay={delay}>
-          <p className="font-jakarta text-navy text-[17px] leading-[1.85]">
+          <p className="font-jakarta text-navy text-[18px] leading-[1.8]">
             {block.text}
           </p>
         </Reveal>
@@ -74,7 +74,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
     case "bold-p":
       return (
         <Reveal delay={delay}>
-          <p className="font-jakarta font-bold text-navy text-[17px] leading-[1.85]">
+          <p className="font-jakarta font-bold text-navy text-[18px] leading-[1.8]">
             {block.text}
           </p>
         </Reveal>
@@ -85,7 +85,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
         <Reveal delay={delay}>
           <div
             className="border-l-4 pl-7 py-2"
-            style={{ borderLeftColor: "#2dfff8" }}
+            style={{ borderLeftColor: "#1BAFBF" }}
           >
             <p className="font-jakarta text-navy text-[20px] md:text-[22px] leading-[1.6] italic">
               {block.text}
@@ -113,7 +113,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
         <Reveal delay={delay}>
           <div
             className="p-7 rounded-card"
-            style={{ background: "rgba(36,53,110,0.04)" }}
+            style={{ background: "rgba(36,38,43,0.04)" }}
           >
             <p className="font-jakarta font-semibold text-navy text-[18px] md:text-[20px] leading-[1.65]">
               {block.text}
@@ -127,10 +127,10 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
         <Reveal delay={delay}>
           <div
             className="border-l-4 pl-6"
-            style={{ borderLeftColor: "#2dfff8" }}
+            style={{ borderLeftColor: "#1BAFBF" }}
           >
             <p className="label-meta mb-3">{block.label}</p>
-            <p className="font-jakarta text-navy text-[17px] leading-[1.85]">
+            <p className="font-jakarta text-navy text-[18px] leading-[1.8]">
               {block.body}
             </p>
           </div>
@@ -142,7 +142,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
         <Reveal delay={delay}>
           <div>
             {block.intro && (
-              <p className="font-jakarta text-navy text-[17px] leading-[1.85] mb-4">
+              <p className="font-jakarta text-navy text-[18px] leading-[1.8] mb-4">
                 {block.intro}
               </p>
             )}
@@ -151,10 +151,10 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
                 <li key={i} className="flex gap-3 items-start">
                   <span
                     className="mt-[6px] flex-shrink-0 w-2 h-2 rounded-full"
-                    style={{ background: "#2dfff8" }}
+                    style={{ background: "#1BAFBF" }}
                     aria-hidden="true"
                   />
-                  <span className="font-jakarta text-navy text-[17px] leading-[1.85]">
+                  <span className="font-jakarta text-navy text-[18px] leading-[1.8]">
                     {item}
                   </span>
                 </li>
@@ -172,7 +172,7 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
               <li key={i} className="flex gap-5 items-start">
                 <span
                   className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-jakarta font-bold text-navy text-[13px] leading-none mt-0.5"
-                  style={{ background: "#2dfff8" }}
+                  style={{ background: "#1BAFBF" }}
                   aria-hidden="true"
                 >
                   {i + 1}
@@ -256,7 +256,7 @@ export default function ArticleRenderer({ article }: { article: Article }) {
               <div className="flex items-center gap-2 mb-6 flex-wrap">
                 <span
                   className="font-jakarta font-semibold text-navy text-[11px] tracking-[0.08em] uppercase px-3 py-1 rounded-tag"
-                  style={{ background: "rgba(36,53,110,0.08)" }}
+                  style={{ background: "rgba(36,38,43,0.08)" }}
                 >
                   {article.topic}
                 </span>
@@ -270,7 +270,7 @@ export default function ArticleRenderer({ article }: { article: Article }) {
                 </span>
               </div>
 
-              <h1 className="font-jakarta font-extrabold text-navy text-[32px] md:text-[44px] leading-[1.1] tracking-[-0.02em]">
+              <h1 className="font-display font-bold text-navy text-[32px] md:text-[44px] leading-[1.1]">
                 {article.title}
               </h1>
 

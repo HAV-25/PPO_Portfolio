@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Career Re-Entry Programme",
+  title: "Pivot, Upskill & Position — Give-Back Programme",
   description:
-    "Free 30-minute career re-entry sessions with Payal Ponkshe — senior fintech executive offering honest guidance for professionals returning to work after a career break. Priority to fintech, payments, and technology professionals.",
+    "Free 30-minute sessions with Payal Ponkshe for professionals repositioning their careers as AI reshapes work — an honest gap assessment, a concrete upskilling focus, and a first step on positioning. Priority to fintech, payments, and technology professionals.",
   keywords: [
-    "career re-entry fintech",
-    "return to work support",
-    "career break fintech",
-    "fintech career coaching",
+    "career pivot AI",
+    "upskilling for AI",
+    "career repositioning fintech",
+    "AI career transition",
   ],
 };
 

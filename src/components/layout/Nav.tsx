@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { href: "/work", label: "Building" },
+  { href: "/work", label: "Work" },
   { href: "/experience", label: "Experience" },
-  { href: "/expertise", label: "Expertise" },
+  { href: "/services", label: "Services" },
   { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
 ];
@@ -36,7 +36,7 @@ export default function Nav() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 bg-cream transition-shadow duration-200 ${
-          scrolled ? "shadow-[0_1px_0_rgba(36,53,110,0.15)]" : "border-b border-rule"
+          scrolled ? "shadow-[0_1px_0_rgba(36,38,43,0.15)]" : "border-b border-rule"
         }`}
       >
         <div className="content-width">
@@ -85,9 +85,9 @@ export default function Nav() {
             <div className="hidden md:block">
               <Link
                 href="/book"
-                className="inline-flex items-center gap-2 bg-navy text-cream font-jakarta font-semibold text-[14px] px-5 py-2.5 rounded-btn transition-colors duration-150 hover:bg-[#2d4080]"
+                className="inline-flex items-center gap-2 bg-navy text-cream font-jakarta font-semibold text-[14px] px-5 py-2.5 rounded-btn transition-colors duration-150 hover:bg-primary"
               >
-                Connect <span aria-hidden="true">→</span>
+                Book a call <span aria-hidden="true">→</span>
               </Link>
             </div>
 
@@ -144,7 +144,7 @@ export default function Nav() {
                 href="/book"
                 className="inline-flex items-center gap-2 bg-navy text-cream font-jakarta font-medium text-[15px] px-6 py-3"
               >
-                Connect <span aria-hidden="true">→</span>
+                Book a call <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

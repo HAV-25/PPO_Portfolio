@@ -46,7 +46,7 @@ function BlockRenderer({ block, index }: { block: PortfolioBlock; index: number 
     case "h2":
       return (
         <Reveal delay={delay}>
-          <h2 className="font-jakarta font-bold text-navy text-[22px] md:text-[24px] leading-[1.25] mt-4">
+          <h2 className="font-display font-bold text-navy text-[22px] md:text-[24px] leading-[1.3] mt-4">
             {block.text}
           </h2>
         </Reveal>
@@ -64,7 +64,7 @@ function BlockRenderer({ block, index }: { block: PortfolioBlock; index: number 
     case "p":
       return (
         <Reveal delay={delay}>
-          <p className="font-jakarta text-navy text-[16px] md:text-[17px] leading-[1.85]">
+          <p className="font-jakarta text-navy text-[16px] md:text-[18px] leading-[1.8]">
             {parseInline(block.text)}
           </p>
         </Reveal>
@@ -105,7 +105,7 @@ function BlockRenderer({ block, index }: { block: PortfolioBlock; index: number 
                   className="mt-[9px] flex-shrink-0 w-2 h-2 rounded-full bg-cyan"
                   aria-hidden="true"
                 />
-                <span className="font-jakarta text-navy text-[16px] md:text-[17px] leading-[1.85]">
+                <span className="font-jakarta text-navy text-[16px] md:text-[18px] leading-[1.8]">
                   {parseInline(item)}
                 </span>
               </li>
@@ -123,7 +123,7 @@ function BlockRenderer({ block, index }: { block: PortfolioBlock; index: number 
                 {/* Cyan numbered badge */}
                 <span
                   className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-jakarta font-bold text-navy text-[13px] leading-none mt-0.5"
-                  style={{ background: "#2dfff8" }}
+                  style={{ background: "#1BAFBF" }}
                   aria-hidden="true"
                 >
                   {i + 1}
@@ -365,7 +365,7 @@ export default function PortfolioArticleRenderer({ article }: { article: Portfol
                   <span
                     key={pill}
                     className="font-jakarta font-semibold text-navy text-[11px] tracking-[0.08em] uppercase px-3 py-1 rounded-tag"
-                    style={{ background: "rgba(36,53,110,0.08)" }}
+                    style={{ background: "rgba(36,38,43,0.08)" }}
                   >
                     {pill}
                   </span>
@@ -376,7 +376,7 @@ export default function PortfolioArticleRenderer({ article }: { article: Portfol
                 </span>
               </div>
 
-              <h1 className="font-jakarta font-extrabold text-navy text-[32px] md:text-[48px] leading-[1.1] tracking-[-0.02em]">
+              <h1 className="font-display font-bold text-navy text-[32px] md:text-[48px] leading-[1.1]">
                 {article.title}
               </h1>
 

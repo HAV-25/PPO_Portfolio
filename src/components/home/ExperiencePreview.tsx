@@ -35,7 +35,7 @@ export default function ExperiencePreview() {
         <span className="section-label">Career</span>
 
         <motion.h2
-          className="font-jakarta font-extrabold text-navy text-[36px] md:text-[48px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-4"
+          className="font-display font-bold text-navy text-[36px] md:text-[44px] leading-[1.12] tracking-[-0.01em] max-w-xl mb-4"
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -49,7 +49,7 @@ export default function ExperiencePreview() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
         >
-          My career has focused on one recurring challenge: how do you scale complex systems across people, technology, partnerships, and markets? From global payments infrastructure and commercial ecosystems to AI-native platforms, the underlying problem remains remarkably consistent.
+          The same job in three arenas: global payments infrastructure, a zero-to-one venture, and independent AI systems. In each one — make the complex thing operational, and make it pay.
         </motion.p>
 
         <div className="flex flex-col border-t border-rule">
@@ -62,14 +62,14 @@ export default function ExperiencePreview() {
               className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 py-6 border-b border-rule"
             >
               <div className="flex-1">
-                <p className="font-jakarta font-bold text-navy text-[15px] leading-tight">
+                <p className="font-jakarta font-bold text-navy text-[16px] leading-tight">
                   {item.role}
                 </p>
-                <p className="font-jakarta text-slate text-[13px] mt-1">
+                <p className="font-jakarta text-slate text-[14px] mt-1">
                   {item.company} · {item.period}
                 </p>
               </div>
-              <p className="font-jakarta font-semibold text-navy text-[13px] leading-[1.5] sm:text-right sm:max-w-[260px]">
+              <p className="font-mono text-navy text-[13px] leading-[1.6] sm:text-right sm:max-w-[280px]">
                 {item.metric}
               </p>
               <Link

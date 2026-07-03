@@ -12,7 +12,7 @@ const story = [
   },
   {
     label: "The pivot",
-    body: "In 2022 I co-founded Skyllfull — a specialised talent platform for DeFi and Web3. We generated €250K+ in qualified pipeline within 30 days of launch and validated product-market fit with startup and enterprise clients. I ran it for two years, then made a deliberate decision to move into AI venture building when I saw where the real opportunity was shifting. Since 2024 I've been building AI ventures independently under AppsBrite UG — shipping production systems in n8n, Claude, Supabase, and MCP integrations that I designed and built myself, not just advised on.",
+    body: "In 2022 I co-founded Skyllfull — a specialised talent platform for DeFi and Web3. We generated €250K+ in qualified pipeline within 30 days of launch and validated product-market fit with startup and enterprise clients. I ran it for two years, then made a deliberate decision to move into AI venture building when I saw where the real opportunity was shifting. Since 2024 I've been building AI ventures independently under AppsBrite UG — two products live in production today, including a German exam-prep app on Google Play — shipping systems in n8n, Claude, Supabase, and MCP integrations that I designed and built myself, not just advised on.",
     highlight: null,
   },
   {
@@ -40,7 +40,7 @@ function StorySection({
       transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
     >
       <span className="section-label">{section.label}</span>
-      <p className="font-jakarta text-navy text-[17px] leading-[1.8]">
+      <p className="font-jakarta text-navy text-[18px] leading-[1.8]">
         {section.body}
       </p>
     </motion.div>
@@ -61,7 +61,7 @@ export default function AboutPage() {
       <section className="section-spacing pt-[140px] md:pt-[160px] pb-0">
         <div className="content-width">
           <motion.h1
-            className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
+            className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
@@ -86,13 +86,13 @@ export default function AboutPage() {
               {/* TODO: Replace this div with <Image> once portrait photo is available */}
               <div
                 className="w-full aspect-[3/4] border border-rule flex items-end p-5"
-                style={{ background: "rgba(36,53,110,0.06)" }}
+                style={{ background: "rgba(36,38,43,0.06)" }}
                 aria-label="Payal Ponkshe"
                 role="img"
               >
                 <p
                   className="font-jakarta text-[11px] leading-[1.5] tracking-[0.03em]"
-                  style={{ color: "rgba(36,53,110,0.4)" }}
+                  style={{ color: "rgba(36,38,43,0.4)" }}
                 >
                   Portrait coming soon
                 </p>
@@ -114,7 +114,9 @@ export default function AboutPage() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
               >
-                Based in Germany. German citizen. Open to Europe and remote.
+                Based in Germany. German citizen. Open to Europe and remote. I take on
+                a small number of consulting engagements at a time — and, selectively,
+                VP-level executive mandates in fintech and regulated financial services.
               </motion.p>
             </div>
           </div>

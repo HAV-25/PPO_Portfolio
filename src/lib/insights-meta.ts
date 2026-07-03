@@ -19,6 +19,12 @@ export const ARTICLE_TYPE: Record<string, string> = {
   "ai-literacy-platform-senior-demographic-product-strategy": "Case Study",
   "carousel-content-platform-ai-architecture-decisions": "Case Study",
   "language-learning-app-agentic-build-blueprint": "Playbook",
+  // Pipeline (MDX) articles
+  "what-agentic-ai-actually-is": "Essay",
+  "agentic-ai-use-case-map-financial-services": "Framework",
+  "ai-operating-model-playbook-regulated-firms": "Playbook",
+  "eu-ai-act-fintech-what-august-2026-actually-requires": "Research Note",
+  "iso-20022-data-asset-not-compliance-chore": "Research Note",
 };
 
 export const ARTICLE_PILLAR: Record<string, string> = {
@@ -42,6 +48,12 @@ export const ARTICLE_PILLAR: Record<string, string> = {
   "ai-literacy-platform-senior-demographic-product-strategy": "AI Systems",
   "carousel-content-platform-ai-architecture-decisions": "AI Systems",
   "language-learning-app-agentic-build-blueprint": "AI Systems",
+  // Pipeline (MDX) articles
+  "what-agentic-ai-actually-is": "AI Systems",
+  "agentic-ai-use-case-map-financial-services": "AI Systems",
+  "ai-operating-model-playbook-regulated-firms": "Operating Models",
+  "eu-ai-act-fintech-what-august-2026-actually-requires": "Financial Infrastructure",
+  "iso-20022-data-asset-not-compliance-chore": "Financial Infrastructure",
 };
 
 export const PILLARS = [

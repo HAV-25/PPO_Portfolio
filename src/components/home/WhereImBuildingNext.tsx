@@ -5,16 +5,19 @@ import { useRef } from "react";
 
 const domains = [
   {
-    title: "Financial Infrastructure",
-    body: "Payments, digital commerce, ecosystem partnerships, regulated platforms, and market-scale operating models.",
+    title: "Financial infrastructure",
+    status: "Operating since 2006",
+    body: "Payments, digital commerce, ecosystem partnerships, and regulated platforms — the domain where I have spent 18+ years operating at scale.",
   },
   {
-    title: "AI Systems",
-    body: "Agentic workflows, automation platforms, AI-native products, and intelligent operating systems.",
+    title: "AI systems",
+    status: "Building now",
+    body: "Agentic workflows, automation platforms, and AI-native products — designed and shipped hands-on, live in production.",
   },
   {
-    title: "Physical AI & Robotics",
-    body: "Consumer robotics, commercial robotics ecosystems, embodied intelligence, edge computing, and intelligent infrastructure.",
+    title: "Physical AI & robotics",
+    status: "Researching",
+    body: "How intelligence moves from software into the physical world — robotics ecosystems, embodied AI, and what they will mean for work and skills. A research focus today; writing to follow.",
   },
 ];
 
@@ -31,7 +34,7 @@ export default function WhereImBuildingNext() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          Where I&apos;m building next
+          Where I operate — and where I&apos;m looking next
         </motion.span>
 
         <motion.p
@@ -40,7 +43,7 @@ export default function WhereImBuildingNext() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
         >
-          Technology evolves in waves. My career began in payments infrastructure, expanded into digital platforms and AI systems, and is increasingly focused on technologies that move intelligence beyond software.
+          My career runs on one thread: taking a technology wave from concept to operating reality. Payments first, AI systems now — and a research eye on what comes after software.
         </motion.p>
 
         <div className="grid md:grid-cols-3 gap-0 border-t border-rule">
@@ -54,13 +57,14 @@ export default function WhereImBuildingNext() {
             >
               <div
                 className="w-2 h-2 rounded-full mb-5"
-                style={{ background: "#2dfff8" }}
+                style={{ background: "#1BAFBF" }}
                 aria-hidden="true"
               />
+              <p className="label-meta mb-2">{domain.status}</p>
               <h3 className="font-jakarta font-bold text-navy text-[18px] leading-tight mb-3">
                 {domain.title}
               </h3>
-              <p className="font-jakarta text-slate text-[14px] leading-[1.7]">
+              <p className="font-jakarta text-slate text-[15px] leading-[1.7]">
                 {domain.body}
               </p>
             </motion.div>
@@ -73,7 +77,7 @@ export default function WhereImBuildingNext() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.42 }}
         >
-          The common thread across all three domains is systems: understanding how technology moves from concept to scalable adoption.
+          The pattern repeats across every wave: technology creates value only when someone builds the operating model that lets it run at scale. That is the work.
         </motion.p>
       </div>
     </section>

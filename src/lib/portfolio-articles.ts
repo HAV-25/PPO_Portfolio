@@ -271,7 +271,7 @@ export const portfolioArticles: PortfolioArticle[] = [
     cta: {
       body: "If you are building or advising an EU business exploring agentic commerce and want to think through the regulatory, technical, and commercial architecture",
       primaryLabel: "read about my Fractional COO & Strategic Advisory service",
-      primaryHref: "/services#fractional-advisory",
+      primaryHref: "/services#fractional",
     },
     relatedSlugs: [
       "ai-workflow-automation-sme-revenue-impact",

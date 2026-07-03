@@ -12,29 +12,30 @@ const stats: Stat[] = [
     kind: "counter",
     value: 18,
     suffix: "+",
-    label: "Years",
-    sublabel: "Building products, partnerships, and operations across fintech and technology.",
+    label: "Years in fintech & payments",
+    sublabel: "Mastercard, Wirecard, and regulated financial services across Europe and beyond.",
   },
   {
     kind: "counter",
     value: 120,
     suffix: "+",
-    label: "Global Leadership",
-    sublabel: "Specialists across Europe, North America, APAC, and MEA.",
+    label: "Team led across 4 regions",
+    sublabel: "Global delivery and implementation specialists — Europe, North America, MEA, APAC.",
   },
   {
     kind: "counter",
     value: 25,
     prefix: "$",
     suffix: "M+",
-    label: "Strategic Partnerships",
-    sublabel: "Ecosystem investments spanning cloud, telecom, and financial services.",
+    label: "Partnerships led",
+    sublabel: "Strategic technology programmes with Microsoft and Verizon at Mastercard.",
   },
   {
-    kind: "text",
-    display: "Multiple",
-    label: "Builder Mindset",
-    sublabel: "AI-native products designed, launched, or actively being developed.",
+    kind: "counter",
+    value: 6,
+    suffix: "",
+    label: "AI ventures built hands-on",
+    sublabel: "Designed and shipped personally since 2024 — two live in production today.",
   },
 ];
 
@@ -107,10 +108,10 @@ export default function StatBand() {
                   {stat.display}
                 </span>
               )}
-              <p className="font-jakarta font-semibold text-navy text-[14px] mt-2 leading-tight">
+              <p className="font-jakarta font-semibold text-navy text-[15px] mt-2 leading-tight">
                 {stat.label}
               </p>
-              <p className="font-jakarta text-slate text-[13px] mt-1 leading-[1.5]">
+              <p className="font-jakarta text-slate text-[14px] mt-1 leading-[1.55]">
                 {stat.sublabel}
               </p>
             </motion.div>

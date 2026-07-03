@@ -35,19 +35,20 @@ const FEATURED_SLUGS = [
 
 const PERSONAL_SLUGS = ["the-right-to-begin", "december-recalibration"];
 
+// Executive-altitude pieces lead; builder playbooks close the section.
 const CURRENT_THINKING_SLUGS = [
   "qonto-mcp-fintech-finance-teams",
+  "ai-revenue-per-employee-data",
+  "wrong-ai-problem",
+  "work-evolution-curve",
+  "activity-vs-impact",
+  "ai-in-finance",
+  "transformation-literacy",
+  "ai-ipo-valuations",
   "engineering-principles-ai-coding-agents",
   "how-to-set-up-a-claude-project",
   "claude-kickoff-prompt-template",
   "claude-personal-vs-project-instructions",
-  "activity-vs-impact",
-  "ai-revenue-per-employee-data",
-  "work-evolution-curve",
-  "wrong-ai-problem",
-  "transformation-literacy",
-  "ai-in-finance",
-  "ai-ipo-valuations",
 ];
 
 const PRINCIPLES = [
@@ -217,7 +218,7 @@ function FeaturedLeadCard({ article }: { article: PortfolioArticle }) {
             readTime={article.readTime}
             date={article.date}
           />
-          <h2 className="font-jakarta font-bold text-navy text-[26px] md:text-[36px] leading-[1.1] mt-5 max-w-2xl group-hover:underline group-hover:decoration-cyan group-hover:decoration-[6px] group-hover:underline-offset-4 transition-all duration-150">
+          <h2 className="font-display font-bold text-navy text-[26px] md:text-[36px] leading-[1.12] mt-5 max-w-2xl group-hover:underline group-hover:decoration-cyan group-hover:decoration-[6px] group-hover:underline-offset-4 transition-all duration-150">
             {article.title}
           </h2>
           <p className="font-jakarta text-slate text-[16px] leading-[1.75] mt-5 max-w-xl">
@@ -540,7 +541,7 @@ export function InsightsPageClient({
       <section className="pt-[140px] md:pt-[160px] pb-0">
         <div className="content-width">
           <motion.h1
-            className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
+            className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
@@ -693,7 +694,7 @@ export function InsightsPageClient({
                           {area.title}
                         </h3>
                         {area.emerging && (
-                          <span className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag" style={{ background: "rgba(45,255,248,0.18)", color: "#24356e" }}>
+                          <span className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag" style={{ background: "rgba(27,175,191,0.18)", color: "#24262B" }}>
                             Emerging Focus
                           </span>
                         )}

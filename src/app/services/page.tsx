@@ -36,7 +36,7 @@ const services = [
       "Build-vs-buy decision frameworks",
     ],
     evidence:
-      "Built 6 AI ventures hands-on across agentic transformation, multi-agent systems, MCP integrations, and production deployments. Not advised on — built.",
+      "6 AI ventures built hands-on since 2024 — two live in production, including a mobile AI product on Google Play. Multi-agent systems, MCP integrations, n8n pipelines: not advised on — built.",
     engagements: ["Advisory retainer", "Implementation sprint", "Fractional Chief AI Officer"],
   },
   {
@@ -82,7 +82,7 @@ function ServiceBlock({
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-start">
             {/* Left */}
             <div>
-              <h2 className="font-jakarta font-bold text-navy text-[28px] md:text-[34px] leading-[1.2] tracking-[-0.01em]">
+              <h2 className="font-display font-bold text-navy text-[28px] md:text-[34px] leading-[1.15]">
                 {service.title}
               </h2>
 
@@ -126,7 +126,7 @@ function ServiceBlock({
                     >
                       <span
                         className="flex-shrink-0 mt-[5px] w-1.5 h-1.5 rounded-full"
-                        style={{ background: "#2dfff8" }}
+                        style={{ background: "#1BAFBF" }}
                         aria-hidden="true"
                       />
                       <span className="font-jakarta text-navy text-[16px] leading-[1.65]">
@@ -139,10 +139,10 @@ function ServiceBlock({
 
               <div
                 className="p-6 border-l-4"
-                style={{ borderLeftColor: "#2dfff8", background: "rgba(36,53,110,0.03)" }}
+                style={{ borderLeftColor: "#1BAFBF", background: "rgba(36,38,43,0.03)" }}
               >
                 <p className="label-meta mb-2">Evidence</p>
-                <p className="font-jakarta text-navy text-[15px] leading-[1.7]">
+                <p className="font-jakarta text-navy text-[16px] leading-[1.75]">
                   {service.evidence}
                 </p>
               </div>
@@ -165,7 +165,7 @@ export default function ServicesPage() {
       <section className="section-spacing pt-[140px] md:pt-[160px] pb-0">
         <div className="content-width" ref={heroRef}>
           <motion.h1
-            className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]"
+            className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
@@ -178,9 +178,10 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
           >
-            I work with a small number of clients at a time — founders, COOs, and operators
-            in fintech, payments, and AI-first companies who need someone who has done it
-            at scale and can build alongside them.
+            I work with a small number of clients at a time — founders, COOs, and boards
+            in European fintech and regulated financial services. What you get is unusual:
+            someone who has run transformation at Mastercard scale and personally ships
+            production AI systems. I advise on what I can build, and build what I advise on.
           </motion.p>
         </div>
       </section>
@@ -214,7 +215,7 @@ export default function ServicesPage() {
       {/* Final CTA */}
       <div className="section-spacing border-t border-b border-rule">
         <div className="content-width flex flex-col items-center text-center gap-6">
-          <p className="font-jakarta font-bold text-navy text-[28px] md:text-[36px] leading-[1.2] max-w-xl tracking-[-0.01em]">
+          <p className="font-display font-bold text-navy text-[28px] md:text-[36px] leading-[1.15] max-w-xl">
             Book a 30-minute discovery call.
           </p>
           <p className="font-jakarta text-slate text-[17px] leading-[1.65] max-w-lg">

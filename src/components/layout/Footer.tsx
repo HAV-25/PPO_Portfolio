@@ -37,23 +37,25 @@ export default function Footer() {
             <div>
               <p className="label-meta mb-4">Work</p>
               <ul className="flex flex-col gap-2.5">
-                <li><Link href="/work" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Building</Link></li>
-                <li><Link href="/experience" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Experience</Link></li>
-                <li><Link href="/expertise" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Expertise</Link></li>
+                <li><Link href="/work" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Work</Link></li>
+                <li><Link href="/experience" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Experience</Link></li>
+                <li><Link href="/services" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Services</Link></li>
               </ul>
             </div>
             <div>
-              <p className="label-meta mb-4">Ideas</p>
+              <p className="label-meta mb-4">Writing</p>
               <ul className="flex flex-col gap-2.5">
-                <li><Link href="/perspectives" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Research</Link></li>
-                <li><Link href="/insights" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Insights</Link></li>
-                <li><Link href="/about" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">About</Link></li>
+                <li><Link href="/insights" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Insights</Link></li>
+                <li><Link href="/articles" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Article archive</Link></li>
+                <li><Link href="/about" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">About</Link></li>
               </ul>
             </div>
             <div>
-              <p className="label-meta mb-4">Connect</p>
+              <p className="label-meta mb-4">More</p>
               <ul className="flex flex-col gap-2.5">
-                <li><Link href="/book" className="font-jakarta text-[13px] text-slate hover:text-navy transition-colors">Connect</Link></li>
+                <li><Link href="/book" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Book a call</Link></li>
+                <li><Link href="/give-back" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Give back</Link></li>
+                <li><Link href="/causes" className="font-jakarta text-[14px] text-slate hover:text-navy transition-colors">Causes</Link></li>
               </ul>
             </div>
           </div>

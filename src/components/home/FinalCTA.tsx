@@ -17,18 +17,18 @@ export default function FinalCTA() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <h2 className="font-jakarta font-extrabold text-cream text-[32px] md:text-[40px] leading-[1.15]">
-            Let&apos;s start with the work.
+          <h2 className="font-display font-bold text-cream text-[32px] md:text-[40px] leading-[1.15]">
+Bring me the problem that isn&apos;t moving.
           </h2>
           <p
             className="font-jakarta text-[16px] md:text-[17px] leading-[1.65] mt-4 max-w-md"
-            style={{ color: "rgba(245,241,232,0.75)" }}
+            style={{ color: "rgba(245,243,239,0.75)" }}
           >
-            Explore selected projects, leadership experience, and areas of current research. If there&apos;s alignment, we can continue the conversation.
+            A 30-minute call: an honest read on your challenge, two or three concrete observations, and a clear answer on whether I can help. No pitch, no pressure.
           </p>
           <div className="mt-8">
             <Link href="/book" className="btn-cream">
-              Get in touch <span aria-hidden="true">→</span>
+              Book a 30-minute call <span aria-hidden="true">→</span>
             </Link>
           </div>
         </motion.div>

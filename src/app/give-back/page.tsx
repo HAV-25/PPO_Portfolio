@@ -3,47 +3,30 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const REENTRY_URL = "https://calendly.com/payalponkshe/career-reentry";
 const PIVOT_URL = "https://calendly.com/payalponkshe/pivot-upskill-position";
 const CONTACT_EMAIL = "payalponkshe@gmail.com";
 
 const heroHighlights = [
-  "Career Re-Entry — for professionals navigating their return after a break",
-  "Pivot, Upskill & Position — for those ready to change direction into fintech, AI, or adjacent fields",
+  "For professionals rethinking their careers as AI and automation redraw the map",
+  "An honest gap assessment, an upskilling focus, and a first step on positioning",
   "Free, 30 minutes, no pitch, no follow-up — just an honest conversation",
 ];
 
 const professionalProgrammes = [
   {
     tag: "Free · 30 min · Limited slots",
-    subtitle: "Career Re-Entry Session",
-    title: "Re-entering the workforce?",
-    forWhom:
-      "You've been out of the workforce — by choice, necessity, or circumstance. You're not sure how to position the gap, what roles to target, or how to present yourself after time away. You don't need a career coach. You need someone who has hired, built teams, and sat on both sides of this conversation.",
-    whatYouGet: [
-      "An honest read on your positioning",
-      "One or two specific things to change in how you're presenting yourself",
-      "A clear next step — nothing overwhelming",
-    ],
-    limits:
-      "A small number of sessions per month. Priority to professionals in fintech, payments, technology, or adjacent fields. All conversations confidential.",
-    cta: "Book a free session",
-    href: REENTRY_URL,
-  },
-  {
-    tag: "Free · 30 min · Limited slots",
     subtitle: "Pivot, Upskill & Position",
-    title: "Ready to pivot, upskill, and reposition?",
+    title: "Ready to reposition for the AI decade?",
     forWhom:
-      "You know your next chapter needs to look different. You want to move into a new sector, build fluency in AI tools, or develop a personal brand that actually opens doors — but you're not sure where to start or what to prioritise first.",
+      "You can see the shift coming — AI and automation are changing what your role, sector, or skill set is worth. You want to move into a new direction, build real fluency in AI tools, or develop a professional position that opens doors. You don't need a career coach. You need someone who has hired, built teams, made this pivot herself — and builds these systems hands-on.",
     whatYouGet: [
-      "An honest gap assessment — where you are vs where you want to be",
-      "A concrete upskilling focus aligned to where the market is going",
-      "A practical first step on positioning and brand visibility",
+      "An honest gap assessment — where you are vs where the market is going",
+      "A concrete upskilling focus, not a list of courses",
+      "A practical first step on positioning and visibility",
       "What to stop doing, what to double down on",
     ],
     limits:
-      "A small number of sessions per month. Professionals in fintech, payments, AI-adjacent fields, and technology transitions prioritised. All conversations confidential.",
+      "A small number of sessions per month. Priority to professionals in fintech, payments, technology, and AI-adjacent transitions. All conversations confidential.",
     cta: "Book a free session",
     href: PIVOT_URL,
   },
@@ -132,7 +115,7 @@ function ProfessionalCard({
       {/* Limits note */}
       <div
         className="p-4 border-l-4 mb-6"
-        style={{ borderLeftColor: "#2dfff8", background: "rgba(36,53,110,0.03)" }}
+        style={{ borderLeftColor: "#1BAFBF", background: "rgba(36,38,43,0.03)" }}
       >
         <p className="font-jakarta text-slate text-[13px] leading-[1.75] italic">
           {programme.limits}
@@ -171,13 +154,13 @@ export default function GiveBackPage() {
                 Give-Back Programmes
               </motion.span>
               <motion.h1
-                className="font-jakarta font-extrabold text-navy text-[40px] md:text-[52px] leading-[1.08] tracking-[-0.02em] mt-3"
+                className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06] mt-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
               >
-                Giving back is not a{" "}
-                <span className="underline-cyan">side note.</span>
+                The work is changing.{" "}
+                <span className="underline-cyan">Reposition for it.</span>
               </motion.h1>
               <motion.p
                 className="font-jakarta font-normal text-slate text-[17px] md:text-[18px] leading-[1.7] mt-6 max-w-xl"
@@ -185,9 +168,10 @@ export default function GiveBackPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.18 }}
               >
-                I run a small number of free initiatives across professional
-                career support, senior care, and education access. None of these
-                are consulting. All of them are genuine.
+                AI and automation are redrawing what work looks like — which
+                roles persist, which skills compound, and how careers get
+                rebuilt. I run a small number of free sessions each month for
+                professionals navigating that shift. Not consulting. No funnel.
               </motion.p>
             </div>
 
@@ -220,7 +204,7 @@ export default function GiveBackPage() {
               />
               <p
                 className="font-jakarta text-[13px] leading-[1.5]"
-                style={{ color: "rgba(245,241,232,0.6)" }}
+                style={{ color: "rgba(245,243,239,0.6)" }}
               >
                 All professional sessions are free &middot; 30 minutes &middot; Limited slots
               </p>
@@ -234,12 +218,12 @@ export default function GiveBackPage() {
         <div className="content-width">
           <Reveal>
             <span className="section-label">For professionals</span>
-            <h2 className="font-jakarta font-bold text-navy text-[28px] md:text-[36px] leading-[1.15] tracking-[-0.01em] max-w-xl mb-10">
+            <h2 className="font-display font-bold text-navy text-[28px] md:text-[36px] leading-[1.12] max-w-xl mb-10">
               One honest conversation. No agenda.
             </h2>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-6 items-start">
+          <div className="max-w-2xl">
             {professionalProgrammes.map((programme, i) => (
               <ProfessionalCard key={programme.subtitle} programme={programme} index={i} />
             ))}
@@ -247,8 +231,8 @@ export default function GiveBackPage() {
 
           <Reveal delay={0.1} className="mt-8">
             <p className="font-jakarta text-slate text-[13px] leading-[1.7] max-w-xl italic">
-              Both programmes are free, limited to a small number of sessions per
-              month, and run at my discretion based on availability and fit. If
+              The programme is free, limited to a small number of sessions per
+              month, and runs at my discretion based on availability and fit. If
               slots are full, I keep a short waitlist.
             </p>
           </Reveal>
@@ -261,9 +245,9 @@ export default function GiveBackPage() {
           <Reveal className="max-w-2xl">
             <span className="section-label">What these are not</span>
             <p className="font-jakarta text-navy text-[16px] leading-[1.85] italic opacity-80">
-              &ldquo;Neither programme is a sales funnel. I don&apos;t
-              pitch services, ask for referrals, or follow up commercially.
-              One conversation. One honest read. That&apos;s it.&rdquo;
+              &ldquo;This is not a sales funnel. I don&apos;t pitch services,
+              ask for referrals, or follow up commercially. One conversation.
+              One honest read. That&apos;s it.&rdquo;
             </p>
           </Reveal>
         </div>
@@ -278,7 +262,7 @@ export default function GiveBackPage() {
               in senior care and education access — separately from this programme.{" "}
               <a
                 href="/causes"
-                className="font-jakarta font-semibold text-navy underline decoration-[#2dfff8] decoration-2 underline-offset-2 hover:opacity-75 transition-opacity"
+                className="font-jakarta font-semibold text-navy underline decoration-[#1BAFBF] decoration-2 underline-offset-2 hover:opacity-75 transition-opacity"
               >
                 Read about my causes →
               </a>
@@ -293,14 +277,14 @@ export default function GiveBackPage() {
           <Reveal>
             <div className="bg-navy rounded-cta px-8 py-16 md:px-20 md:py-20 flex flex-col items-center text-center">
               <h2 className="font-jakarta font-extrabold text-cream text-[28px] md:text-[36px] leading-[1.15]">
-                Not sure which programme fits?
+                Not sure if this session is for you?
               </h2>
               <p
                 className="font-jakarta text-[16px] leading-[1.65] mt-4 max-w-md"
-                style={{ color: "rgba(245,241,232,0.75)" }}
+                style={{ color: "rgba(245,243,239,0.75)" }}
               >
-                Drop me a line and I&apos;ll point you in the right direction.
-                No pitch, no agenda.
+                Drop me a line with where you are and where you want to go.
+                I&apos;ll tell you honestly whether 30 minutes with me will help.
               </p>
               <div className="mt-8">
                 <a

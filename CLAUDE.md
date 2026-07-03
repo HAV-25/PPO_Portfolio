@@ -28,7 +28,7 @@ Build a professional portfolio and consulting website for **Payal Ponkshe** — 
 - **Animation:** Framer Motion (scroll-triggered reveals, subtle micro-interactions — restrained, purposeful)
 - **Deployment:** Vercel
 - **Booking:** Calendly embed (inline, not redirect)
-- **Fonts:** Google Fonts — Poppins + Roboto Mono
+- **Fonts:** Google Fonts — IBM Plex Serif (display) + IBM Plex Sans (body) + IBM Plex Mono (data/labels)
 - **Icons:** Unicode glyphs only (✓ ✕ → ↓ •) — no icon libraries
 - **Images:** WebP, lazy-loaded, no stock photography
 - **CMS:** None for v1 — static content, easy to edit in code
@@ -39,38 +39,38 @@ Build a professional portfolio and consulting website for **Payal Ponkshe** — 
 
 All design decisions derive from the Payal Ponkshe personal brand system. Do not deviate.
 
-### Colours
+### Colours — Editorial system (updated 02.07.2026)
 ```
---bg-cream:        #F5F1E8   /* All page backgrounds */
---navy:            #24356e   /* All text, headlines, structure */
---cyan:            #2dfff8   /* Spotlight accent — ONE use per section max */
+--bg-cream:        #F5F3EF   /* Stone — all page backgrounds (token name kept from v1) */
+--navy:            #24262B   /* Ink — all text, dark surfaces (token name kept from v1) */
+--primary:         #274690   /* Editorial blue — kickers, stat numbers, links */
+--cyan:            #1BAFBF   /* Teal accent — ONE use per section max (token name kept) */
 --red-wrong:       #D94F4F   /* Sparingly — negative signals only */
---slate:           #5A6A8A   /* Meta text, labels, secondary */
---navy-80:         rgba(36,53,110,0.8)
---navy-20:         rgba(36,53,110,0.2)
---rule:            rgba(36,53,110,0.25)  /* Dividers */
+--slate:           #68707D   /* Meta text, labels, secondary */
+--rule:            #DDD8CE   /* Dividers */
 ```
 
-### Typography
+### Typography — Editorial system
 ```
-Display/Headlines:  Poppins Bold 700       — all headlines, card titles, section labels
-Body:               Poppins Regular 400    — all body text
-Labels/Meta:        Poppins Medium 500     — tags, nav, small labels
-Numbers/Stack:      Roboto Mono Bold 700   — ALL numbers, metrics, tech stack tags
+Display/Headlines:  IBM Plex Serif 600/700  — page H1s and section H2s >= 22px ONLY (.font-display)
+Body:               IBM Plex Sans 400       — all body text (var --font-jakarta, name kept from v1)
+Labels/Meta:        IBM Plex Mono 500       — kickers, tags, uppercase labels (12px floor)
+Numbers/Stack:      IBM Plex Mono           — ALL numbers, metrics, tech stack tags
 ```
+Serif never below 22px. Sans → Mono switch signals a data point — use deliberately.
+Reading sizes: article body 18px, standard body/card text 16px minimum, meta 14px floor.
 
 **Rules:**
 - Sentence case everywhere. No title case. No ALL CAPS except small meta labels (e.g. CASE STUDY, LIVE).
 - Numbers always in numerals: 18+, $25M, 120+, 30%, not "thirty percent"
-- Poppins → Roboto Mono switch signals a data point. Use deliberately.
 - One dominant element per section (either a headline OR a number — never both competing)
 
 ### Layout Rules
-- Background: flat cream `#F5F1E8` throughout — no dark mode, no gradients, no patterns
+- Background: flat stone `#F5F3EF` throughout — no dark mode, no gradients, no patterns
 - No drop shadows. No glassmorphism. No blur effects.
-- Border radius: 0 by default. `4px` only for small tag pills.
-- Dividers: `1px solid rgba(36,53,110,0.25)`
-- Cyan underline: `6px solid #2dfff8` — key phrases only, one per section
+- Border radius: 0 by default. `2px` only for small tag pills and buttons.
+- Dividers: `1px solid #DDD8CE`
+- Accent underline: `4px solid #1BAFBF` — key phrases only, one per section
 - Section margin: generous whitespace — 80px+ vertical padding between sections
 - Max content width: 1200px, centred
 - Mobile-first responsive. Min font size 16px body.
@@ -78,7 +78,7 @@ Numbers/Stack:      Roboto Mono Bold 700   — ALL numbers, metrics, tech stack 
 
 ### Signature Motion (Framer Motion)
 - Scroll-triggered fade+translateY reveals on section entry (subtle: 20px, 0.4s ease-out)
-- Hover on project cards: left border `4px solid #2dfff8` appears, no scale/shadow
+- Hover on project cards: left border `4px solid #1BAFBF` appears, no scale/shadow
 - Page transitions: cross-fade 200ms ease-out
 - Animated counters on the stat band (count up on scroll-into-view)
 - NO bounces, springs, parallax, or hover wobbles
@@ -89,14 +89,17 @@ Numbers/Stack:      Roboto Mono Bold 700   — ALL numbers, metrics, tech stack 
 ## 4. SITE ARCHITECTURE
 
 ```
-/                   → Home (hero + stat band + services snapshot + portfolio preview + professional experience preview + CTA)
+/                   → Home (hero + stat band + services snapshot + portfolio preview + experience preview + horizons + give-back teaser + CTA)
 /work               → Full Portfolio (all 8 project cards + case study modals)
 /experience         → Professional Experience (career timeline)
 /services           → Services & Offering (consulting, advisory, fractional)
 /insights           → Thought Leadership (articles/posts — static v1)
 /about              → About / Story
 /book               → Book a Discovery Call (Calendly embed — paid advisory)
-/give-back          → Give-Back Programme (pro-bono career re-entry, separate Calendly)
+/give-back          → Give-Back Programme (pro-bono "Pivot, Upskill & Position" — single programme, separate Calendly)
+/causes             → Causes & community initiatives
+/articles           → Article archive (all pillars incl. pipeline MDX articles)
+(/expertise and /perspectives are retired — 301 redirects to /services and /insights)
 ```
 
 **Navigation (top, sticky):**

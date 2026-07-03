@@ -2,26 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design tokens ─────────────────────────────────────────────────────── */
+/* ─── Design tokens — Editorial system (IBM Plex, stone/ink/blue/teal) ───── */
+/* Variable names kept from the previous system so existing component classes
+   keep resolving; only the values changed. cream=stone, navy=ink, cyan=teal. */
 :root {
-  --bg-cream: #F5F1E8;
-  --cream-card: #EDE8DC;
-  --cream-deep: #E4DFD0;
-  --navy: #24356e;
-  --navy-80: rgba(36, 53, 110, 0.8);
-  --navy-20: rgba(36, 53, 110, 0.2);
-  --cyan: #2dfff8;
+  --bg-cream: #F5F3EF;
+  --cream-card: #EDEAE3;
+  --cream-deep: #E5E1D8;
+  --navy: #24262B;
+  --navy-80: rgba(36, 38, 43, 0.8);
+  --navy-20: rgba(36, 38, 43, 0.2);
+  --primary: #274690;
+  --cyan: #1BAFBF;
   --red-wrong: #D94F4F;
-  --slate: #5A6A8A;
-  --rule: rgba(36, 53, 110, 0.25);
+  --slate: #68707D;
+  --rule: #DDD8CE;
   --live-bg: #E8F5F0;
   --live-dot: #2D9E6B;
-  --inbuild-bg: #F0F0EE;
-  --inbuild-dot: #9B9B9B;
+  --inbuild-bg: #EDEAE3;
+  --inbuild-dot: #8A8577;
 
-  --font-jakarta: "Inter", sans-serif;
+  --font-jakarta: "IBM Plex Sans", sans-serif;
+  --font-display: "IBM Plex Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --max-width: 1200px;
+  --max-width: 1160px;
   --section-padding: 80px;
 }
 
@@ -48,8 +53,21 @@
     font-family: var(--font-jakarta);
     font-weight: 400;
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.7;
     min-height: 100vh;
+  }
+
+  /* Editorial rule: serif for display headings only — applied via .font-display
+     on page/section headlines, never on card titles below ~22px. */
+  .font-display {
+    font-family: var(--font-display) !important;
+    letter-spacing: -0.015em;
+  }
+
+  /* Mono data voice — numbers, metrics, stack tags, labels. */
+  .font-data {
+    font-family: var(--font-mono) !important;
+    font-variant-numeric: tabular-nums;
   }
 
   /* No dark mode */
@@ -107,34 +125,34 @@
 
 /* ─── Typography utilities ───────────────────────────────────────────────── */
 @layer utilities {
-  /* Section label — "WHAT I DO", "SELECTED WORK" etc — navy, uppercase */
+  /* Section label — "WHAT I DO", "SELECTED WORK" etc — mono kicker */
   .section-label {
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--primary);
     display: block;
     margin-bottom: 16px;
   }
 
-  /* Meta labels — slate, uppercase */
+  /* Meta labels — slate, uppercase, mono */
   .label-meta {
-    font-family: var(--font-jakarta);
+    font-family: var(--font-mono);
     font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.06em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--slate);
   }
 
-  /* Cyan underline accent — one per section, key phrases only */
+  /* Accent underline — one per section, key phrases only */
   .underline-cyan {
     text-decoration: underline;
     text-decoration-color: var(--cyan);
-    text-decoration-thickness: 6px;
-    text-underline-offset: 4px;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
   }
 
   /* Section divider rule */
@@ -196,36 +214,37 @@
     opacity: 0.92;
   }
 
-  /* Stat number — large Plus Jakarta Sans ExtraBold */
+  /* Stat number — mono data voice, editorial blue */
   .stat-number {
-    font-family: var(--font-jakarta);
-    font-weight: 800;
-    font-size: 48px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 44px;
     line-height: 1;
-    color: var(--navy);
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
   }
 
   @media (min-width: 768px) {
     .stat-number {
-      font-size: 52px;
+      font-size: 48px;
     }
   }
 
   /* Suffix on stat numbers (the +, M+, etc) */
   .stat-suffix {
-    color: var(--navy);
+    color: var(--primary);
   }
 
-  /* Stack tag pill — light, recessed */
+  /* Stack tag — mono, square, quiet border */
   .stack-tag {
-    font-family: var(--font-jakarta);
+    font-family: var(--font-mono);
     font-weight: 400;
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--slate);
-    background: var(--bg-cream);
-    border: none;
-    border-radius: 8px;
-    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 4px 9px;
     display: inline-block;
   }
 
@@ -235,11 +254,13 @@
     align-items: center;
     gap: 6px;
     background: var(--live-bg);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 13px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--live-dot);
   }
 
@@ -259,11 +280,13 @@
     align-items: center;
     gap: 6px;
     background: var(--inbuild-bg);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 13px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--inbuild-dot);
   }
 
@@ -283,11 +306,13 @@
     align-items: center;
     gap: 6px;
     background: var(--inbuild-bg);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 13px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--inbuild-dot);
   }
 
@@ -307,12 +332,14 @@
     align-items: center;
     gap: 6px;
     background: transparent;
-    border: 1px solid rgba(36, 53, 110, 0.25);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 13px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--slate);
   }
 
@@ -322,18 +349,21 @@
     align-items: center;
     gap: 6px;
     background: transparent;
-    border: 1px solid rgba(36, 53, 110, 0.25);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-family: var(--font-jakarta);
-    font-weight: 600;
-    font-size: 13px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--navy);
   }
 
   /* Primary button — navy filled, rounded */
   .btn-primary {
     display: inline-flex;
+    gap: 8px;
     align-items: center;
     background-color: var(--navy);
     color: var(--bg-cream);
@@ -341,7 +371,7 @@
     font-weight: 600;
     font-size: 15px;
     padding: 14px 28px;
-    border-radius: 12px;
+    border-radius: 2px;
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease-out;
@@ -349,12 +379,13 @@
   }
 
   .btn-primary:hover {
-    background-color: #2d4080;
+    background-color: var(--primary);
   }
 
   /* Secondary button — outlined, rounded */
   .btn-secondary {
     display: inline-flex;
+    gap: 8px;
     align-items: center;
     background-color: transparent;
     color: var(--navy);
@@ -362,20 +393,21 @@
     font-weight: 600;
     font-size: 15px;
     padding: 14px 28px;
-    border-radius: 12px;
-    border: 1.5px solid var(--navy);
+    border-radius: 2px;
+    border: 1px solid var(--navy);
     cursor: pointer;
     transition: background-color 150ms ease-out;
     text-decoration: none;
   }
 
   .btn-secondary:hover {
-    background-color: rgba(36, 53, 110, 0.05);
+    background-color: rgba(36, 38, 43, 0.05);
   }
 
   /* Cream button — used inside navy CTA card */
   .btn-cream {
     display: inline-flex;
+    gap: 8px;
     align-items: center;
     background-color: var(--bg-cream);
     color: var(--navy);
@@ -383,7 +415,7 @@
     font-weight: 600;
     font-size: 15px;
     padding: 14px 32px;
-    border-radius: 12px;
+    border-radius: 2px;
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease-out;

@@ -1,13 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
-const inter = Inter({
+// Editorial design system — IBM Plex trio.
+// --font-jakarta is kept as the variable name so every existing font-jakarta
+// utility class resolves to Plex Sans without touching each component.
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-jakarta",
+  display: "swap",
+  preload: true,
+});
+
+const plexSerif = IBM_Plex_Serif({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+  preload: true,
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
   display: "swap",
   preload: true,
 });
@@ -138,7 +157,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${plexSans.variable} ${plexSerif.variable} ${plexMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

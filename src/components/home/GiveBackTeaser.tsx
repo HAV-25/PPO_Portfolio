@@ -22,12 +22,12 @@ export default function GiveBackTeaser() {
           </motion.span>
 
           <motion.h2
-            className="font-jakarta font-bold text-navy text-[26px] md:text-[32px] leading-[1.2] tracking-[-0.01em]"
+            className="font-display font-bold text-navy text-[26px] md:text-[32px] leading-[1.15]"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
           >
-            A small number of conversations, each month.
+            Rethinking your career for the AI decade?
           </motion.h2>
 
           <motion.p
@@ -36,7 +36,7 @@ export default function GiveBackTeaser() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.15 }}
           >
-            I reserve a small number of conversations each month for professionals navigating leadership transitions, fintech, AI transformation, or new venture ideas.
+            AI is redrawing what work looks like — and which skills hold their value. I run a small number of free sessions each month for professionals ready to pivot, upskill, and reposition for what comes next.
           </motion.p>
 
           <motion.p
@@ -45,7 +45,7 @@ export default function GiveBackTeaser() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
           >
-            These discussions are informal, practical, and grounded in real-world experience building products, teams, and operating models across multiple markets.
+            One conversation, 30 minutes: an honest gap assessment, a concrete upskilling focus, and a first step on positioning. Grounded in hiring, building, and operating across fintech and AI — not career-coach theory.
           </motion.p>
 
           <motion.p
@@ -67,7 +67,7 @@ export default function GiveBackTeaser() {
               href="/give-back"
               className="font-jakarta font-medium text-[14px] text-navy underline-cyan hover:opacity-75 transition-opacity"
             >
-              Request a conversation →
+              About the give-back programme →
             </Link>
           </motion.div>
         </div>

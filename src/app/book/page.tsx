@@ -44,7 +44,7 @@ export default function BookPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            <h1 className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em]">
+            <h1 className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]">
               Let&apos;s talk.
             </h1>
 
@@ -52,6 +52,12 @@ export default function BookPage() {
               In 30 minutes I&apos;ll give you an honest read on where I can help,
               what that would look like, and whether we&apos;re the right fit. No
               pitch. No pressure.
+            </p>
+
+            <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-sm">
+              Consulting, advisory, fractional — or an executive-search
+              conversation: all start the same way. Mention which in the
+              booking notes.
             </p>
 
             <div className="mt-10">

@@ -7,16 +7,16 @@ import type { PipelineArticle } from '@/lib/pipeline-content'
 
 const mdxComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="font-jakarta font-bold text-navy text-[28px] md:text-[36px] leading-[1.2] mt-12 mb-4" {...props} />
+    <h1 className="font-display font-bold text-navy text-[28px] md:text-[36px] leading-[1.15] mt-12 mb-4" {...props} />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="font-jakarta font-bold text-navy text-[22px] md:text-[26px] leading-[1.25] mt-10 mb-4 border-l-4 pl-4" style={{ borderLeftColor: '#2dfff8' }} {...props} />
+    <h2 className="font-jakarta font-bold text-navy text-[22px] md:text-[26px] leading-[1.25] mt-10 mb-4 border-l-4 pl-4" style={{ borderLeftColor: '#1BAFBF' }} {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3 className="font-jakarta font-semibold text-navy text-[18px] leading-[1.3] mt-8 mb-3" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="font-jakarta text-navy text-[17px] leading-[1.85] mb-0" {...props} />
+    <p className="font-jakarta text-navy text-[18px] leading-[1.8] mb-0" {...props} />
   ),
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong className="font-bold text-navy" {...props} />
@@ -31,20 +31,20 @@ const mdxComponents = {
     <ol className="flex flex-col gap-2 pl-0 list-none counter-reset-list" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="font-jakarta text-navy text-[17px] leading-[1.85] flex gap-3 items-start">
-      <span className="mt-[10px] flex-shrink-0 w-2 h-2 rounded-full" style={{ background: '#2dfff8' }} aria-hidden="true" />
+    <li className="font-jakarta text-navy text-[18px] leading-[1.8] flex gap-3 items-start">
+      <span className="mt-[10px] flex-shrink-0 w-2 h-2 rounded-full" style={{ background: '#1BAFBF' }} aria-hidden="true" />
       <span {...props} />
     </li>
   ),
   blockquote: (props: React.HTMLAttributes<HTMLElement>) => (
-    <blockquote className="border-l-4 pl-7 py-2 my-6" style={{ borderLeftColor: '#2dfff8' }}>
+    <blockquote className="border-l-4 pl-7 py-2 my-6" style={{ borderLeftColor: '#1BAFBF' }}>
       <div className="font-jakarta text-navy text-[20px] leading-[1.6] italic" {...props} />
     </blockquote>
   ),
   hr: () => <hr className="border-0 border-t border-rule my-8" />,
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className="text-navy underline decoration-[#2dfff8] decoration-2 underline-offset-2 hover:opacity-70 transition-opacity"
+      className="text-navy underline decoration-[#1BAFBF] decoration-2 underline-offset-2 hover:opacity-70 transition-opacity"
       target={props.href?.startsWith('http') ? '_blank' : undefined}
       rel={props.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       {...props}
@@ -54,18 +54,18 @@ const mdxComponents = {
     <div className="overflow-x-auto my-8 -mx-1">
       <table
         className="w-full border-collapse font-jakarta text-navy text-[14px]"
-        style={{ borderTop: '2px solid #24356e' }}
+        style={{ borderTop: '2px solid #24262B' }}
         {...props}
       />
     </div>
   ),
   thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead style={{ background: 'rgba(36,53,110,0.06)' }} {...props} />
+    <thead style={{ background: 'rgba(36,38,43,0.06)' }} {...props} />
   ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className="text-left font-bold text-[11px] tracking-[0.08em] uppercase text-slate px-4 py-3"
-      style={{ borderBottom: '1px solid rgba(36,53,110,0.2)' }}
+      style={{ borderBottom: '1px solid rgba(36,38,43,0.2)' }}
       {...props}
     />
   ),
@@ -74,8 +74,8 @@ const mdxComponents = {
   ),
   tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className="transition-colors duration-100 hover:bg-[rgba(45,255,248,0.06)]"
-      style={{ borderBottom: '1px solid rgba(36,53,110,0.12)' }}
+      className="transition-colors duration-100 hover:bg-[rgba(27,175,191,0.06)]"
+      style={{ borderBottom: '1px solid rgba(36,38,43,0.12)' }}
       {...props}
     />
   ),
@@ -158,7 +158,7 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
             <div className="flex items-center gap-2 mb-6 flex-wrap">
               <span
                 className="font-jakarta font-semibold text-navy text-[11px] tracking-[0.08em] uppercase px-3 py-1 rounded-tag"
-                style={{ background: 'rgba(36,53,110,0.08)' }}
+                style={{ background: 'rgba(36,38,43,0.08)' }}
               >
                 {categoryLabel(article.category)}
               </span>
@@ -172,7 +172,7 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
               </span>
             </div>
 
-            <h1 className="font-jakarta font-extrabold text-navy text-[32px] md:text-[44px] leading-[1.1] tracking-[-0.02em]">
+            <h1 className="font-display font-bold text-navy text-[32px] md:text-[44px] leading-[1.1]">
               {article.title}
             </h1>
 

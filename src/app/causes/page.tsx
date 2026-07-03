@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 const causes = [
   {
-    title: "Career re-entry after a break",
-    why: "Career breaks are still treated as gaps rather than choices. The financial services industry in particular hasn't caught up with the reality that some of the most capable people have non-linear histories. I've been on the hiring side long enough to know the difference between a gap and a red flag — and most gaps aren't red flags.",
+    title: "Workforce transitions in the age of AI",
+    why: "AI and automation are redrawing what work looks like — which roles persist, which skills hold value, and how careers get rebuilt mid-flight. The people most exposed to that shift usually get the least honest guidance about it. I've hired, built teams, and made this pivot myself; most advice in this space is either generic or selling something.",
     whatIDo:
-      "I run a small, free Give-Back Programme — 30-minute sessions for professionals re-entering the workforce after a career break. Priority to people in fintech, payments, and technology.",
+      "I run a small, free Give-Back Programme — Pivot, Upskill & Position: 30-minute sessions for professionals repositioning their careers. Priority to people in fintech, payments, and technology.",
     action: { label: "Apply for a session →", href: "/give-back" },
   },
   {
@@ -30,8 +30,8 @@ const causes = [
     title: "Responsible AI in regulated industries",
     why: "The EU AI Act is a starting point, not a ceiling. In financial services, healthcare, and education — the sectors where AI can do the most good — the failure modes are also the highest stakes. I'm not opposed to moving fast. I'm opposed to moving fast while ignoring the failure modes that are already visible.",
     whatIDo:
-      "When I design agentic systems or advise on AI implementation, GDPR compliance, explainability, and audit trails are part of the architecture — not a retrofit. I write about this in Perspectives.",
-    action: { label: "Read my thinking on responsible AI →", href: "/perspectives" },
+      "When I design agentic systems or advise on AI implementation, GDPR compliance, explainability, and audit trails are part of the architecture — not a retrofit. I write about this in Insights.",
+    action: { label: "Read my thinking on responsible AI →", href: "/insights" },
   },
   {
     title: "Women in fintech and payments leadership",
@@ -47,7 +47,7 @@ export default function CausesPage() {
     <>
       {/* Hero */}
       <Section className="pt-[140px] md:pt-[160px]">
-        <h1 className="font-jakarta font-bold text-navy text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.01em] max-w-2xl">
+        <h1 className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06] max-w-2xl">
           Causes I care about
         </h1>
         <p className="font-jakarta text-slate text-[18px] leading-[1.6] mt-5 max-w-xl">
@@ -104,7 +104,7 @@ export default function CausesPage() {
 
       {/* Community initiatives */}
       <Section>
-        <h2 className="font-jakarta font-bold text-navy text-[28px] md:text-[34px] leading-[1.15] tracking-[-0.01em] max-w-xl mb-2">
+        <h2 className="font-display font-bold text-navy text-[28px] md:text-[34px] leading-[1.12] max-w-xl mb-2">
           Community initiatives
         </h2>
         <p className="font-jakarta text-slate text-[16px] leading-[1.7] max-w-xl mb-10">
@@ -136,7 +136,7 @@ export default function CausesPage() {
               href: `mailto:${CONTACT_EMAIL}?subject=Education Support — Children`,
             },
           ].map((initiative) => (
-            <div key={initiative.title} className="bg-cream-card rounded-card p-7 flex flex-col" style={{ border: "1px solid rgba(36,53,110,0.1)" }}>
+            <div key={initiative.title} className="bg-cream-card rounded-card p-7 flex flex-col" style={{ border: "1px solid rgba(36,38,43,0.1)" }}>
               <p className="font-jakarta font-medium text-slate text-[11px] tracking-[0.06em] uppercase mb-3">
                 {initiative.tag}
               </p>
@@ -162,11 +162,11 @@ export default function CausesPage() {
       {/* Give-Back CTA */}
       <Section ruled="both">
         <div className="max-w-xl">
-          <h2 className="font-jakarta font-bold text-navy text-[28px] leading-[1.2]">
-            Re-entering the workforce?
+          <h2 className="font-display font-bold text-navy text-[28px] leading-[1.2]">
+            Repositioning your career?
           </h2>
           <p className="font-jakarta text-slate text-[16px] leading-[1.65] mt-4">
-            If you&apos;re navigating a return after a career break — in fintech,
+            If AI is redrawing the map for your role or sector — in fintech,
             payments, tech, or adjacent fields — I offer a small number of free
             sessions per month. No pitch, no programme to sell you.
           </p>

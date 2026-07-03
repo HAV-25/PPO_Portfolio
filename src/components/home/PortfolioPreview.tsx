@@ -8,25 +8,26 @@ import StackIcon from "@/components/ui/StackIcon";
 
 const featured = [
   {
-    title: "Content Intelligence & Reconstruction Engine",
+    // ⚠ CONFIRM: public product name + Google Play link for the exam app
+    title: "German exam preparation app — CEFR A1–B1",
     subtitle:
-      "AI system for analysing, deconstructing, and reconstructing high-performing content within defined brand frameworks.",
-    stack: ["n8n", "Claude API", "GPT Image", "Supabase"],
-    status: "live" as const,
-    capability: "AI Pipeline Architecture",
-  },
-  {
-    title: "Adaptive Language Learning Platform",
-    subtitle:
-      "AI-native certification preparation platform combining content generation, scoring, and learning progression.",
+      "AI-native exam prep: 850+ exam-aligned questions, hybrid AI + deterministic scoring, GDPR by design. Live on Google Play as a subscription business.",
     stack: ["React Native", "Supabase", "Claude API", "OpenAI Realtime"],
     status: "live" as const,
     capability: "Product Ownership · Mobile · AI",
   },
   {
-    title: "Automated Content Production System",
+    title: "Content intelligence & reconstruction engine",
     subtitle:
-      "AI-assisted workflow for transforming content strategy into structured, production-ready media assets.",
+      "Multi-model pipeline that analyses high-performing content and reconstructs it inside a locked brand system — carousel production from ~3 hours to under 20 minutes of review.",
+    stack: ["n8n", "Claude API", "GPT Image", "Supabase"],
+    status: "live" as const,
+    capability: "AI Pipeline Architecture",
+  },
+  {
+    title: "Spaarker — AI carousel content platform",
+    subtitle:
+      "Purpose-built carousel generation for creators: typed pipeline contracts, per-slide retry and caching, a 0–5 creative-variation dial. In active build.",
     stack: ["Next.js", "Supabase", "OpenAI", "n8n"],
     status: "build" as const,
     capability: "AI Product Strategy · Full-Stack",
@@ -40,10 +41,10 @@ export default function PortfolioPreview() {
   return (
     <section className="section-spacing" id="work">
       <div className="content-width" ref={ref}>
-        <span className="section-label">Systems I&apos;m building</span>
+        <span className="section-label">Built and shipped</span>
 
         <p className="font-jakarta text-slate text-[16px] md:text-[17px] leading-[1.75] mb-10 max-w-2xl">
-          Alongside my leadership career in payments and financial infrastructure, I actively design and build AI-native systems, automation platforms, and venture concepts. These projects serve as laboratories for exploring how emerging technologies move from concept to scalable adoption.
+          These are not advisory artefacts. Each system below was designed, architected, and shipped by me — database schema to prompt architecture to app store. It is the same capability I bring to client work.
         </p>
 
         <div className="grid md:grid-cols-3 gap-5">
@@ -64,11 +65,11 @@ export default function PortfolioPreview() {
                 </span>
               </div>
 
-              <h3 className="font-jakarta font-bold text-navy text-[16px] leading-[1.35] mt-4">
+              <h3 className="font-jakarta font-bold text-navy text-[17px] leading-[1.35] mt-4">
                 {project.title}
               </h3>
 
-              <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-3 flex-1">
+              <p className="font-jakarta text-slate text-[15px] leading-[1.65] mt-3 flex-1">
                 {project.subtitle}
               </p>
 
@@ -89,7 +90,7 @@ export default function PortfolioPreview() {
             href="/work"
             className="font-jakarta font-semibold text-[14px] text-navy hover:underline hover:decoration-cyan hover:decoration-2 hover:underline-offset-2 transition-all"
           >
-            View all work →
+            All systems and case studies →
           </Link>
         </div>
       </div>

@@ -137,10 +137,10 @@ function htmlPage(title: string, message: string, colour: string) {
     body { font-family: -apple-system, sans-serif; background: #F5F1E8;
            display: flex; align-items: center; justify-content: center;
            min-height: 100vh; margin: 0; }
-    .card { background: white; border: 1px solid rgba(36,53,110,0.25);
+    .card { background: white; border: 1px solid rgba(36,38,43,0.25);
             border-left: 6px solid ${colour}; padding: 40px 48px;
             max-width: 480px; }
-    h1 { color: #24356e; font-size: 24px; margin: 0 0 12px; }
+    h1 { color: #24262B; font-size: 24px; margin: 0 0 12px; }
     p { color: #5A6A8A; line-height: 1.6; margin: 0; }
   </style>
 </head>
@@ -222,7 +222,7 @@ export async function GET(request: NextRequest) {
       ? 'Formatting and generating hero image — the article will be live on the site in approximately 5 minutes.'
       : 'Merged to main. The CDA agent was not triggered (CDA_TRIGGER_URL not configured). Deploy manually via Netlify.'
 
-    return htmlPage('Approved', `"${meta.title}" has been approved. ${cdaMessage}`, '#2dfff8')
+    return htmlPage('Approved', `"${meta.title}" has been approved. ${cdaMessage}`, '#1BAFBF')
   }
 
   if (action === 'reject') {
