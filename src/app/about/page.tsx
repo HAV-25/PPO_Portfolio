@@ -66,8 +66,8 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            Builder. Executive.{" "}
-            <span className="underline-cyan">Both, by design.</span>
+            I&apos;ve run technology organisations at global scale.{" "}
+            <span className="underline-cyan">And I build the systems myself.</span>
           </motion.h1>
         </div>
       </section>
