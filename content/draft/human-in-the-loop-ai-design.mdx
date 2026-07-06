@@ -9,7 +9,7 @@ slug: "human-in-the-loop-ai-design"
 status: "draft"
 ---
 
-The human-in-the-loop AI market is valued at $6.73B in 2026, growing at 24.9% annually (Research and Markets, 2026). Almost none of that investment addresses the decision that determines whether HITL oversight actually works: where in the workflow the human sits, and what they are supposed to do when they get there.
+The human-in-the-loop AI market is valued at $6.73B in 2026, growing at 24.9% annually (Research and Markets, 2026). Almost none of that investment addresses the decision that determines whether human-in-the-loop (HITL) oversight actually works: where in the workflow the human sits, and what they are supposed to do when they get there.
 
 The failure pattern is consistent. A gate is added late in the build. The reviewer is shown an output without the reasoning behind it. The path of least resistance is approval. The gate exists. Oversight does not.
 
@@ -17,9 +17,9 @@ The failure pattern is consistent. A gate is added late in the build. The review
 
 EU AI Act Article 14 requires that high-risk AI systems include human-machine interface tools enabling effective oversight by qualified persons who can interpret AI outputs and intervene, stop, or override the system. Enforcement applies from August 2, 2026. The operative word is "effective" — a gate that cannot meaningfully change an outcome does not meet the standard.
 
-In financial services, the regulatory bar is structurally higher than in other sectors. MIT Sloan Management Review has observed that in financial services, there is no customer-facing use case that affects decisions without a human in the loop. The regulatory obligation, the fiduciary duty, and the reputational exposure all converge on the same requirement: oversight that is traceable, calibrated, and trained.
+In regulated financial services, the bar is structurally higher than in other sectors. The fiduciary duty, the regulatory obligation, and the reputational exposure all converge on the same requirement: oversight that is traceable, calibrated, and trained. No customer-facing use case that affects consequential decisions can be operated without it — and EU AI Act Article 14 now makes that a legal obligation, not an operational preference.
 
-Klarna demonstrated the failure case in 2024. After replacing customer service agents with AI at scale, service quality degraded visibly. They reversed course and announced a re-hiring initiative. The model performed. The product failed. This is what HITL design failure looks like in production — not a model problem, but an architecture problem.
+Klarna demonstrated the failure case in 2024 (Klarna, 2024). After replacing customer service agents with AI at scale, service quality degraded visibly. They reversed course and announced a re-hiring initiative. The model performed. The product failed. This is what HITL design failure looks like in production — not a model problem, but an architecture problem.
 
 ## What are the most common mistakes in human-in-the-loop design?
 
@@ -42,13 +42,13 @@ The table below is a design tool, not a checklist — the mapping should happen 
 | 1 | Low | High | Async notification, no block | Low-value transaction flagged for next-day review |
 | 2 | Medium | High | Approval required within 24h SLA | Credit limit adjustment below policy threshold |
 | 3 | High | Low | Qualified reviewer, documented rationale required | Suspicious activity report (SAR) filing |
-| 4 | Critical | None | Human decision, AI in support role | KYC rejection, account closure |
+| 4 | Critical | None | Human decision, AI in support role | KYC (Know Your Customer) rejection, account closure |
 
-In an n8n agentic workflow, Level 2 and Level 3 gates are implemented as execution pauses. The workflow halts, writes the pending review to Supabase with a structured context package — the AI's reasoning, confidence score, available choices, and downstream consequences — and resumes only after a time-stamped human action is logged. The audit trail is automatic. The context package must be designed before the workflow is built, because an AI agent that pauses without context is not oversight infrastructure — it is a waiting screen.
+In the n8n agentic workflows I build for production HITL systems, Level 2 and Level 3 gates are implemented as execution pauses. The workflow halts, writes the pending review to Supabase with a structured context package — the AI's reasoning, confidence score, available choices, and downstream consequences — and resumes only after a time-stamped human action is logged. The audit trail is automatic. The context package must be designed before the workflow is built, because an AI agent that pauses without context is not oversight infrastructure — it is a waiting screen.
 
 ## What does effective human-in-the-loop oversight look like in financial services?
 
-JPMorgan Chase uses AI to surface anomalous transaction patterns, with qualified analysts making the final determination. PayPal's Fraud Protection Advanced routes each transaction to a risk score and recommendation; the human reviewer sees the full decision chain, not just the flag. In both cases, the human gate is positioned at the decision, not after the output.
+JPMorgan Chase deploys AI to surface anomalous transaction patterns, with qualified analysts making the final determination (JPMorgan Chase, 2024). PayPal's Fraud Protection Advanced routes each transaction to a risk score and recommendation; the human reviewer sees the full decision chain, not just the flag (PayPal, 2024). In both cases, the human gate is positioned at the decision, not after the output.
 
 The pattern that works across credit, fraud, and compliance workflows is: AI surfaces, human determines — with the threshold for human involvement set by risk policy, not by engineering convenience.
 

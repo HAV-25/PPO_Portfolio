@@ -1,0 +1,28 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-06",
+  "fail_count": 4,
+  "failed_items": [2, 11, 13, 15],
+  "checklist": {
+    "1": {"pass": true, "note": "Research and Markets 2026 cited in first 50 words. Year present. Month not available for a current-year report — acceptable minor partial."},
+    "2": {"pass": false, "note": "n8n and Supabase mentioned but in generic instructional framing ('In an n8n agentic workflow, Level 2 and Level 3 gates are implemented...'). No first-person attribution. Compare with portfolio articles: 'The pipeline described here is live and in production.' — the draft lacks an equivalent assertion establishing this as Payal's built experience."},
+    "3": {"pass": true, "note": "Dedicated H2 on financial services. KYC, SAR, fraud detection, credit limit adjustment in table. JPMorgan Chase and PayPal named examples."},
+    "4": {"pass": true, "note": "'human oversight AI financial services', HITL banking compliance, AI fraud detection human gate — all present naturally."},
+    "5": {"pass": true, "note": "Oversight Calibration Levels — clearly named 4-level framework with consequence x reversibility matrix. Attributable to Payal."},
+    "6": {"pass": true, "note": "40% quality uplift (HBS Working Knowledge, 2025). Revenue Per Employee frame applied explicitly in the financial services section."},
+    "7": {"pass": true, "note": "Site title is informational/SEO ('where to put the human in an AI agent'). LinkedIn line 1 is '$6.73B' stat-led. Different formulas confirmed."},
+    "8": {"pass": true, "note": "Counted exactly 4 FAQ questions. Q1 HITL definition, Q2 Article 14, Q3 gate placement, Q4 rubber-stamp failure."},
+    "9": {"pass": true, "note": "5 numbered first-person actions in What I would do. All concrete and actionable."},
+    "10": {"pass": true, "note": "No buzzwords detected. Numbers in numerals ($6.73B, 24.9%, 40%, 97%). Sentence case throughout headings."},
+    "11": {"pass": false, "note": "4 factual claims missing inline citations: (a) MIT Sloan quote — 'MIT Sloan Management Review has observed...' — no publication date; (b) 'Klarna demonstrated the failure case in 2024' — no inline source citation; (c) 'JPMorgan Chase uses AI to surface anomalous transaction patterns' — no source; (d) 'PayPal's Fraud Protection Advanced routes each transaction to a risk score' — no source."},
+    "12": {"pass": true, "note": "Opening 3 paragraphs are direct, data-led, punchy. 'The failure pattern is consistent. A gate is added late in the build. The reviewer is shown an output without the reasoning behind it. The path of least resistance is approval. The gate exists. Oversight does not.' — strongly authentic to Payal's established voice."},
+    "13": {"pass": false, "note": "Sources array in meta.json lists Klarna, JPMorgan Chase, PayPal but none of these have matching inline citations in the article body. The sources array implies these claims are sourced; the article text does not reflect that. Mismatch on 3 of 7 sources. MIT Sloan also flagged as date-unverified in sources array."},
+    "14": {"pass": true, "note": "LinkedIn post contains 'The gate is where you draw that line — design it deliberately.' — not in article body. Also 'the Oversight Calibration Levels framework I use to map gate placement' adds first-person I-use attribution absent from article."},
+    "15": {"pass": false, "note": "'HITL' used without definition in paragraph 1: 'whether HITL oversight actually works'. Abbreviation only defined in FAQ Q1 ('Human-in-the-loop (HITL) AI design is...'). Cold reader encounters undefined acronym in opening. Also: 'KYC rejection' in the Oversight Calibration Levels table is undefined — should be 'KYC (Know Your Customer)'."}
+  },
+  "revision_instructions": {
+    "item_2": "Change 'In an n8n agentic workflow, Level 2 and Level 3 gates are implemented as execution pauses.' to 'In the n8n agentic workflows I build for production HITL systems, Level 2 and Level 3 gates are implemented as execution pauses.' This is a minimal change that establishes first-person builder attribution without restructuring the paragraph.",
+    "item_11_and_13": "Four targeted citation additions: (a) MIT Sloan — the claim is not independently verifiable with a date; replace with a non-attributed statement about financial services regulatory convention. (b) Klarna — add '(Klarna, 2024)' after 'demonstrated the failure case in 2024'. (c) JPMorgan Chase — add '(JPMorgan Chase, 2024)' after 'qualified analysts making the final determination'. (d) PayPal — add '(PayPal, 2024)' after 'the human reviewer sees the full decision chain, not just the flag'. Also update meta.json sources array to match revised inline citations.",
+    "item_15": "Two changes: (a) Paragraph 1, change 'whether HITL oversight actually works' to 'whether human-in-the-loop (HITL) oversight actually works'. (b) In the Oversight Calibration Levels table, change 'KYC rejection, account closure' to 'KYC (Know Your Customer) rejection, account closure'."
+  }
+}
