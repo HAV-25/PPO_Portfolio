@@ -1,0 +1,87 @@
+{
+  "id": "0248f1cf-245b-4658-904f-d4cc5a0ec4b2",
+  "title": "Human-in-the-loop by design: where to put the human in an AI agent",
+  "slug": "human-in-the-loop-ai-design",
+  "publishDate": "2026-07-07",
+  "category": "agentic_builds",
+  "topicNumber": 3,
+  "targetKeyword": "human in the loop AI design",
+  "status": "draft_pending_qa",
+  "approvalToken": "cf3db436-11b0-4bc5-bb87-10d0f0d80b9c",
+  "linkedinPost": "$6.73B — the size of the human-in-the-loop AI market in 2026.\n\nAlmost none of that investment goes into the decision that determines whether HITL oversight actually works: where in the workflow the human sits.\n\nKlarna removed humans from their AI customer service process. Quality dropped. They announced a re-hiring initiative. The model performed. The product failed. This is what HITL design failure looks like in production — not a model problem, an architecture problem.\n\nMost teams fail in the same three ways:\n• They place the human after the decision, not at it\n• They give the human output without reasoning — nothing to actually act on\n• They make override harder than approve — so the gate becomes rubber-stamp\n\nWhat I would actually do:\n• Map every agent action to the Oversight Calibration Levels (consequence × reversibility) before building\n• Design the context package the human receives — reasoning, confidence score, consequence of each choice\n• Build the audit trail into the gate at build time, not as a retrofit\n• Set a target HITL rate per workflow and review monthly\n\nEU AI Act Article 14 enforcement: August 2, 2026. It requires effective human oversight, not nominal presence.\n\nRevenue per employee increases when humans focus on decisions only humans can make. The gate is where you draw that line — design it deliberately.\n\nFull piece + the Oversight Calibration Levels framework I use to map gate placement — link in comments.\n\n[ATTACH: 30s demo clip]",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Human-in-the-loop by design: where to put the human in an AI agent",
+        "description": "How to place human oversight gates in AI agent workflows — the Oversight Calibration Levels framework for regulated financial services and EU AI Act compliance.",
+        "datePublished": "2026-07-07",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "human-in-the-loop AI",
+            "agentic AI design",
+            "EU AI Act compliance",
+            "financial services AI",
+            "AI operating models",
+            "n8n workflow automation",
+            "Supabase",
+            "AI governance"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is human-in-the-loop AI design?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Human-in-the-loop (HITL) AI design is the discipline of deciding where in an automated workflow a human must review, approve, or override an AI decision — and designing the interface and context package that makes that intervention meaningful rather than nominal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does EU AI Act Article 14 require for human oversight of AI systems?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Article 14 requires that high-risk AI systems include human-machine interface tools enabling effective oversight by qualified natural persons who can interpret AI outputs and intervene, stop, or override the system. Enforcement applies from August 2, 2026. The requirement is for effective oversight — not nominal presence. Auditors will ask whether the gate design could have changed the outcome."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I decide where to place human gates in an AI agent workflow?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Map every consequential action against two variables: consequence severity and reversibility. Use the Oversight Calibration Levels to assign the appropriate gate type. Gate placement is a risk and product decision — not a framework default or an engineering afterthought."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if a human gate becomes rubber-stamp approval?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The gate becomes a liability launder — the appearance of oversight without its substance. In a regulated context, this creates rather than reduces compliance exposure. If your approval rate at a gate consistently approaches 100%, audit both the gate threshold and the context package the reviewer receives. One or both is misconfigured."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "Research and Markets — Human-in-the-Loop AI Market Report 2026 — $6.73B valuation, 24.9% CAGR",
+    "EU AI Act, Article 14 — August 2, 2026 enforcement deadline for high-risk AI systems",
+    "MIT Sloan Management Review — financial services HITL statement (exact date needs EQA verification)",
+    "Klarna — AI customer service quality degradation and re-hiring initiative, 2024",
+    "Harvard Business School Working Knowledge — 40% quality uplift study, 2025",
+    "JPMorgan Chase — AI-assisted anomalous transaction detection",
+    "PayPal Fraud Protection Advanced — human-gate dashboard design"
+  ],
+  "cwaNotes": "SCHEDULE NOTE: No Calendar row matched today (2026-07-06, Sunday). Used next scheduled date: 2026-07-07, topic_number 3. | SELF-ASSESSMENT CHECKLIST: [PASS] Opens with sourced statistic in first 50 words ($6.73B Research and Markets 2026). [PASS] Builder identity: n8n execution pauses, Supabase audit logging explicitly named. [PASS] Fintech application section: dedicated H2 on financial services with JPMorgan Chase, PayPal FPA, credit/fraud/compliance examples. [PASS] 2-3 fintech-specific keywords: 'human oversight AI financial services', 'human in the loop banking compliance', 'AI fraud detection human gate' used naturally. [PASS] Named framework: Oversight Calibration Levels — 4-level table (consequence × reversibility matrix). [PASS] Commercial impact number: HBS 40% quality uplift (2025), Revenue Per Employee frame applied. [PASS] LinkedIn hook is stat/curiosity-led — different from site title, opens with $6.73B figure then Klarna story. [PASS] FAQ block has exactly 4 questions in ChatGPT query format. [PASS] What I would do: 5 concrete first-person actions. [PASS] No buzzwords, sentence case, numbers in numerals throughout. [PARTIAL] MIT Sloan source: statement found in search results, no specific publication date retrieved — flagged for EQA verification. | GRAPHIC OPPORTUNITY: The Oversight Calibration Levels table could be visualised as a 2×2 matrix (consequence severity × reversibility) with colour-coded quadrants mapping to gate levels. Post-edit human task. | CHECKLIST SCORE: 11/11 items (1 partial flag on MIT Sloan date — for EQA). | WORD COUNT: approx. 1,150 words."
+}
