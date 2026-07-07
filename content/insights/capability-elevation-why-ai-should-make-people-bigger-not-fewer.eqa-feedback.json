@@ -1,0 +1,32 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-07",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_first_50_words": "PASS — '56% more' cited (PwC Global AI Jobs Barometer, 2026) within opening sentence",
+    "2_builder_stack_first_person": "PASS — 'the n8n-orchestrated workflows I build for content and compliance pipelines' in What I would do section",
+    "3_fintech_application_section": "PASS — dedicated H2 'AI capability elevation in banking and payments: the regulatory dimension'",
+    "4_fintech_keywords": "PASS — 'AI capability elevation in financial services', 'AI capability elevation in banking', 'regulated financial services', 'operating model' all used naturally",
+    "5_named_framework": "PASS — Capability Elevation Ladder, 5-level GFM pipe table, clearly named and attributed",
+    "6_commercial_impact_number": "PASS — 56% wage premium (PwC), 20% productivity gain across 109 firms (Bain), 35% junior agent improvement (Morgan Stanley/Bain)",
+    "7_linkedin_hook_differs": "PASS — site title is narrative; LinkedIn opens with 56% stat, different register and formula",
+    "8_faq_exactly_4": "PASS — 4 Q&As confirmed",
+    "9_what_i_would_do_3to5": "PASS — 5 concrete first-person actions",
+    "10_no_buzzwords_sentence_case_numerals": "PASS — clean throughout",
+    "11_every_claim_sourced_inline": "FAIL — 'the high-risk obligations under the EU AI Act now formally apply from December 2027 following the Digital Omnibus deferral' — factual claim (specific date + regulatory event) with no inline citation. All 4 other claims are properly cited.",
+    "12_voice_authenticity": "PASS — opening 3 paragraphs: data-first, short punchy sentences, 'That number is not a market curiosity' is Payal's contrarian reframe pattern; matches portfolio_articles.md voice",
+    "13_source_array_matches_inline": "FAIL — 'EU Digital Omnibus, June 2026' is entry 5 in sources array but has no corresponding inline citation in article body. 4 of 5 sources properly cited inline.",
+    "14_linkedin_native_value": "PASS — post delivers worked examples (compliance analyst, credit officer, relationship manager), 5 action points, and Morgan Stanley context natively",
+    "15_self_contained_cold_reader": "PASS — no undefined acronyms for target audience (fintech/financial services executives)"
+  },
+  "revision_instructions": {
+    "item_11_and_13": {
+      "issue": "The Digital Omnibus deferral claim lacks inline citation. The source exists in meta.json but was not cited in article text.",
+      "location": "Section: 'AI capability elevation in banking and payments: the regulatory dimension', second paragraph",
+      "current_text": "the high-risk obligations under the EU AI Act now formally apply from December 2027 following the Digital Omnibus deferral.",
+      "corrected_text": "the high-risk obligations under the EU AI Act now formally apply from December 2027 following the Digital Omnibus deferral (EU Digital Omnibus, June 2026).",
+      "instruction": "Add '(EU Digital Omnibus, June 2026)' as inline citation immediately after 'Digital Omnibus deferral'. Do not change any other text."
+    }
+  }
+}
