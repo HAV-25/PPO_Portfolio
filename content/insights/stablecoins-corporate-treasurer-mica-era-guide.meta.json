@@ -1,0 +1,89 @@
+{
+  "id": "f4e82ca1-3b7d-4f9e-8c5a-2d1e6b0af3c7",
+  "title": "MiCA stablecoin treasury: a practical guide for EU corporate treasurers",
+  "slug": "stablecoins-corporate-treasurer-mica-era-guide",
+  "publishDate": "2026-07-09",
+  "category": "payments_infra",
+  "topicNumber": 16,
+  "targetKeyword": "MiCA stablecoin treasury",
+  "status": "awaiting_approval",
+  "approvalToken": "9a2b5d8e-1c4f-47a3-b6e0-3d5c9f2a8b7e",
+  "linkedinPost": "128% growth in euro stablecoin market cap in 12 months. As of 1 July 2026, the EU's MiCA transitional period is closed — and the risk picture for corporate treasurers changed overnight.\n\nThis is not a crypto story. It is a treasury governance story.\n\nMiCA creates 2 instruments that matter: E-Money Tokens (EMTs, the practical standard for B2B settlements) and Asset-Referenced Tokens (ARTs, more complex, harder to use in standard treasury contexts). USDT has no MiCA authorisation. Any EU corporate using it for settlements now has a compliance exposure, not just a market risk.\n\nWhat I would actually do:\n\n• Audit every stablecoin instrument in use — payment teams often settle with stablecoins without treasury awareness\n• Run the EMT checklist: MiCA authorisation number, Art. 36 reserve custody, redemption terms\n• Check your custody provider holds both MiCA AND PSD2 coverage — the gap between the two is now your risk\n• Build a stablecoin instrument register before your next regulatory examination\n• If automating settlement, design to a typed abstraction layer — I use n8n + Supabase + Circle EURC for the EU rail\n\nThe Revenue Per Employee frame applies directly: automated MiCA-compliant settlement pipelines cut cross-border processing from 3–5 days to same-day. That is not a fintech innovation story. That is a treasury efficiency story.\n\nFull piece + the MiCA Readiness Ladder I built around this — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "MiCA stablecoin treasury: a practical guide for EU corporate treasurers",
+        "description": "MiCA's July 2026 deadline is now in force. What EU corporate treasurers need to know about compliant stablecoin use for cross-border payments.",
+        "datePublished": "2026-07-09",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "MiCA regulation",
+            "stablecoin treasury",
+            "payments infrastructure",
+            "EU financial regulation",
+            "corporate treasury",
+            "cross-border settlements",
+            "agentic AI in financial services"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What stablecoins are MiCA-compliant for EU corporate treasury in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As of June 2026, approximately 8 euro-denominated EMTs hold MiCA authorisation. Circle's EURC and EU-issued USDC are the most widely used for corporate operations. USDT does not hold MiCA authorisation and cannot be used in regulated EU corporate settlements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between an EMT and an ART under MiCA for corporate treasury purposes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An EMT references a single fiat currency and must be issued by a bank or e-money institution — this is the standard instrument for B2B payments and cash management. An ART references a basket of assets and faces additional reserve and governance requirements, making it more complex for standard corporate treasury use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a corporate treasurer hold MiCA-regulated stablecoins without a crypto licence?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Holding and using MiCA-compliant stablecoins for payments does not require the treasury to hold a crypto licence — the licensing obligation sits with the issuer and custody/transfer service provider. The treasury's obligation is counterparty due diligence, instrument governance, and policy documentation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the MiCA non-compliance penalties for corporate stablecoin use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For financial institutions, using non-authorised stablecoins can trigger concurrent supervisory findings under MiCA, DORA, and PSD2. For non-financial corporates, the primary risk is service interruption if your custody provider loses MiCA authorisation. Non-compliance fines for service providers reach 12.5% of annual turnover."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "CoinGecko — MiCA-Compliant Stablecoin market cap $75.4B, July 2026",
+    "cryptonomist.ch — euro stablecoin market cap +128% YoY to $673.9M, July 2026",
+    "bleap.finance — MiCA July 1 2026 deadline, transitional period closed, July 2026",
+    "scorechain.com — EMT custody requires MiCA + PSD2 licence from March 2026, 2026",
+    "hacken.io — MiCA non-compliance fines up to 12.5% turnover + personal liability, 2026",
+    "innreg.com — ~12 issuers hold MiCA authorisation as of Q1 2026, 2026",
+    "KYC Chain — USDT does not hold MiCA authorisation as of June 2026, 2026",
+    "Circle — EU-issued USDC and EURC reserves per MiCA Art. 36, quarterly attestations, 2026",
+    "BIS Working Paper 1270 — USDC/SVB reserve concentration episode, 2023",
+    "COREDO — European group treasury cross-border stablecoin settlement policy, 2026"
+  ],
+  "cwaNotes": "PASS — All 11 editorial quality checklist items satisfied. Opens with sourced regulatory fact + 128% stat within first 50 words. Builder identity anchored: n8n + Supabase + Circle EURC abstraction layer in 'What I would do' step 5. Fintech/regulated application: full DORA/PSD2/MiCA intersection in 'Why the deadline changes the risk picture' + COREDO case study in practice section. Fintech keywords: 'MiCA stablecoin treasury' (primary), 'stablecoin use in corporate treasury and banking' (H2), 'stablecoin corporate treasury EU' (body). Named framework introduced: The MiCA Readiness Ladder (4-level taxonomy). Commercial impact: settlement from 3–5 days to same-day, Revenue Per Employee framing applied. LinkedIn hook stat-led and distinct from site title: '128% growth in euro stablecoin market cap in 12 months.' FAQ: exactly 4 questions. What I would do: 5 concrete first-person actions. No buzzwords, sentence case throughout, numbers in numerals. All factual claims sourced inline. GRAPHIC OPPORTUNITY flagged. SCHEDULE NOTE: Running 2 days ahead — 2026-07-07 row status=draft_ready (already has article_id 0248f1cf-245b-4658-904f-d4cc5a0ec4b2). Next scheduled date is 2026-07-09. Processing topic 16 now per instructions."
+}
