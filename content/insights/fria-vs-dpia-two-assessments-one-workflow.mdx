@@ -1,0 +1,95 @@
+---
+title: "FRIA vs DPIA: two assessments, one workflow"
+description: "EU AI Act Article 27 requires a FRIA alongside GDPR's DPIA for high-risk AI deployers in financial services. Here's how to run both as one integrated workflow."
+publishDate: "2026-07-10"
+category: "regulated_ai"
+readTime: "7 min"
+targetKeyword: "FRIA vs DPIA"
+slug: "fria-vs-dpia-two-assessments-one-workflow"
+status: "awaiting_approval"
+---
+
+EU AI Act Article 27 applies to certain deployers of high-risk AI systems from 2 August 2026, requiring a Fundamental Rights Impact Assessment (FRIA) before first deployment. (European Commission, 2024) Every major European bank or insurer using AI for credit scoring, insurance risk pricing, or employment decisions now sits at the intersection of two overlapping compliance frameworks — and most have not yet designed a workflow that satisfies both.
+
+The default response is wrong. Running a DPIA and a FRIA as parallel documents doubles the compliance workload without adding safety. Article 27(4) of the EU AI Act is explicit: where a FRIA overlaps with an existing DPIA, it should complement — not duplicate — it. The design question is not "do I need both?" It is "how do I build one workflow that satisfies both?"
+
+## What is the difference between a FRIA and a DPIA?
+
+The DPIA (Data Protection Impact Assessment, GDPR Article 35) assesses risks to data subjects from high-risk personal data processing. The FRIA (Fundamental Rights Impact Assessment, EU AI Act Article 27) assesses risks to all EU Charter fundamental rights from high-risk AI deployment — a materially broader scope. One is triggered by how data flows. The other is triggered by how decisions are made.
+
+The scope difference matters in practice:
+
+| Dimension | DPIA (GDPR Article 35) | FRIA (EU AI Act Article 27) |
+|---|---|---|
+| Legal basis | GDPR | EU AI Act |
+| Trigger | High-risk personal data processing | High-risk AI deployment (Annex III) |
+| Scope | Data subjects — privacy and data rights | Anyone affected by AI decisions — all Charter rights |
+| Rights covered | Data protection (EU Charter Article 8) | Non-discrimination, dignity, access to justice |
+| Obligation holder | Data controller | AI system deployer |
+| When required | Before processing begins | Before first deployment |
+| Fine ceiling | €20M or 4% of global turnover | €15M or 3% of global turnover |
+
+A DPIA focused on a credit scoring model would ask: what personal data are we using, is processing lawful, and what are the risks to data subjects? A FRIA would ask: who is affected by lending decisions this model produces — including those whose data was never directly processed — and could those decisions discriminate, restrict access to finance, or deny an effective remedy?
+
+A bank's AI loan approval model processing thousands of decisions per week can produce indirect discrimination — applicants from certain postal codes declined at rates far above the statistical baseline — without any protected characteristic appearing in the input data. A DPIA would not surface this. The FRIA must. (AI Casefile, 2026)
+
+## Who is required to conduct a FRIA?
+
+Deployers of high-risk AI systems listed in EU AI Act Annex III who are: public bodies, private entities providing public services, or entities using AI for creditworthiness assessment or life and health insurance risk scoring. In financial services, this covers a substantial proportion of AI currently deployed:
+
+- AI systems for credit scoring and lending decisions
+- AI for insurance premium setting (life, health, critical illness)
+- AI used in employment decisions — performance monitoring, promotions, workforce management
+- AI systems used in recruitment, including CV ranking and candidate assessment
+
+"Deployer" means the organisation using the AI in a professional context — not the vendor who built it. If your institution deploys a third-party credit risk model, the FRIA obligation is yours. The provider's technical documentation helps; it does not substitute.
+
+Note on deadlines: the original 2 August 2026 FRIA deadline applies to certain deployer categories. A June 2026 EU Parliament amendment extended timelines for several Annex III categories to December 2027. (EU Parliament, June 2026) Verify your specific category against the updated timetable — the obligation to prepare applies regardless.
+
+## How does FRIA compliance work in financial services?
+
+The practical integration uses what I call the **Dual-Layer Compliance Protocol** — running DPIA and FRIA as sequential layers of a single assessment document rather than parallel workstreams.
+
+**Layer 1 — Data layer (DPIA):** Conduct the GDPR Article 35 assessment: data inputs, processing purpose, lawful basis, data subject risks, retention, and third-party sharing. This is the foundation.
+
+**Layer 2 — Rights layer (FRIA):** Extend the Layer 1 document to cover: which EU Charter rights could be affected beyond data protection, which groups of persons (beyond data subjects) are affected by AI decisions, what is the severity and likelihood of fundamental rights harm, and what mitigation and remedy mechanisms exist.
+
+The Layer 2 extension for a credit scoring system would specifically address:
+
+- Article 21 (non-discrimination): proxy discrimination analysis — are decisions systematically correlated with protected characteristics, even indirectly?
+- Article 47 (effective remedy): does the applicant have a meaningful avenue to challenge an automated credit decision?
+- Article 1 (human dignity): is there a human review gate for high-impact decisions above a materiality threshold?
+
+As of June 2026, the European AI Office had not published its official FRIA questionnaire template (required under Article 27(5)). (Nemko Digital / Archer IRM / Symmetry Compliance, June 2026) The obligation is live regardless. Build your assessment using Article 27's required sections as the structure and update when the official template is released.
+
+From a Revenue Per Employee lens: a manual FRIA conducted by legal counsel at €200/hour takes 30–50 hours per AI system assessed. An institution with 8 high-risk AI systems in production faces 240–400 hours of compliance documentation. Building a structured AI governance intake workflow — using n8n for intake orchestration, Supabase to maintain a persistent AI system register, and Claude API for structured FRIA/DPIA draft generation — reduces this to a fraction of the manual effort. The compliance becomes a system output, not a billable-hours function.
+
+## What I would do
+
+**1. Inventory all AI systems against Annex III now.** Anything touching credit, insurance, employment, or recruitment is likely in scope. List every system, identify the deployer, and confirm the applicable deadline category.
+
+**2. Design a combined FRIA/DPIA template before the deadline.** Do not wait for the EU AI Office's official template. Build your own from Article 27's required sections. Layer 2 extends your existing DPIA format — it does not require a separate document architecture.
+
+**3. Brief your DPO (Data Protection Officer) and legal jointly.** The FRIA and DPIA are not parallel obligations — they are sequential layers of one document. Separating them into DPO versus legal silos produces duplicated work and inconsistent risk registers.
+
+**4. Build the governance register as a live system.** Each AI system in scope needs an entry: deployer, classification, DPIA status, FRIA status, last reviewed date, and open mitigation items. A Supabase table with an n8n-powered intake form takes a week to build and cuts ongoing compliance overhead substantially.
+
+**5. Log decisions, not just documents.** Regulators will ask how risks were identified and mitigated — not just whether a document exists. Design your FRIA workflow to produce an audit trail: who reviewed it, what mitigations were agreed, when they were validated.
+
+## Frequently asked questions
+
+**Is a FRIA the same as a DPIA?**
+No. A DPIA assesses risks to data subjects from personal data processing under GDPR Article 35. A FRIA assesses risks to all EU Charter fundamental rights from high-risk AI deployment under EU AI Act Article 27. They have different legal bases, different scopes, and different obligation holders. Where both apply, run them as integrated sequential layers of one document.
+
+**When does the FRIA obligation apply to financial services?**
+FRIA requirements under Article 27 apply to deployers of Annex III high-risk AI systems — primarily credit scoring, insurance risk pricing, employment management, and recruitment AI. The original 2 August 2026 deadline applies to certain categories; a June 2026 EU Parliament amendment extended some Annex III timelines to December 2027. Verify your specific use case against the updated schedule.
+
+**What if I've already done a DPIA — do I still need a FRIA?**
+Yes. The DPIA discharges the GDPR obligation; it does not discharge the AI Act obligation. Article 27(4) states that the FRIA should complement an existing DPIA where they overlap, but it is a separate legal requirement with its own fine exposure — up to €15M or 3% of global annual turnover.
+
+**What if the EU AI Office template hasn't been published yet?**
+As of June 2026, the official questionnaire required by Article 27(5) had not been released by the European AI Office. The obligation still applies. Use independently developed templates structured around Article 27's required elements. When the official template is published, review and update your documentation for alignment.
+
+---
+
+→ If you are leading AI governance for a regulated EU financial institution and need to operationalise your FRIA and DPIA compliance workflow before the August 2026 deadline, [read about my Fractional COO & Strategic Advisory service](/services/fractional-advisory) — or [book a 30-minute discovery call](/book) to map your current exposure.
