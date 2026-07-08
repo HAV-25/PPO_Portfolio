@@ -1,0 +1,43 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-08T00:00:00.000Z",
+  "fail_count": 3,
+  "checklist": {
+    "item_01_sourced_stat_first_50_words": "PASS — '(European Commission, 2024)' appears in first sentence, within first 50 words.",
+    "item_02_builder_stack_first_person": "PASS — 'using n8n for intake orchestration, Supabase to maintain a persistent AI system register, and Claude API for structured FRIA/DPIA draft generation' in RPE section.",
+    "item_03_fintech_application_section": "PASS — 'How does FRIA compliance work in financial services?' section covers credit scoring, insurance risk pricing, employment AI extensively.",
+    "item_04_fintech_keywords_2_3": "PASS — 'credit scoring', 'insurance risk pricing', 'financial services AI governance', 'regulated EU financial institution' all used naturally.",
+    "item_05_named_framework": "PASS — 'Dual-Layer Compliance Protocol' introduced with 'what I call the Dual-Layer Compliance Protocol' attribution.",
+    "item_06_commercial_impact_number": "PASS — '€200/hour takes 30–50 hours per AI system assessed. An institution with 8 high-risk AI systems in production faces 240–400 hours of compliance documentation.'",
+    "item_07_linkedin_hook_differs": "PASS — Site title: 'FRIA vs DPIA: two assessments, one workflow'. LinkedIn hook: 'Most regulated banks in Europe have a DPIA process. Almost none have started their FRIA.' Clearly different.",
+    "item_08_faq_exactly_4": "PASS — 4 FAQ questions confirmed: (1) Is a FRIA the same as a DPIA? (2) When does the FRIA obligation apply to financial services? (3) What if I've already done a DPIA? (4) What if the EU AI Office template hasn't been published yet?",
+    "item_09_what_i_would_do_3_5": "PASS — Exactly 5 concrete first-person actions in 'What I would do' section.",
+    "item_10_no_buzzwords_numerals": "PASS — No buzzwords found. All numbers in numerals (€200/hour, 30–50, 8, 240–400, €15M, 3%, €20M, 4%). Sentence case throughout.",
+    "item_11_all_claims_sourced": "FAIL — 'As of June 2026, the European AI Office had not published its official FRIA questionnaire template (required under Article 27(5)). (multiple compliance sources, June 2026)' — 'multiple compliance sources' is not a named source. Meta.json names specific sources (Nemko Digital / Archer IRM / Symmetry Compliance) that must appear inline.",
+    "item_12_voice_authenticity": "PASS — Opening paragraphs are direct, data-first, no preamble. 'The default response is wrong' is classic Payal framing. Design-question structure matches portfolio article rhythm.",
+    "item_13_source_verifiability": "FAIL — Meta.json sources array names 'Nemko Digital / Archer IRM / Symmetry Compliance — FRIA template status, June 2026' but inline text says '(multiple compliance sources, June 2026)'. Discrepancy between named sources in meta and vague inline attribution.",
+    "item_14_linkedin_native_value": "PASS — LinkedIn post delivers FRIA/DPIA distinction, proxy discrimination example, and 4 'what I would do' bullets with '25 days away' urgency framing not available in site title/description preview.",
+    "item_15_self_contained_no_undefined_acronyms": "FAIL — 'DPO' used in 'What I would do' item 3: 'Brief DPO and legal jointly' — undefined on first use. 'Data Protection Officer' expansion missing."
+  },
+  "failed_items": [
+    {
+      "item": 11,
+      "label": "Every factual claim has named source + date inline",
+      "evidence": "'(multiple compliance sources, June 2026)' is not a named source",
+      "revision_instruction": "Replace '(multiple compliance sources, June 2026)' with '(Nemko Digital / Archer IRM / Symmetry Compliance, June 2026)' to match meta.json sources array and provide a named citation."
+    },
+    {
+      "item": 13,
+      "label": "Source verifiability — sources array in meta.json matches inline citations",
+      "evidence": "Meta.json lists 'Nemko Digital / Archer IRM / Symmetry Compliance' but inline says 'multiple compliance sources'",
+      "revision_instruction": "Same fix as item 11 — replace inline citation with named sources to align with meta.json."
+    },
+    {
+      "item": 15,
+      "label": "Self-contained for cold reader — no undefined acronyms",
+      "evidence": "'DPO' used in 'What I would do' item 3 without expansion: 'Brief DPO and legal jointly'",
+      "revision_instruction": "Change 'Brief DPO and legal jointly' to 'Brief your DPO (Data Protection Officer) and legal jointly' to define the acronym on first use."
+    }
+  ],
+  "revision_instructions": "Two targeted text changes required. Preserve all structure, voice, word count, and formatting. (1) In the body paragraph under 'How does FRIA compliance work in financial services?', change '(multiple compliance sources, June 2026)' to '(Nemko Digital / Archer IRM / Symmetry Compliance, June 2026)'. (2) In 'What I would do' item 3, change 'Brief DPO and legal jointly' to 'Brief your DPO (Data Protection Officer) and legal jointly'. No other changes."
+}
