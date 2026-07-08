@@ -60,7 +60,7 @@ The Layer 2 extension for a credit scoring system would specifically address:
 - Article 47 (effective remedy): does the applicant have a meaningful avenue to challenge an automated credit decision?
 - Article 1 (human dignity): is there a human review gate for high-impact decisions above a materiality threshold?
 
-As of June 2026, the European AI Office had not published its official FRIA questionnaire template (required under Article 27(5)). (multiple compliance sources, June 2026) The obligation is live regardless. Build your assessment using Article 27's required sections as the structure and update when the official template is released.
+As of June 2026, the European AI Office had not published its official FRIA questionnaire template (required under Article 27(5)). (Nemko Digital / Archer IRM / Symmetry Compliance, June 2026) The obligation is live regardless. Build your assessment using Article 27's required sections as the structure and update when the official template is released.
 
 From a Revenue Per Employee lens: a manual FRIA conducted by legal counsel at €200/hour takes 30–50 hours per AI system assessed. An institution with 8 high-risk AI systems in production faces 240–400 hours of compliance documentation. Building a structured AI governance intake workflow — using n8n for intake orchestration, Supabase to maintain a persistent AI system register, and Claude API for structured FRIA/DPIA draft generation — reduces this to a fraction of the manual effort. The compliance becomes a system output, not a billable-hours function.
 
@@ -70,7 +70,7 @@ From a Revenue Per Employee lens: a manual FRIA conducted by legal counsel at �
 
 **2. Design a combined FRIA/DPIA template before the deadline.** Do not wait for the EU AI Office's official template. Build your own from Article 27's required sections. Layer 2 extends your existing DPIA format — it does not require a separate document architecture.
 
-**3. Brief DPO and legal jointly.** The FRIA and DPIA are not parallel obligations — they are sequential layers of one document. Separating them into DPO versus legal silos produces duplicated work and inconsistent risk registers.
+**3. Brief your DPO (Data Protection Officer) and legal jointly.** The FRIA and DPIA are not parallel obligations — they are sequential layers of one document. Separating them into DPO versus legal silos produces duplicated work and inconsistent risk registers.
 
 **4. Build the governance register as a live system.** Each AI system in scope needs an entry: deployer, classification, DPIA status, FRIA status, last reviewed date, and open mitigation items. A Supabase table with an n8n-powered intake form takes a week to build and cuts ongoing compliance overhead substantially.
 
