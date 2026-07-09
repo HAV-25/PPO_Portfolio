@@ -1,0 +1,87 @@
+{
+  "id": "67179691-0ff7-460a-8570-98c3eb195c13",
+  "title": "The agent that writes credit memos: an anatomy",
+  "slug": "agent-that-writes-credit-memos",
+  "publishDate": "2026-07-14",
+  "category": "agentic_builds",
+  "topicNumber": 7,
+  "targetKeyword": "AI credit memo automation",
+  "status": "draft_pending_qa",
+  "approvalToken": "c153ff85-9de5-4afa-816e-f12dc9142fc2",
+  "linkedinPost": "Credit analysts spend up to 50% of their week writing memos they didn't need to write by hand. McKinsey put a number on it. S&P Global just shipped an agentic product for it. Moody's has a live case study showing 50% processing time reduction.\n\nThe architecture isn't complicated. It's four stages — what I call The Credit Memo Stack:\n\n• Ingest — pull financials, bureau data, covenants, management accounts via n8n into Supabase\n• Analyse — run ratio analysis and sector benchmarking against a vectorised policy library (pgvector + Claude API)\n• Draft — Claude API writes the memo as an argument, not a summary. Inline citations. Structured sections. Audit-ready from the first token.\n• Review gate — mandatory human sign-off, timestamped, non-delegable. Not a UX feature. An EU AI Act requirement.\n\nWhat I would do if building this now:\n\n→ Use pgvector to ground every analysis in the institution's actual credit policy — not a generic model interpretation\n→ Design the audit trail before the draft logic. Supabase row-level logging with provenance metadata is the compliance architecture\n→ Frame the business case as Revenue Per Employee: not 'save analyst time' but 'how many more deals can this team underwrite at the same headcount?'\n→ n8n on v1, seam designed for code-native migration when concurrency demands it\n\nThe credit memo use case is one of the clearest AI ROI cases in banking. The pipeline is known. The compliance design is known. What's missing for most institutions is the architecture judgment to connect them.\n\nFull piece + the pipeline architecture I'd use — link in comments.",
+  "schemaJsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The agent that writes credit memos: an anatomy",
+      "description": "A builder's breakdown of AI credit memo automation — pipeline stages, The Credit Memo Stack framework, EU AI Act compliance design, and what 50% analyst time savings actually requires.",
+      "datePublished": "2026-07-14",
+      "author": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe",
+        "sameAs": "https://www.linkedin.com/in/payalponkshe/",
+        "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+        "knowsAbout": [
+          "AI credit memo automation",
+          "agentic AI financial services",
+          "credit analysis automation",
+          "n8n workflow orchestration",
+          "EU AI Act compliance",
+          "fintech operating model design",
+          "Revenue Per Employee"
+        ]
+      },
+      "url": "https://payalponkshe.com/insights/agent-that-writes-credit-memos",
+      "keywords": "AI credit memo automation, agentic AI banking, credit analysis AI, EU AI Act financial services, n8n Claude API Supabase"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does AI credit memo automation work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI credit memo automation system uses a multi-stage pipeline to ingest financial data from connected sources, run ratio analysis and sector benchmarking against a policy library, draft a structured memo with inline citations, and route it to a credit analyst for review and sign-off. The agent handles data gathering and initial drafting; the credit analyst handles judgment and final approval."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take an AI agent to write a credit memo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Automated financial spreading can support a full credit assessment in under 10 minutes (Crediflow AI, 2026), and some vendors report time-to-draft reductions of up to 90% versus manual production (Aloan AI, 2026). For large corporate memos that previously took 2-3 days to produce, agent-assisted drafting typically reduces that to a few hours including human review time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AI credit memo generation compliant with EU regulations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Credit analysis AI is classified as high-risk under EU AI Act Annex III, point 5(b). A compliant system requires a verifiable audit trail, explainability at source level (citations linked to specific document excerpts), and a mandatory human review gate with timestamped sign-off. These requirements are achievable by design — they are architecture decisions, not add-ons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the ROI of automating credit memo production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "McKinsey's innovation lab research estimates up to 50% of an analyst's time is recoverable through AI-assisted memo production. For an institution running 200+ credit assessments per year, that translates directly into analyst capacity for additional deals — or the same analyst count supporting a larger portfolio. The correct metric is Revenue Per Employee: how much lending revenue per credit analyst can the team support at consistent quality."
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "McKinsey — AI credit memo innovation lab proofs of concept (undated)",
+    "Evalueserve — Global bank AI credit memo automation case study (2026)",
+    "S&P Global — Credit Memo Builder™ launch press release (June 2026)",
+    "Moody's — APAC bank Automated Credit Memo case study (2024)",
+    "Aloan AI — AI credit memo time-to-decision reduction (2026)",
+    "Crediflow AI — full credit assessment in under 10 minutes (2026)",
+    "EU AI Act / Gibson Dunn — Annex III point 5(b) high-risk classification, fines up to €30M (May 2026)"
+  ],
+  "cwaNotes": "Self-assessment 11/11 pass. KIMI API FAILURE: Kimi API (api.moonshot.cn) returned 401 Invalid Authentication — API key sk-4iNxi7D...OQBjy appears invalid or expired. Article generated directly by Claude (CWA-v2) against the same structured prompt per pipeline fallback judgment. Running 5 days ahead of schedule (run date 2026-07-09, publish_date 2026-07-14 — next scheduled slot found per pipeline rules). Named framework introduced: The Credit Memo Stack (Ingest → Analyse → Draft → Review gate). Revenue Per Employee frame used in 'What I would build' section. GRAPHIC OPPORTUNITY: The Credit Memo Stack 4-stage pipeline diagram would strengthen the article as a visual framework — recommend creating for LinkedIn carousel and article header. ACTION REQUIRED: Check Moonshot AI API key validity and rotate if expired."
+}
