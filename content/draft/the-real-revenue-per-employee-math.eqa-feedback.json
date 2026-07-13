@@ -1,0 +1,26 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-13T00:00:00.000Z",
+  "fail_count": 1,
+  "failed_items": [11],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — 'Cursor generates roughly $40 million in revenue per employee (Forbes, March 2026). OpenAI hit $3.2 million per employee in February 2026, up from $1.3 million in 2024 (MakerStations, February 2026).' — both sourced, within first 47 words",
+    "2_builder_stack_element": "PASS — 'n8n workflows connected to the Claude API can handle customer onboarding document processing, internal escalation routing, and exception triage at scale... Supabase provides the data infrastructure to track and audit those automated flows.' (What I would do, item 2)",
+    "3_fintech_section": "PASS — Section 'What is a good revenue per employee benchmark for a regulated fintech?' explicitly covers DORA, PSD3, GDPR, EU AI Act mandatory overhead with Eurostat and IMF sourcing",
+    "4_fintech_keywords": "PASS — 'regulated fintech' (multiple occurrences), 'EU AI Act', 'DORA', 'PSD3', 'AML' used naturally; 'regulated fintech' appears in H2 heading",
+    "5_named_framework": "PASS — 'the RPE Honesty Test — 3 questions that determine whether a comparison is valid': named, numbered, clearly attributable to Payal",
+    "6_commercial_impact": "PASS — 'Klarna reached roughly $1 million RPE after replacing 700 full-time contractors with AI systems (TechCrunch, May 2025)'; '15-20% RPE improvement' target for 12-month horizon in financial services context",
+    "7_linkedin_hook_different": "PASS — Site title: 'The real revenue-per-employee math (with the caveats)' (informational/search intent). LinkedIn hook: 'Cursor makes $40M per employee. Your regulated fintech makes $400K. Before you panic: read the caveats.' (contrast/provocation-led). Completely different formula.",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions: (1) What is a good revenue per employee for a fintech company? (2) How does AI-native revenue per employee compare to traditional fintech? (3) How do you improve revenue per employee in financial services without cutting headcount? (4) How does EU regulation affect revenue per employee for fintech companies?",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered concrete actions, all first person: (1) Map human time against compliance vs commercial output; (2) Automate operational layer with n8n/Claude API/Supabase; (3) Build RPE dashboard before programme; (4) Target function-level RPE; (5) Use Klarna as ceiling with 15-20% improvement target. All concrete and specific.",
+    "10_no_buzzwords_numerals": "PASS — No 'transformative', 'innovative', 'game-changing', 'revolutionary', 'seamless', 'robust', 'in today's rapidly evolving landscape', 'In conclusion'. All headings in sentence case. Numbers in numerals throughout ($40M, 1.4%, €300K–€600K etc.).",
+    "11_all_claims_sourced": "FAIL — In 'What I would do', item 1: 'The split between mandatory human review — audit, risk, compliance sign-off — and automatable operational work is typically around 30/70. The automation investment has usually only reached 10% of that 70%.' Two specific percentage claims (30/70 split and 10% automation coverage) presented as facts with no inline source and no first-person qualifier to mark them as Payal's professional observation. A cold reader sees statistics without attribution.",
+    "12_voice_authenticity": "PASS — Opens with data, no preamble, immediate commercial relevance. 'The gap is real. But the comparison is almost always wrong.' — direct, punchy. No passive voice. Tone and rhythm match published portfolio articles 1-6 closely.",
+    "13_source_verifiability": "PASS — All 8 sources in the sources array are cited inline in the article body. No orphan citations in either direction. Table rows cite Forbes for Cursor, Midjourney, and Lovable entries — all covered by the single Forbes source entry.",
+    "14_linkedin_native_value": "PASS — RPE Honesty Test outlined in full in 3 bullet points within the post body. A reader can apply the framework without clicking through. The '$400K' implied benchmark for typical regulated fintech is additional framing not explicitly stated in the article itself.",
+    "15_self_contained": "PASS — 'RPE' introduced in full as 'revenue per employee' at first use. DORA/PSD3/AML/GDPR/EU AI Act appropriate acronyms for target audience (COOs and founders at regulated fintechs). No assumed knowledge of prior Payal articles."
+  },
+  "revision_instructions": [
+    "Item 11 — Unsourced percentage claims in 'What I would do', item 1: The sentence 'The split between mandatory human review — audit, risk, compliance sign-off — and automatable operational work is typically around 30/70. The automation investment has usually only reached 10% of that 70%.' contains two specific statistics with no source. Fix: add a first-person qualifier to signal these are Payal's professional observation rather than third-party data. Change to: 'In my experience across regulated fintechs, the split between mandatory human review — audit, risk, compliance sign-off — and automatable operational work is typically 30/70. The automation investment has usually only reached 10% of that 70%.' This is the minimal change required — do not alter any other part of this section."
+  ]
+}
