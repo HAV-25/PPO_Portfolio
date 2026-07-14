@@ -1,0 +1,125 @@
+{
+  "article_id": "f60a8923-4108-46cc-9110-42af7f362999",
+  "approval_token": "22d5ec9c-9b76-4001-b0ef-40d869aecf65",
+  "article_slug": "agentic-commerce-payment-standards-2026",
+  "article_title": "Agentic commerce: the 2026 payment standards explained",
+  "publish_date": "2026-07-16",
+  "topic_number": "18",
+  "weekday_theme": "payments_infra",
+  "target_keyword": "agentic payments standards",
+  "cwa_notes": "All 11 quality checklist items pass. Opens with IBM $262B stat — no preamble. Named framework introduced: Three-Layer Commerce Stack (UCP=Discovery, ACP/MPP=Execution, AP2=Authorization). Builder credibility anchored in action #4 (n8n + MCP as agent connectivity layer, 2–3 week build). Revenue Per Employee referenced in closing context. 3 fintech applications with explicit ROI framing (KYC/fraud, treasury, embedded finance/credit). EU compliance angle covers both PSD3 (April 2026 texts, 2027 in force) and EU AI Act (August 2 full application). Dual positioning maintained: fintech strategist (regulatory/commercial framing) + builder (n8n/MCP specificity). CTA links to /services/ai-implementation and /book. Running 2 days ahead of schedule — no entry for 2026-07-14, next scheduled entry is 2026-07-16 (Wednesday, payments_infra).",
+  "linkedin_post": "87% of financial institutions name trust as the number one obstacle to agentic payment adoption.\n\nNot technology. Not regulation. Trust.\n\nThat number from Accenture stopped me — because trust isn't a cultural problem. It's an infrastructure gap. And in 2026, there's a protocol that closes it.\n\nIn the last 6 months, three payment standards have achieved enough adoption to matter for fintech operators:\n\nUCP (Google) — governs discovery: can an agent find your product?\nMPP (Stripe + Tempo) — governs execution: can an agent pay through your rails?\nAP2 (FIDO Alliance) — governs authorization: can you prove the human actually said yes?\n\nMost platforms I see are building for execution (MPP/ACP) while ignoring authorization (AP2). That's the wrong order.\n\nWhat I would actually do:\n\n→ Map your stack against all three layers before building anything new\n→ Implement AP2 read-support first — verify incoming mandates before you issue them\n→ Classify your agentic components under EU AI Act Annex III before August 2\n→ Build MCP as your agent connectivity layer — it's a 2–3 week integration, not a platform rebuild\n→ Tag agent-initiated transactions separately from day one — different fraud patterns, different compliance obligations\n\nThe infrastructure is live. Mastercard Agent Pay launched in June. The question is whether your platform can receive it.\n\nRevenue per employee in agentic commerce accrues to the platforms that speak AP2 first.\n\nFull piece + the Three-Layer Commerce Stack I use to map this — link in comments.",
+  "sources": [
+    {
+      "citation": "IBM, January 2026",
+      "claim": "AI agents influenced $262 billion in holiday sales in late 2025",
+      "url": ""
+    },
+    {
+      "citation": "Accenture, 2026",
+      "claim": "87% of financial institutions identify trust as the most significant obstacle to agentic payment adoption",
+      "url": ""
+    },
+    {
+      "citation": "Accenture, 2026",
+      "claim": "85% of financial institutions believe their current systems are insufficient to handle high-volume, agent-initiated transaction flows",
+      "url": ""
+    },
+    {
+      "citation": "Stripe, March 2026",
+      "claim": "Machine Payments Protocol (MPP) launched March 18, 2026 with 100+ integrated services including Visa, Mastercard, Anthropic, and Shopify",
+      "url": ""
+    },
+    {
+      "citation": "FIDO Alliance, April 28, 2026",
+      "claim": "Google donated Agent Payments Protocol (AP2) to the FIDO Alliance; 60 organizations joined at donation including Mastercard, Visa, and Anthropic",
+      "url": ""
+    },
+    {
+      "citation": "Mastercard, June 2026",
+      "claim": "Mastercard Agent Pay program launched in partnership with Microsoft and IBM to enable AI agents to initiate tokenized, AI-authorized payments at scale",
+      "url": ""
+    },
+    {
+      "citation": "FIS, January 2026",
+      "claim": "FIS launched first bank-focused agentic commerce offering integrating with Visa Intelligent Commerce and Mastercard Agent Pay",
+      "url": ""
+    },
+    {
+      "citation": "European Parliament and Council, April 23, 2026",
+      "claim": "PSD3 final texts agreed; entry into force anticipated 2027",
+      "url": ""
+    },
+    {
+      "citation": "EU AI Act",
+      "claim": "Fully applicable from August 2, 2026; agentic payment systems influencing financial access decisions qualify as high-risk under Annex III",
+      "url": ""
+    }
+  ],
+  "jsonld_schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://payalponkshe.com/insights/agentic-commerce-payment-standards-2026",
+      "headline": "Agentic commerce: the 2026 payment standards explained",
+      "description": "Three competing protocols now govern how AI agents discover, authorize, and complete purchases. Here's what each one does and what it means for fintech operators.",
+      "datePublished": "2026-07-16",
+      "dateModified": "2026-07-16",
+      "author": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe",
+        "url": "https://payalponkshe.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://payalponkshe.com/insights/agentic-commerce-payment-standards-2026"
+      },
+      "keywords": ["agentic payments standards", "UCP", "AP2", "MPP", "agentic commerce", "PSD3", "EU AI Act", "fintech"],
+      "articleSection": "Payments Infrastructure"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between UCP, ACP, and AP2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "UCP (Universal Commerce Protocol) covers discovery and checkout — how an agent finds and selects a product or service. ACP (Agentic Commerce Protocol) covers payment execution inside AI surfaces like ChatGPT. AP2 (Agent Payments Protocol) covers authorization — the cryptographic proof that a human user gave the agent consent to act within defined limits. A complete agentic transaction uses all three layers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does PSD3 cover AI agent payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not explicitly yet. PSD3 — agreed April 2026 and expected in force in 2027 — introduces a definition of 'agent' and supervisory rules for payment agents. Until then, PSD2 applies, including SCA requirements that must trace back to verifiable human authorization at mandate-setting. The SCA obligation stays with the human authorization event, not the agent execution event."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which agentic payment standard is most widely adopted in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AP2 has the broadest institutional backing, with 60 organizations joining the FIDO Alliance at donation in April 2026, including Mastercard, Visa, and Anthropic. MPP (Stripe/Tempo) has the most live integrations at 100+ services at launch. In practice, operators building for financial services integrate all three layers — they govern different stages of the same transaction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I make my product or platform agent-readable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum viable implementation is: expose your product catalogue via a UCP-compatible API, support AP2 mandate verification at payment initiation, and ensure your checkout can receive MPP-formatted payment instructions. MCP (Model Context Protocol) is the practical integration layer — it allows AI models to query your catalogue and execute transactions via standardized tool calls without requiring a full platform rebuild."
+          }
+        }
+      ]
+    }
+  ]
+}
