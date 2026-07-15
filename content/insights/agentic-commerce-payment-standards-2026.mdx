@@ -29,7 +29,7 @@ The Three-Layer Commerce Stack maps the transaction:
 
 **Layer 2 — Execution (ACP / MPP):** OpenAI's Agentic Commerce Protocol governs how a payment executes inside an AI surface like ChatGPT. The Machine Payments Protocol (MPP), co-developed by Stripe and Tempo and launched on March 18, 2026, serves a similar function with broader institutional backing — 100+ integrated services at launch, including Visa, Mastercard, Anthropic, and Shopify (Stripe, March 2026).
 
-**Layer 3 — Authorization (AP2):** The Agent Payments Protocol, donated by Google to the FIDO Alliance on April 28, 2026 — with 60 organizations joining at donation — answers the most critical compliance question: who authorized this? AP2 binds agent-initiated actions to cryptographically verifiable mandates: scope, spend limits, actor identity, permitted conditions. This is the trust layer. Without it, there is no way for a bank, card network, or merchant to confirm that an agent acted within the user's stated consent.
+**Layer 3 — Authorization (AP2):** The Agent Payments Protocol, donated by Google to the FIDO Alliance on April 28, 2026 — with 60 organizations joining at donation (FIDO Alliance, April 2026) — answers the most critical compliance question: who authorized this? AP2 binds agent-initiated actions to cryptographically verifiable mandates: scope, spend limits, actor identity, permitted conditions. This is the trust layer. Without it, there is no way for a bank, card network, or merchant to confirm that an agent acted within the user's stated consent.
 
 The x402 extension, developed by Coinbase, adds stablecoin settlement capability on top of AP2 — enabling machine-to-machine payments to settle in sub-second finality at fractions of a cent per transfer.
 
@@ -55,15 +55,17 @@ FIS launched the first bank-focused agentic commerce offering in January 2026, i
 - **Treasury / cash management:** Corporate treasury agents with defined mandates (FX exposure limits, counterparty restrictions, settlement windows) can execute autonomously within those limits. The authorization proof travels with the transaction.
 - **Embedded finance / credit origination:** Agentic credit assessment at point-of-agent-intent — before checkout — opens a new origination surface that does not exist in human-navigated commerce.
 
+At standard card network interchange of approximately 0.2%, the $262 billion in AI-influenced holiday transaction volume represents approximately $524 million in annual payment revenue — available only to processors whose rails are AP2-compatible. Banks that are not agent-readable by end of 2026 route that volume to platforms that already speak the protocol (derived from IBM, January 2026).
+
 For payments infrastructure operators, the revenue-per-employee opportunity is not in replacing card rails. It is in making those rails agent-compatible. Banks that move first capture agent-initiated transaction volume that otherwise routes to platforms that already speak AP2.
 
 ## How do PSD3 and the EU AI Act change the compliance picture?
 
 The EU regulatory environment does not yet have specific rules for agent-initiated payments, but 2 frameworks define the current compliance floor.
 
-**PSD3:** The Parliament and Council of the EU agreed final texts on April 23, 2026, with entry into force anticipated in 2027. PSD3 introduces explicit definitions of "agent" and supervisory rules that will govern how payment agents are authorized and monitored. Until then, PSD2 applies — including Strong Customer Authentication requirements that must trace back to verifiable human authorization at mandate-setting. The SCA obligation follows the human, not the agent.
+**PSD3:** The Parliament and Council of the EU agreed final texts on April 23, 2026 (European Parliament, April 2026), with entry into force anticipated in 2027. PSD3 introduces explicit definitions of "agent" and supervisory rules that will govern how payment agents are authorized and monitored. Until then, PSD2 applies — including Strong Customer Authentication requirements that must trace back to verifiable human authorization at mandate-setting. The SCA obligation follows the human, not the agent.
 
-**EU AI Act:** Fully applicable from August 2, 2026. Agentic payment systems that influence financial decisions — including purchase execution — qualify as high-risk AI systems under Annex III if they affect access to financial services. This triggers conformity assessments, human oversight obligations, and logging requirements. The AP2 authorization trail is the technical mechanism that makes EU AI Act audit compliance tractable: every agent action is tied to a verifiable human mandate with scope and limit parameters.
+**EU AI Act:** Fully applicable from August 2, 2026 (EU AI Act, Official Journal, 2024). Agentic payment systems that influence financial decisions — including purchase execution — qualify as high-risk AI systems under Annex III if they affect access to financial services. This triggers conformity assessments, human oversight obligations, and logging requirements. The AP2 authorization trail is the technical mechanism that makes EU AI Act audit compliance tractable: every agent action is tied to a verifiable human mandate with scope and limit parameters.
 
 Building an EU-compliant agentic payment system before August 2 means: implement AP2 for authorization, ensure SCA is captured at mandate creation, and complete the Annex III conformity assessment for any system that influences credit or payment access decisions.
 
