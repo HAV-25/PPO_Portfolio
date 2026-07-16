@@ -1,100 +1,98 @@
 ---
 title: "The real revenue-per-employee math (with the caveats)"
-description: "Revenue per employee benchmarks look compelling until you check the math. A guide to reading AI-era RPE numbers honestly and setting targets that mean something for regulated financial services firms."
+description: "AI-native companies post $3M+ revenue per employee. Before you benchmark yourself against them, read the caveats — especially if you operate in a regulated market."
 publishDate: "2026-07-15"
 category: "operating_model"
 readTime: "6 min"
 targetKeyword: "revenue per employee benchmark AI"
 slug: "the-real-revenue-per-employee-math"
-status: "draft"
+status: "awaiting_approval"
 ---
 
-PwC found that organisations actively deploying AI generate 3x higher revenue per employee than those that don't (PwC, 2026). That number is real. What is less clear is which decisions produced it — and whether any of those decisions transfer to a regulated financial services company carrying compliance overhead, legacy infrastructure, and multi-jurisdiction obligations.
+Cursor generates roughly $40 million in revenue per employee (Forbes, March 2026). OpenAI hit $3.2 million per employee in February 2026, up from $1.3 million in 2024 (MakerStations, February 2026). If your first reaction is to benchmark your fintech against those numbers, this article is for you.
 
-This article is about reading the math honestly. The benchmarks are compelling. The caveats matter equally.
+The gap is real. But the comparison is almost always wrong.
 
-## What do the viral RPE numbers actually measure?
+## What is a good revenue per employee benchmark in 2026?
 
-Revenue per employee (RPE) = total revenue / total headcount. Simple formula. But both inputs have significant variance depending on how you read them — and most published AI-native benchmarks are not what they appear.
+The honest answer: it depends entirely on your business model. The US total market average sits at $111,000 per employee (Vena Solutions, 2026). Median private SaaS is around $130,000 (HRBench, 2026). Brokerage and investment banking — the highest-performing traditional sector — averages $1.3 million.
 
-**The numerator problem.** Most AI-native benchmarks cite ARR — annual recurring revenue, a forward projection of contracted run rate — not actual recognised revenue. Cursor's approximately $40 million per employee (Forbes, March 2026) is based on $2 billion ARR divided by roughly 50 employees. ARR is a contracted future expectation. It is not the number on an income statement.
+AI-native firms occupy a different universe entirely.
 
-**The denominator problem.** Headcount figures for AI-native companies typically exclude contractors, outsourced infrastructure teams, and embedded vendor engineers. Lovable's $2.7 million ARR per employee (Forbes, March 2026) reflects 146 direct employees generating $400 million ARR. The compute infrastructure behind that revenue is not running on 146 laptops.
+Here is the current RPE landscape across business types:
 
-**The subsidy problem.** Several large AI labs operate under compute arrangements subsidised by strategic investors. OpenAI's approximately $6.5 million revenue per employee (Forbes, March 2026) exists within a context of significant hyperscaler investment relationships. The underlying unit economics are not replicable on an independent basis.
-
-None of this makes the benchmarks false. It makes them structurally different from what a CFO sees on a traditional income statement — and that difference matters enormously when you are trying to set a target.
-
-## What are the honest RPE baselines for financial services?
-
-Sector averages give a more grounded starting point than AI-native outliers. Here are the current baselines from available data.
-
-The table below maps the realistic RPE ceiling for each segment assuming active AI deployment, based on PwC's 3x AI-adopter premium applied to Vena Solutions 2026 sector data.
-
-| Segment | Current baseline | AI-adopter ceiling |
+| Company / type | Revenue per employee | Notes |
 |---|---|---|
-| Regional banks | $130K | $200–350K |
-| Large commercial banks | $378K | $500–800K |
-| Brokerage / investment banking | $1.3M | $2–3M |
-| Fintech (SaaS model) | $300–500K | $800K–1.5M |
+| Cursor (AI-native SaaS) | ~$40M | ~50 employees, $2B+ ARR (Forbes, Mar 2026) |
+| Midjourney (AI-native) | ~$18M | ~11 employees, $200M revenue (Forbes, Mar 2026) |
+| OpenAI (AI lab) | ~$3.2M | Feb 2026; was $1.3M in 2024 (MakerStations, Feb 2026) |
+| Lovable (AI-native) | ~$2.7M | 146 employees, $400M ARR (Forbes, Mar 2026) |
+| Klarna (AI-augmented fintech) | ~$1M | Up from $575K a year prior (TechCrunch, May 2025) |
+| Brokerage / investment banking | $1.3M | Sector average (Vena Solutions, 2026) |
+| Median private SaaS | ~$130K | (HRBench, 2026) |
+| Professional services (billable) | ~$199K | (SPI Research, 2026) |
+| US total market average | ~$111K | (Vena Solutions, 2026) |
 
-Sources: Vena Solutions 2026; PwC 2026 (3x adopter premium applied analytically). AI-adopter ceiling is an estimate, not a published figure.
+The AI-native numbers are not a typo. They are also not the right benchmark for most organisations reading this.
 
-A regional bank moving from $130K to $300K RPE over 3 years is a 130% improvement. That is a significant operating model transformation. It is not the same exercise as Cursor moving from $20M to $40M per employee. Using the same benchmark category for both is a category error.
+## How do AI-native companies achieve $3M+ revenue per employee?
 
-## Why EU-regulated firms face a structurally higher RPE cost base
+Three structural factors explain the gap — none of which apply cleanly to a regulated financial services operator.
 
-European financial services firms carry compliance overhead that software-only companies do not account for in their headcount.
+First: pure software economics. No inventory. No physical distribution. No compliance team embedded per product line. Revenue scales without the same headcount drag.
 
-From 2 August 2026, AI systems classified as high-risk under the EU AI Act — including those used in credit scoring, KYC, and employment decisions — require mandatory risk assessments, technical documentation, bias testing, continuous monitoring, and human oversight (artificialintelligenceact.eu, 2026). Each of these requirements generates headcount demand: compliance officers, model risk managers, audit functions. Pure software companies carry none of this.
+Second: early-stage concentration. Midjourney's $18 million per employee reflects 11 people at a moment of explosive product-market fit. That ratio does not hold at 500 employees.
 
-The BIS found that AI adoption increases EU labour productivity by 4% on average — but that firms without prior investment in human capital and intangible assets see substantially weaker gains (BIS Working Paper 1325, 2025). In practice: you cannot apply an AI-native operating model to a compliance-heavy, documentation-heavy, legacy-system bank and expect comparable RPE outcomes.
+Third: headcount scope. "Employees" in the AI-native world often excludes the contractors, vendors, and partner teams carrying the operational load. The denominator is smaller than it looks.
 
-What you can do: identify the specific workflows where AI removes human handling time — KYC document review, credit memo drafting, regulatory report generation — and measure RPE uplift per workflow. Remote, an Amsterdam-based payroll provider operating across multi-jurisdiction compliance requirements, grew revenue per employee by 50% without adding headcount after deploying AI operationally across the business (TechCrunch, May 2026). The number is achievable. The route is incremental workflow wins, compounding over 24 months — not a single operating model transformation.
+## What is a good revenue per employee benchmark for a regulated fintech?
 
-## The RPE Benchmark Ladder: which comparison is actually relevant for you?
+Klarna is the most honest comparable for a regulated payments or lending business: roughly $1 million RPE after an intense AI integration programme — which included replacing 700 full-time contractors with AI systems (TechCrunch, May 2025). That is the realistic ceiling achievable in a regulated context in the near term, not the floor.
 
-I use this framework when advising clients on AI operating model design: map your business to the correct archetype before selecting a benchmark.
+For most European fintechs, the realistic RPE target range is €300K–€600K per employee in the medium term. EU-regulated operations carry mandatory overhead — DORA resilience frameworks, PSD3 compliance reporting, GDPR data handling, audit trails under the EU AI Act — that pure software businesses do not. EU labour productivity per hour worked grew only 1.4% in 2025, after 0.2% in 2024 (Eurostat, June 2026). The structural overhead is real.
 
-The RPE Benchmark Ladder classifies four distinct business model archetypes, each with a different structural RPE ceiling.
+The IMF noted in March 2026 that Europe can regain its productivity edge — but through scaling up operations, not through headcount elimination alone (IMF Blog, March 2026). For regulated firms, the lever is operating model design, not headcount math.
 
-| Level | Archetype | RPE driver | Relevant benchmark |
-|---|---|---|---|
-| 1 | Regulated incumbent | Compliance, legacy, distribution | Sector peer group average |
-| 2 | Fintech scale-up | Leaner compliance, modern stack | Top-quartile sector peer |
-| 3 | AI-native fintech | AI-first workflows, productised compliance | AI-native fintech cohort |
-| 4 | Pure AI software | Software margin, no compliance overhead | Cursor / Lovable / OpenAI |
+## The caveats that actually matter
 
-Using a Level 4 benchmark as the target for a Level 1 organisation is not ambition. It is a category error that produces either demoralising comparisons or artificially aggressive cost targets that compromise compliance and risk management.
+Before you use any RPE number as a benchmark, run what I call the RPE Honesty Test — 3 questions that determine whether a comparison is valid:
+
+**1. Are we comparing the same revenue recognition?** ARR and GAAP revenue are not the same. Cursor's $2B+ ARR is not $2B in recognised revenue. Comparing ARR-per-employee against your revenue-per-employee inflates the benchmark by definition.
+
+**2. Are we counting the same people?** Many AI-native firms report employee counts that exclude contractors, offshore vendors, and third-party operations teams. If your headcount includes your compliance, risk, and operations staff — and theirs does not — the denominator is not comparable.
+
+**3. Are we in the same regulatory envelope?** A company with no AML obligations, no DORA requirements, and no PSD3 licensing overhead operates a structurally lighter cost base. Comparing your RPE to theirs is like comparing a licensed commercial airline's cost-per-seat to a private jet charter. Both fly. The regulatory physics are different.
+
+If you answer "no" to any of those questions, the benchmark is not valid. Use it as directional aspiration, not operational target.
 
 ## What I would do
 
-When building AI investment decisions around RPE, I follow this sequence with clients:
+If I were advising a COO at a regulated fintech on moving the RPE needle without gaming the metric, I would focus here:
 
-1. **Calculate the honest baseline.** Revenue (recognised, not ARR) divided by total FTE including contractors. Run it for the last 3 years. Understand the trend before setting a target. If RPE is already improving, the question is whether AI is accelerating it or whether market conditions are doing the work.
+1. **Map where human time goes against compliance overhead versus commercial output.** In my experience across regulated fintechs, the split between mandatory human review — audit, risk, compliance sign-off — and automatable operational work is typically around 30/70. The automation investment has usually only reached 10% of that 70%.
 
-2. **Identify your Level on the RPE Benchmark Ladder.** Then find the top quartile of that Level — not the adjacent cohort. A 30–50% RPE improvement over 2 years is a credible target for most Level 1–2 firms deploying AI seriously into operations.
+2. **Automate the operational layer first, not the compliance layer.** n8n workflows connected to the Claude API can handle customer onboarding document processing, internal escalation routing, and exception triage at scale — without touching the regulated decision layer. Supabase provides the data infrastructure to track and audit those automated flows. That is where the quick RPE gains sit in a regulated context.
 
-3. **Attach every AI initiative to an RPE hypothesis before funding it.** "We're deploying AI for KYC" is not a business case. "AI-assisted KYC review will reduce analyst handling time per case by 60%, freeing 3 FTEs to redirect to higher-value credit work, moving workflow RPE from €180K to €290K" is a testable hypothesis. If you cannot write the hypothesis, the initiative is not ready.
+3. **Build the RPE dashboard before you start any programme.** You cannot improve what you do not measure cleanly. Define your denominator (FTEs only, or including contractors?), your revenue numerator (recognised revenue or ARR?), and your baseline before any initiative starts. Otherwise, every efficiency claim is unfalsifiable.
 
-4. **Measure per-workflow, not company-wide.** Company-wide RPE moves slowly and has too many confounding variables. Per-workflow RPE moves fast and tells you which investments are working. I run a lightweight n8n dashboard tracking AI workflow output volume against headcount assigned per workflow — it gives a live weekly signal without waiting for quarterly reporting.
+4. **Target function-level RPE, not firm-level.** Operations RPE, tech RPE, and compliance RPE will move at different rates. Aggregating to firm level hides which functions are dragging and which are outperforming. The detail is where the insight is.
 
-5. **Report the attribution alongside the gain.** When RPE improves, document whether it came from AI, market conditions, or product mix shift. Boards and regulators are increasingly asking this question. Having the attribution analysis ready is a governance advantage, not just a reporting nicety — and under EU AI Act audit requirements from August 2026, it may become mandatory for high-risk AI systems.
+5. **Use Klarna as your ceiling, not your floor.** $1 million RPE in a regulated fintech context is exceptional. Set a 12-month target of 15–20% RPE improvement and run the RPE Honesty Test on every initiative to verify you are moving the real number, not just the reported one.
 
 ## Frequently asked questions
 
-**What is a good revenue per employee benchmark for a fintech company in 2026?**
-Top-quartile fintech companies (SaaS model) with active AI deployment are generating $800K–$1.5M in revenue per employee. A realistic 2-year target for a Series B fintech deploying AI in operations and compliance is $500K–$800K, depending on baseline. Do not benchmark against AI labs — the business model structure is different.
+**What is a good revenue per employee for a fintech company?**
+For a regulated European fintech, a realistic near-term target is €300K–€600K per employee. Klarna reached roughly $1 million RPE after replacing 700 contractors with AI systems — that is the ambitious ceiling for the 3–5 year horizon in a regulated context, not a starting point (TechCrunch, May 2025).
 
-**How is revenue per employee calculated correctly?**
-Total recognised revenue (not ARR, not bookings) divided by total headcount including contractors, part-time equivalents, and embedded vendor staff. Using ARR inflates the numerator. Excluding contractors deflates the denominator. Both produce misleading results when setting internal targets or comparing against peers.
+**How does AI-native revenue per employee compare to traditional fintech?**
+The gap is large and structurally explained. AI-native firms like Cursor (~$40M RPE) and Lovable (~$2.7M RPE) operate without regulatory compliance overhead, on pure software margins, at early high-growth stages with small teams. Regulated fintechs carry DORA, PSD3, GDPR, and AML cost bases that pure software businesses do not. The comparison is not valid without adjusting for those factors.
 
-**Are benchmarks like Cursor or OpenAI useful for banks and regulated fintechs?**
-Not as direct targets. They are useful for understanding what the structural ceiling looks like when compliance overhead, legacy systems, and distribution costs are absent. They are useful for understanding which operating model decisions — automation-first workflows, modular compliance infrastructure — close the gap over time. They are not useful as near-term targets for regulated incumbents.
+**How do you improve revenue per employee in financial services without cutting headcount?**
+Automate the operational layer while keeping the regulated decision layer human. n8n workflow automation, Claude API for document processing and triage, and Supabase for data infrastructure can reduce manual work in operations, onboarding, and exception handling without touching the regulatory review functions that require human sign-off. The goal is to free human capacity for judgment, not to remove it.
 
-**Does the EU AI Act affect revenue per employee in financial services?**
-Yes, indirectly but materially. High-risk AI systems require compliance infrastructure — risk assessments, human oversight protocols, technical documentation, monitoring — that adds to the headcount denominator. Firms that design this infrastructure efficiently across multiple AI systems in one compliance workflow will see lower RPE drag than firms managing each system in isolation. The compliance architecture is an RPE design decision.
+**How does EU regulation affect revenue per employee for fintech companies?**
+EU-regulated fintechs carry mandatory overhead that structurally reduces achievable RPE relative to non-regulated peers. DORA resilience requirements, PSD3 compliance reporting, EU AI Act audit trail obligations, and GDPR data handling all require human capacity that cannot be automated away. Eurostat data shows EU labour productivity per hour worked grew just 1.4% in 2025, after 0.2% in 2024 (Eurostat, June 2026). Any RPE target-setting for a regulated EU firm must account for this.
 
 ---
 
-**→ The EU AI Act compliance deadline for high-risk AI systems is 2 August 2026. If you are building or advising a financial services firm on AI operating model design — and want to connect compliance requirements directly to RPE improvement — [read about my AI Implementation & Operating Model Design service](/services/ai-implementation) or [book a 30-minute call](/book) to work through your specific context.**
+If you want to stress-test your current operating model against an AI-first design, [book a 30-minute discovery call](/book) — I work with a small number of clients at a time.
