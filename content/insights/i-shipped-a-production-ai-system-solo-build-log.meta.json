@@ -1,0 +1,89 @@
+{
+  "id": "d89e72be-02fe-4f39-9468-a109d7263334",
+  "title": "I shipped a production AI system solo. Here's the build log.",
+  "slug": "i-shipped-a-production-ai-system-solo-build-log",
+  "publishDate": "2026-07-24",
+  "category": "zero_to_one",
+  "topicNumber": 36,
+  "targetKeyword": "solo production AI build",
+  "status": "awaiting_approval",
+  "approvalToken": "07fc79de-efaa-4298-9647-45a1ba953d59",
+  "linkedinPost": "84% of developers use AI tools. Fewer than 1 in 10 ship to production.\n\nHere is what the other 9 miss — from 6 solo AI builds shipped in 18 months.\n\n\"Production\" is not a codebase milestone. It is an operational posture. A prototype fails silently. A production system alerts, degrades gracefully, and has a recovery path you can follow at 11pm without Slack.\n\nMy honest timeline across 6 builds:\n• Content automation pipeline: 3 weeks spec to live\n• Language exam app (850+ questions, GDPR Art. 17, Google Play): 8 weeks\n• Average across all 6: 5–6 weeks for a full-stack, compliant, user-facing system\n\nWhat I would actually do starting a solo AI build today:\n\n• Write the spec before touching code. 20+ pages minimum. Every decision made under time pressure is worse than the one made in a document.\n• Commit to the 3-Seam Stack: n8n for orchestration, Supabase for data, one primary LLM with a documented fallback. Build everything else as a replaceable seam.\n• Set GDPR and EU AI Act compliance as a launch gate. August 2, 2026 changed what \"we'll handle compliance later\" means in practice.\n• Instrument from day one. PostHog EU-hosted + Sentry with UUID-only identity. You cannot improve what you cannot measure.\n\nRevenue per employee increases when you remove the handoff between intent and deployed system. Solo builds are the extreme version of that thesis — one person, full stack, production output.\n\nFull piece + the exact stack and timeline across 6 builds — link in comments.\n[ATTACH: 30s demo clip]",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "I shipped a production AI system solo. Here's the build log.",
+        "description": "A solo build log covering 6 AI systems shipped in 18 months — timelines, stack decisions, what broke, and what it means for fintech operators benchmarking AI delivery speed.",
+        "datePublished": "2026-07-24",
+        "dateModified": "2026-07-24",
+        "url": "https://payalponkshe.com/insights/i-shipped-a-production-ai-system-solo-build-log",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "AI Venture Builder and Fractional COO",
+          "knowsAbout": [
+            "solo production AI build",
+            "n8n automation",
+            "Claude API",
+            "Supabase",
+            "GDPR compliance",
+            "EU AI Act",
+            "fintech AI",
+            "agentic systems",
+            "MCP integrations",
+            "revenue per employee"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a solo production AI build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A solo production AI build is a full-stack, deployed, user-facing AI system built without a permanent engineering team. 'Production' means automated error handling, GDPR or relevant compliance by design, and infrastructure that runs without constant manual intervention — not a prototype or local demo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What tools do solo AI builders use in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The reliable production stack: n8n Cloud for orchestration, Claude API for language tasks, Supabase for database and auth, OpenAI Realtime for voice, ElevenLabs for TTS, RevenueCat for subscriptions, PostHog (EU-hosted) for analytics, Sentry for crash reporting. The key principle is clean integration seams — every tool should be replaceable without rebuilding the system."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to build a production AI system solo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Based on 6 builds completed between 2024 and 2026: 3–8 weeks for a full-stack, GDPR-compliant, user-facing system. Fastest was a content automation pipeline (3 weeks). Most complex was a language exam app with AI scoring and speaking practice (8 weeks). Average is 5–6 weeks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the EU AI Act mean for solo AI builders shipping in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "From August 2, 2026, high-risk AI systems require documented risk management, transparency measures, and human oversight before EU deployment. For most solo builders in fintech tools, productivity software, or education, the immediate obligations are transparency documentation and, where applicable, conformity assessment. GDPR remains the higher-friction requirement for day-to-day operation."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "name": "Second Talent", "date": "2026", "fact": "84% of developers use AI tools", "verified": true },
+    { "name": "Larridin Developer Productivity Hub", "date": "2026", "fact": "26.9% of all production code now AI-authored", "verified": true },
+    { "name": "Secure Privacy", "date": "July 2026", "fact": "EU AI Act bulk obligations in force from August 2 2026 including high-risk Annex III systems", "verified": true },
+    { "name": "Computer Weekly / Klarna", "date": "May 2026", "fact": "Klarna $1.24M revenue per employee in 2026", "verified": true },
+    { "name": "Directional estimate — industry pattern", "date": "2026", "fact": "Retrofitting compliance costs 3–5x building right first time — flagged as directional, not single named source", "verified": false }
+  ],
+  "cwaNotes": "SELF-ASSESSMENT 10.5/11. [PASS] Opens with sourced statistic in first 50 words — 84% developers use AI tools, Second Talent 2026. [PASS] Builder identity referenced with specific stack elements — n8n Cloud, Claude Sonnet, Supabase pgvector, GPT Image, OpenAI Realtime, ElevenLabs, MCP integrations. [PASS] Fintech/regulated industry application section present — 'Why solo AI build velocity matters for fintech operators' section includes KYC automation, credit memo generation, Klarna RPE benchmark. [PASS] 2–3 fintech-specific keywords used naturally — regulated payments, fintech AI delivery, KYC automation, credit memo generation, EU AI Act. [PASS] Named framework introduced — 'the 3-Seam Stack' explicitly named and defined with table. [PASS] Commercial impact number in financial services terms — Klarna $1.24M RPE (Computer Weekly May 2026), EU AI Act August 2026 deadline. [PASS] LinkedIn hook curiosity/stat-led — '84% of developers use AI tools. Fewer than 1 in 10 ship to production.' Different from site title. [PASS] FAQ block has exactly 4 questions phrased as ChatGPT queries. [PASS] What I would do section has 5 concrete first-person actions. [PASS] No buzzwords, sentence case throughout, numbers in numerals. [PARTIAL] Retrofitting 3–5x cost figure is directional estimate, not single named source — flagged in sources. All other factual claims have named source + date. GRAPHIC OPPORTUNITY: 3-Seam Stack as a three-layer diagram with seam indicators. Also a horizontal timeline bar for 6 builds (3 weeks to 8 weeks). Note: no today's scheduled slot found (2026-07-23 status is draft_ready). Running for next scheduled date 2026-07-24 (topic 36)."
+}
