@@ -1,0 +1,27 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-23T00:00:00Z",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '86% of companies that have deployed embedded finance report improved financial performance (PYMNTS, June 2026)' appears in the first 18 words with named source and month/year",
+    "2_builder_stack_element": "PASS — 'structured event logs from each n8n workflow node fed a central Supabase audit table from the first schema iteration' — first-person build reference with specific stack elements",
+    "3_fintech_section": "PASS — Full H2 section 'What does embedded finance mean for banks and regulated operators in Europe?' covering KYC, AML, DORA, transaction monitoring, partner governance as a bank infrastructure risk",
+    "4_fintech_keywords": "PASS — 'embedded finance strategy' (primary keyword), 'embedded finance in financial services' (table column), 'embedded payment flows under DORA', 'embedded finance banking' context throughout",
+    "5_named_framework": "PASS — 'The Embedded Finance Operating Stack' named explicitly with 3-decision model (Infrastructure, Risk ownership, Governance) and a GFM pipe table",
+    "6_commercial_impact": "PASS — 'Nearly 70% of embedded finance delivery is outsourced (Apideck, 2026)' is a sourced commercial figure; Revenue per Employee frame used multiple times; cost-to-serve references throughout",
+    "7_linkedin_hook_different": "PASS — LinkedIn hook '99.8% adoption rate. A governance problem to match.' is stat-led/curiosity; site title 'Embedded finance is an operating-model decision' is SEO-informational — clearly differentiated",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ entries: (1) biggest operating model mistake, (2) PSD3 impact, (3) BaaS vs embedded finance difference, (4) measuring operating model — all phrased as ChatGPT queries",
+    "9_what_i_would_do_3to5": "PASS — 5 concrete first-person actions: (1) map risk flow, (2) PSD3 due diligence on partners, (3) build reconciliation as first-class system, (4) wire partner governance from day one, (5) baseline RPE by function before launch",
+    "10_no_buzzwords_numerals": "PASS — No banned buzzwords found; all H2s in sentence case; 86%, 99.8%, 70%, 5 actions, 3 metrics all in numerals; 'PSD3 entering force from 2027' is a standard factual reference not a buzzword",
+    "11_all_claims_sourced": "FAIL — FAQ answer for 'How do I measure whether my embedded finance operating model is working?' contains 'reconciliation exception rate (target below 0.1% at scale)' with no named source, no date, and no entry in the sources array. This is a specific benchmark claim that requires attribution or removal.",
+    "12_voice_authenticity": "PASS — Opens with data, no preamble, punchy short sentences ('The product works. The governance doesn't.'), builder reference is concrete and first-person, regulatory grounding is European-specific, RPE frame used as commercial lens — consistent with published portfolio voice",
+    "13_source_verifiability": "FAIL — Two issues: (a) 'Future Market Insights — Embedded Finance Market USD 85.8B in 2026, projected to USD 370.9B by 2036 at 15.8% CAGR, 2026' is listed in meta.json sources array but has NO corresponding inline citation anywhere in the article body; (b) '0.1% at scale' claim in the FAQ body has no entry in the meta.json sources array",
+    "14_linkedin_native_value": "PASS — LinkedIn post includes 3 COO-specific operational questions ('reconciliation fails at 2am', '1 to 5 embedded partners', 'DORA audit chain') not present in any article preview text; PSD3 partner risk as commercial risk is expanded beyond the article's framing",
+    "15_self_contained": "PASS — Target audience (fintech COOs/founders) will know KYC/AML/DORA/PSP; BaaS expanded on first use ('Banking-as-a-Service (BaaS)'); PSD3 date and context provided; no assumed knowledge of Payal's prior articles"
+  },
+  "revision_instructions": [
+    "Item 11: Remove the specific '0.1% at scale' reconciliation exception rate figure from the FAQ answer for 'How do I measure whether my embedded finance operating model is working?' — this is an uncited benchmark. Replace the FAQ answer to reference 'reconciliation exception rate' as a metric without the specific percentage target, since no named source supports this figure. The revised answer should still describe the 3-metric framework (reconciliation exception rate, partner governance audit pass rate, compliance escalation rate per unit of transaction volume) and the RPE overlay, but without the unattributed 0.1% figure.",
+    "Item 13: Remove 'Future Market Insights' from the sources array in the meta.json — this source data (USD 85.8B market size, 15.8% CAGR) does not appear as an inline citation anywhere in the article body and should not be in the sources array unless it is cited. Do not add it to the article body — the article already has sufficient market context from PYMNTS, Apideck, and Guidehouse. Simply remove the Future Market Insights entry from the meta.json sources array."
+  ]
+}
