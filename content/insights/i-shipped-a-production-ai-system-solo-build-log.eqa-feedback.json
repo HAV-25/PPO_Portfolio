@@ -1,0 +1,26 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-27T00:00:00.000Z",
+  "fail_count": 1,
+  "failed_items": [11],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '84% of developers now use AI tools' at word 1, (Second Talent, 2026) cited within first 37 words. No month in citation but named source and year present.",
+    "2_builder_stack_element": "PASS — 'Stack: n8n Cloud, Claude Sonnet (deconstruct and caption), GPT Image (render), Supabase (Postgres + pgvector + Storage)' — first-person build element with named concrete tools.",
+    "3_fintech_section": "PASS — 'Why solo AI build velocity matters for fintech operators' section explicitly covers KYC automation, credit memo generation, Klarna RPE, EU AI Act for regulated payments context.",
+    "4_fintech_keywords": "PASS — 'regulated payments company', 'fintech operators', 'KYC automation', 'credit memo generation', 'EU AI Act' all appear naturally in body.",
+    "5_named_framework": "PASS — 'the 3-Seam Stack' explicitly named, defined, and presented with a 4-row GFM table. Attributable to Payal.",
+    "6_commercial_impact": "PASS — 'Klarna's move to $1.24M revenue per employee (Computer Weekly, May 2026)' — sourced, concrete, fintech context.",
+    "7_linkedin_hook_different": "PASS — Site title is a build log announcement; LinkedIn hook is stat-led provocation ('84% of developers use AI tools. Fewer than 1 in 10 ship to production.'). Different formulas.",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions: (1) What is a solo production AI build? (2) What tools do solo AI builders use in 2026? (3) How long does it take to build a production AI system solo? (4) What does the EU AI Act mean for solo AI builders shipping in 2026?",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered actions with specific tools and approaches: 20-page spec, 3-Seam Stack, GDPR/EU AI Act as launch gate, PostHog+Sentry instrumentation, define production criteria.",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords found. All H2s in sentence case. All numbers in numerals (84%, 6, 3 weeks, 8 weeks, 5-6 weeks, 26.9%, 4-5 engineers, 18 months, $1.24M, 3-5x).",
+    "11_all_claims_sourced": "FAIL — 'Retrofitting costs 3–5x building right first time' is presented as a quantified claim with no named external source. The qualifying phrase 'a conservative estimate based on re-architecture patterns in regulated software development' mitigates it partially, but a cold reader encounters a specific number without source attribution. Meta.json confirms this is unverified (verified: false).",
+    "12_voice_authenticity": "PASS — Opens with data, no preamble, direct declarative sentences ('This is a build log. Not aspirational.'). No passive voice. No corporate language. First-person throughout. Matches Payal's voice register precisely.",
+    "13_source_verifiability": "PASS — All 4 verified sources (Second Talent, Larridin Developer Productivity Hub, Secure Privacy, Computer Weekly/Klarna) appear inline with matching citations. Directional estimate correctly flagged as unverified in sources array. No orphan citations.",
+    "14_linkedin_native_value": "PASS — Post delivers standalone value: stat hook, definition of production as operational posture, timeline data, 4 concrete recommendations, named 3-Seam Stack. RPE frame ('remove the handoff between intent and deployed system') appears only in LinkedIn post, not article body.",
+    "15_self_contained": "PASS — 3-Seam Stack defined in body. Technical terms have sufficient context for fintech COO/founder audience. No assumed knowledge of prior Payal articles. GDPR Art. 17 and EU AI Act Annex III are appropriate assumed knowledge for the stated target audience."
+  },
+  "revision_instructions": [
+    "Item 11: The claim 'Retrofitting costs 3–5x building right first time' appears in the fintech operators section as a quantified assertion without a named source. Fix: remove the '3–5x' number from this sentence entirely and replace with language that keeps the point without the unsourced quantification. Revised sentence should read: 'Solo builders who shipped before that date built compliance in. Enterprise teams who delayed are retrofitting — and re-architecture in regulated software always costs far more than building right the first time.' This preserves the argument without making a specific uncited claim. Do not add a fabricated source. Do not use another quantification unless you have a verifiable named source."
+  ]
+}
