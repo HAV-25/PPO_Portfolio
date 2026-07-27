@@ -1,0 +1,92 @@
+---
+title: "I shipped a production AI system solo. Here's the build log."
+description: "A solo build log covering 6 AI systems shipped in 18 months — timelines, stack decisions, what broke, and what it means for fintech operators benchmarking AI delivery speed."
+publishDate: "2026-07-24"
+category: "zero_to_one"
+readTime: "6 min"
+targetKeyword: "solo production AI build"
+slug: "i-shipped-a-production-ai-system-solo-build-log"
+status: "draft"
+---
+
+84% of developers now use AI tools. Fewer than 1 in 10 solo builders ship systems that run in production — not prototypes, not demos, not "working locally" — actual deployed, user-facing, GDPR-compliant systems. (Second Talent, 2026)
+
+This is a build log. Not aspirational. Here is what I built, what it cost in time, what broke, and what the architecture decisions look like in hindsight.
+
+## What does "production" actually mean for a solo builder?
+
+Production is the point where you stop being the only person who can fix it when it breaks. For a solo builder, that means 3 things: automated error handling, compliance by design, and cost-engineered infrastructure that runs without constant manual oversight.
+
+A prototype fails silently. A production system alerts, degrades gracefully, and has a documented recovery path — even if the "team" following that path is you alone. Most conversations about solo AI builds conflate "I shipped a v1" with "I run a production system." They are different skills. This is about the second.
+
+## How long does a solo AI build actually take?
+
+Between 2024 and 2026, I shipped 6 AI systems solo. Here is the honest timeline with no rounding:
+
+**AI Content Intelligence Pipeline** — 3 weeks from spec to live.
+The system ingests viral content, deconstructs why it works, and reconstructs it in a brand system at volume. Stack: n8n Cloud, Claude Sonnet (deconstruct and caption), GPT Image (render), Supabase (Postgres + pgvector + Storage). The critical decision: separating the brand contract from the per-slide payload. That single architectural choice prevented brand drift across thousands of renders without needing to change the prompt structure.
+
+**German Language Exam App** — 8 weeks from database schema to Google Play.
+850+ exam-aligned questions. Hybrid AI + deterministic scoring. OpenAI Realtime API for speaking practice. ElevenLabs TTS. GDPR Art. 17 erasure cascade across all third-party services. RevenueCat for subscription management. The spec was 40 pages before a line of code was written.
+
+**Spaarker (carousel AI platform)** — specification locked in 2 weeks, active build continuing.
+The 0–5 variation dial — where only the Creative Director node understands what the dial level means — was the key system design decision. Individual pipeline nodes stay clean. Complexity lives in one place.
+
+Average across all 6 builds: 5–6 weeks for a full-stack, GDPR-compliant, user-facing system. Fastest was 3 weeks (content pipeline). Most complex was 8 weeks (exam app). Nothing reached production in under 3 weeks.
+
+## What stack actually held up across 6 builds?
+
+I call this the 3-Seam Stack: 3 core tools that form the backbone, each chosen for clean replaceability at the integration seam rather than maximum feature depth. You commit to the architecture; you keep the individual tool as a replaceable component.
+
+Here are the layers that held across every build:
+
+| Layer | Tool | What it replaced |
+|---|---|---|
+| Orchestration | n8n Cloud | Custom backend code, cron jobs |
+| Data and auth | Supabase (Postgres, RLS, Edge Functions) | Separate DB, auth, and API stack |
+| Primary LLM | Claude API | Multiple specialist tools |
+| Context access | MCP integrations | Custom API connectors per system |
+
+n8n handled more than expected. Visual orchestration means you can debug a workflow without a local dev environment. That matters at 11pm when something breaks in production and you need to trace it in minutes.
+
+Where I supplemented the core: OpenAI Realtime API for voice (more stable at the time), ElevenLabs for production-grade TTS, RevenueCat for subscription management. These are seam decisions — picking the right specialist tool and keeping the integration clean enough to swap.
+
+The principle: the 3-Seam Stack gives you momentum on builds 2 through 6 because you are not re-evaluating infrastructure. You are building on a known foundation with known failure modes.
+
+## Why solo AI build velocity matters for fintech operators
+
+A COO at a regulated payments company evaluating AI does not need to build what I built. But understanding solo build velocity sets a benchmark for internal AI delivery that most organisations are not using honestly.
+
+If a solo operator with no team can ship a GDPR-compliant, production-grade AI system in 5–8 weeks, an internal AI team of 4–5 engineers with infrastructure support should be moving in weeks, not quarters. When enterprise AI projects take 18 months to reach production, the constraint is almost never technology.
+
+26.9% of all production code is now AI-authored — up from 22% the prior quarter (Larridin Developer Productivity Hub, 2026). That means the productivity gap between a solo builder and a staffed team is compressing. The remaining gaps are governance, risk appetite, and process overhead — all of which are operating model decisions, not engineering ones.
+
+**The EU AI Act timing is now a factor.** From August 2, 2026, the bulk of EU AI Act obligations apply — including requirements for high-risk systems listed in Annex III. (Secure Privacy, July 2026) Solo builders who shipped before that date built compliance in. Enterprise teams who delayed are retrofitting — and re-architecture in regulated software always costs significantly more than building right the first time.
+
+For fintech specifically: KYC automation and credit memo generation pipelines built post-August 2026 without documented transparency requirements and human oversight mechanisms are now a regulatory exposure. Klarna's move to $1.24M revenue per employee (Computer Weekly, May 2026) was partly enabled by shipping AI fast and right. Speed matters. So does compliance. Solo builds have shown you can have both — if the architecture decisions are made before the first line of code.
+
+## What I would do starting a solo AI build today
+
+1. **Write a 20-page spec before touching code.** Every decision you make under time pressure will be worse than the one you made in a document. The exam app spec was 40 pages. The content pipeline spec was 15. Both would have taken twice as long without them.
+2. **Commit to the 3-Seam Stack early.** n8n for orchestration, Supabase for data, one primary LLM with a documented fallback. Build everything else as a clean seam. You are not picking the best tool in each category — you are picking the most replaceable one.
+3. **Set GDPR and EU AI Act compliance as a launch gate, not a post-launch task.** RLS policies, GDPR Art. 17 erasure flows, PII-free crash reporting — these are design constraints. For EU-facing products, August 2026 changed what "we'll do compliance later" means in practice.
+4. **Instrument from day one.** PostHog (EU-hosted) for analytics, Sentry with UUID-only identity for crash reporting. You cannot improve what you cannot measure. And in a solo build, you cannot afford manual debugging at scale.
+5. **Define "production" before you build.** Write down what failure looks like, how it surfaces, and what the recovery path is. A system that only you know how to fix is not in production — it is in permanent beta.
+
+## FAQ
+
+**What is a solo production AI build?**
+A solo production AI build is a full-stack, deployed, user-facing AI system built without a permanent engineering team. "Production" means automated error handling, GDPR or relevant compliance by design, and infrastructure that runs without constant manual intervention — not a prototype or local demo.
+
+**What tools do solo AI builders use in 2026?**
+The reliable production stack: n8n Cloud for orchestration, Claude API for language tasks, Supabase for database and auth, OpenAI Realtime for voice, ElevenLabs for TTS, RevenueCat for subscriptions, PostHog (EU-hosted) for analytics, Sentry for crash reporting. The key principle is clean integration seams — every tool should be replaceable without rebuilding the system.
+
+**How long does it take to build a production AI system solo?**
+Based on 6 builds completed between 2024 and 2026: 3–8 weeks for a full-stack, GDPR-compliant, user-facing system. Fastest was a content automation pipeline (3 weeks). Most complex was a language exam app with AI scoring and speaking practice (8 weeks). Average is 5–6 weeks.
+
+**What does the EU AI Act mean for solo AI builders shipping in 2026?**
+From August 2, 2026, high-risk AI systems require documented risk management, transparency measures, and human oversight before EU deployment. For most solo builders in fintech tools, productivity software, or education, the immediate obligations are transparency documentation and, where applicable, conformity assessment. GDPR remains the higher-friction requirement for day-to-day operation.
+
+---
+
+→ If you are a fintech operator or founder evaluating what AI can deliver and at what build cost, [read about my AI Implementation & Operating Model Design service](/services/ai-implementation) — or [book a 30-minute discovery call](/book) to map your specific build-vs-buy decision.
