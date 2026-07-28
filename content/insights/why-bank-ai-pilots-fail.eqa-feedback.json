@@ -1,0 +1,28 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-28T09:36:03Z",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '78–88% of enterprise AI pilots in financial services stall before they reach production (Jinba.io, 2026 Production Gap Report).' Named source + year in sentence 1, well within 50 words.",
+    "2_builder_stack_element": "PASS — First-person Supabase reference: 'A Supabase event log that captures model inference, input data fingerprint, output classification, and the user identity satisfies both requirements simultaneously.'",
+    "3_fintech_section": "PASS — Full section 'How does the EU AI Act change the stakes for bank AI governance in 2026?' covers KYC, AML, credit risk, DORA, SR 11-7, Article 12 logging, DORA incident reporting.",
+    "4_fintech_keywords": "PASS — 'AI pilot to production banking', 'bank AI governance', 'AI in regulated financial services', 'agentic AI specifically gets stuck in European banks' — all used naturally in body.",
+    "5_named_framework": "PASS — 'Pilot-to-Production Readiness Ladder' introduced with a 4-level GFM pipe table including Level name, meaning, and minimum governance state columns.",
+    "6_commercial_impact": "PASS — JPMorgan 400+ production use cases / $10T daily transactions, Commonwealth Bank 20% fraud loss reduction FY2026, 45-staff rehire counter-example — all in financial services context.",
+    "7_linkedin_hook_different": "PASS — Site title is informational why-question ('Why most bank AI pilots never reach production'). LinkedIn line 1 is stat-led scroll-stopper ('88% of bank AI pilots never reach production.').",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQs: (1) Why do most bank AI pilots fail; (2) What governance does a bank need; (3) How does the EU AI Act affect AI pilot deployments; (4) What does a successful transition look like.",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered first-person actions, all concrete with specific tools or triggers (Readiness Ladder audit, Supabase event log, governance transition review timing, RPE target, monitoring dashboard first).",
+    "10_no_buzzwords_numerals": "PASS — No transformative/innovative/game-changing/seamless/robust/revolutionary/In conclusion detected. Sentence case throughout. All numbers in numerals (78–88%, 14%, 3, 5, 28.4%, 400+, $10T, 20%, 45, 8–15, 18).",
+    "11_all_claims_sourced": "FAIL — Two claims lack inline named source attribution: (1) 'In a March 2026 study of 650 enterprise technology leaders, only 14% had successfully scaled AI to production.' — no source name given in body (meta.json maps this to Jinba.io but it is not stated inline); (2) 'The same institution previously had to rehire 45 customer service staff after an AI chatbot failed to reduce call volumes as promised' — no inline citation (meta.json maps this to Banking Dive / Oradian, 2026).",
+    "12_voice_authenticity": "PASS — Cold read: opens with data, no preamble. Second sentence 'The failure is almost never the model.' is punchy and counterintuitive. Builder credibility via Supabase. Revenue Per Employee frame deployed deliberately. Short sentences. No passive voice. Reads as Payal.",
+    "13_source_verifiability": "FAIL — Cross-reference of sources array in meta.json vs inline citations reveals two gaps: (a) 14% stat — sources array has 'Jinba.io, March 2026 study of 650 enterprise technology leaders' but article body gives no source name for this sentence; (b) 45 customer service staff — sources array has 'Banking Dive / Oradian, 2026' but article body has no inline citation after the claim.",
+    "14_linkedin_native_value": "PASS — Post delivers 5 specific failure modes as bullets, the August 2, 2026 EU AI Act enforcement date, and 4 concrete actions with named tools. Standalone value is high. Framing 'it grows until it serves real customers with no regulatory documentation' adds interpretation not in the article preview.",
+    "15_self_contained": "PASS — Article is largely self-contained for a COO audience. Minor note: SR 11-7 appears without explanation ('regulatory obligations (EU AI Act, DORA, SR 11-7)') and is a US Federal Reserve supervisory letter not universally known to EU readers; however, context makes its function clear and the target audience (regulated financial services) would likely recognise it."
+  },
+  "revision_instructions": [
+    "Item 11 + 13, Fix 1: In the opening paragraph, after 'only 14% had successfully scaled AI to production' — add '(Jinba.io, March 2026)' immediately before the period. The sentence should read: '...only 14% had successfully scaled AI to production (Jinba.io, March 2026).'",
+    "Item 11 + 13, Fix 2: In the section about Commonwealth Bank, after 'had to rehire 45 customer service staff after an AI chatbot failed to reduce call volumes as promised' — add '(Banking Dive / Oradian, 2026)' immediately before the em dash. The sentence should read: '...had to rehire 45 customer service staff after an AI chatbot failed to reduce call volumes as promised (Banking Dive / Oradian, 2026) — a Level 1 pilot that was presented as a Level 4 deployment.'",
+    "Do NOT change any other part of the article. Do NOT add, remove, or restructure sections. Do NOT change the LinkedIn post. Do NOT change sources, FAQs, or the What I would do section. Only the two inline citation insertions are required."
+  ]
+}
