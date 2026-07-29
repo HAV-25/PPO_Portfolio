@@ -1,0 +1,27 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-29T00:00:00.000Z",
+  "fail_count": 1,
+  "failed_items": [11],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '89% of companies say their technology investments haven't fully delivered expected results (PwC, Digital Trends in Operations Survey, 2026)' appears in word 1 with named source and year",
+    "2_builder_stack_element": "PASS — 'In the ventures I build across n8n, Claude API, and Supabase, the Operate function is the one most often skipped' — first-person, 3 named stack elements",
+    "3_fintech_section": "PASS — Full H2 section 'How does the EU AI Act affect internal AI team design in financial services?' covers EU AI Act Annex III, DORA, KYC, credit risk, lending decision explainability",
+    "4_fintech_keywords": "PASS — 'regulated financial services' ×3, 'internal AI team operating model' in FAQ, EU regulatory context throughout",
+    "5_named_framework": "PASS — Build-Operate-Advise model named, defined, and presented as 4-column GFM pipe table (Function/Core mandate/Typical roles/Success measure)",
+    "6_commercial_impact": "PASS — EY: 80% active usage, 300,000+ professionals, 50,000+ agents in 9 months; RPE frame defined precisely in FAQ",
+    "7_linkedin_hook_different": "PASS — Site title informational ('how internal AI teams actually reach production'); LinkedIn hook stat-led ('89%... The operating model is the bottleneck — not the model')",
+    "8_faq_exactly_4": "PASS — Exactly 4 questions, all phrased as ChatGPT natural-language queries: (1) What is BOA model? (2) How structure in FS? (3) What does EU AI Act require? (4) How measure with RPE?",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered concrete actions: audit team against BOA, make Operate explicit before go-live, treat Advise as compliance role in FS, connect OKRs to RPE, complete Annex III mapping",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords found. All H2s sentence case. Numbers in numerals throughout: 89%, 27%, 75%, 37%, 300,000+, 80%, 50,000+, 120+",
+    "11_all_claims_sourced": "FAIL — Two citations missing dates: (1) '(Deloitte, \"Rewiring the enterprise operating model for AI scale\")' — no year/date; (2) '(EY, ey.com)' — no year and no article title. Required format is (Source Name, Month Year). PwC citations correct with year. EC citation acceptable (date embedded in claim). Two out of four unique source citations violate the inline date requirement.",
+    "12_voice_authenticity": "PASS — Opens directly with stat + problem diagnosis. 'Revenue per employee' appears in paragraph 2. Short punchy sentences, varied length. No preamble. Reads authentically as Payal's voice compared to portfolio_articles.md ground truth.",
+    "13_source_verifiability": "PASS — All 4 sources in meta.json sources array appear inline. No inline citations without corresponding source array entry. Imprecision in Deloitte/EY format captured by criterion 11.",
+    "14_linkedin_native_value": "PASS — Post is self-contained: delivers framework, 3 concrete actions, and an exclusive closing insight ('Revenue per employee doesn't move from a working model. It moves from a model with an accountable Operate and Advise function behind it.') not present in article body.",
+    "15_self_contained": "PASS — No undefined acronyms for target audience (DORA standard for EU FS COOs). No assumed knowledge of prior articles. Build-Operate-Advise introduced from scratch."
+  },
+  "revision_instructions": [
+    "Item 11 — CITATION DATES MISSING: Find the Deloitte citation '(Deloitte, \"Rewiring the enterprise operating model for AI scale\")' in the article body and add the year of publication. Based on the report content (AI operating model transformation, 75% of tech executives expecting change within 12-18 months), this is a 2024-2025 Deloitte report. Use the year you can verify from your training data; if uncertain, use '2025' as the most likely year. The corrected format should be: (Deloitte, 'Rewiring the enterprise operating model for AI scale', 2025) or whichever year is accurate.",
+    "Item 11 — CITATION INCOMPLETE: Find the EY citation '(EY, ey.com)' in the article body (in the section about EY deploying EYQ to 300,000+ professionals) and replace it with a complete citation including the article title and year. The full title per the sources array is 'Building an enterprise-scale agentic AI operating system' published on ey.com. The EYQ platform rollout to 300,000+ professionals with 80%+ active usage and 50,000+ agents was reported in 2024-2025. Use the correct year from your training data. Corrected format: (EY, 'Building an enterprise-scale agentic AI operating system', 2024) or whichever year is accurate. Do NOT change any other part of the sentence or paragraph."
+  ]
+}
