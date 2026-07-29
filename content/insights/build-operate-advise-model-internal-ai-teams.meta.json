@@ -7,6 +7,10 @@
   "topicNumber": 26,
   "targetKeyword": "internal AI team operating model",
   "status": "awaiting_approval",
+  "eqaStatus": "qa_passed",
+  "eqaPassedAt": "2026-07-29",
+  "eqaRevisionCycles": 1,
+  "eqaNotes": "15/15 pass after 1 revision cycle. Revision: added dates to 2 undated citations — Deloitte 2025, EY 2024. Kimi API unavailable (401); revision applied directly by EQA. All other criteria passed on first read.",
   "approvalToken": "17cc3cbf-cbf7-4acf-af5f-f12ea2add9b6",
   "linkedinPost": "89% of companies say their AI investments haven't delivered. The operating model is the bottleneck — not the model.\n\nMost internal AI teams are built like software delivery teams. They build. They ship. They move on.\n\nBut AI in production is not a project. It is an operating function. The team design that gets you to a demo is not the team design that gets you to a system that actually changes how work gets done.\n\nThe Build-Operate-Advise model fixes the structural gap:\n\n• Build: accountable for production-ready systems\n• Operate: accountable for monitoring, retraining, incident response — and for EU AI Act Article logging obligations (fully in force 2 August 2026)\n• Advise: accountable for translating outputs into business decisions and tracking revenue per employee movement\n\nOnly 27% of organisations have fully embedded AI across business units (PwC, 2026). The 73% who haven't have the same structural failure: AI capability with no integration accountability. The model works. The team around it doesn't.\n\nWhat I would actually do:\n• Map every AI team member to one function — Build, Operate, or Advise — and identify the function with no named owner\n• Wire monitoring and retraining triggers into the build spec before go-live, not after the first production failure\n• In financial services: treat Advise as a compliance role, not a soft skill. Someone must own the regulator explanation\n\nRevenue per employee doesn't move from a working model. It moves from a model with an accountable Operate and Advise function behind it.\n\nFull piece + the Build-Operate-Advise framework table — link in comments.",
   "schemaJsonLd": [
