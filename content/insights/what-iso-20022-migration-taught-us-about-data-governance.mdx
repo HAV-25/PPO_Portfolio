@@ -17,7 +17,7 @@ That gap is the most expensive lesson from the ISO 20022 migration, and most ins
 
 The short answer: banks treated a data governance programme as an IT format upgrade. They changed the message envelope. They left the data inside it largely untouched.
 
-ISO 20022 introduced over 900 data fields per payment message — compared to 140 characters in a legacy MT103 wire. But structured fields only carry value if the upstream systems that collect payment instructions actually capture data into those fields at point of entry. Most did not. Systems processing freetext payment instructions for decades continued doing exactly that, with a translation layer converting freetext into structured format at the gateway.
+ISO 20022 introduced a structured field set far richer than the 140-character freetext limit of a legacy MT103 wire — covering granular party identification, structured remittance data, purpose codes, and legal entity references that MT103 could not carry (SWIFT, ISO 20022 Programme, 2023). But structured fields only carry value if the upstream systems that collect payment instructions actually capture data into those fields at point of entry. Most did not. Systems processing freetext payment instructions for decades continued doing exactly that, with a translation layer converting freetext into structured format at the gateway.
 
 The result: technical compliance on the message, with governance debt buried inside it. Structured-looking fields containing unstructured content. Addresses that pass format validation but fail downstream AML screening. Remittance data that exists in a field but carries no usable intelligence.
 
@@ -50,7 +50,7 @@ This is where the governance investment pays back far beyond payments operations
 
 **AML and fraud detection:** Structured party identifiers reduce AML false positive rates 20–40% compared to models operating on legacy MT freetext (NICE Actimize, 2025). That improvement does not come from ISO 20022 adoption itself. It comes from the governance that ensures structured fields contain structured content — the distinction most migrations missed.
 
-I built a typed Supabase event schema for a payment data pipeline that enforces field-level validation at ingestion rather than at the processing layer. The principle is identical to what ISO 20022 requires at bank scale: catch the governance failure at the point of data entry, where repair costs 10x less than fixing it downstream.
+I built a typed Supabase event schema for a payment data pipeline that enforces field-level validation at ingestion rather than at the processing layer. The principle is identical to what ISO 20022 requires at bank scale: catch the governance failure at the point of data entry, where the cost of correction is a fraction of what it becomes once the error has propagated through settlement, reporting, and compliance layers.
 
 ## What I would do
 
