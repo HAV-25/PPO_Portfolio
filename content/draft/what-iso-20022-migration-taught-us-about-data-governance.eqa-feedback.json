@@ -1,0 +1,27 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-07-30T00:00:00.000Z",
+  "fail_count": 1,
+  "failed_items": [11],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — Sentence 1: '44% of banks will miss the November 2026 SWIFT structured address deadline' (Montran, 2026). Within 45 words.",
+    "2_builder_stack_element": "PASS — 'I built a typed Supabase event schema for a payment data pipeline that enforces field-level validation at ingestion rather than at the processing layer.'",
+    "3_fintech_section": "PASS — Full H2 section 'How does ISO 20022 data governance connect to AI readiness, DORA, and the EU AI Act?' explicitly covers DORA incident logging, EU AI Act Art 12, and AML screening.",
+    "4_fintech_keywords": "PASS — 'ISO 20022 data governance' (target keyword, multiple uses), 'AML screening', 'DORA compliance', 'payment data governance in financial services' used naturally.",
+    "5_named_framework": "PASS — 'Data-First Migration Test' named explicitly and presented as a 4-question GFM pipe table with Question/What it reveals/Common failure mode columns.",
+    "6_commercial_impact": "PASS — 'structured party identifiers reduce AML false positive rates 20–40% compared to models operating on legacy MT freetext (NICE Actimize, 2025)'.",
+    "7_linkedin_hook_different": "PASS — Site title: informational 'What ISO 20022 migration taught us about data governance'. LinkedIn hook line 1: stat-led '44% of banks will miss the November 2026 SWIFT structured address deadline.' Different formulas.",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions, all phrased as COO/banker ChatGPT queries.",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered first-person concrete actions with specific named approaches.",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords found. Sentence case throughout H2s. All numbers in numerals: 44%, 900, 140, 20–40%, 10x.",
+    "11_all_claims_sourced": "FAIL — Two specific factual claims have no named source + date inline: (a) 'ISO 20022 introduced over 900 data fields per payment message — compared to 140 characters in a legacy MT103 wire' — specific comparative figures with no citation; (b) 'catch the governance failure at the point of data entry, where repair costs 10x less than fixing it downstream' — specific ratio claim with no citation.",
+    "12_voice_authenticity": "PASS — Opens with data-first stat, short punchy sentences ('The format changed. The governance did not.'), no preamble, Supabase builder reference, commercial framing. Consistent with portfolio_articles.md register.",
+    "13_source_verifiability": "PASS — All 4 sources in meta.json sources array are cited inline. All inline citations appear in sources array. No mismatches.",
+    "14_linkedin_native_value": "PASS — Post delivers actionable value without clicking: 5-item diagnostic list, gateway-vs-upstream distinction explained, NICE Actimize data point, RPE frame ('ISO 20022 is the infrastructure. Governance is what makes it real.') not verbatim in article body.",
+    "15_self_contained": "PASS — DORA and EU AI Act defined on first mention inline. LEI/MT103/CBPR+ are standard banking terminology known to the target COO/fintech audience. No unexplained cross-references to Payal's other articles."
+  },
+  "revision_instructions": [
+    "Item 11a: The claim 'ISO 20022 introduced over 900 data fields per payment message — compared to 140 characters in a legacy MT103 wire' contains specific comparative figures. Add an inline citation to a named verifiable source (e.g. SWIFT documentation, ISO 20022 organisation, BAFT, or a named fintech publication). If a verifiable source cannot be identified, rewrite to a general description without the specific numbers: e.g. 'ISO 20022 introduced a far richer structured field set than the 140-character limit of legacy MT103 messages — supporting granular party identification, remittance data, and regulatory fields that MT103 could not carry.' This removes the unverifiable specifics while preserving the substance.",
+    "Item 11b: The claim 'catch the governance failure at the point of data entry, where repair costs 10x less than fixing it downstream' contains a specific ratio with no source. This appears to be derived from the data quality literature (Redman, DAMA, or similar). Either: (1) add an inline citation to a named source (e.g. 'Thomas Redman, Harvard Business Review, 2016' or 'IBM Institute for Business Value, year'); or (2) rewrite to remove the specific ratio while preserving the principle: e.g. 'catch the governance failure at the point of data entry, where the cost of repair is a fraction of what it becomes downstream.' Do not use 'significantly' — that is vague. Use a directional description instead."
+  ]
+}
