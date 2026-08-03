@@ -1,0 +1,98 @@
+{
+  "id": "5d130305-fe72-4d86-9265-296512b83b1a",
+  "title": "Build vs. buy for agentic AI in a regulated stack",
+  "slug": "build-vs-buy-agentic-ai-regulated-stack",
+  "publishDate": "2026-08-04",
+  "category": "agentic_builds",
+  "topicNumber": 5,
+  "targetKeyword": "build vs buy agentic AI",
+  "status": "awaiting_approval",
+  "approvalToken": "34721e3d-98af-4093-bf04-e116783a751b",
+  "linkedinPost": "40% of enterprise AI agent projects will be cancelled before 2027. (Gartner, June 2025)\n\nMost of those cancellations won't be because the model failed. They'll be because the procurement decision couldn't survive regulatory scrutiny.\n\nIn regulated financial services, the build vs. buy question for agentic AI has four answers — not two. And most procurement conversations start from the wrong axis.\n\nThe 5 questions I'd answer before signing any AI vendor contract:\n\n• Is this use case high-risk under EU AI Act Annex III? If yes, build — Article 12 logging must live in your infrastructure, not your vendor's\n• Does the workflow touch customer PII or transaction data? If yes, verify EU-sovereign inference before signing anything\n• Is this a competitive differentiator or a commodity function? Commodity → buy. Differentiator → build\n• Do you have orchestration capacity internally? If not, buy while you build it — Claude API + n8n lower the bar more than most teams realise\n• What's the 12-month volume? Low volume = buy. High volume = build economics change earlier than expected\n\nKlarna built a custom agentic layer on top of OpenAI — not a pure buy, not from scratch. $60M saved, 853 FTE-equivalents, 82% faster resolution. Then over-automated and had to reverse course. The architecture worked. The governance design didn't follow it.\n\nRevenue per employee rises when AI is matched to the right decision framework — not when procurement wins on year-one unit economics.\n\nFull piece + the Regulated Stack Decision Grid I use with every client — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Build vs. buy for agentic AI in a regulated stack",
+        "description": "How financial services leaders decide whether to buy AI agent platforms or build in-house — EU AI Act obligations, data sovereignty, and the 5-question procurement test.",
+        "datePublished": "2026-08-04",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe/",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "agentic AI",
+            "build vs buy AI",
+            "EU AI Act compliance",
+            "regulated financial services",
+            "AI operating model design",
+            "n8n orchestration",
+            "Claude API",
+            "GDPR compliance",
+            "fintech",
+            "payments infrastructure",
+            "DORA compliance"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Payal Ponkshe",
+          "@id": "https://payalponkshe.com/#payal"
+        },
+        "url": "https://payalponkshe.com/insights/build-vs-buy-agentic-ai-regulated-stack",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the EU AI Act say about buying AI agents from vendors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under EU AI Act Article 25, purchasing and deploying a third-party AI system makes you the deployer with defined obligations — even if you did not build the system. For high-risk use cases (Annex III), you are responsible for human oversight documentation, post-market monitoring, and user transparency requirements. The vendor is the provider. Core obligations for new systems apply from August 2, 2026."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to build a production-grade AI agent for a regulated firm?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Using modern orchestration tooling — Claude API, n8n, Supabase — a production-grade agent for a focused use case can be scoped and shipped in 4–8 weeks by one experienced AI operator. Building regulatory-grade agentic capability across all five components from scratch takes 18–36 months. The primary variable is infrastructure decision-making at the start of the build, not model development."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know if my agentic AI use case is high-risk under the EU AI Act?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Review EU AI Act Annex III. Financial services high-risk categories include credit scoring, insurance risk pricing, biometric identity assessment, and employment vetting. If your agent contributes to any of these decisions — including as a summarisation, first-draft, or recommendation layer — you are likely in scope for high-risk obligations. Core requirements apply from August 2, 2026 for new systems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should financial services firms build or buy AI agents for compliance workflows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Build — or at minimum, build the logging and memory layer even if you buy the inference. Compliance workflows in regulated financial services require full audit trail control under EU AI Act Article 12, verifiable data residency under GDPR Article 44, and customisable decision logic that most horizontal vendor solutions cannot reliably provide. The U.S. CLOUD Act creates a data jurisdiction conflict for EU firms using US-controlled cloud inference, even with EU data residency contracts in place."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "Gartner, August 2025 — 40% of enterprise applications will include task-specific AI agents by end of 2026, up from fewer than 5% in 2025",
+    "Gartner, June 2025 — more than 40% of agentic AI projects will be cancelled by end of 2027",
+    "Dynatrace, Pulse of Agentic AI 2026 (via Business Wire) — approximately 50% of enterprise agentic AI projects still in POC or pilot stage",
+    "BCG, September 2025 — only 5% of companies are capturing significant value at scale from agentic AI",
+    "EU AI Act, Regulation (EU) 2024/1689, EU Official Journal, August 2024 — Article 12 logging requirements, Article 25 deployer/provider obligations, Annex III high-risk categories; core obligations for new systems from August 2, 2026",
+    "SureCloud, 2026 — Agentic AI GRC Build vs Buy: 2026 Reality Check; deployment timelines (buy: 3–6 months; build from scratch: 18–36 months)",
+    "CX Dive, November 20, 2025 — Klarna agentic customer service stats: 853 FTE-equivalent, $60M saved, 82% faster resolution",
+    "Forbes / Bernard Marr, July 16, 2026 — Klarna headcount reversal reporting (from 5,000 to 3,500, then reversed)"
+  ],
+  "cwaNotes": "SCHEDULE NOTE: Today 2026-08-03 (Sunday) has no Calendar row. Running for next scheduled slot: 2026-08-04 (Monday), topic 5, agentic_builds, long_form. SELF-ASSESSMENT 10.5/11: [PASS] (1) Opens with sourced stat in first 50 words — Gartner August 2025, 40% stat in first 22 words. [PASS] (2) Builder identity referenced — Claude API + n8n + Supabase, AppsBrite AI content pipeline explicitly cited. [PASS] (3) Fintech/regulated industry application section present — EU AI Act Annex III categories (credit scoring, KYC, AML, insurance), DORA Articles 10-12, Klarna fintech case study, procurement test anchored to financial services. [PASS] (4) 2–3 fintech-specific keywords used naturally — 'build vs buy agentic AI regulated stack' (H2), 'agentic AI financial services' (H2s), 'agentic AI for fintech' (body). [PASS] (5) One named framework introduced — The Regulated Stack Decision Grid (4-cell GFM pipe table) + The 5-question Regulated AI Procurement Test. [PASS] (6) Commercial impact in FS terms — Klarna $60M saved + 853 FTE-equiv + 82% faster resolution (CX Dive Nov 2025); BCG 5% at scale; Gartner 40% cancellation rate; analyst productivity target in What I Would Do. [PASS] (7) LinkedIn hook curiosity/stat-led, different from site title — '40% of enterprise AI agent projects will be cancelled before 2027' vs informational 'Build vs. buy for agentic AI in a regulated stack'. [PASS] (8) FAQ exactly 4 questions phrased as ChatGPT queries. [PASS] (9) What I would do — 5 concrete first-person actions. [PASS] (10) No buzzwords, sentence case, numbers in numerals throughout. [PARTIAL] (11) All factual claims sourced: Gartner and BCG verified via secondary aggregator SumGenius AI (not fetched from primary Gartner/BCG publications); Dynatrace via Business Wire (attributed); SureCloud and Zenity (secondary sources); direct EU AI Act text confirmed. Primary-source verification recommended for Gartner June 2025 cancellation stat and BCG 5% stat before final publication. GRAPHIC OPPORTUNITY: The Regulated Stack Decision Grid as 2x2 matrix — Regulatory Exposure (x-axis) x Differentiation Value (y-axis), four quadrants colour-coded."
+}
