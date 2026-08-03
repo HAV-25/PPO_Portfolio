@@ -1,0 +1,30 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-08-03T09:37:23Z",
+  "fail_count": 3,
+  "failed_items": [6, 11, 13],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '23% of organisations do not monitor their vendors' AI usage at all' with (Ncontracts 2026 TPRM Survey) and '40% of enterprise applications embed AI agents' with (Compyl, 2026) appear in first sentence",
+    "2_builder_stack_element": "PASS — 'For the audit logging work I do in n8n and Supabase when building AI pipelines for regulated clients, every external model call is written to a Supabase audit table with model ID, version, timestamp, and prompt hash'",
+    "3_fintech_section": "PASS — H2 'Where do financial services firms most commonly fall short on AI vendor contract compliance?' explicitly addresses FS; DORA 4-hour window, credit/onboarding/fraud use cases, dedicated DORA FAQ all present",
+    "4_fintech_keywords": "PASS — 'AI vendor contract compliance' in H2 and body, 'DORA third-party risk' in FAQ H2, 'EU AI Act Article 26' throughout, 'high-risk AI systems financial services' in body",
+    "5_named_framework": "PASS — 'The Vendor Model Accountability Test is a 4-question diagnostic for assessing AI vendor relationships in regulated environments' — named, tabular, attributable",
+    "6_commercial_impact": "FAIL — No commercial impact number (cost reduction, revenue uplift, efficiency gain, or Revenue Per Employee figure) appears in the article body. $4.91M (Secureframe 2025) and Verizon '30% breach involvement' are in sources and LinkedIn post respectively but absent from article body",
+    "7_linkedin_hook_different": "PASS — Site title: 'Your vendor's model is your regulatory obligation'. LinkedIn hook: '23% of organisations still don't monitor which AI models their vendors are running. The EU AI Act just made that their regulatory problem.' — stat-led, different angle",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions, all phrased as ChatGPT queries: (1) What does EU AI Act Article 26 require? (2) Is my company responsible? (3) What should a contract include? (4) How does DORA affect AI vendor contracts?",
+    "9_what_i_would_do_3to5": "PASS — 5 concrete first-person actions: Run vendor inventory, Add model transparency, Negotiate audit rights, Test incident response playbook, File own conformity assessments",
+    "10_no_buzzwords_numerals": "PASS — Sentence case throughout, numbers in numerals (23%, 40%, 4 hours, 2h, 30 days), no prohibited buzzwords",
+    "11_all_claims_sourced": "FAIL — Three regulatory facts lack inline citations: (a) 'European Commission enforcement of general-purpose AI model obligations began August 2025' has no (Source, Date); (b) 'The Digital Omnibus agreement (May 2026) extended the compliance window' has date in text but no source name; (c) 'DORA requires ICT incidents affecting critical functions to be reported to regulators within 4 hours' appears in body and FAQ without inline citation",
+    "12_voice_authenticity": "PASS — Data-first, no preamble, punchy sentence rhythm ('This is not a risk transfer problem. It is a governance design problem.'). Matches portfolio article register. Builder paragraph specific and first-person. No passive voice.",
+    "13_source_verifiability": "FAIL — Two sources declared in meta.json sources array have no corresponding text in the article body: (a) Verizon 2025 DBIR 'third-party involvement in breaches doubled to 30%' — not present in article; (b) Secureframe 2025 '$4.91M average cost' — in LinkedIn post only, not in article body",
+    "14_linkedin_native_value": "PASS — LinkedIn delivers the $4.91M figure + 'most of that cost is not the breach — it is the absence of documentation' insight not in article body. 5 action bullets + 3 contract gap bullets give standalone value",
+    "15_self_contained": "PASS — Core concepts explained inline. TLPT unexplained but acceptable for fintech COO target audience. Digital Omnibus named without explanation but sentence is comprehensible without knowing the legislative package name"
+  },
+  "revision_instructions": [
+    "Item 6: Add the $4.91M commercial impact figure to the article body. Best placement: add 1 sentence to the end of the 'Where do financial services firms most commonly fall short' section, before the 3-failure bullet list. Suggested text: 'The cost of getting this wrong is not abstract: the average third-party vendor compromise costs $4.91M (Secureframe, 2025), and most of that cost is regulatory and reputational, not technical.' This also resolves the Secureframe orphaned source (Item 13).",
+    "Item 11a: Add inline citation for 'European Commission enforcement of general-purpose AI model obligations began August 2025.' Change to: 'European Commission enforcement of general-purpose AI model obligations began August 2025 (EU AI Act, Official Journal of the European Union, 2024).' or use '(EU AI Act implementation timeline, European Commission, 2024)'.",
+    "Item 11b: Add source name for 'The Digital Omnibus agreement (May 2026).' Change to: 'The Digital Omnibus legislative package (European Commission, May 2026) extended the compliance window...'",
+    "Item 11c: Add inline citation for DORA's 4-hour reporting requirement. After 'DORA requires organisations to report ICT incidents affecting critical functions within 4 hours' add '(DORA Article 19, EU, 2022)'. Apply same fix in FAQ Q4 answer.",
+    "Item 13 (Verizon orphaned source): Either (a) add the Verizon DBIR stat to the article body — 'Third-party involvement in breaches doubled to 30% of all incidents (Verizon 2025 Data Breach Investigations Report)' — which would strengthen the 'Where firms fall short' section, OR (b) remove the Verizon DBIR entry from the meta.json sources array since the stat is not used. Option (a) preferred as it adds evidence value."
+  ]
+}
