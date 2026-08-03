@@ -19,7 +19,7 @@ This is not a risk transfer problem. It is a governance design problem.
 
 Deployers of high-risk AI systems must conduct due diligence on their AI providers, document their instructions of use, maintain qualified human oversight, and demonstrate all of this to a regulator on demand. The obligation does not distinguish between "we built it" and "we bought it."
 
-European Commission enforcement of general-purpose AI model obligations began August 2025. The Digital Omnibus agreement (May 2026) extended the compliance window for high-risk standalone systems to December 2027 — but only on the technical implementation deadline. The obligation to govern, audit, and document vendor AI is live today.
+European Commission enforcement of general-purpose AI model obligations began August 2025 (EU AI Act, Official Journal of the EU, July 2024). The Digital Omnibus legislative package (European Commission, May 2026) extended the compliance window for high-risk standalone systems to December 2027 — but only on the technical implementation deadline. The obligation to govern, audit, and document vendor AI is live today.
 
 For financial services firms, this creates an immediate structural problem: most vendor contracts were written before this obligation existed.
 
@@ -27,13 +27,15 @@ For financial services firms, this creates an immediate structural problem: most
 
 Third-party AI risk is rated by compliance officers as their top vendor concern — tied with cybersecurity — yet most compliance teams lack strong capability to assess and document it (EY, 2026). The gap is not awareness. It is contract architecture.
 
+The cost of this exposure is concrete. Third-party involvement in breaches doubled to 30% of all incidents in 2025 (Verizon 2025 Data Breach Investigations Report). The average third-party vendor compromise costs $4.91M per incident (Secureframe, 2025). Most of that cost is not technical remediation — it is the regulatory investigation, the documentation gap, and the reputational damage that follows.
+
 3 places where vendor contracts consistently fail the regulatory test:
 
 **No model transparency clause.** The vendor says "AI-powered" in the marketing. The contract says nothing about which model, which training data, what validation process, or what known limitations exist. The deployer has no basis for a conformity assessment under Article 26.
 
 **No right to audit.** Article 26 gives deployers the right to request compliance evidence from high-risk AI providers. Many existing contracts contain no such right — meaning a regulator can require documentation the deployer cannot compel the vendor to supply.
 
-**No incident notification SLA.** DORA requires organisations to report ICT incidents affecting critical functions within 4 hours. If the model producing the error belongs to a vendor and the contract contains no notification clause, you are relying on the vendor's communication cadence to meet your own regulatory deadline.
+**No incident notification SLA.** DORA requires organisations to report ICT incidents affecting critical functions within 4 hours (DORA Article 19, EU, 2022). If the model producing the error belongs to a vendor and the contract contains no notification clause, you are relying on the vendor's communication cadence to meet your own regulatory deadline.
 
 ## What should an AI vendor contract contain in 2026?
 
@@ -99,7 +101,7 @@ At minimum: model disclosure (name, version, training data scope), a right to au
 
 **Q: How does DORA affect AI vendor contracts in financial services?**
 
-DORA requires ICT incidents affecting critical functions to be reported to regulators within 4 hours. If a vendor's AI model is involved in that incident and your contract contains no incident notification clause, you may receive vendor notification too late to meet the reporting window. DORA's TLPT requirements also extend to critical third-party ICT providers — which increasingly include AI vendors. Ensure your vendor contracts specify a notification SLA materially shorter than your DORA reporting window.
+DORA requires ICT incidents affecting critical functions to be reported to regulators within 4 hours (DORA Article 19, EU, 2022). If a vendor's AI model is involved in that incident and your contract contains no incident notification clause, you may receive vendor notification too late to meet the reporting window. DORA's TLPT requirements also extend to critical third-party ICT providers — which increasingly include AI vendors. Ensure your vendor contracts specify a notification SLA materially shorter than your DORA reporting window.
 
 ---
 
