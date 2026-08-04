@@ -1,0 +1,30 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-08-04T00:00:00Z",
+  "fail_count": 3,
+  "failed_items": [11, 13, 15],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '(Gartner, August 2025)' appears at word 22 of article body with source and date",
+    "2_builder_stack_element": "PASS — 'I built AppsBrite's AI content pipeline on exactly this stack [n8n, Claude API, Supabase]' is a concrete first-person builder reference",
+    "3_fintech_section": "PASS — EU AI Act Annex III categories (credit scoring, employment vetting, biometric identity, insurance risk pricing), AML monitoring, KYC decisioning, Klarna case study, DORA references throughout",
+    "4_fintech_keywords": "PASS — 'agentic AI for financial services' in H2, 'regulated stack', 'regulated AI procurement test', 'agentic AI in a regulated stack' used naturally",
+    "5_named_framework": "PASS — 'The Regulated Stack Decision Grid' (4-cell GFM pipe table with Regulatory Exposure × Differentiation Value) and '5-question Regulated AI Procurement Test' both named and defined",
+    "6_commercial_impact": "PASS — Klarna: $60M saved, 853 FTE-equiv, 82% faster resolution (CX Dive, November 2025); BCG: 5% at scale; Gartner: 40% cancellation rate; Revenue Per Employee target in action 5",
+    "7_linkedin_hook_different": "PASS — Hook: '40% of enterprise AI agent projects will be cancelled before 2027.' vs. title: 'Build vs. buy for agentic AI in a regulated stack.' — different formulas, stat-led vs. informational",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions, all phrased as ChatGPT-style queries from a COO perspective",
+    "9_what_i_would_do_3to5": "PASS — 5 concrete first-person actions; intro 'If I were evaluating this decision for a regulated financial services firm today:'; each action specifies a tool (n8n, Claude API, Supabase, GDPR Article 44, Revenue Per Employee)",
+    "10_no_buzzwords_numerals": "PASS — Sentence case throughout, no transformative/innovative/game-changing/seamless found, numbers in numerals (40%, 5%, 18–36 months, 4–8 weeks, $60M, 853)",
+    "11_all_claims_sourced": "FAIL — Two uncited claims: (1) 'Building regulatory-grade agentic capability from scratch... takes 18–36 months across all five components without modern orchestration tooling.' — SureCloud, 2026 is in sources array but this body paragraph has no inline citation; the citation appears only in the FAQ. (2) 'The U.S. CLOUD Act creates a data jurisdiction conflict for EU firms even when servers are physically in Europe — a contractual assurance does not equal a technical guarantee.' — no inline citation anywhere in the article and no entry in the sources array.",
+    "12_voice_authenticity": "PASS — Opens with bold stat, no preamble, first-person builder reference, EU regulatory frame with specific Article numbers (Article 25, Article 12, Annex III), Revenue Per Employee lens, language matches portfolio articles register",
+    "13_source_verifiability": "FAIL — (1) U.S. CLOUD Act claim appears in body paragraph and FAQ but is absent from the sources array — inline citations and sources array are mismatched. (2) SureCloud appears in sources array but the 18–36 months claim in the body paragraph at 'How long does building agentic AI... take' has no inline '(SureCloud, 2026)' tag — cited only in FAQ.",
+    "14_linkedin_native_value": "PASS — 5-question bullet list delivers actionable value without clicking; Klarna governance lesson ('The architecture worked. The governance design didn't follow it.') is standalone insight; Revenue Per Employee sign-off is independent framing not in article preview",
+    "15_self_contained": "FAIL — (1) 'The U.S. CLOUD Act' referenced without spelling out the acronym or explaining what it is — a European COO reading cold would not know what CLOUD Act refers to even though the effect is described. (2) 'AppsBrite's AI content pipeline' — AppsBrite is not introduced for cold readers; the substantive point is still clear but 'my AI venture studio' parenthetical would close the gap."
+  },
+  "revision_instructions": [
+    "Item 11 — Fix (a): In the body paragraph of section 'How long does building agentic AI in a regulated firm actually take versus buying?', add '(SureCloud, 2026)' as an inline citation immediately after the sentence 'Building regulatory-grade agentic capability from scratch — orchestration, tool-use safety, audit logging, workflow integration, model governance — takes 18–36 months across all five components without modern orchestration tooling.' It should read: '...takes 18–36 months across all five components without modern orchestration tooling. (SureCloud, 2026)'",
+    "Item 11 — Fix (b): For the U.S. CLOUD Act claim, add '(U.S. CLOUD Act, 2018)' inline after 'The U.S. CLOUD Act creates a data jurisdiction conflict for EU firms even when servers are physically in Europe — a contractual assurance does not equal a technical guarantee.' Both occurrences (body and FAQ) need the citation. Also update the sources array in meta.json to add: 'U.S. CLOUD Act (Clarifying Lawful Overseas Use of Data Act), signed into law March 23, 2018 — establishes US law enforcement access to data held by US-based cloud providers regardless of where data is physically stored'",
+    "Item 13 — Same citation fixes as Item 11 — ensure inline citations match the sources array. After fixes, every source in the array must have at least one inline citation in the article, and every inline citation must have a matching entry in the sources array.",
+    "Item 15 — Fix (a): Spell out 'CLOUD Act' on first use: change 'The U.S. CLOUD Act creates' to 'The U.S. CLOUD Act (Clarifying Lawful Overseas Use of Data Act, 2018) creates'. The second occurrence in the FAQ can use 'CLOUD Act' as an already-introduced term.",
+    "Item 15 — Fix (b): Change 'I built AppsBrite's AI content pipeline on exactly this stack' to 'I built AppsBrite's AI content pipeline (my EU-based AI venture studio) on exactly this stack' to give cold readers the context they need without breaking the sentence rhythm."
+  ]
+}
