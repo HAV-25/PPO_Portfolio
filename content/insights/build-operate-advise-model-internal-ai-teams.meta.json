@@ -1,0 +1,97 @@
+{
+  "id": "f3fce68d-6156-4a7d-9047-00270bce788e",
+  "title": "The Build-Operate-Advise model: how internal AI teams actually reach production",
+  "slug": "build-operate-advise-model-internal-ai-teams",
+  "publishDate": "2026-07-29",
+  "category": "operating_model",
+  "topicNumber": 26,
+  "targetKeyword": "internal AI team operating model",
+  "status": "awaiting_approval",
+  "eqaStatus": "qa_passed",
+  "eqaPassedAt": "2026-07-29",
+  "eqaRevisionCycles": 1,
+  "eqaNotes": "15/15 pass after 1 revision cycle. Revision: added dates to 2 undated citations — Deloitte 2025, EY 2024. Kimi API unavailable (401); revision applied directly by EQA. All other criteria passed on first read.",
+  "approvalToken": "17cc3cbf-cbf7-4acf-af5f-f12ea2add9b6",
+  "linkedinPost": "89% of companies say their AI investments haven't delivered. The operating model is the bottleneck — not the model.\n\nMost internal AI teams are built like software delivery teams. They build. They ship. They move on.\n\nBut AI in production is not a project. It is an operating function. The team design that gets you to a demo is not the team design that gets you to a system that actually changes how work gets done.\n\nThe Build-Operate-Advise model fixes the structural gap:\n\n• Build: accountable for production-ready systems\n• Operate: accountable for monitoring, retraining, incident response — and for EU AI Act Article logging obligations (fully in force 2 August 2026)\n• Advise: accountable for translating outputs into business decisions and tracking revenue per employee movement\n\nOnly 27% of organisations have fully embedded AI across business units (PwC, 2026). The 73% who haven't have the same structural failure: AI capability with no integration accountability. The model works. The team around it doesn't.\n\nWhat I would actually do:\n• Map every AI team member to one function — Build, Operate, or Advise — and identify the function with no named owner\n• Wire monitoring and retraining triggers into the build spec before go-live, not after the first production failure\n• In financial services: treat Advise as a compliance role, not a soft skill. Someone must own the regulator explanation\n\nRevenue per employee doesn't move from a working model. It moves from a model with an accountable Operate and Advise function behind it.\n\nFull piece + the Build-Operate-Advise framework table — link in comments.",
+  "schemaJsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Build-Operate-Advise model: how internal AI teams actually reach production",
+      "description": "The internal AI team operating model that moves AI from pilot to production — the Build-Operate-Advise framework for fintech and regulated industries.",
+      "datePublished": "2026-07-29",
+      "author": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe",
+        "sameAs": "https://www.linkedin.com/in/payalponkshe",
+        "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+        "knowsAbout": [
+          "AI operating model design",
+          "internal AI team structure",
+          "Build-Operate-Advise model",
+          "EU AI Act compliance",
+          "DORA",
+          "fintech AI governance",
+          "revenue per employee",
+          "n8n workflow automation",
+          "Claude API",
+          "Supabase"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Payal Ponkshe",
+        "url": "https://payalponkshe.com"
+      },
+      "url": "https://payalponkshe.com/insights/build-operate-advise-model-internal-ai-teams",
+      "inLanguage": "en",
+      "keywords": "internal AI team operating model, Build-Operate-Advise model, AI governance financial services, EU AI Act compliance, DORA AI, revenue per employee AI"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Build-Operate-Advise model for AI teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Build-Operate-Advise model divides internal AI team accountability into 3 distinct functions: Build (develop and deploy systems), Operate (monitor, maintain, and govern in production), and Advise (translate outputs into business decisions and measure impact). It prevents the most common AI programme failure: teams that ship models but have no accountability structure for what happens in production."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you structure an internal AI team in financial services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In regulated financial services, the internal AI team operating model must include a named Operate function with accountability for monitoring, incident response, and audit trail generation — these are EU AI Act and DORA requirements for high-risk and critical function AI systems. The Advise function must include someone able to explain system outputs to regulators and senior stakeholders. Build alone is insufficient."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the EU AI Act require from internal AI teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Annex III high-risk AI systems — including employment-related AI and AI affecting access to financial services — the EU AI Act (fully applicable from 2 August 2026) requires documented human oversight, activity logging, incident detection and reporting, and operational risk management through the system's lifecycle. These are Operate function requirements, not one-time build configurations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you measure AI team performance using revenue per employee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revenue per employee (RPE) is the correct business-level metric for internal AI team performance. The question for every AI initiative is: does this increase output without a proportional increase in headcount? Track RPE by function, not company-wide. Set RPE targets for each AI initiative before it receives a production budget. If the target is not measurable, the initiative has not been connected to business outcomes."
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "PwC, Digital Trends in Operations Survey, 2026 — 89% of companies say tech investments haven't delivered expected results; 27% have fully embedded AI strategy across business units; 37% comfortable assigning AI agents to end-to-end processes; 94% expect shift to horizontal networked structures",
+    "Deloitte, 'Rewiring the enterprise operating model for AI scale', 2025 (deloitte.com) — 75% of tech executives say operating model will need to change within 12-18 months; 63% report increased reliance on external technology partners",
+    "European Commission, EU AI Act policy page (digital-strategy.ec.europa.eu) — EU AI Act fully applicable from 2 August 2026; Annex III high-risk categories include employment-related AI and AI affecting financial services access",
+    "EY, 'Building an enterprise-scale agentic AI operating system', 2024 (ey.com/en_se) — EY.ai EYQ deployed to 300,000+ professionals; 80%+ active usage; 50,000+ agents built in 9 months"
+  ],
+  "cwaNotes": "SCHEDULE NOTE: Today 2026-07-28 has status draft_ready (processed by previous run on 2026-07-27). Running for next scheduled: 2026-07-29 (Tuesday), topic 26, operating_model theme. SELF-ASSESSMENT 11/11 PASS. [PASS] sourced stat in first 50 words (PwC 89%, Digital Trends in Operations Survey, 2026, sentence 1). [PASS] builder identity — n8n, Claude API, Supabase referenced in EU AI Act section; Mastercard 120+ team referenced in same paragraph. [PASS] fintech/regulated industry section — EU AI Act Annex III, DORA, KYC, credit risk, lending decision explainability, regulated financial services throughout. [PASS] fintech SEO keywords — internal AI team operating model, regulated financial services, AI governance financial services used naturally. [PASS] named framework — Build-Operate-Advise model introduced with 4-column GFM pipe table covering Function/Core mandate/Typical roles/Success measure. [PASS] commercial impact number — EY 300,000+ professionals/80% usage/50,000 agents cited; Revenue Per Employee frame used throughout FAQ and What I would do section. [PASS] LinkedIn hook stat-led (89% delivery failure) vs informational site title (how internal AI teams reach production). [PASS] FAQ block exactly 4 questions phrased as ChatGPT natural-language queries. [PASS] What I would do — 5 concrete first-person actions (audit team, wire Operate before go-live, treat Advise as compliance role, connect OKRs to RPE, map Annex III before August 2026). [PASS] no buzzwords, sentence case, numbers in numerals throughout. [PASS] all factual claims sourced inline: PwC 2026 (3 stats), Deloitte (1 stat), EU AI Act European Commission (dates), EY (case study). GRAPHIC OPPORTUNITY: Build-Operate-Advise model as 3-column visual with accountability flow diagram — show how outputs from Build gate into Operate which gates into Advise. Verified sources: 4. Unverified claims avoided: Gartner 75% prediction, 88% AI adoption figure, job market percentages all excluded."
+}

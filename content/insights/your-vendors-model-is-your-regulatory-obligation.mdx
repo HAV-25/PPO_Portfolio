@@ -1,0 +1,108 @@
+---
+title: "Your vendor's model is your regulatory obligation"
+description: "EU AI Act Article 26 makes deployers responsible for their AI vendors' compliance. What that means for your contracts, due diligence, and audit trail in 2026."
+publishDate: "2026-07-31"
+category: "regulated_ai"
+readTime: "7 min"
+targetKeyword: "AI vendor contract compliance"
+slug: "your-vendors-model-is-your-regulatory-obligation"
+status: "draft"
+---
+
+23% of organisations do not monitor their vendors' AI usage at all — down from 37% in 2024, but still a meaningful gap as roughly 40% of enterprise applications embed AI agents by end of 2026 (Ncontracts 2026 TPRM Survey; Compyl, 2026).
+
+The EU AI Act Article 26 is explicit: if you deploy a high-risk AI system, the compliance obligation is yours — even when the model belongs to your vendor.
+
+This is not a risk transfer problem. It is a governance design problem.
+
+## What does EU AI Act Article 26 actually require from deployers?
+
+Deployers of high-risk AI systems must conduct due diligence on their AI providers, document their instructions of use, maintain qualified human oversight, and demonstrate all of this to a regulator on demand. The obligation does not distinguish between "we built it" and "we bought it."
+
+European Commission enforcement of general-purpose AI model obligations began August 2025 (EU AI Act, Official Journal of the EU, July 2024). The Digital Omnibus legislative package (European Commission, May 2026) extended the compliance window for high-risk standalone systems to December 2027 — but only on the technical implementation deadline. The obligation to govern, audit, and document vendor AI is live today.
+
+For financial services firms, this creates an immediate structural problem: most vendor contracts were written before this obligation existed.
+
+## Where do financial services firms most commonly fall short on AI vendor contract compliance?
+
+Third-party AI risk is rated by compliance officers as their top vendor concern — tied with cybersecurity — yet most compliance teams lack strong capability to assess and document it (EY, 2026). The gap is not awareness. It is contract architecture.
+
+The cost of this exposure is concrete. Third-party involvement in breaches doubled to 30% of all incidents in 2025 (Verizon 2025 Data Breach Investigations Report). The average third-party vendor compromise costs $4.91M per incident (Secureframe, 2025). Most of that cost is not technical remediation — it is the regulatory investigation, the documentation gap, and the reputational damage that follows.
+
+3 places where vendor contracts consistently fail the regulatory test:
+
+**No model transparency clause.** The vendor says "AI-powered" in the marketing. The contract says nothing about which model, which training data, what validation process, or what known limitations exist. The deployer has no basis for a conformity assessment under Article 26.
+
+**No right to audit.** Article 26 gives deployers the right to request compliance evidence from high-risk AI providers. Many existing contracts contain no such right — meaning a regulator can require documentation the deployer cannot compel the vendor to supply.
+
+**No incident notification SLA.** DORA requires organisations to report ICT incidents affecting critical functions within 4 hours (DORA Article 19, EU, 2022). If the model producing the error belongs to a vendor and the contract contains no notification clause, you are relying on the vendor's communication cadence to meet your own regulatory deadline.
+
+## What should an AI vendor contract contain in 2026?
+
+The European Commission published Model Contractual Clauses for AI procurement (MCC-AI, updated March 2025) as a publicly available reference. Most procurement teams are not using it. Most vendor-supplied templates do not include it by default.
+
+Here is the minimum clause architecture for a financial services deployer contracting with an AI vendor in a high-risk use case.
+
+| Contract element | What to require | Why it matters |
+|---|---|---|
+| Model transparency | AI Bill of Materials: model name, version, training data scope, known limitations | Basis for conformity assessment under Art. 26 |
+| Audit rights | Right to request compliance evidence + right to inspect on 30 days' notice | Enables regulator-facing defensibility |
+| Incident notification | Vendor notifies deployer within 2h of any model-affecting incident | Meets DORA 4h critical incident reporting window |
+| Data residency | Processing and storage within [jurisdiction] only | GDPR Art. 44 cross-border transfer compliance |
+| Indemnity scope | Covers regulatory penalties arising from vendor model failure | Prevents deployer absorbing penalties for vendor's failures |
+| Change notification | 30 days' notice before material model updates | Enables re-validation before model changes reach production |
+
+A vendor that refuses the audit rights clause or the change notification period is telling you something. That refusal is information about the governance maturity of the model you are about to embed in your credit, onboarding, or fraud infrastructure.
+
+## How do I assess whether my current AI vendor contracts are compliant?
+
+The Vendor Model Accountability Test is a 4-question diagnostic for assessing AI vendor relationships in regulated environments.
+
+| Question | Pass | Fail |
+|---|---|---|
+| Can you name the model your vendor uses and its current version? | Yes, contractually specified | No, or "AI-powered" language only |
+| Does your contract give you a right to audit compliance evidence? | Yes, explicit clause | No clause, or subject to vendor consent |
+| What is the vendor's incident notification SLA? | ≤2 hours, contractually bound | No SLA, or "reasonable timeframe" language |
+| Have you documented your own conformity assessment for the intended use case? | Yes, signed off and filed | No, or vendor's trust document substituted |
+
+If 2 or more answers are "fail," the vendor relationship carries unmanaged regulatory exposure today — not in December 2027.
+
+For the audit logging work I do in n8n and Supabase when building AI pipelines for regulated clients, every external model call is written to a Supabase audit table with model ID, version, timestamp, and prompt hash. That log is the evidence layer. Without it, a client has a process. They do not have proof.
+
+The distinction matters when a regulator asks.
+
+## What I would do
+
+1. **Run an AI vendor inventory this quarter.** Not a security scan — a contract and disclosure audit. For every vendor touching customer data or regulated decisions, identify what model they use, whether it is disclosed in the contract, and whether you have a right to compel that disclosure.
+
+2. **Add model transparency as a non-waivable procurement standard.** New vendor contracts should require: model name and version, training data scope, known limitations, and 30 days' advance notice of any material update. Non-negotiable before contract execution.
+
+3. **Negotiate audit rights explicitly.** Reference EU AI Act Article 26 in the clause. A vendor operating a high-risk AI system and refusing to grant audit rights is already non-compliant with the regulation. Document the refusal.
+
+4. **Test your incident response playbook against DORA's 4-hour window.** If your playbook assumes vendor notification arrives before you need to report to a regulator, verify that assumption against the actual contractual SLA. Most playbooks were written before AI vendors were in scope.
+
+5. **File your own conformity assessments, not the vendor's.** A vendor-provided trust document, SOC 2 report, or "AI safety summary" is not a deployer conformity assessment. Write and sign off your own — documenting the intended use case, the population affected, the human oversight structure, and the monitoring plan.
+
+---
+
+## Frequently asked questions
+
+**Q: What does EU AI Act Article 26 require from AI system deployers?**
+
+Deployers of high-risk AI systems must conduct due diligence on their AI providers, ensure the system is used as intended, maintain qualified human oversight, and document their conformity assessment. This obligation applies whether the model is built in-house or supplied by a vendor. Enforcement began August 2025 for general-purpose AI model providers.
+
+**Q: Is my company responsible for my AI vendor's compliance failures?**
+
+Under EU AI Act Article 26, yes — unless the contract explicitly shifts liability to the vendor through indemnity clauses covering regulatory penalties arising from the provider's model failures. The default assumption in EU law is that the deployer is responsible for what their deployed system does. Vendor selection and ongoing oversight are part of that responsibility.
+
+**Q: What should an AI vendor contract include for financial services compliance in 2026?**
+
+At minimum: model disclosure (name, version, training data scope), a right to audit compliance evidence with 30 days' notice, a change notification period of ≥30 days before material model updates, an incident notification SLA of ≤2 hours for model-affecting events, and indemnity covering regulatory penalties arising from the vendor's model failures. The European Commission MCC-AI template (updated March 2025) is the public reference document.
+
+**Q: How does DORA affect AI vendor contracts in financial services?**
+
+DORA requires ICT incidents affecting critical functions to be reported to regulators within 4 hours (DORA Article 19, EU, 2022). If a vendor's AI model is involved in that incident and your contract contains no incident notification clause, you may receive vendor notification too late to meet the reporting window. DORA's TLPT requirements also extend to critical third-party ICT providers — which increasingly include AI vendors. Ensure your vendor contracts specify a notification SLA materially shorter than your DORA reporting window.
+
+---
+
+→ For a structured framework on AI governance obligations under the EU AI Act, DORA, and PSD3 — and how to design an audit trail that survives regulatory scrutiny — [book a 30-minute discovery call](/book) to review your current vendor contracts against the Article 26 compliance requirements.

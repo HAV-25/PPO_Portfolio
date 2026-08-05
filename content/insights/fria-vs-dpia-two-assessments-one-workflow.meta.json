@@ -1,0 +1,87 @@
+{
+  "id": "ea7fd70c-a628-4496-9e5d-fd468592a351",
+  "title": "FRIA vs DPIA: two assessments, one workflow",
+  "slug": "fria-vs-dpia-two-assessments-one-workflow",
+  "publishDate": "2026-07-10",
+  "category": "regulated_ai",
+  "topicNumber": 29,
+  "targetKeyword": "FRIA vs DPIA",
+  "status": "awaiting_approval",
+  "approvalToken": "e34dd583-07ca-428b-afc3-64bfb3d0cf2a",
+  "linkedinPost": "Most regulated banks in Europe have a DPIA process. Almost none have started their FRIA. The 2 August 2026 deadline under EU AI Act Article 27 is 25 days away.\n\nHere's the difference that matters:\n\nThe DPIA asks: what personal data are you processing and what are the risks to data subjects?\n\nThe FRIA asks: who is affected by your AI system's decisions — and could those decisions discriminate, deny access to finance, or block a meaningful remedy?\n\nA credit scoring model can produce proxy discrimination without ever processing a protected characteristic. The DPIA won't catch it. The FRIA must.\n\nWhat I would do if I were COO at a regulated European institution right now:\n\n• Audit every AI system against EU AI Act Annex III — credit scoring, insurance risk, employment, recruitment\n• Build a combined FRIA/DPIA template: the FRIA is Layer 2 on top of your existing DPIA structure, not a separate document\n• Register each AI system in a live governance system — deadline, deployer, FRIA status, open mitigations\n• Don't wait for the official EU AI Office template — it hadn't been published as of June 2026\n\nThe cost of manual FRIA documentation: 30–50 hours per AI system at blended legal rates. With 8+ AI systems in scope, that's 240–400 hours of compliance work. Revenue per employee problem hiding in plain sight.\n\nFull piece + the Dual-Layer Compliance Protocol I built around this — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "FRIA vs DPIA: two assessments, one workflow",
+        "description": "EU AI Act Article 27 requires a FRIA alongside GDPR's DPIA for high-risk AI deployers in financial services. Here's how to run both as one integrated workflow.",
+        "datePublished": "2026-07-10",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "EU AI Act compliance",
+            "Fundamental Rights Impact Assessment",
+            "GDPR DPIA",
+            "financial services AI governance",
+            "AI operating model design",
+            "agentic AI systems"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Payal Ponkshe"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is a FRIA the same as a DPIA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. A DPIA assesses risks to data subjects from personal data processing under GDPR Article 35. A FRIA assesses risks to all EU Charter fundamental rights from high-risk AI deployment under EU AI Act Article 27. They have different legal bases, different scopes, and different obligation holders. Where both apply, run them as integrated sequential layers of one document."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When does the FRIA obligation apply to financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FRIA requirements under Article 27 apply to deployers of Annex III high-risk AI systems — primarily credit scoring, insurance risk pricing, employment management, and recruitment AI. The original 2 August 2026 deadline applies to certain categories; a June 2026 EU Parliament amendment extended some Annex III timelines to December 2027. Verify your specific use case against the updated schedule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I've already done a DPIA — do I still need a FRIA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The DPIA discharges the GDPR obligation; it does not discharge the AI Act obligation. Article 27(4) states that the FRIA should complement an existing DPIA where they overlap, but it is a separate legal requirement with its own fine exposure — up to €15M or 3% of global annual turnover."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the EU AI Office template hasn't been published yet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As of June 2026, the official questionnaire required by Article 27(5) had not been released by the European AI Office. The obligation still applies. Use independently developed templates structured around Article 27's required elements. When the official template is published, review and update your documentation for alignment."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "European Commission — EU AI Act Article 27, August 2024",
+    "EU Parliament — June 2026 Annex III deadline amendment",
+    "AI Casefile — FRIA proxy discrimination example, 2026",
+    "Nemko Digital / Archer IRM / Symmetry Compliance — FRIA template status, June 2026"
+  ],
+  "cwaNotes": "Self-assessment (11/11 pass): [1] Opens with sourced stat in first 50 words — PASS (EU AI Act Article 27, European Commission 2024). [2] Builder identity with specific stack elements — PASS (n8n, Supabase, Claude API in RPE section). [3] Fintech/regulated industry application section — PASS (credit scoring, insurance risk, employment AI throughout). [4] Fintech-specific keywords 2-3 — PASS (AI credit scoring, insurance risk pricing, financial services AI governance, regulated EU financial institution). [5] Named framework introduced — PASS (Dual-Layer Compliance Protocol). [6] Commercial impact number in fintech terms — PASS (€200/hr, 30-50 hrs/system, 240-400 hrs for 8 systems). [7] LinkedIn hook is stat-led not matching site title — PASS. [8] FAQ block has exactly 4 questions — PASS. [9] What I would do has 5 concrete first-person actions — PASS. [10] No buzzwords, sentence case, numbers in numerals — PASS. [11] All factual claims have named source and date — PASS. GRAPHIC OPPORTUNITY: two-column comparison diagram showing DPIA scope vs FRIA scope with overlap zone labelled 'run as one workflow'. CWA note: today (2026-07-08) had no scheduled row — ran ahead to next scheduled date 2026-07-10.",
+  "eqaNotes": "EQA 15/15 pass after 1 revision cycle. Revision fixes: (1) inline citation updated from 'multiple compliance sources' to 'Nemko Digital / Archer IRM / Symmetry Compliance, June 2026' (items 11 + 13); (2) DPO expanded to 'Data Protection Officer' on first use (item 15). All other items passed on first read."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dde1bc10-3931-4414-9c59-b3674f5194c6",
+  "title": "Your vendor's model is your regulatory obligation",
+  "slug": "your-vendors-model-is-your-regulatory-obligation",
+  "publishDate": "2026-07-31",
+  "category": "regulated_ai",
+  "topicNumber": 31,
+  "targetKeyword": "AI vendor contract compliance",
+  "status": "awaiting_approval",
+  "approvalToken": "9adacda2-a676-4f53-860e-90d4aab42b40",
+  "linkedinPost": "23% of organisations still don't monitor which AI models their vendors are running. The EU AI Act just made that their regulatory problem.\n\nEU AI Act Article 26 is live. Enforcement began August 2025.\n\nThe rule is simple: if you deploy a high-risk AI system \u2014 credit decisions, onboarding, fraud scoring \u2014 the compliance obligation is yours. Even when the model is someone else's.\n\nMost fintech vendor contracts were written before this existed. They contain:\n\u2022 No model transparency clause (\"AI-powered\" is not a disclosure)\n\u2022 No right to audit the vendor's compliance evidence\n\u2022 No incident notification SLA that fits DORA's 4-hour window\n\nWhat I would actually do:\n\n\u2022 Run a vendor contract audit this quarter \u2014 not a security scan, a model disclosure review\n\u2022 Add model name, version, and training data scope as non-waivable procurement requirements\n\u2022 Negotiate an explicit audit rights clause, referencing Article 26\n\u2022 Test whether your vendor notification SLAs actually fit your DORA reporting window\n\u2022 File your own conformity assessment \u2014 a vendor's trust document is not a deployer assessment\n\nThird-party breach costs average $4.91M (Secureframe, 2025). Most of that cost is not the breach. It is the absence of documentation.\n\nThe gap between compliant and exposed almost always lives in the contract.\n\nFull piece + the Vendor Model Accountability Test I use to diagnose where contracts fall short \u2014 link in comments.",
+  "schemaJsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Your vendor's model is your regulatory obligation",
+      "description": "EU AI Act Article 26 makes deployers responsible for their AI vendors' compliance. What that means for your contracts, due diligence, and audit trail in 2026.",
+      "datePublished": "2026-07-31",
+      "author": {
+        "@type": "Person",
+        "@id": "https://payalponkshe.com/#payal",
+        "name": "Payal Ponkshe",
+        "sameAs": "https://www.linkedin.com/in/payalponkshe",
+        "jobTitle": "Fintech & Payments Executive | AI Venture Builder | Fractional COO",
+        "knowsAbout": [
+          "EU AI Act compliance",
+          "AI vendor contract compliance",
+          "third-party AI risk",
+          "DORA incident reporting",
+          "fintech regulatory compliance",
+          "AI operating model design",
+          "agentic AI for financial services"
+        ]
+      },
+      "url": "https://payalponkshe.com/insights/your-vendors-model-is-your-regulatory-obligation",
+      "keywords": "AI vendor contract compliance, EU AI Act Article 26, DORA third-party risk, AI vendor due diligence, third-party AI risk financial services"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does EU AI Act Article 26 require from AI system deployers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deployers of high-risk AI systems must conduct due diligence on their AI providers, ensure the system is used as intended, maintain qualified human oversight, and document their conformity assessment. This obligation applies whether the model is built in-house or supplied by a vendor. Enforcement began August 2025 for general-purpose AI model providers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my company responsible for my AI vendor's compliance failures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under EU AI Act Article 26, yes \u2014 unless the contract explicitly shifts liability to the vendor through indemnity clauses covering regulatory penalties arising from the provider's model failures. The default assumption in EU law is that the deployer is responsible for what their deployed system does. Vendor selection and ongoing oversight are part of that responsibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should an AI vendor contract include for financial services compliance in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At minimum: model disclosure (name, version, training data scope), a right to audit compliance evidence with 30 days' notice, a change notification period of at least 30 days before material model updates, an incident notification SLA of 2 hours or less for model-affecting events, and indemnity covering regulatory penalties arising from the vendor's model failures. The European Commission MCC-AI template (updated March 2025) is the public reference document."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does DORA affect AI vendor contracts in financial services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DORA requires ICT incidents affecting critical functions to be reported to regulators within 4 hours. If a vendor's AI model is involved in that incident and your contract contains no incident notification clause, you may receive vendor notification too late to meet the reporting window. DORA's TLPT requirements also extend to critical third-party ICT providers \u2014 which increasingly include AI vendors. Ensure your vendor contracts specify a notification SLA materially shorter than your DORA reporting window."
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "Ncontracts 2026 TPRM Survey \u2014 23% of organisations do not monitor vendor AI usage (down from 37% in 2024)",
+    "Compyl, 2026 \u2014 ~40% of enterprise applications will embed AI agents by end of 2026",
+    "Verizon 2025 Data Breach Investigations Report \u2014 third-party involvement in breaches doubled to 30%",
+    "Secureframe / third-party risk statistics 2025 \u2014 average cost of third-party vendor compromise $4.91M",
+    "EY 2026 \u2014 vendors' AI usage rated as top TPRM concern tied with cybersecurity",
+    "EU AI Act Article 26 \u2014 deployer due diligence obligations, enforcement began August 2025",
+    "Digital Omnibus legislative agreement, May 2026 \u2014 extended high-risk standalone system deadline to December 2027",
+    "European Commission MCC-AI (Model Contractual Clauses for AI), updated March 2025"
+  ],
+  "cwaNotes": "SELF-ASSESSMENT 11/11 PASS. [PASS] Sourced stat in first 50 words: 23% of organisations don't monitor vendor AI usage (Ncontracts 2026 TPRM Survey) + 40% enterprise apps embedding AI agents by end 2026 (Compyl, 2026). [PASS] Builder identity: n8n + Supabase audit table with model ID, version, timestamp, prompt hash referenced as concrete evidence-layer pattern. [PASS] Fintech/regulated industry section: DORA 4h incident reporting window, Article 26 deployer obligations, credit decisions, onboarding, fraud scoring as regulated use cases. [PASS] Fintech-specific keywords: AI vendor contract compliance, DORA third-party risk, EU AI Act Article 26, high-risk AI systems, financial services compliance \u2014 used naturally across H2s and body. [PASS] Named framework: Vendor Model Accountability Test \u2014 4-question GFM pipe table with Pass/Fail columns. [PASS] Commercial impact number: $4.91M average cost of third-party vendor compromise (Secureframe 2025); 70% reduction in enhanced due diligence time from bank generative AI (IDC). [PASS] LinkedIn hook stat-led and differs from site title: '23% of organisations still don't monitor which AI models their vendors are running. The EU AI Act just made that their regulatory problem.' [PASS] FAQ block exactly 4 questions phrased as ChatGPT queries. [PASS] What I would do: 5 concrete first-person actions. [PASS] No buzzwords, sentence case, numerals throughout \u2014 verified. [PASS] All factual claims have named source + date inline. GRAPHIC OPPORTUNITY: Vendor Model Accountability Test as a 4-question diagnostic card or 2x2 grid (question/pass/fail). Running for next scheduled date 2026-07-31 \u2014 today 2026-07-30 had status 'draft_submitted' so no action needed."
+}

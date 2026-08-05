@@ -1,0 +1,99 @@
+---
+title: "Build vs. buy for agentic AI in a regulated stack"
+description: "How financial services leaders decide whether to buy AI agent platforms or build in-house — EU AI Act obligations, data sovereignty, and the 5-question procurement test."
+publishDate: "2026-08-04"
+category: "agentic_builds"
+readTime: "7 min"
+targetKeyword: "build vs buy agentic AI"
+slug: "build-vs-buy-agentic-ai-regulated-stack"
+status: "draft"
+---
+
+40% of enterprise applications will include task-specific AI agents by end of 2026, up from fewer than 5% in 2025. (Gartner, August 2025) Most of those deployments are purchased from vendors — and 40% of those agentic AI projects will be cancelled before 2027. (Gartner, June 2025) In regulated financial services, the cancellations are rarely about the model. They are about procurement choices that cannot survive regulatory scrutiny.
+
+This is the build vs. buy question for agentic AI in a regulated stack — and how to answer it.
+
+## What is the difference between building and buying an AI agent?
+
+Buying means deploying a vendor-supplied agent — Microsoft Copilot, ServiceNow NowAssist, or an API-based platform like OpenAI Assistants or AWS Bedrock Agents. You configure it; the vendor operates the model infrastructure. Building means designing agent orchestration in-house, using underlying models as components via Claude API or GPT-4 API, orchestrated on n8n or LangGraph, with your own data layer.
+
+In regulated environments, this distinction determines who owns the EU AI Act compliance obligation. That is not a small question.
+
+## Who owns the EU AI Act obligation when I buy an AI agent for fintech?
+
+Under EU AI Act Article 25, deploying a third-party AI system for a high-risk use case makes you the deployer with defined obligations: human oversight documentation, post-market monitoring, and incident reporting to the EU AI Office. The vendor is the provider. If you build the agent using underlying API models as components, you become the provider — inheriting the full technical documentation obligations under Articles 11–15.
+
+Core high-risk obligations for new systems apply from August 2, 2026. The Annex III categories directly relevant to financial services include: credit scoring, employment vetting, biometric identity assessment, and insurance risk pricing. If your agentic system touches any of these — even as a summarisation or first-draft layer — the compliance burden is substantial regardless of whether you bought or built. The question is which arrangement gives you the cleaner documentation trail when a supervisor requests it.
+
+## What does the build vs. buy decision actually depend on in agentic AI for financial services?
+
+Four variables determine the answer. The most important two — regulatory exposure and differentiation value — map to this decision grid. I use it with every client before any procurement conversation:
+
+| Regulatory exposure | Differentiation value | Recommended path | Example use case |
+|---|---|---|---|
+| Low | Low | Buy — vendor SaaS | Internal summarisation, meeting notes |
+| Low | High | Buy with customisation layer | Customer service automation |
+| High | Low | Build on vendor models (Claude API + n8n) | AML monitoring, regulatory report generation |
+| High | High | Build and control fully | Credit assessment agent, KYC decisioning engine |
+
+The two remaining variables are data sovereignty constraints and internal build capacity. The emerging regulatory consensus — from EU AI Office guidance and SureCloud's 2026 regulated AI analysis — is "rent the inference, own the memory and logging layers on explicitly EU-controlled infrastructure." That is not a standard buy decision. It is a hybrid build on EU-sovereign hosting (Hetzner, Scaleway, or OVHcloud) with vendor model access via API, keeping logging and retrieval layers in your own Supabase or Postgres instance.
+
+## How long does building agentic AI in a regulated firm actually take versus buying?
+
+This is where the time cost is consistently misunderstood. Buying a standard enterprise AI agent platform takes 3–6 months to deploy for typical use cases. (SureCloud, 2026) Building regulatory-grade agentic capability from scratch — orchestration, tool-use safety, audit logging, workflow integration, model governance — takes 18–36 months across all five components without modern orchestration tooling. (SureCloud, 2026)
+
+The gap collapses with purpose-built infrastructure. A production-grade agentic system built on n8n, Claude API, and Supabase can be scoped and shipped in 4–8 weeks by one experienced AI operator. I built AppsBrite's content pipeline (AppsBrite is my EU-based AI venture studio) on exactly this stack — not because buying was unavailable, but because client data could not flow through a third-party SaaS platform's inference infrastructure. For financial services, the constraint is sharper. GDPR Article 44 and EU AI Act Article 12 together require verifiable control over where inference happens and where logs are stored. Many vendor platforms route inference via US infrastructure by default. The U.S. CLOUD Act (Clarifying Lawful Overseas Use of Data Act, 2018) creates a data jurisdiction conflict for EU firms even when servers are physically in Europe — a contractual assurance does not equal a technical guarantee. (U.S. CLOUD Act, 2018)
+
+50% of enterprise agentic AI projects are still in POC or pilot stage, not in production. (Dynatrace, Pulse of Agentic AI 2026) In regulated industries, that gap is predominantly a governance problem — and a vendor solution does not solve a governance problem.
+
+## What happened when Klarna chose to build custom agentic AI?
+
+Klarna built a custom agentic customer service layer on top of OpenAI's models — a hybrid build, not a pure vendor deployment and not built from scratch. The documented outcome: 2.3 million customer conversations handled in the first month of launch (February 2024), resolution time reduced from 11 minutes to under 2 minutes, and $60 million saved. The system was equivalent to 853 full-time agents. (CX Dive, November 2025)
+
+Then Klarna over-corrected. Headcount was reduced from 5,000 to 3,500. The company later reversed course, acknowledging it had lost human expertise needed for complex and emotionally sensitive cases. (Forbes, July 2026)
+
+The build vs. buy lesson from Klarna is not that building is expensive or difficult. It is that build decisions made without a clear framework for which cases stay with humans produce systems that optimise for volume at the expense of quality. The architecture succeeded. The governance design did not follow it.
+
+Only 5% of companies are currently capturing significant value at scale from agentic AI. (BCG, September 2025) The gap is not a model problem. It is a decision-architecture problem — and it applies equally to buyers and builders.
+
+## The 5-question regulated AI procurement test
+
+Before any build-or-buy decision in financial services, I run this checklist:
+
+1. **Is this use case classified as high-risk under EU AI Act Annex III?** If yes, build — vendor solutions rarely satisfy the full technical documentation chain, and Article 12 logging must live in your own infrastructure, not your vendor's.
+2. **Does the workflow require access to customer PII, transaction data, or credit data?** If yes, verify EU-sovereign inference before signing anything. If you cannot confirm it, build on EU-hosted infrastructure.
+3. **Is this a competitive differentiator, or a commodity function?** Commodity processes benefit from vendor scale — buy. Differentiated workflows lose their value when they run on the same horizontal agent configuration as your competitors.
+4. **Do you have internal AI engineering or orchestration capacity?** If not, buy while building that capacity. Claude API and n8n lower the build barrier further than most teams realise — the entry point is an experienced AI operator, not a full engineering team.
+5. **What is the 12-month expected volume?** Low-volume edge cases do not justify a bespoke build. High-volume regulated workflows (>10,000 agent interactions/day) justify internal control earlier than the cost model suggests.
+
+## What I would do
+
+If I were evaluating this decision for a regulated financial services firm today:
+
+1. **Run the 5-question procurement test on every active AI vendor evaluation** before comparing pricing or features. Eliminate options that fail questions 1 or 2 before they reach a procurement committee — the compliance remediation cost will exceed the licence savings.
+2. **Audit where your current vendor AI tools route inference.** Request written data residency confirmation and cross-reference against your GDPR Article 44 transfer mechanism documentation. A contract is not a technical guarantee.
+3. **Scope the minimum build-path cost using n8n plus Claude API plus Supabase** before accepting a vendor quote at face value. For focused, high-risk use cases, the year-one cost gap is smaller than expected; the year-three control gap is much larger.
+4. **Wire EU AI Act Article 12 logging and DORA incident reporting into the same Supabase event log from day one** — whether you build or buy. The audit trail is your obligation. Your vendor's logs are your vendor's.
+5. **Set a Revenue Per Employee target by function** before committing any AI procurement budget. "AI adoption rate" is not a metric. "Credit analyst productive hours up 35% by Q2" is.
+
+---
+
+## Frequently asked questions
+
+**What does the EU AI Act say about buying AI agents from vendors?**
+Under EU AI Act Article 25, purchasing and deploying a third-party AI system makes you the deployer with defined obligations — even if you did not build the system. For high-risk use cases (Annex III), you are responsible for human oversight documentation, post-market monitoring, and user transparency requirements. The vendor is the provider. Core obligations for new systems apply from August 2, 2026.
+
+**How long does it take to build a production-grade AI agent for a regulated firm?**
+Using modern orchestration tooling — Claude API, n8n, Supabase — a production-grade agent for a focused use case can be scoped and shipped in 4–8 weeks by one experienced AI operator. Building regulatory-grade agentic capability across all five components from scratch (without this tooling) takes 18–36 months. (SureCloud, 2026) The primary variable is infrastructure decision-making at the start of the build, not model development.
+
+**How do I know if my agentic AI use case is high-risk under the EU AI Act?**
+Review EU AI Act Annex III. Financial services high-risk categories include credit scoring, insurance risk pricing, biometric identity assessment, and employment vetting. If your agent contributes to any of these decisions — including as a summarisation, first-draft, or recommendation layer — you are likely in scope for high-risk obligations. Core requirements apply from August 2, 2026 for new systems.
+
+**Should financial services firms build or buy AI agents for compliance workflows?**
+Build — or at minimum, build the logging and memory layer even if you buy the inference. Compliance workflows in regulated financial services require full audit trail control under EU AI Act Article 12, verifiable data residency under GDPR Article 44, and customisable decision logic that most horizontal vendor solutions cannot reliably provide. The U.S. CLOUD Act (2018) creates a data jurisdiction conflict for EU firms using US-controlled cloud inference, even with EU data residency contracts in place. (U.S. CLOUD Act, 2018)
+
+---
+
+[GRAPHIC OPPORTUNITY: The Regulated Stack Decision Grid as a 2×2 matrix — Regulatory Exposure (x-axis, low→high) × Differentiation Value (y-axis, low→high). Four quadrants colour-coded: cream (Buy), slate (Buy + customise), navy-80 (Build on vendor models), navy (Full build). Each quadrant with one example use case label.]
+
+→ If you are evaluating build vs. buy for agentic AI in a regulated stack and want an independent view on the right approach for your specific use cases, [read about my AI Implementation & Operating Model Design service](/services/ai-implementation) — or [book a 30-minute discovery call](/book) to map out the procurement decision for your environment.

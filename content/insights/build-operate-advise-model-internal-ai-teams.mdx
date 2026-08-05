@@ -1,0 +1,92 @@
+---
+title: "The Build-Operate-Advise model: how internal AI teams actually reach production"
+description: "The internal AI team operating model that moves AI from pilot to production — the Build-Operate-Advise framework for fintech and regulated industries."
+publishDate: "2026-07-29"
+category: "operating_model"
+readTime: "7 min"
+targetKeyword: "internal AI team operating model"
+slug: "build-operate-advise-model-internal-ai-teams"
+status: "draft"
+---
+
+89% of companies say their technology investments haven't fully delivered expected results (PwC, Digital Trends in Operations Survey, 2026). The problem is almost never the model. It is how the team around the model is designed — who builds, who operates, and who translates between the system output and the business decision.
+
+Most internal AI teams are structured as software delivery teams. They build. They ship. They move to the next project. AI in production is not a project. It is an operating function. The team design that gets you to a working demo is not the team design that gets you to a production system that changes revenue per employee.
+
+## Why do most internal AI teams fail to reach production scale?
+
+Only 27% of organisations have fully embedded an AI strategy across business units (PwC, 2026). The 73% who have not share a common pattern: they have AI capability without AI integration. The model exists. The business processes have not been redesigned around it. The business units do not trust the outputs. Nobody owns what happens after the demo.
+
+75% of technology executives say their operating model will need to change within 12–18 months to accommodate AI at scale (Deloitte, "Rewiring the enterprise operating model for AI scale", 2025). Most have not changed it yet. The gap between acknowledging the need and redesigning the structure is where AI programmes stall.
+
+The structural failure is consistent across sectors: teams designed to build are not designed to operate. Teams designed to operate are not designed to advise the business on what the output means and what to do with it. When all three functions collapse into one — usually a small central AI team expected to do everything — none of them are done well.
+
+## What is the Build-Operate-Advise model for internal AI teams?
+
+The Build-Operate-Advise model is a three-function operating structure that assigns clear accountability at each stage of an AI system's lifecycle — from development to production performance to business integration.
+
+Each function has a distinct mandate, distinct roles, and distinct success measures. The three do not collapse into one another.
+
+The following table defines each function across the dimensions that matter for organisational design:
+
+| Function | Core mandate | Typical roles | Success measure |
+|---|---|---|---|
+| Build | Design, develop, and deploy production-ready AI systems | AI engineers, ML ops, data engineers | System deployed, tested, documented |
+| Operate | Monitor performance, manage incidents, govern retraining | AI ops, domain SMEs, compliance | Uptime, accuracy, incident response time |
+| Advise | Translate outputs into business decisions, measure ROI | Programme lead, AI strategist, fractional COO | Business process adoption, RPE movement |
+
+The commercial logic is simple. Build without Operate means the system degrades in production with no accountable owner. Operate without Advise means the business never changes its processes around the system — you have a working model no one trusts or uses. Advise without Build means strategy that never connects to a deployed system.
+
+Only 37% of organisations are comfortable assigning AI agents to execute full end-to-end processes (PwC, 2026). The discomfort is largely a governance problem, not a technology one. When Operate is a real function with named accountability — not a shared afterthought — that comfort level climbs. Regulators, too, require it.
+
+## How does the EU AI Act affect internal AI team design in financial services?
+
+The EU AI Act is fully applicable from 2 August 2026 (European Commission). For organisations deploying AI in Annex III high-risk categories — which includes employment-related AI (performance assessment, task allocation, monitoring) and systems making or influencing decisions affecting access to financial services — the Operate function is not optional. It is a legal obligation.
+
+Annex III high-risk AI systems require: documented human oversight mechanisms, activity logging and audit trail, incident detection and reporting, and demonstrable risk management through the system's operational lifecycle. None of those requirements are met at build time. They are met through Operate — a continuous function, not a one-off configuration.
+
+DORA reinforces this for financial entities. AI systems embedded in critical or important functions require ICT risk management documentation and operational governance that can be presented to a competent authority. A team without a defined Operate function cannot produce that documentation — because no one is accountable for what happens in production.
+
+The Advise function carries regulatory weight too. When an n8n-orchestrated credit memo pipeline flags a risk signal, or a Claude API scoring system returns an output that affects a lending decision, someone must be able to explain that output in plain terms to a compliance officer, a risk committee, or a regulator. That is not a Build role. It is an Advise role — and in financial services, it is a senior one.
+
+## What does the Build-Operate-Advise model look like at scale?
+
+EY deployed its EY.ai EYQ platform to more than 300,000 professionals, achieving over 80% active usage and 50,000+ internal AI agents built within 9 months (EY, "Building an enterprise-scale agentic AI operating system", 2024). That is not a build story. It is a Build-Operate-Advise story running simultaneously at enterprise scale — build capacity to develop 50,000 agents, operate capacity to maintain them in production, and advise capacity to translate AI capability into professional service delivery and client-facing outcomes.
+
+The smallest viable version of this structure — appropriate for a Series B fintech or a regional bank — does not require 300,000 users. It requires 3 named roles:
+
+- A Build lead accountable for production-readiness of every deployed system
+- An Operate function (initially a shared role) accountable for monitoring, retraining cadence, and incident response
+- An Advise lead accountable for stakeholder translation, business process adoption, and RPE measurement
+
+In the ventures I build across n8n, Claude API, and Supabase, the Operate function is the one most often skipped when time is short. It is also the one that causes production failures — not bad models, but undocumented monitoring assumptions and no retraining trigger. At Mastercard, leading a 120+ person cross-regional programme, the equivalent failure mode was delivery teams with no embedded advisory capacity: they built to spec, but the spec was never connected to what the business actually needed to change. The failure mode is structural in both contexts.
+
+## What I would do
+
+1. Audit your current AI team against the Build-Operate-Advise model. Map every team member to one function. Identify which function has no named owner — that is where your production risk lives.
+
+2. Before the first system goes live, make Operate explicit. Define monitoring criteria, retraining triggers, and incident escalation paths in the build spec. Wire them into the system before deployment, not after the first failure.
+
+3. In regulated financial services: treat the Advise function as a compliance requirement, not a soft skill. Map who owns the ability to explain any AI system output to a regulator. If that person does not exist, the system is not ready for production.
+
+4. Connect AI team OKRs to revenue per employee, not model metrics. Accuracy, latency, and token efficiency are build and operate metrics. The business metric is: does this move the ratio of output to headcount? If it is not measurable, the initiative has not been operationalised.
+
+5. For the EU AI Act: complete your Annex III mapping before 2 August 2026. Any high-risk system without documented human oversight and activity logging is a compliance exposure. The Operate function is the mechanism for closing it — not a legal or compliance team review.
+
+## FAQ
+
+**What is the Build-Operate-Advise model for AI teams?**
+The Build-Operate-Advise model divides internal AI team accountability into 3 distinct functions: Build (develop and deploy systems), Operate (monitor, maintain, and govern in production), and Advise (translate outputs into business decisions and measure impact). It prevents the most common AI programme failure: teams that ship models but have no accountability structure for what happens in production.
+
+**How do you structure an internal AI team in financial services?**
+In regulated financial services, the internal AI team operating model must include a named Operate function with accountability for monitoring, incident response, and audit trail generation — these are EU AI Act and DORA requirements for high-risk and critical function AI systems. The Advise function must include someone able to explain system outputs to regulators and senior stakeholders. Build alone is insufficient.
+
+**What does the EU AI Act require from internal AI teams?**
+For Annex III high-risk AI systems — including employment-related AI and AI affecting access to financial services — the EU AI Act (fully applicable from 2 August 2026) requires documented human oversight, activity logging, incident detection and reporting, and operational risk management through the system's lifecycle. These are Operate function requirements, not one-time build configurations.
+
+**How do you measure AI team performance using revenue per employee?**
+Revenue per employee (RPE) is the correct business-level metric for internal AI team performance. The question for every AI initiative is: does this increase output without a proportional increase in headcount? Track RPE by function, not company-wide. Set RPE targets for each AI initiative before it receives a production budget. If the target is not measurable, the initiative has not been connected to business outcomes.
+
+---
+
+**→ If you are designing or restructuring your internal AI team operating model and want to apply the Build-Operate-Advise framework to your specific situation, [read about my AI Implementation & Operating Model Design service](/services) — or [book a 30-minute discovery call](/book) to work through your team structure directly.**

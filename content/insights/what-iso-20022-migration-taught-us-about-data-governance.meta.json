@@ -1,0 +1,91 @@
+{
+  "id": "2688943a-1c29-4e61-b5e7-b1b54ceba686",
+  "title": "What ISO 20022 migration taught us about data governance",
+  "slug": "what-iso-20022-migration-taught-us-about-data-governance",
+  "publishDate": "2026-07-30",
+  "category": "payments_infra",
+  "topicNumber": 19,
+  "targetKeyword": "ISO 20022 data governance",
+  "status": "awaiting_approval",
+  "approvalToken": "d949612b-190d-40da-bd31-e76bc849697c",
+  "linkedinPost": "44% of banks will miss the November 2026 SWIFT structured address deadline.\n\nNot because they didn't migrate to ISO 20022.\n\nBecause they treated a data governance programme as a format upgrade — and left the underlying data untouched.\n\nFinextra's Luuk De Vries put it precisely: "Most institutions built their ISO 20022 capability around the message, not around the data."\n\nThe gateway translation layer looked compliant. The source systems collecting payment instructions still used freetext. Structured-looking fields. Unstructured content inside them. No field ownership. No utilisation audit.\n\nWhat I would actually do right now:\n\n• Run a field utilisation audit — not a message compliance check. What % of optional fields carry real structured data vs empty or freetext values?\n• Assign field ownership by business domain before November 2026. Remittance: finance. Address: operations. LEI: compliance.\n• Identify one downstream AI or compliance use case — AML screening, DORA audit log, treasury reconciliation — and trace it to specific ISO 20022 fields. Build the business case from that dependency.\n• Update upstream collection systems, not just the gateway. Enrichment at the gateway is a mask, not a fix.\n• Wire structured fields directly into EU AI Act Article 12 logging. Every format conversion between collection and model input degrades your audit trail.\n\nISO 20022 structured data reduces AML false positive rates 20–40% (NICE Actimize, 2025). But only if the structured fields actually contain structured data. That is the governance question — not the migration one.\n\nRevenue per employee in regulated financial services rises when payment data works harder. ISO 20022 is the infrastructure. Governance is what makes it real.\n\nFull piece + the Data-First Migration Test I use to diagnose where firms are stuck — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "What ISO 20022 migration taught us about data governance",
+        "description": "ISO 20022 migration exposed data governance failures most banks still haven't fixed. What went wrong, what worked, and what the November 2026 deadline reveals about your architecture.",
+        "datePublished": "2026-07-30",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "ISO 20022",
+            "payment data governance",
+            "DORA compliance",
+            "EU AI Act",
+            "AML screening",
+            "fintech operating model",
+            "agentic AI",
+            "n8n automation",
+            "Supabase"
+          ]
+        },
+        "url": "https://payalponkshe.com/insights/what-iso-20022-migration-taught-us-about-data-governance",
+        "publisher": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between ISO 20022 compliance and ISO 20022 data governance in banking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Compliance means your payment messages validate against the ISO 20022 schema — the format is correct. Data governance means the content inside those fields is accurate, structured, assigned to an identified business domain owner, and traceable into downstream systems. Compliance is a format check carried out at the gateway. Data governance is an organisational capability built across the full collection-to-settlement chain."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are so many banks still not ready for the November 2026 SWIFT structured address deadline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because the November 2026 requirement — that structured postal address fields are populated in all CBPR+ cross-border messages — requires changes to upstream payment instruction collection systems, not just message translation layers. Banks that built migration capability around gateway translation discover their source systems still accept freetext. The deadline reveals the governance gap (Montran, 2026)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does ISO 20022 data governance affect DORA compliance for financial services firms?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DORA requires structured ICT incident logs. ISO 20022 fields — LEIs, value dates, instruction identifiers — are natural structured inputs to those logs. Firms with governed ISO 20022 data generate DORA-compliant audit trails programmatically. Firms without it reconstruct them manually, introducing latency, accuracy risk, and regulatory exposure during the incident response window."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does ISO 20022 structured data improve AI model performance in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI models used in AML screening and fraud detection perform materially better on typed, validated inputs than on parsed freetext. ISO 20022 structured fields — party identifiers, structured remittance data, purpose codes — provide those typed inputs. NICE Actimize found this reduces false positive rates 20–40% compared to models operating on legacy MT freetext (NICE Actimize, 2025). The prerequisite is that the structured fields actually contain structured data — which requires governance, not just migration."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "Montran, 2026 — 44% of banks will miss the November 2026 SWIFT structured address deadline",
+    "Finextra / Luuk De Vries, July 2026 — most institutions built their ISO 20022 capability around the message, not around the data",
+    "BAFT ISO 20022 Migration Lessons Learned, 2024 — central steering committees with cross-functional representation achieved greater alignment and risk control",
+    "NICE Actimize, 2025 — structured party identifiers reduce AML false positive rates 20–40% vs freetext MT messages",
+    "SWIFT, ISO 20022 Programme, 2023 — structured field set including granular party identification, remittance data, purpose codes, and LEI fields vs 140-character MT103 freetext limit"
+  ],
+  "cwaNotes": "SELF-ASSESSMENT 11/11 PASS. [PASS] Sourced stat in first 50 words: 44% Montran 2026. [PASS] Builder identity: typed Supabase event schema with field-level validation at ingestion. [PASS] Fintech/regulated section: DORA incident logging, EU AI Act Art 12 transparency requirements, AML false positives. [PASS] Fintech-specific keywords: ISO 20022 data governance, AML screening, DORA compliance, payment data governance in financial services. [PASS] Named framework: Data-First Migration Test — 4-question GFM pipe table. [PASS] Commercial impact number: 20-40% AML false positive reduction (NICE Actimize 2025). [PASS] LinkedIn hook stat-led and differs from site title: '44% of banks will miss...' vs informational title 'What ISO 20022 migration taught us...'. [PASS] FAQ exactly 4 questions phrased as ChatGPT queries. [PASS] What I would do: 5 concrete first-person actions. [PASS] No buzzwords, sentence case, numbers in numerals throughout. [PASS] All 4 factual claims sourced inline with named source + date. Differentiation from existing topic 14 article (iso-20022-data-asset-not-compliance-chore): topic 14 covers data richness/commercial asset angle; this article covers governance failure mode and lessons learned — distinct angle, distinct named framework (Payments Data Value Ladder vs Data-First Migration Test). GRAPHIC OPPORTUNITY: Data-First Migration Test as 4-question diagnostic card with Yes/No flow leading to governance maturity score."
+}
