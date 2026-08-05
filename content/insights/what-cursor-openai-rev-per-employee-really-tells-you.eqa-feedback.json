@@ -1,0 +1,30 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-08-05T00:00:00Z",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — '$3.3M in revenue per employee' with '(Dealroom.co / Sacra, April 2025)' appears in first ~38 words.",
+    "2_builder_stack_element": "PASS — 'An n8n + Claude API pipeline can automate 2 of these in a 6-week sprint' in What I would do action 3.",
+    "3_fintech_section": "PASS — 'Why do regulated financial services firms misread this benchmark?' section covers AML, KYC, DORA, EU AI Act Article 12, Klarna, Solaris.",
+    "4_fintech_keywords": "PASS — 'regulated financial services', 'KYC document extraction', 'transaction monitoring alert triage', 'credit memo first drafts', 'EU AI Act Article 12' all used naturally.",
+    "5_named_framework": "PASS — 'Revenue Density Audit' introduced in What I would do, with method defined.",
+    "6_commercial_impact": "PASS — 'Revenue per employee rose 73% in one year, from $575,000 toward $1M per employee' (TechCrunch, May 2025).",
+    "7_linkedin_hook_different": "PASS — Title is a question; LinkedIn hook is 'Cursor: $3.3M revenue per employee. Or $40M. Depends who you ask.' — different formula entirely.",
+    "8_faq_exactly_4": "PASS — Exactly 4 FAQ questions, each phrased as a ChatGPT query a COO would type.",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered concrete first-person actions, including specific tools (n8n, Claude API, EU AI Act Article 12 logging).",
+    "10_no_buzzwords_numerals": "PASS — No banned buzzwords found. All H2s sentence case. All numbers in numerals.",
+    "11_all_claims_sourced": "FAIL — Four claims lack inline source + date: (a) 'Cursor went from $100M to $2B ARR in roughly 18 months' — no inline citation; (b) Table row OpenAI '$6.5M – $14M' — Epoch AI source cited earlier doesn't provide this specific range; (c) Table row Midjourney '~$12.5M, ~40 employees' — no inline citation anywhere; (d) Table row Traditional EU bank '$200K – $400K' — no inline citation.",
+    "12_voice_authenticity": "PASS — Opens with data point, no preamble. 'That gap is the whole point.' is punchy editorial. No passive voice. Builder credential anchored to commercial outcome.",
+    "13_source_verifiability": "FAIL — Sources array in meta.json contains 2 entries not cited inline: 'Forbes (Paul Baier), March 31, 2026' and 'Capgemini, 2025'. These are in the array but have no corresponding (Source, Date) citation in the article body. These sources should be cited for the table figures they support (OpenAI range, Midjourney, EU bank estimate) or removed from the array.",
+    "14_linkedin_native_value": "PASS — '3 mistakes' framing, methodology explanation for $3.3M vs $40M, and 'Revenue per employee is an outcome. The workflows you automate are the lever.' deliver standalone value not previewed in the article.",
+    "15_self_contained": "PASS — ARR, AML, KYC, DORA used without definition but within target audience (fintech COO/founder) these are standard vocabulary. No references to previous Payal articles."
+  },
+  "revision_instructions": [
+    "Item 11(a): After 'Cursor went from $100M to $2B ARR in roughly 18 months', add '(Dealroom.co/Sacra, April 2025)' — this is the source already in the array that covers Cursor's growth trajectory.",
+    "Item 11(b) + 13: The OpenAI '$6.5M – $14M' range in the table needs an inline citation. Add '(Forbes, March 2026)' to the table cell or as a footnote directly below the table introducing it, attributed to Forbes (Paul Baier, March 31, 2026). This source is in the array but not cited anywhere in the body.",
+    "Item 11(c) + 13: The Midjourney '~$12.5M, ~40 employees' table row needs an inline citation. Add '(Forbes, March 2026)' to the Midjourney table row or as a footnote below the table. Same Forbes source covers this.",
+    "Item 11(d) + 13: The Traditional EU bank '$200K – $400K' estimate needs an inline citation. Add '(Capgemini, 2025)' to the table row or in the sentence that references this range in the body. This Capgemini source is in the array but cited nowhere in the body.",
+    "Item 13 cleanup: Once items 11(b), 11(c), 11(d) are fixed with inline citations, the Forbes and Capgemini entries in the sources array will be properly referenced. No sources should remain in the array without a corresponding inline citation."
+  ]
+}
