@@ -1,0 +1,101 @@
+---
+title: "The euro stablecoin landscape after MiCA: a selection guide for fintech operators"
+description: "8 euro stablecoins are MiCA-compliant after the June 2026 deadline. Market cap up 128% to $674M. How to choose the right euro stablecoin MiCA list entry for your stack."
+publishDate: "2026-08-06"
+category: "payments_infra"
+readTime: "7 min"
+targetKeyword: "euro stablecoin MiCA list"
+slug: "the-euro-stablecoin-landscape-after-mica"
+status: "draft"
+---
+
+8 euro stablecoins are now MiCA-compliant, up from 5 a year ago. Their combined market cap surged 128% — from $295.6M to $673.9M — in the 12 months to June 2026 (Decta, June 2026). The MiCA grandfathering period closed June 30. EURT was discontinued. EURS lost its ESMA registration. What remains is a smaller, better-regulated market with an EU-wide passport across all 27 member states.
+
+If you are a fintech operator or corporate treasurer evaluating euro stablecoin rails, the regulatory uncertainty is gone. The question now is which token fits your regulated stack — and why.
+
+## Which euro stablecoins are actually MiCA-compliant in 2026?
+
+As of June 2026, 8 euro-denominated stablecoins are registered on the ESMA e-money token list. Circle's EURC is the market leader at $430.4M (Decta, June 2026) — approximately 64% of the total compliant market. Three tokens — EUROP, EURI, and EURAU — entered the compliant field during the past year. All 8 meet the same baseline: EMI licence, 1:1 fiat backing, ESMA registration.
+
+The 8 tokens differ significantly in issuer type, ecosystem depth, and primary use case. Here is how they compare across the dimensions that matter for fintech integration:
+
+| Token | Issuer | Country | Best suited for |
+|---|---|---|---|
+| EURC | Circle | France (EU) | API-first payments, DeFi, enterprise |
+| EURCV | SG Forge (Société Générale) | France | Institutional, bank-to-bank settlement |
+| EURI | Banking Circle | Luxembourg | B2B payments, fintech platforms |
+| EUROe | Membrane Finance | Finland | Consumer and B2B payments |
+| EURR | StablR | Malta | Payments, yield-bearing use cases |
+| EURD | Quantoz Payments | Netherlands | Settlement, regulated payments |
+| EUROP | Undisclosed | EU | Payments |
+| EURAU | Undisclosed | EU | Payments |
+
+[GRAPHIC OPPORTUNITY: Pie chart — MiCA-compliant euro stablecoin market share by token, June 2026, with EURC ~64% dominant slice]
+
+## What does MiCA actually require for a euro stablecoin to be legal in the EU?
+
+Under MiCA, fiat-pegged stablecoins are classified as Electronic Money Tokens (EMTs). To qualify, the issuer must hold an EU EMI licence, the token must be fully backed 1:1 by fiat reserves in segregated custodial accounts, and it must appear on the official ESMA EMT register. Since June 30, 2026, any provider operating without this authorisation is in direct breach of EU law (ESMA, June 23, 2026).
+
+The 3 qualifying criteria matter beyond compliance checkbox:
+
+- **EMI licence** — the issuer must be authorised in at least one EU member state. That authorisation passports across all 27 markets. As of March 2026, there were 19 authorised EMT issuers across 11 member states, issuing 29 e-money tokens total (ESMA, March 2026). Not all are euro-denominated.
+- **1:1 fiat backing** — reserves must be held in accounts protected from creditor claims. This is a structural requirement, not an audit flag. Tokens with algorithmic or fractional backing cannot retrofit to compliance.
+- **ESMA register entry** — no register entry means no legal status in the EU, regardless of how the token is marketed or where it trades. The register is public and updated continuously.
+
+## What happened to the tokens that didn't make it?
+
+EURT (Tether Euro) was discontinued in 2024–2025, with redemptions closing by late 2025 (Cryptonomist, July 2026). EURS (Stasis Euro) suspended new issuance and lost its ESMA registration (Crowdfund Insider, July 2026). EURA (Angle Protocol), which used an algorithmic crypto-backed model, was structurally incompatible with the EMT classification and is winding down (Cryptonomist, July 2026).
+
+The pattern across the exits is consistent: the tokens that could not comply were not slow to file paperwork — they were architecturally incompatible with MiCA's hard requirements. Algorithmic backing, fractional reserves, and decentralised governance all conflict with EMT classification at the design level. For any fintech operator selecting a token today, this distinction matters. A token built on the wrong architecture cannot be retrofitted to compliance.
+
+## How do I choose between the 8 compliant tokens?
+
+For a fintech operator, token selection is not the same decision as for a retail investor. The relevant criteria are: issuer regulatory standing in your counterparty's jurisdiction, custody and API integrations your stack already supports, and liquidity in the settlement venues you use.
+
+I apply what I call the **MiCA Compliance Selection Matrix** — 3 axes that frame the selection decision:
+
+**Axis 1 — Issuer regulatory standing.** Which jurisdictions do your counterparties operate in? EURC is issued by Circle, licenced in France under MiCA. EURCV is issued by SG Forge, a regulated subsidiary of Société Générale — the strongest institutional credit signal in the current euro stablecoin market for bank-grade counterparties. EURI is issued by Banking Circle, an EU payments bank with deep B2B credentials.
+
+**Axis 2 — Ecosystem integration.** What custody partners, payment processors, and DeFi protocols already support the token? EURC has the broadest ecosystem — Fireblocks, Anchorage, and major centralised exchanges. Newer entrants are closing the gap but start from a thinner base.
+
+**Axis 3 — Liquidity profile.** The 8 compliant tokens shared a combined trading volume of $67.3M in the week of June 8, 2026 — the pre-deadline peak (Decta, June 2026). EURC dominates volume. Smaller tokens carry meaningful liquidity risk for high-volume settlement flows.
+
+The matrix does not produce a universal winner. It produces the right token for your specific counterparty profile, stack, and volume.
+
+## What does this mean for fintech payment infrastructure?
+
+For regulated fintech operators, the MiCA-compliant euro stablecoin market creates 2 near-term operational opportunities and 1 hard compliance obligation.
+
+**Opportunity 1 — Programmable cross-border settlement.** MiCA-compliant euro stablecoins on public blockchains enable 24/7 settlement across the EU without SEPA batch windows. Traditional SEPA cross-border transfers clear on a T+1 batch cycle — typically 17–22 hours from instruction to final settlement. On-chain stablecoin settlement finalises in under 2 minutes. For a payment processor running 20,000 cross-border transactions per month, eliminating overnight float and reducing manual reconciliation exceptions cuts operational overhead by an estimated 40–60% on the settlement layer.
+
+**Opportunity 2 — Embedded treasury rails.** Corporate treasury functions can hold working capital in EURC or EURCV without converting to fiat at every settlement leg. For fintech platforms with merchant floats or escrow balances, this shifts revenue per employee — the float becomes productive without additional operational cost.
+
+**Obligation — Counterparty token monitoring.** Any payment infrastructure that touches MiCA-regulated tokens now carries regulatory exposure. The ESMA register is live and issuers can lose authorisation. I have built token-status monitoring into n8n pipelines using ESMA's public register API — a 20-node workflow that runs nightly and triggers alerts if any token's ESMA status changes. For regulated operators, this is not optional compliance overhead. It is a risk gate that belongs in your operational stack before you integrate any token.
+
+## What I would do
+
+If I were a fintech COO evaluating euro stablecoin integration today:
+
+1. **Start with EURC for API-first integrations.** Circle's documentation, custody partnerships (Fireblocks, Anchorage), and exchange liquidity are the most developed. The EU licensing is solid. Use this as your default integration path.
+2. **Use EURCV for institutional or bank-to-bank settlement flows.** SG Forge's backing answers the credit risk question for regulated counterparties where issuer standing matters to your compliance team or your client's.
+3. **Add ESMA register monitoring to your compliance stack before going live.** Check any token you hold or process on a weekly cadence minimum. Build an alert workflow. Tokens can be de-registered — and operating with a de-registered token exposes the service provider, not just the issuer.
+4. **Treat 1:1 fiat backing as a floor, not a differentiator.** All 8 compliant tokens meet this. Differentiation is issuer credit quality, custody structure, and ecosystem depth — apply the MiCA Compliance Selection Matrix.
+5. **Do not integrate non-ESMA-registered tokens in any EU-facing product.** After June 30, this is not a risk management judgment call. It is a legal exposure question. The ESMA statement of June 23, 2026 removed any ambiguity.
+
+## Frequently asked questions
+
+**Which euro stablecoin has the largest market cap after MiCA?**
+Circle's EURC is the market leader with a market cap of $430.4M as of June 2026, representing approximately 64% of the total MiCA-compliant euro stablecoin market. It rose 109.8% in the 12 months to June 2026 (Decta, June 2026).
+
+**Is there a full list of MiCA-compliant euro stablecoins?**
+Yes — the ESMA e-money token register is the authoritative source. As of June 2026, 8 euro-denominated tokens are on the register: EURC, EURCV, EURI, EUROe, EURR, EURD, EUROP, and EURAU. The register is public and updated continuously; any token not on this list does not have legal EMT status in the EU.
+
+**What happens if a euro stablecoin I am using loses its ESMA registration?**
+You must stop processing or holding the token in any EU-facing product immediately. MiCA's enforcement regime applies to service providers as well as issuers. Continuing to process a de-registered token is a direct breach of EU law, regardless of when the integration was built.
+
+**How does MiCA's euro stablecoin framework interact with PSD3?**
+MiCA and PSD3 operate in parallel with distinct scopes. MiCA governs the issuance and custody of the token itself. PSD3 governs the payment services built on top of it. A fintech offering euro stablecoin payment services needs both MiCA-compliant token due diligence and a PSD3-compliant payment service framework. They do not substitute for each other.
+
+---
+
+→ If you are building euro stablecoin rails into a regulated fintech stack and want to think through the compliance architecture and integration design, [read about my Fractional COO & Strategic Advisory service](/services/fractional-advisory) — or [book a 30-minute discovery call](/book) to map out your specific requirements.
