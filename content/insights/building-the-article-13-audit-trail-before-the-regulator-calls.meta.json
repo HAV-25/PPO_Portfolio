@@ -1,0 +1,86 @@
+{
+  "id": "0a0e374f-309d-4ea5-aaa4-8d4f62f8984f",
+  "title": "Building the Article 13 audit trail before the regulator calls",
+  "slug": "building-the-article-13-audit-trail-before-the-regulator-calls",
+  "publishDate": "2026-08-07",
+  "category": "regulated_ai",
+  "topicNumber": 32,
+  "targetKeyword": "AI audit trail logging",
+  "status": "awaiting_approval",
+  "approvalToken": "40e8051d-c5a9-416a-951a-014e67595cf0",
+  "linkedinPost": "4 days into EU AI Act enforcement.\n\nIf your AI system routes model calls through a shared service account, you don't have a compliant audit trail.\n\nYou have a log that records calls but not who directed them. Under GDPR, DORA, and MiFID II, that's the compliance gap regulators find first.\n\nThe Traceability Stack — the 4 layers that make an AI audit trail actually compliant:\n\n• Layer 1 — Event. Every AI operation: input, output, timestamp, model version. Most teams think this is the audit trail. It's only the start.\n\n• Layer 2 — Attribution. The named person (not service account) who directed the call. The most common gap in supervised firms.\n\n• Layer 3 — Context. Prompt version hash, system instructions, data source vintage. Without this, you can't reconstruct what the model was running under when it made the decision.\n\n• Layer 4 — Oversight. Human review, override, escalation — structured, timestamped, with reasoning.\n\nWhat I would actually do:\n• Fix attribution first — reroute service account calls to user-specific tokens within 30 days\n• Set up a dedicated ai_decision_log table in EU-sovereign infrastructure\n• Add prompt versioning before the next model update\n• Run a simulated regulatory review: can you reconstruct a credit decision end-to-end from your logs?\n\nRevenue per employee doesn't move from AI you can't deploy in production. Compliant audit architecture is what keeps it there.\n\nFull piece + the Traceability Stack schema — link in comments.\n\n[ATTACH: 30s demo clip]",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Building the Article 13 audit trail before the regulator calls",
+        "description": "EU AI Act Articles 12 and 13 require compliant audit logging from day one. Here is how to build the Traceability Stack before a regulator asks for 6 months of records you do not have.",
+        "datePublished": "2026-08-07",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "EU AI Act compliance",
+            "AI audit trail logging",
+            "regulated financial services",
+            "AI governance",
+            "DORA compliance",
+            "n8n automation",
+            "Supabase architecture",
+            "agentic AI systems",
+            "payments infrastructure"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does EU AI Act Article 13 require for audit trails in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Article 13 requires that high-risk AI systems are sufficiently transparent that deployers can interpret the system's outputs and the event logs generated during operation. For financial services firms, this means providers must supply instructions explaining what the Article 12 log captures and how to reconstruct a decision from it. Both the log and the interpretive documentation must be available to national supervisory authorities on request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long must AI audit logs be retained under the EU AI Act?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Article 12 requires deployers of high-risk AI systems to retain logs for a minimum of 6 months. For biometric identification and law enforcement AI systems, the retention period is 24 months. These are minimums — DORA and MiFID II impose additional documentation and retention requirements for financial entities, and firms should apply the longest applicable period across all overlapping regimes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the most common AI audit trail compliance gap in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Missing individual attribution. When AI model calls route through a shared service account or API key, the log captures the call but not the person who directed it. GDPR, DORA, and MiFID II all require individual attribution for AI decisions affecting data subjects or financial outcomes. A credit decision with no named human in the log chain has no compliant audit trail regardless of how complete the event record is."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if a regulated firm cannot produce an AI audit trail when requested?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under the EU AI Act, failure to maintain compliant documentation for high-risk AI systems carries fines up to €15 million or 3% of global annual revenue, whichever is higher. Under DORA, which applies to all financial entities in the EU from January 2025, failure to maintain adequate ICT risk documentation — which regulators increasingly interpret to include AI decision logs — carries additional supervisory action by competent national authorities including the ECB, EBA, and national NCAs."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "EU AI Act, Article 71 — fine structure for non-compliant high-risk AI systems, 2024",
+    "EU AI Act, Article 12 — record-keeping and log retention requirements (6 months standard, 24 months biometric), 2024",
+    "EU AI Act, Article 13 — transparency and provision of information to deployers, 2024",
+    "Kognitos, AI Audit Trail Requirements 2026 — most common compliance gap: service account attribution, 2026",
+    "EU AI Act, Annex III — high-risk AI system categories including credit scoring, AML, KYC, 2024"
+  ],
+  "cwaNotes": "SCHEDULE NOTE: Today 2026-08-06 has status draft_ready (topic 20, Euro Stablecoin After MiCA). Running for next scheduled slot: 2026-08-07, topic 32, regulated_ai, Article 13 Audit Trail, long_form. SELF-ASSESSMENT 11/11 PASS: [PASS] (1) Opens with sourced statistic in first 50 words — EU AI Act Article 71 fine €15M/3% global revenue, cited inline. [PASS] (2) Builder identity — Supabase (EU Frankfurt region) + n8n workflow + ai_decision_log table schema + prompt_hash + Row-Level Security policies named explicitly. [PASS] (3) Fintech/regulated industry application section present — credit decisions, AML screening, KYC onboarding, DORA, MiFID II, ECB/EBA supervision, underwriter override examples throughout. [PASS] (4) Fintech-specific keywords: AI audit trail logging in financial services, credit decision audit, AML log compliance, DORA audit requirements, MiFID II attribution. [PASS] (5) Named framework: The Traceability Stack (4-layer GFM pipe table, 4 layers named and attributed to Payal). [PASS] (6) Commercial impact number in FS terms: €15M fine as primary risk anchor; 6-month retroactive gap as operational exposure; 30-day fix timeline for attribution gap as efficiency benchmark. [PASS] (7) LinkedIn hook stat-led and different from site title — '4 days into EU AI Act enforcement' vs informational article title. [PASS] (8) FAQ exactly 4 questions phrased as ChatGPT queries. [PASS] (9) What I would do: 5 concrete first-person actions. [PASS] (10) No buzzwords, sentence case, numbers in numerals throughout. [PASS] (11) All factual claims sourced inline — EU AI Act Articles 71/12/13 (2024), Kognitos (2026). GRAPHIC OPPORTUNITY: The Traceability Stack as a 4-level vertical stack diagram with layer-by-layer annotation showing what each layer adds to compliance coverage. WORD COUNT: ~1,150 words."
+}
