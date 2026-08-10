@@ -1,0 +1,91 @@
+{
+  "id": "3e9cab28-6ee7-4ea7-966e-74555a501438",
+  "title": "How to measure agentic AI ROI (beyond adoption)",
+  "slug": "how-to-measure-agentic-ai-roi",
+  "publishDate": "2026-08-11",
+  "category": "agentic_builds",
+  "topicNumber": 6,
+  "targetKeyword": "agentic AI ROI",
+  "status": "awaiting_approval",
+  "approvalToken": "56c437a5-df6c-47bc-ac80-93dfb002fda2",
+  "linkedinPost": "19% of agentic AI deployments never reach payback.\n\nNot because the technology failed. Because the measurement did.\n\nMost organisations track adoption: active users, tasks completed, \"hours saved.\" None of these appear on a P&L.\n\nOnly 41% of agent rollouts cross positive ROI within 12 months (THE D*AI*LY BRIEF, 2026). The failure mode is consistent: no baseline metrics set before deployment, rework not counted, success criteria that drift mid-pilot to avoid a failure result.\n\nHere is what I would actually measure instead — the 4-Pillar ROI Test:\n\n• Hard-dollar cost takeout — headcount delta, vendor fees removed, overtime eliminated\n• Revenue acceleration — time-to-close, deals per analyst, pipeline velocity\n• Quality and risk reduction — error rate, exception volume, compliance incidents\n• Throughput gains — cycle time, resolution time, documents per hour\n\nEvery deployment needs movement on at least 2. At least 1 must be hard-dollar.\n\nFor EU operators: Regulation (EU) 2026/1744 (entered into force 27 July 2026) names agentic AI in EU law for the first time. High-risk deployments — credit decisions, AML, onboarding — now have compliance infrastructure costs that belong in your ROI denominator.\n\nRevenue per employee is the honest end-state metric. Not \"AI agents deployed.\" Not \"tasks automated.\"\n\nFull piece + the 4-Pillar ROI Test framework for financial services — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How to measure agentic AI ROI (beyond adoption)",
+        "description": "19% of agentic AI deployments never reach payback. The failure isn't technology — it's measurement. A practical ROI framework for fintech and regulated financial services.",
+        "datePublished": "2026-08-11",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe/",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "knowsAbout": [
+            "agentic AI",
+            "AI ROI measurement",
+            "fintech",
+            "payments infrastructure",
+            "operating model design",
+            "EU AI Act",
+            "n8n",
+            "Claude API",
+            "Supabase",
+            "revenue per employee"
+          ]
+        },
+        "url": "https://payalponkshe.com/insights/how-to-measure-agentic-ai-roi",
+        "mainEntityOfPage": "https://payalponkshe.com/insights/how-to-measure-agentic-ai-roi"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the average ROI of agentic AI in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Successfully deployed agents deliver an average 171% ROI globally, with a median payback period of 8.3 months (THE D*AI*LY BRIEF, July 2026). However, only 41% of rollouts cross positive ROI within 12 months. The gap between average ROI for successful deployments and the overall deployment success rate is where most organisations are sitting: deployed but not measured correctly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What metrics should I track for agentic AI ROI in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The most reliable metrics are cost per resolved task, credit turnaround time, KYC completion rate, fraud loss rate, regulatory reporting cycle time, and error or exception rate. These map directly to P&L and risk lines. Do not lead with task volume or active usage — these are activity metrics, not business impact metrics. Every metric needs a pre-deployment baseline to be meaningful."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the EU AI Act affect agentic AI ROI calculations in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Regulation (EU) 2026/1744, entered into force 27 July 2026, names agentic AI in EU law for the first time. For high-risk deployments — credit decisions, AML, customer onboarding — compliance infrastructure is now a required cost input. EU firms must include compliance costs in the ROI denominator and model the risk cost of non-compliance as a downside scenario. The 2 August 2026 transparency deadline applies now; high-risk obligations arrive December 2027."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do so many agentic AI deployments fail to reach ROI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Three consistent failure modes: no baseline metrics set before deployment (no before-state means no ROI calculation is possible), rework generated by agents is not counted (agents create new work for humans that offsets time saved), and evaluation drift (success criteria shift mid-deployment to avoid a failure result). Fix the measurement architecture before fixing the technology."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "THE D*AI*LY BRIEF (Beri.net) — '96% of Agentic AI Hits ROI: What the 79% Missing' — July 2026 — https://www.beri.net/article/agentic-ai-96-percent-roi-success-2026",
+    "Shelf.io — 'Agentic AI ROI: Measure AI Agent Investment 2026' — 2026 — https://shelf.io/blog/agentic-ai-roi-how-to-measure-the-return-on-your-ai-agent-investment/",
+    "Digital Applied — 'Agentic AI Statistics 2026: 150+ Data Points Collection' — 2026 — https://www.digitalapplied.com/blog/agentic-ai-statistics-2026-definitive-collection-150-data-points",
+    "Neurons Lab — 'Agentic AI in Financial Services: A Research Roundup for 2026' — 2026 — https://neurons-lab.com/articles/agentic-ai-in-financial-services-2026/",
+    "Accelirate — 'AI Agents in Finance Services: Use Cases, ROI, and Implementation Roadmap' — 2026 — https://www.accelirate.com/ai-agents-in-financial-services-roi-use-cases/",
+    "IDC via Master of Code — 'AI Use Cases in Financial Services: 12 Ways to Win ROI' — 2026 — https://masterofcode.com/blog/ai-in-finance-use-cases-applications-examples",
+    "HAQQ AI — 'EU AI Act Amendments 2026: What Regulation (EU) 2026/1744 Changed' — July 2026 — https://www.haqq.ai/blog/eu-ai-act-amendments-2026"
+  ],
+  "cwaNotes": "Self-assessment 11/11 PASS. [PASS] sourced stat in first 50 words (19% from THE D*AI*LY BRIEF, July 2026); [PASS] builder identity — n8n orchestration pipelines, Supabase-backed mobile apps, multi-model content systems referenced in para 2; [PASS] fintech/regulated industry section — dedicated H2 with JPMorgan 450+ deployments, US bank 20-60% productivity gain, EU regulation layer (Regulation EU 2026/1744); [PASS] fintech SEO keywords — 'agentic AI ROI financial services', 'credit turnaround time', 'KYC completion rate', 'AML screening', 'credit decisioning agent'; [PASS] named framework — '4-Pillar ROI Test' introduced with GFM pipe-table (hard-dollar cost takeout, revenue acceleration, quality/risk reduction, throughput gains); [PASS] commercial impact numbers — US bank 20-60% productivity, 30% credit turnaround; IDC 2.3x return within 13 months; JPMorgan 450+ deployments; [PASS] LinkedIn hook curiosity/stat-led '19% of agentic AI deployments never reach payback. Not because the technology failed. Because the measurement did.' — distinct from site title; [PASS] FAQ block exactly 4 questions phrased as ChatGPT queries; [PASS] What I would do — 5 concrete first-person actions; [PASS] no buzzwords, sentence case, numerals throughout; [PASS] all factual claims have named source + date inline. SCHEDULE NOTE: Today 2026-08-10 is Sunday with no Calendar slot — processed next scheduled date 2026-08-11 (Monday, agentic_builds, topic 6). 7 verified sources. GRAPHIC OPPORTUNITY: 4-Pillar ROI Test as 2x2 matrix (impact type: hard-dollar vs risk-reduction; time horizon: immediate vs lagging) — human design task."
+}
