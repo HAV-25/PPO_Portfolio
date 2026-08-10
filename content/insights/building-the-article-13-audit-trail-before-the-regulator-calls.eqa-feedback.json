@@ -1,0 +1,30 @@
+{
+  "revision_cycle": 1,
+  "evaluated_at": "2026-08-10T00:00:00.000Z",
+  "fail_count": 2,
+  "failed_items": [11, 13],
+  "checklist": {
+    "1_sourced_stat_50_words": "PASS — First sentence cites '€15 million or 3% of global annual revenue — whichever is higher. (EU AI Act, Article 71, 2024)' in ~24 words",
+    "2_builder_stack_element": "PASS — 'Supabase (EU Frankfurt region) for the event log, with Row-Level Security policies' + 'In an n8n workflow, this means passing the initiating user ID from the trigger node' — specific first-person build references",
+    "3_fintech_section": "PASS — Entire H2 'How to build the Traceability Stack in a regulated financial services environment' covers credit decisions, AML, KYC; table maps each layer to financial services examples",
+    "4_fintech_keywords": "PASS — 'AI audit trail logging in financial services', 'credit decision', 'DORA audit requirements', 'MiFID II attribution' used naturally; H2 contains 'regulated financial services'",
+    "5_named_framework": "PASS — 'The Traceability Stack' explicitly named and defined in 4-layer GFM table (Event, Attribution, Context, Oversight)",
+    "6_commercial_impact": "PASS — '€15 million or 3% of global annual revenue' risk reduction anchor; 30-day attribution fix timeline; 6-month retroactive log gap as operational exposure",
+    "7_linkedin_hook_different": "PASS — Article title: informational/SEO; LinkedIn hook: '4 days into EU AI Act enforcement.' — completely different register",
+    "8_faq_exactly_4": "PASS — Exactly 4 questions: Article 13 requirements, log retention duration, most common compliance gap, consequences of non-production",
+    "9_what_i_would_do_3to5": "PASS — Exactly 5 concrete first-person actions with named tools and timelines",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords; sentence case throughout; numbers in numerals",
+    "11_all_claims_sourced": "FAIL — Three unsourced factual claims in the article body: (1) 'Annex III enforcement began August 2, 2026' — Annex III is in the sources array but there is no inline citation at this sentence; (2) 'GDPR, DORA, and MiFID II all require individual attribution for decisions that affect data subjects or financial outcomes' — no inline citation and no entry in sources array; (3) 'Running inference through a US-based API endpoint and routing logs to EU storage does not satisfy the sovereignty requirement' — no inline citation and no entry in sources array",
+    "12_voice_authenticity": "PASS — Data-first, no preamble, immediate exposure framing, builder-specific schema, commercial grounding through regulatory risk. Authentic Payal register.",
+    "13_source_verifiability": "FAIL — Cross-reference gaps: (1) EU AI Act Article 13 is in sources array but the article never includes an explicit '(EU AI Act, Article 13, 2024)' inline citation when first establishing what Article 13 does; (2) EU AI Act Annex III is in sources array but the enforcement date sentence has no inline citation; (3) GDPR/DORA/MiFID II individual attribution claim and EU sovereignty/inference claim appear in article body but no corresponding entries exist in the sources array",
+    "14_linkedin_native_value": "PASS — Per-layer commentary ('Most teams think this is the audit trail. It's only the start.') and RPE closing frame are uniquely in the LinkedIn post, not in the article",
+    "15_self_contained": "PASS — AML, KYC, DORA, MiFID II acronyms known to target audience; technical terms used in context; no assumed prior Payal article knowledge required"
+  },
+  "revision_instructions": [
+    "Item 11+13 fix 1: In the opening paragraph, after 'Annex III enforcement began August 2, 2026', add the inline citation '(EU AI Act, Annex III, 2024)' immediately after '2026'.",
+    "Item 11+13 fix 2: In the H2 'What does EU AI Act Article 13 actually require' section, after 'Article 13 establishes transparency and documentation obligations for high-risk AI systems' or at the first explanatory sentence about Article 13, add the inline citation '(EU AI Act, Article 13, 2024)'.",
+    "Item 11+13 fix 3: In the 'Why do most financial services firms have a compliance gap' section, after the sentence 'GDPR, DORA, and MiFID II all require individual attribution for decisions that affect data subjects or financial outcomes', add the inline citation '(GDPR, Article 5(1)(a), 2018; DORA, Article 8(4), 2022; MiFID II, Article 25, 2014)'.",
+    "Item 11+13 fix 4: The sentence 'Running inference through a US-based API endpoint and routing logs to EU storage does not satisfy the sovereignty requirement. Both the inference and the log must be in jurisdiction.' needs to be softened and sourced. Revise to: 'For AI systems processing EU personal data, routing inference through a non-EU API endpoint constitutes an international data transfer under GDPR Articles 44-49 and requires appropriate legal safeguards — an adequacy decision, standard contractual clauses, or equivalent. Storing logs in EU infrastructure while inference runs on a non-EU endpoint does not resolve the transfer requirement. (GDPR, Articles 44-49, 2018)' — keep it in the same paragraph, keep the implementation advice the same.",
+    "Item 13 fix 5: Update the sources array in the .meta.json to add: (a) 'GDPR, Articles 5(1)(a) and 44-49 — individual attribution requirement and international data transfer restrictions, 2018', (b) 'DORA, Article 8(4) — ICT risk management and individual accountability requirements, 2022', (c) 'MiFID II, Article 25 — suitability and individual responsibility requirements for financial instruments, 2014'. Keep all existing sources."
+  ]
+}
