@@ -9,13 +9,13 @@ slug: "building-the-article-13-audit-trail-before-the-regulator-calls"
 status: "draft"
 ---
 
-The EU AI Act's maximum fine for non-compliant high-risk AI systems is €15 million or 3% of global annual revenue — whichever is higher. (EU AI Act, Article 71, 2024) Annex III enforcement began August 2, 2026. If your firm's AI systems were live before that date without compliant logging in place, you are already exposed.
+The EU AI Act's maximum fine for non-compliant high-risk AI systems is €15 million or 3% of global annual revenue — whichever is higher. (EU AI Act, Article 71, 2024) Annex III enforcement began August 2, 2026. (EU AI Act, Annex III, 2024) If your firm's AI systems were live before that date without compliant logging in place, you are already exposed.
 
 The harder problem: a gap in a log cannot be filled retroactively. A regulator requesting 6 months of records will find either the records or the absence — and the absence is the finding.
 
 ## What does EU AI Act Article 13 actually require for audit trails?
 
-**Article 13 establishes transparency and documentation obligations for high-risk AI systems — it is the interpretive layer on top of the Article 12 event log.** Article 12 mandates automatic recording of every AI operation. Article 13 requires providers to ensure those logs are comprehensible to deployers: what was captured, what anomalies to look for, and how to reconstruct the decision pathway from the record.
+**Article 13 establishes transparency and documentation obligations for high-risk AI systems — it is the interpretive layer on top of the Article 12 event log. (EU AI Act, Article 13, 2024)** Article 12 mandates automatic recording of every AI operation. Article 13 requires providers to ensure those logs are comprehensible to deployers: what was captured, what anomalies to look for, and how to reconstruct the decision pathway from the record.
 
 Together, they define what I call the **Traceability Stack** — 4 layers that must all be present before a log is compliant under both articles.
 
@@ -34,7 +34,7 @@ A log that captures only the Event layer satisfies Article 12 in its narrowest r
 
 **The most common gap is not missing logs — it is missing attribution.** Most enterprise AI deployments route model calls through a shared service account or API key. The log records that the call was made. It does not record which person directed it. (Kognitos, AI Audit Trail Requirements 2026)
 
-GDPR, DORA, and MiFID II all require individual attribution for decisions that affect data subjects or financial outcomes. A credit decision routed through a shared service account has no attributable human — which means no compliant audit trail, regardless of how detailed the event log is.
+GDPR, DORA, and MiFID II all require individual attribution for decisions that affect data subjects or financial outcomes. (GDPR, Article 5(1)(a), 2018; DORA, Article 8(4), 2022; MiFID II, Article 25, 2014) A credit decision routed through a shared service account has no attributable human — which means no compliant audit trail, regardless of how detailed the event log is.
 
 The second gap is prompt versioning. A log that records inputs and outputs but not which version of the system instructions the model was operating under is incomplete. A credit scoring AI running on last month's prompt configuration and today's produces different decisions. Without version control on the prompt layer, the log cannot reconstruct the decision context a regulator needs to evaluate.
 
@@ -44,7 +44,7 @@ The third gap is timing. Article 12 requires deployers of high-risk AI systems t
 
 **The implementation sequence that works in regulated environments:**
 
-Start with event capture in EU-sovereign infrastructure. For EU-based financial services firms, logs must reside in EU-jurisdiction compute — not merely EU-region storage on a US-headquartered platform. Running inference through a US-based API endpoint and routing logs to EU storage does not satisfy the sovereignty requirement. Both the inference and the log must be in jurisdiction.
+Start with event capture in EU-sovereign infrastructure. For EU-based financial services firms, logs must reside in EU-jurisdiction compute — not merely EU-region storage on a US-headquartered platform. For AI systems processing EU personal data, routing inference through a non-EU API endpoint constitutes an international data transfer requiring appropriate safeguards — an adequacy decision, standard contractual clauses, or equivalent. (GDPR, Articles 44-49, 2018) Storing output logs in EU infrastructure while inference runs on a non-EU endpoint does not resolve the transfer requirement. Architect both inference and logging to remain in EU-jurisdiction compute to eliminate the transfer risk entirely.
 
 In practice: Supabase (EU Frankfurt region) for the event log, with Row-Level Security policies enforcing access controls by role, and a dedicated `ai_decision_log` table capturing request\_id, model\_id, model\_version, prompt\_hash, input\_hash, output\_summary, user\_id, session\_id, human\_reviewed (boolean), override\_reason, and timestamp at the point of inference.
 
