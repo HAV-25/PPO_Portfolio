@@ -1,29 +1,26 @@
 {
   "revision_cycle": 1,
-  "evaluated_at": "2026-06-22T17:45:00.000Z",
-  "fail_count": 3,
-  "failed_items": [11, 13, 15],
+  "evaluated_at": "2026-08-12T00:00:00.000Z",
+  "fail_count": 1,
+  "failed_items": [11],
   "checklist": {
-    "1_sourced_stat": "PASS — Klarna $1.24M RPE with (Computer Weekly, May 2026) cited by word ~22",
-    "2_builder_stack": "PASS — Claude API + n8n credit memo pipeline; Supabase RLS referenced with specifics",
-    "3_fintech_section": "PASS — Dedicated section with KYC/AML, credit memo, DORA, merchant onboarding domain table",
-    "4_fintech_keywords": "PASS — revenue per employee fintech, AI operating model financial services, agentic AI fintech, cost-to-income ratio, regulated financial services",
-    "5_named_framework": "PASS — RPE Maturity Ladder explicitly named, 4-level GFM table present",
-    "6_commercial_impact": "PASS — KYC ~5x throughput, credit memo ~8x throughput, Klarna $60M saving, PwC 40% productivity differential",
-    "7_linkedin_hook": "PASS — Site title is informational/SEO; LinkedIn hook is stat-led and punchy — clearly different formulas",
-    "8_faq_count": "PASS — Exactly 4 FAQ questions present",
-    "9_what_i_would_do": "PASS — 5 numbered concrete actions, all first person",
-    "10_no_buzzwords": "PASS — No buzzwords, sentence case throughout, all numbers in numerals",
-    "11_sourced_claims": "FAIL — (1) 'DORA (applied from January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026)' — both regulatory dates stated without inline citations in the article body, though both sources exist in sources array. (2) 'venture benchmark data, 2026' for the $814K/$446K figures — not a named organisation or publication, vague attribution.",
-    "12_voice_authenticity": "PASS — Data-first open, short punchy sentences, direct. No preamble. 'That number is not a talking point. It is an operating model outcome.' Matches portfolio_articles.md voice patterns.",
-    "13_source_verifiability": "FAIL — DORA (January 2025) and EU AI Act (August 2026) appear in sources array but lack inline citations where facts appear in article body. TechCrunch (source 3) and NVIDIA/PwC (source 6) are in sources array but not cited anywhere in the article body — either add inline citations or remove from sources array to maintain array integrity.",
-    "14_linkedin_native_value": "PASS — Action bullets deliver standalone value; 'Claude API + n8n cuts 4h to 30min review' is specific native detail. Not just a teaser.",
-    "15_self_contained": "FAIL — 'DORA' appears repeatedly starting at first use 'DORA (applied from January 2025)' without ever expanding to 'Digital Operational Resilience Act'. Cold readers outside EU financial regulation would not know the acronym. Secondary minor note: 'PII' used without definition though target audience would know it."
+    "1_sourced_stat_50_words": "PASS — '$1.24 million in 2026... (Computer Weekly, May 2026)' at word ~6",
+    "2_builder_stack_element": "PASS — 'Claude API and n8n pipeline' (body, back-office section) + 'Supabase with Row-Level Security' (What I would do, action 4), first-person build context",
+    "3_fintech_section": "PASS — Dedicated section 'How agentic AI moves the RPE dial in financial services' + domain applications table covering KYC/AML, credit memos, DORA reporting, merchant onboarding",
+    "4_fintech_keywords": "PASS — 'revenue per employee fintech', 'agentic AI financial services', 'revenue per employee in regulated fintech' all in H2 headings; 'regulated financial services' in body",
+    "5_named_framework": "PASS — 'The RPE Maturity Ladder' explicitly named, 4-level GFM table with Level 1 Tracking / Level 2 Benchmarking / Level 3 Designing / Level 4 Optimising",
+    "6_commercial_impact": "PASS — Klarna 853 roles + $60M (CX Dive 2025); PwC 40% productivity differential; domain table: KYC ~5x throughput, credit memo ~8x throughput, merchant onboarding ~3x capacity",
+    "7_linkedin_hook_different": "PASS — Site title is informational/SEO ('the north-star metric for AI-first fintech'); LinkedIn line 1 is stat-led ('Klarna hit $1.24M revenue per employee in 2026. Up 3.6x since 2022. Headcount down 49%.') — clearly different formulas",
+    "8_faq_exactly_4": "PASS — Exactly 4 questions, all phrased as ChatGPT search queries",
+    "9_what_i_would_do_3to5": "PASS — 5 numbered concrete actions, all first-person; action 3 names Claude API + n8n; action 4 names Supabase + RLS",
+    "10_no_buzzwords_numerals": "PASS — No buzzwords found; all section headings in sentence case; all numbers in numerals throughout",
+    "11_all_claims_sourced": "FAIL — 'Newer AI-native unicorns now generate $814,000 in revenue per employee on average — 83% more than older unicorns at $446,000 (venture benchmark data, 2026)' — 'venture benchmark data, 2026' is not a named organisation or publication. All other claims are sourced to named sources. Previous revision cycle (1) fixed DORA and EU AI Act inline citations; this is the sole remaining issue.",
+    "12_voice_authenticity": "PASS — 'That number is not a talking point. It is an operating model outcome.' Opening matches portfolio_articles.md voice pattern exactly; data-first, no preamble, short punchy sentences, commercial frame throughout",
+    "13_source_verifiability": "PASS — All 6 sources in meta.json sources array have matching inline citations in article body; previous TechCrunch/NVIDIA mismatches resolved in prior cycle",
+    "14_linkedin_native_value": "PASS — 'Claude API + n8n cuts 4h analyst work to 30 min review' is specific native detail not just a teaser; action bullets deliver standalone actionable value",
+    "15_self_contained": "PASS — DORA expanded on first use to 'Digital Operational Resilience Act (DORA, Regulation EU 2022/2554, from January 2025)'; KYC/AML/PII acceptable acronyms for stated target audience (fintech COOs and founders)"
   },
   "revision_instructions": [
-    "Item 15 (DORA acronym): On the FIRST appearance of DORA in the article body — in the line 'DORA (applied from January 2025) and the EU AI Act' — expand to 'Digital Operational Resilience Act (DORA, Regulation EU 2022/2554, from January 2025)'. All subsequent mentions can remain as 'DORA'. This single change resolves the undefined acronym failure.",
-    "Items 11 + 13 (inline citations for regulatory dates): On the same first mention of DORA and EU AI Act in the article body, add inline citations that match the sources array. Change 'DORA (applied from January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026)' to 'Digital Operational Resilience Act (DORA, Regulation EU 2022/2554, January 2025) and the EU AI Act (high-risk AI provisions enforced from August 2026, EU Official Journal)'. Also add '(EU Official Journal)' to the EU AI Act enforcement date in the FAQ section: 'The EU AI Act's August 2026 enforcement deadline' → 'The EU AI Act's August 2026 enforcement deadline (EU Official Journal)'.",
-    "Items 11 + 13 (unused sources in array): Remove TechCrunch (source 3) and NVIDIA/PwC (source 6) from the sources array in the meta.json file if they are not cited inline in the article body, OR add their data as inline citations where relevant. Since neither figure from these sources appears in the article body, removing them from the sources array is the cleaner fix.",
-    "Item 11 (venture benchmark attribution): 'venture benchmark data, 2026' is vague. If the actual source is a named VC firm or analyst report, use that name. If no more specific attribution is available, clarify as 'venture intelligence benchmark, 2026' — this is a softer fix; the existing attribution is noted but does not require a rewrite."
+    "Item 11 (vague benchmark attribution): The claim 'Newer AI-native unicorns now generate $814,000 in revenue per employee on average — 83% more than older unicorns at $446,000 (venture benchmark data, 2026)' must have a named source. Two options: (A) Replace with a comparable sourced statistic from a named organisation — e.g. Bessemer Venture Partners State of the Cloud, a16z Fintech benchmarks, Dealroom.co, CB Insights, or PitchBook if any of these publish RPE comparisons for AI-native vs traditional fintechs. (B) If no specific named source is available, replace the sentence with a hedged directional statement that is defensible without a specific figure: e.g. 'AI-native fintech unicorns consistently generate significantly higher revenue per employee than traditional counterparts — industry estimates suggest a premium of 50–100% depending on business model and maturity (various VC benchmark reports, 2025–2026).' Option A is strongly preferred if a named source exists. Option B is acceptable if not. Do NOT retain 'venture benchmark data, 2026' as it is not a named source."
   ]
 }
