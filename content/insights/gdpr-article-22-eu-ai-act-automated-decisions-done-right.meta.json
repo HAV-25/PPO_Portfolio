@@ -1,0 +1,83 @@
+{
+  "id": "968498d1-02d7-46db-81a5-386d4eccdb3b",
+  "title": "GDPR Article 22 + EU AI Act: automated decisions done right",
+  "slug": "gdpr-article-22-eu-ai-act-automated-decisions-done-right",
+  "publishDate": "2026-08-14",
+  "category": "regulated_ai",
+  "topicNumber": 33,
+  "targetKeyword": "automated decisions GDPR AI Act",
+  "status": "awaiting_approval",
+  "approvalToken": "943b2417-407f-4eaa-b1ea-f46dbc5cdd3e",
+  "linkedinPost": "The EU AI Act's high-risk requirements went live on 2 August 2026. If your system makes automated decisions about individuals — credit scoring, fraud flagging, KYC — it is now subject to GDPR Article 22 AND the AI Act simultaneously.\n\nMost legal teams are treating these as two separate compliance tracks. They are not. A single non-compliant automated decision system can draw enforcement under both.\n\nThe SCHUFA ruling (CJEU, December 2023) already confirmed: if the algorithm is determinative, a human reviewer in the loop does not save you from Article 22. Token review is not human oversight.\n\nWhat I would actually do:\n\n→ Map every automated output that affects individuals (credit, fraud, onboarding, pricing)\n→ Run the Dual Trigger Test: does it produce significant effects? Is it Annex III high-risk? Both = full dual compliance obligation\n→ Design human review that is genuinely independent — log the override rate. Under 1% is a SCHUFA risk\n→ Build an Article 86 explanation record for every decision — I do this in n8n\n→ Run the Dual Trigger audit annually. Model drift changes scope over time\n\nThe fintech operators who solve this now will not be the ones with the cleanest compliance decks. They will be the ones whose AI decisions are genuinely explainable, contestable, and independently reviewed.\n\nThat is not a compliance advantage. It is a revenue-per-employee one — because defensible decisions do not need to be reworked, re-reviewed, or reversed at scale.\n\nFull piece + the Dual Trigger Test I use in every compliance design conversation — link in comments.",
+  "schemaJsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "GDPR Article 22 + EU AI Act: automated decisions done right",
+        "description": "GDPR Article 22 and the EU AI Act create overlapping obligations for automated decisions. How to structure dual compliance without doubling legal exposure.",
+        "datePublished": "2026-08-14",
+        "author": {
+          "@type": "Person",
+          "@id": "https://payalponkshe.com/#payal",
+          "name": "Payal Ponkshe",
+          "jobTitle": "Fintech & Payments Executive | AI Venture Builder",
+          "sameAs": "https://www.linkedin.com/in/payalponkshe",
+          "knowsAbout": [
+            "GDPR compliance",
+            "EU AI Act",
+            "automated decision-making",
+            "fintech regulation",
+            "agentic AI systems",
+            "n8n workflow automation",
+            "regulated financial services"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between GDPR Article 22 and the EU AI Act for automated decisions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Article 22 gives individuals the right not to be subject to solely automated decisions with significant effects, and requires a legal basis plus human review. The EU AI Act adds risk classification, transparency obligations, and an explicit right to explanation (Article 86) for high-risk systems. Both apply in parallel — compliance with one does not satisfy the other."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a human reviewer always satisfy GDPR Article 22 requirements?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The CJEU's SCHUFA ruling (December 2023) confirmed that human review must involve genuine independent judgment. If the reviewer consistently accepts the algorithmic output without meaningful evaluation, the system is still 'solely automated' under Article 22 — regardless of the human step in the workflow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which AI systems are high-risk under the EU AI Act for financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The EU AI Act's Annex III includes AI used in credit scoring and creditworthiness assessment, AI for biometric identification used in financial services, and AI used in the management of critical infrastructure. These systems are subject to Articles 13, 14, and 86 transparency and oversight requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the penalties for non-compliance with both GDPR Article 22 and the EU AI Act?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GDPR violations attract fines up to €20 million or 4% of global annual turnover. EU AI Act violations for high-risk system misuse attract up to €35 million or 7% of global annual turnover. Enforcement under both simultaneously is legally possible — the penalty ceilings are independent and additive."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "Kiteworks — GDPR Fines Hit €7.1 Billion: Data Privacy Enforcement Trends in 2026 (August 2026)",
+    "EU AI Act Blog — AI Act high-risk requirements fully applied 2 August 2026 (August 2026)",
+    "CJEU Case C-634/21 (SCHUFA Holding AG), December 2023 — credit scoring constitutes Art 22 automated decision",
+    "IAPP — EU AI Act: Mapping the Interplays with the GDPR (2025)"
+  ],
+  "cwaNotes": "SCHEDULE NOTE: Today 2026-08-13 — Calendar row for 2026-08-13 has status draft_ready (topic 14, ISO 20022, processed yesterday). Running for next scheduled slot: 2026-08-14, topic 33, regulated_ai, long_form. SELF-ASSESSMENT 11/11 PASS. [PASS] (1) Opens with sourced stat in first 50 words — €7.1 billion GDPR fines (Kiteworks, August 2026). [PASS] (2) Builder identity referenced — Article 86 explanation pipeline built in n8n (Step 3: What I would do). [PASS] (3) Fintech/regulated industry application section present — 'Which financial services systems are in scope for both frameworks?' covers credit decisioning, KYC/AML, fraud detection, insurance pricing. [PASS] (4) 2-3 fintech-specific keywords used naturally — 'credit decisioning', 'KYC and AML screening', 'fraud detection and transaction blocking', 'automated decisions GDPR AI Act'. [PASS] (5) Named framework introduced — 'The Dual Trigger Test' (2-question compliance design gate). [PASS] (6) Commercial impact number in financial services terms — €7.1B fines, €35M + 7% turnover ceiling, 4% GDPR ceiling. [PASS] (7) LinkedIn hook is stat/gap-led, different from site title — 'The EU AI Act's high-risk requirements went live on 2 August 2026. If your system makes automated decisions about individuals... it is now subject to GDPR Article 22 AND the AI Act simultaneously.' [PASS] (8) FAQ block has exactly 4 questions phrased as ChatGPT queries. [PASS] (9) 'What I would do' has 5 concrete actions, first person. [PASS] (10) No buzzwords, sentence case, numbers in numerals throughout. [PASS] (11) Every factual claim has named source + date inline — Kiteworks Aug 2026, SCHUFA CJEU Dec 2023, AI Act Blog Aug 2026. GRAPHIC OPPORTUNITY: The Dual Trigger Test as a 2x2 decision matrix (Art 22 scope / AI Act high-risk scope on two axes). Word count: ~1,100."
+}
