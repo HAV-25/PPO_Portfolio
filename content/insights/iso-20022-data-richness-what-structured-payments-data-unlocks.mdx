@@ -17,7 +17,7 @@ The November 14 SWIFT deadline for structured addresses is 94 days away. Most in
 
 ## What does ISO 20022 data richness actually mean for a bank's operations?
 
-ISO 20022 messages carry structured, typed fields — party identifiers, remittance references, postal addresses — not free-text strings parsed from wire memos. A pacs.008 message supports approximately 900 structured data fields, compared to 140 usable characters in the legacy MT103 format (SWIFT documentation). That is not an incremental improvement. It is a different data class.
+ISO 20022 messages carry structured, typed fields — party identifiers, remittance references, postal addresses — not free-text strings parsed from wire memos. A pacs.008 message supports approximately 900 structured data fields, compared to 140 usable characters in the legacy MT103 format (SWIFT documentation, 2026). That is not an incremental improvement. It is a different data class.
 
 The commercial significance is downstream: typed fields can be fed directly into AML models, reconciliation engines, credit risk workflows, and regulatory reporting pipelines without format translation. Free text cannot. Every transformation step between a payment message and a downstream system degrades the richness you just received.
 
