@@ -1,32 +1,36 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { articles, getArticle } from "@/lib/articles";
 import { portfolioArticles, getPortfolioArticle } from "@/lib/portfolio-articles";
 import { getPipelineArticle, getPipelineArticleSlugs } from "@/lib/pipeline-content";
+import { ARTICLE_PILLAR, PILLAR_SLUGS } from "@/lib/insights-meta";
 import ArticleRenderer from "@/components/ArticleRenderer";
 import PortfolioArticleRenderer from "@/components/PortfolioArticleRenderer";
 import PipelineArticleRenderer from "@/components/PipelineArticleRenderer";
 
+// Only generate static params for articles that have NO pillar mapping.
+// Articles with a pillar redirect to /insights/[pillar]/[slug].
+// The param is named "pillar" because this folder is [pillar], but at this
+// route level it's actually catching flat article slugs (e.g. /insights/some-slug).
 export function generateStaticParams() {
+  const noPillar = (slug: string) => !ARTICLE_PILLAR[slug];
   return [
-    ...articles.map((a) => ({ slug: a.slug })),
-    ...portfolioArticles.map((a) => ({ slug: a.slug })),
-    ...getPipelineArticleSlugs().map((slug) => ({ slug })),
+    ...articles.filter((a) => noPillar(a.slug)).map((a) => ({ pillar: a.slug })),
+    ...portfolioArticles.filter((a) => noPillar(a.slug)).map((a) => ({ pillar: a.slug })),
+    ...getPipelineArticleSlugs().filter(noPillar).map((slug) => ({ pillar: slug })),
   ];
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
+type RouteParams = Promise<{ pillar: string }>;
+
+export async function generateMetadata({ params }: { params: RouteParams }): Promise<Metadata> {
+  const { pillar: slug } = await params;
 
   const article = getArticle(slug);
   if (article) {
     const url = `https://payalponkshe.com/insights/${article.slug}`;
     return {
-      title: `${article.title} \u2014 Payal Ponkshe`,
+      title: `${article.title} — Payal Ponkshe`,
       description: article.excerpt,
       keywords: article.keywords,
       authors: [{ name: "Payal Ponkshe", url: "https://payalponkshe.com" }],
@@ -63,7 +67,7 @@ export async function generateMetadata({
   if (pipeline) {
     const url = `https://payalponkshe.com/insights/${pipeline.slug}`;
     return {
-      title: `${pipeline.title} \u2014 Payal Ponkshe`,
+      title: `${pipeline.title} — Payal Ponkshe`,
       description: pipeline.description,
       keywords: [pipeline.targetKeyword],
       authors: [{ name: "Payal Ponkshe", url: "https://payalponkshe.com" }],
@@ -86,15 +90,17 @@ export async function generateMetadata({
     };
   }
 
-  return { title: "Article not found \u2014 Payal Ponkshe" };
+  return { title: "Article not found — Payal Ponkshe" };
 }
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default async function ArticlePage({ params }: { params: RouteParams }) {
+  const { pillar: slug } = await params;
+
+  // Redirect to pillar-nested URL if this article has a pillar mapping
+  const pillar = ARTICLE_PILLAR[slug];
+  if (pillar && PILLAR_SLUGS[pillar]) {
+    redirect(`/insights/${PILLAR_SLUGS[pillar]}/${slug}`);
+  }
 
   const article = getArticle(slug);
   if (article) return <ArticleRenderer article={article} />;

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
+import { getAllPipelineArticles } from '@/lib/pipeline-content'
 import type { PipelineArticle } from '@/lib/pipeline-content'
+import { ARTICLE_PILLAR, PILLAR_SLUGS, getArticleHref } from '@/lib/insights-meta'
 
 // ─── MDX component overrides (design system) ──────────────────────────────────
 
@@ -108,15 +110,28 @@ function categoryLabel(category: string): string {
 // ─── Main component ────────────────────────────────────────────────────────────
 
 export default async function PipelineArticleRenderer({ article }: { article: PipelineArticle }) {
-  const schemaJsonLd = {
+  // Related articles from same category
+  const allPipeline = getAllPipelineArticles()
+  const relatedArticles = allPipeline
+    .filter((a) => a.slug !== article.slug && a.category === article.category)
+    .slice(0, 3)
+
+  const pillar = ARTICLE_PILLAR[article.slug]
+  const pillarSlug = pillar ? PILLAR_SLUGS[pillar] : null
+
+  const wordCount = Math.round(article.content.split(/\s+/).length)
+
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
     description: article.description,
     datePublished: article.publishDate,
+    articleSection: categoryLabel(article.category),
+    wordCount,
     author: {
       '@type': 'Person',
-      '@id': 'https://payalponkshe.com/#payal',
+      '@id': 'https://payalponkshe.com/#person',
       name: 'Payal Ponkshe',
       jobTitle: 'Fintech & Payments Executive | AI Venture Builder',
       url: 'https://payalponkshe.com',
@@ -132,22 +147,54 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
     keywords: article.targetKeyword,
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Insights', item: 'https://payalponkshe.com/insights' },
+      { '@type': 'ListItem', position: 2, name: article.title, item: `https://payalponkshe.com/insights/${article.slug}` },
+    ],
+  }
+
   return (
     <>
+      <div id="top" />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Back nav */}
-      <div className="pt-[100px] md:pt-[120px] border-b border-rule">
-        <div className="content-width py-4">
-          <Link
-            href="/insights"
-            className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors flex items-center gap-1.5"
-          >
-            &larr; Back to Insights
-          </Link>
+      {/* Breadcrumb nav */}
+      <div className="pt-[100px] md:pt-[120px]">
+        <div className="content-width py-4 border-b border-rule">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 flex-wrap">
+            <Link
+              href="/insights"
+              className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors"
+            >
+              Insights
+            </Link>
+            {pillar && pillarSlug && (
+              <>
+                <span className="text-slate opacity-40 text-[13px]">/</span>
+                <Link
+                  href={`/insights/${pillarSlug}`}
+                  className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors"
+                >
+                  {pillar}
+                </Link>
+              </>
+            )}
+            <span className="text-slate opacity-40 text-[13px]">/</span>
+            <span className="font-jakarta font-medium text-[13px] text-navy opacity-70 line-clamp-1">
+              {article.title}
+            </span>
+          </nav>
         </div>
       </div>
 
@@ -172,11 +219,11 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
               </span>
             </div>
 
-            <h1 className="font-display font-bold text-navy text-[32px] md:text-[44px] leading-[1.1]">
+            <h1 className="font-display font-bold text-navy text-[32px] md:text-[48px] leading-[1.1]">
               {article.title}
             </h1>
 
-            <p className="font-jakarta text-slate text-[17px] leading-[1.75] mt-6">
+            <p className="font-jakarta text-slate text-[17px] leading-[1.75] mt-6 max-w-[600px]">
               {article.description}
             </p>
           </div>
@@ -209,43 +256,91 @@ export default async function PipelineArticleRenderer({ article }: { article: Pi
               components={mdxComponents}
               options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
             />
+          </div>
+        </div>
+      </section>
 
-            <div className="border-t border-rule mt-4" />
-
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-              <div>
-                <p className="font-jakarta font-bold text-navy text-[15px]">
-                  Payal Ponkshe
-                </p>
-                <p className="font-jakarta text-slate text-[13px] mt-0.5">
-                  Fintech &amp; Payments Executive &middot; AI Venture Builder
-                </p>
-                <a
-                  href="https://linkedin.com/in/payalponkshe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-jakarta font-medium text-[13px] text-navy underline-cyan hover:opacity-70 transition-opacity inline-block mt-3"
-                >
-                  Follow on LinkedIn &rarr;
-                </a>
+      {/* Related articles */}
+      {relatedArticles.length > 0 && (
+        <section className="section-spacing pt-0 border-t border-rule">
+          <div className="content-width">
+            <div className="max-w-2xl">
+              <p className="font-mono font-semibold text-slate text-[10px] tracking-[0.08em] uppercase mb-6">
+                Related reading
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {relatedArticles.map((r) => (
+                  <Link key={r.slug} href={getArticleHref(r.slug)} className="block group">
+                    <div className="relative border border-rule p-4 overflow-hidden">
+                      <span
+                        className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-1 transition-[width] duration-150 ease-in-out"
+                        style={{ backgroundColor: '#1BAFBF' }}
+                        aria-hidden="true"
+                      />
+                      <p className="font-mono text-[9px] tracking-[0.08em] uppercase text-slate mb-2">
+                        {r.readTime}
+                      </p>
+                      <p className="font-jakarta font-semibold text-navy text-[14px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[3px] group-hover:underline-offset-3 transition-all duration-150">
+                        {r.title}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
-              <Link
-                href="/book"
-                className="inline-block font-jakarta font-bold text-cream bg-navy px-6 py-3 text-[14px] hover:opacity-90 transition-opacity"
-              >
-                Book a discovery call &rarr;
-              </Link>
             </div>
+          </div>
+        </section>
+      )}
 
+      {/* Author + CTA */}
+      <section className="section-spacing border-t border-rule">
+        <div className="content-width">
+          <div className="max-w-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <p className="font-jakarta font-bold text-navy text-[15px]">
+                Payal Ponkshe
+              </p>
+              <p className="font-jakarta text-slate text-[13px] mt-0.5">
+                Fintech &amp; Payments Executive &middot; AI Venture Builder
+              </p>
+              <a
+                href="https://linkedin.com/in/payalponkshe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-jakarta font-medium text-[13px] text-navy underline-cyan hover:opacity-70 transition-opacity inline-block mt-3"
+              >
+                Follow on LinkedIn &rarr;
+              </a>
+            </div>
             <Link
-              href="/insights"
-              className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors flex items-center gap-1.5"
+              href="/book"
+              className="inline-block font-jakarta font-bold text-cream bg-navy px-6 py-3 text-[14px] hover:opacity-90 transition-opacity"
             >
-              &larr; Back to all insights
+              Book a discovery call &rarr;
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Bottom nav */}
+      <div className="pb-16">
+        <div className="content-width">
+          <div className="max-w-2xl flex items-center justify-between">
+            <Link
+              href="/insights"
+              className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors flex items-center gap-1.5"
+            >
+              &larr; Back to insights
+            </Link>
+            <a
+              href="#top"
+              className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors"
+            >
+              &uarr; Top
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

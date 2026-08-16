@@ -8,6 +8,7 @@ import {
   PILLARS,
   PILLAR_SLUGS,
   getYear,
+  getArticleHref,
 } from "@/lib/insights-meta";
 
 // ─── Data assembly ────────────────────────────────────────────────────────────
@@ -34,7 +35,7 @@ function buildArchive(): Record<string, ArchiveEntry[]> {
         readTime: a.readTime,
         date: a.date,
         year: getYear(a.date),
-        href: `/insights/${a.slug}`,
+        href: getArticleHref(a.slug),
       });
     }
   }
@@ -49,7 +50,7 @@ function buildArchive(): Record<string, ArchiveEntry[]> {
         readTime: a.readTime,
         date: a.date,
         year: getYear(a.date),
-        href: `/insights/${a.slug}`,
+        href: getArticleHref(a.slug),
       });
     }
   }
@@ -63,7 +64,7 @@ function buildArchive(): Record<string, ArchiveEntry[]> {
         readTime: a.readTime,
         date: a.publishDate,
         year: getYear(a.publishDate),
-        href: `/insights/${a.slug}`,
+        href: getArticleHref(a.slug),
       });
     }
   }

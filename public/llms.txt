@@ -1,0 +1,110 @@
+# Payal Ponkshe
+
+Fintech and payments executive with 18+ years of experience across Mastercard, Wirecard, and DeFi. Independent AI venture builder since 2024, with 6 ventures in build or live production. Based in Germany, German citizen, open to Europe and remote engagements.
+
+## About
+
+Payal Ponkshe is a senior fintech and payments executive with 18+ years of experience across Mastercard, Wirecard, DeFi, and regulated financial services. She specialises in agentic transformation, AI operating model design, and enterprise change programmes.
+
+At Mastercard she was VP Global Head Delivery & Operations — leading $25M+ technology partnerships (Microsoft, Verizon) across 4 regions (Europe, North America, Middle East/Africa, Asia-Pacific) with a 120+ person team. She delivered a 30% reduction in development cycles and 200% YoY client engagement growth.
+
+In 2022 she co-founded Skyllfull, a specialised talent platform for DeFi and Web3 clients, generating €250K+ qualified pipeline within 30 days of launch. Since 2024 she has been building AI ventures independently — shipping production systems in n8n, Claude API, Supabase, and MCP integrations that she designed and built herself.
+
+She consults and advises founders, COOs, and operators in fintech, payments, and AI-first companies.
+
+## Services
+
+**Enterprise Transformation & Programme Delivery**
+Leading complex, cross-border change programmes in regulated financial services. Programme governance frameworks, operating model design, portfolio management, multi-region delivery leadership, executive stakeholder alignment. Evidence: led Mastercard R&D global operating model transformation — 30% faster development cycles, 35% efficiency gain.
+
+**AI Implementation & Operating Model Design**
+Designing and building AI-first operating models that connect to revenue per employee, not just innovation metrics. AI readiness assessment, agentic system architecture, n8n/automation pipeline design, build-vs-buy decision frameworks. Evidence: built 6 AI ventures hands-on — pipelines, multi-agent systems, MCP integrations, production deployments.
+
+**Fractional COO / Strategic Advisory**
+Embedded executive support for founders and scale-ups navigating fintech, payments, and AI transformation. Operating model design, OKR and governance frameworks, partner and ecosystem strategy, commercial model design, team structure and hiring advisory.
+
+Book a 30-minute discovery call: https://payalponkshe.com/book
+Services page: https://payalponkshe.com/services
+
+## Insights & Writing
+
+Writing on fintech, payments, AI transformation, and what it takes to build at the intersection of enterprise delivery and emerging technology.
+
+### Financial Infrastructure
+
+- https://payalponkshe.com/insights/qonto-mcp-fintech-finance-teams — Qonto's MCP launch is not a feature release. It is a structural signal about who wins the next decade of finance. Most coverage framed it as a smart product move. It is something more significant.
+- https://payalponkshe.com/insights/agentic-commerce-eu-regulatory-opportunity — Agentic commerce is coming to Europe. The EU regulatory stack is a competitive moat, not a barrier, if you understand how to design for it.
+- https://payalponkshe.com/insights/ai-in-finance — How AI is rewriting financial services from Goldman Sachs to Project Mercury. Goldman Sachs now drafts 95% of IPO documents with AI in minutes.
+- https://payalponkshe.com/insights/eu-ai-act-fintech-what-august-2026-actually-requires — What the EU AI Act actually requires of fintech firms as of August 2026. A practical breakdown of obligations by risk tier.
+- https://payalponkshe.com/insights/iso-20022-data-asset-not-compliance-chore — ISO 20022 is not a compliance exercise. It is the most significant data infrastructure upgrade in payments in 20 years.
+
+### AI Systems
+
+- https://payalponkshe.com/insights/engineering-principles-ai-coding-agents — 17 principles that determine whether AI-assisted code compounds or collapses over time.
+- https://payalponkshe.com/insights/ai-content-pipeline-brand-consistency-at-scale — How a multi-model AI pipeline eliminates the manual content bottleneck while maintaining brand consistency at scale.
+- https://payalponkshe.com/insights/language-learning-app-agentic-build-blueprint — A production AI app built without an engineering team. One blueprint, infinite markets.
+- https://payalponkshe.com/insights/how-to-set-up-a-claude-project — How to set up a Claude Project correctly. The discipline that separates a reliable AI workspace from a confident-but-wrong one.
+- https://payalponkshe.com/insights/claude-personal-vs-project-instructions — Personal instructions vs project instructions in Claude — why the separation matters and how to use both correctly.
+- https://payalponkshe.com/insights/claude-kickoff-prompt-template — Why you should write a kickoff prompt before every new Claude chat. A reusable template for focused, grounded sessions.
+- https://payalponkshe.com/insights/what-agentic-ai-actually-is — What agentic AI actually is, stripped of hype. A working definition grounded in how these systems behave in production.
+- https://payalponkshe.com/insights/agentic-ai-use-case-map-financial-services — A use case map for agentic AI in financial services — organised by function, maturity, and regulatory risk.
+
+### Operating Models
+
+- https://payalponkshe.com/insights/ai-revenue-per-employee-data — The data backs it: Klarna achieved a 152% lift in revenue per employee. AI-native companies are running at 5 to 15 times traditional SaaS benchmarks.
+- https://payalponkshe.com/insights/work-evolution-curve — 86% of companies are increasing AI budgets. Only 20% report measurable revenue impact. That gap has a name and a map.
+- https://payalponkshe.com/insights/ai-workflow-automation-sme-revenue-impact — The automation gap costing SMEs more than they realise. Natural language to deployable automation via a three-agent IR pipeline.
+- https://payalponkshe.com/insights/ai-operating-model-playbook-regulated-firms — A practical playbook for redesigning operating models around AI in regulated financial services firms.
+
+### Leadership & Human Systems
+
+- https://payalponkshe.com/insights/wrong-ai-problem — Organisations are solving the wrong AI problem. The question is not how to do the same work with fewer people.
+- https://payalponkshe.com/insights/activity-vs-impact — Duolingo accidentally ran two AI experiments at once. Same company. Two completely different definitions of AI impact.
+- https://payalponkshe.com/insights/transformation-literacy — Beyond AI literacy: the case for Transformation Literacy. What professionals actually need to develop right now.
+
+### Personal Essays
+
+- https://payalponkshe.com/insights/the-right-to-begin — On starting things you are not yet qualified to finish.
+- https://payalponkshe.com/insights/december-recalibration — On what December is actually for, and why the pressure to plan is the thing to resist.
+
+## AI Ventures
+
+6 AI ventures in build or live production:
+
+**AI Content Intelligence Pipeline (Live)**
+End-to-end brand-locked content reconstruction pipeline. Stack: n8n, Claude API, GPT Image, Gemini, Supabase, React Native, Next.js.
+
+**German Language Exam Prep App (Live on Google Play)**
+CEFR A1-B1 exam preparation platform with 850+ exam-aligned questions, hybrid AI and deterministic scoring, GDPR by design. Stack: React Native, Expo, Supabase, Claude API, OpenAI Realtime, ElevenLabs, RevenueCat.
+
+**Spaarker: AI Carousel Content Platform (In Build)**
+Purpose-built carousel generation platform for content creators. Stack: Next.js, Supabase, OpenAI, Claude Vision, n8n, Stripe.
+
+**AI Workflow Generator HumanlyReal (Prototype)**
+Natural language to deployable automation via three-agent architecture. Stack: n8n, OpenAI GPT-4, Supabase, Vercel.
+
+**Wyngs: AI Literacy Platform for Adults 60+ (In Build)**
+Contribution-first platform positioning older adults as knowledge contributors. Stack: React Native, Expo, Claude API, n8n.
+
+**Agentic Commerce Venture Studio (Concept)**
+EU-specific operating system for agentic commerce, 15 sellable agent offers, 90-day launch checklist. Stack: LangGraph, n8n, pgvector, Hetzner.
+
+## Professional Background
+
+- VP Global Head Delivery & Operations — Mastercard (2020-2022), Ireland. Led $25M+ technology partnerships, 4 regions, 120+ team. 30% faster development cycles.
+- Director Business Development Digital Payments — Mastercard (2017-2019), Germany. $12M+ market development, nationwide German API wallet rollout, 4x conversion improvement.
+- Co-Founder & Head of Operations — Skyllfull (2022-2024), Germany. €250K+ pipeline in 30 days of launch.
+- Team Lead Professional Services — Wirecard AG (2013-2017), Germany. Launched UK's first Apple Wallet implementation.
+- MBA — Hult International Business School, USA (2010-2011).
+
+## Connect
+
+Website: https://payalponkshe.com
+Insights: https://payalponkshe.com/insights
+Work & Ventures: https://payalponkshe.com/work
+About: https://payalponkshe.com/about
+Book a discovery call: https://payalponkshe.com/book
+Career re-entry (free sessions): https://payalponkshe.com/give-back
+Email: payalponkshe@gmail.com
+LinkedIn: https://www.linkedin.com/in/payalponkshe/
+Location: Germany. Open to Europe and remote engagements. German citizen.

@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { portfolioArticles } from "@/lib/portfolio-articles";
 import type { PortfolioArticle, PortfolioBlock } from "@/lib/portfolio-articles";
+import { ARTICLE_PILLAR, PILLAR_SLUGS, getArticleHref } from "@/lib/insights-meta";
 
 // ─── Inline bold parser ────────────────────────────────────────────────────────
 function parseInline(text: string): React.ReactNode {
@@ -224,7 +225,7 @@ function FAQAccordion({ faq }: { faq: PortfolioArticle["faq"] }) {
 // ─── Related article card ─────────────────────────────────────────────────────
 function RelatedCard({ article }: { article: PortfolioArticle }) {
   return (
-    <Link href={`/insights/${article.slug}`} className="block h-full group">
+    <Link href={getArticleHref(article.slug)} className="block h-full group">
       <div className="flex flex-col justify-between h-full p-6 bg-cream-card rounded-card card-hover">
         <div>
           <span className="font-jakarta font-semibold text-slate text-[11px] tracking-[0.08em] uppercase block mb-3">
@@ -327,6 +328,8 @@ export default function PortfolioArticleRenderer({ article }: { article: Portfol
 
   // Split topic into pills if it contains "·"
   const topicPills = article.topic.split("·").map((t) => t.trim()).filter(Boolean);
+  const pillar = ARTICLE_PILLAR[article.slug];
+  const pillarSlug = pillar ? PILLAR_SLUGS[pillar] : null;
 
   return (
     <>
@@ -335,13 +338,24 @@ export default function PortfolioArticleRenderer({ article }: { article: Portfol
       {/* Breadcrumb */}
       <div className="pt-[100px] md:pt-[120px]">
         <div className="content-width py-4 border-b border-rule">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 flex-wrap">
             <Link
               href="/insights"
               className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors"
             >
               Insights
             </Link>
+            {pillar && pillarSlug && (
+              <>
+                <span className="text-slate opacity-40 text-[13px]">/</span>
+                <Link
+                  href={`/insights/${pillarSlug}`}
+                  className="font-jakarta font-medium text-[13px] text-slate hover:text-navy transition-colors"
+                >
+                  {pillar}
+                </Link>
+              </>
+            )}
             <span className="text-slate opacity-40 text-[13px]">/</span>
             <span className="font-jakarta font-medium text-[13px] text-navy opacity-70 line-clamp-1">
               {article.title}

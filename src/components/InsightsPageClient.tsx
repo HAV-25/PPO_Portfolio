@@ -13,6 +13,7 @@ import {
   ARTICLE_PILLAR,
   PILLAR_SLUGS,
   getYear,
+  getArticleHref,
 } from "@/lib/insights-meta";
 
 // ─── Static config ────────────────────────────────────────────────────────────
@@ -35,7 +36,6 @@ const FEATURED_SLUGS = [
 
 const PERSONAL_SLUGS = ["the-right-to-begin", "december-recalibration"];
 
-// Executive-altitude pieces lead; builder playbooks close the section.
 const CURRENT_THINKING_SLUGS = [
   "qonto-mcp-fintech-finance-teams",
   "ai-revenue-per-employee-data",
@@ -103,8 +103,17 @@ function HoverBorder() {
   return (
     <span
       aria-hidden="true"
-      className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-1 bg-cyan transition-[width] duration-150 ease-in-out"
+      className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-1 transition-[width] duration-150 ease-in-out"
+      style={{ backgroundColor: "#1BAFBF" }}
     />
+  );
+}
+
+function ReadTimePill({ readTime }: { readTime: string }) {
+  return (
+    <span className="font-mono text-[11px] text-slate bg-navy/[0.06] px-2 py-0.5 rounded-[2px] flex-shrink-0">
+      {readTime}
+    </span>
   );
 }
 
@@ -133,9 +142,7 @@ function ArticleMeta({
         </>
       )}
       <span className="text-slate opacity-30 text-[10px]">&middot;</span>
-      <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
-        {readTime} read
-      </span>
+      <ReadTimePill readTime={readTime} />
       <span className="text-slate opacity-30 text-[10px]">&middot;</span>
       <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
         {getYear(date)}
@@ -172,11 +179,29 @@ function FilterTab({
   label,
   active,
   onClick,
+  count,
+  disabled,
 }: {
   label: string;
   active: boolean;
   onClick: () => void;
+  count?: number;
+  disabled?: boolean;
 }) {
+  if (disabled) {
+    return (
+      <span
+        className="relative pb-3 font-jakarta font-medium text-[13px] whitespace-nowrap text-slate opacity-40 cursor-not-allowed"
+        title="Coming soon — articles in this area are in progress"
+      >
+        {label}
+        {count !== undefined && (
+          <span className="ml-1 opacity-60">({count})</span>
+        )}
+      </span>
+    );
+  }
+
   return (
     <button
       onClick={onClick}
@@ -185,6 +210,11 @@ function FilterTab({
       }`}
     >
       {label}
+      {count !== undefined && count > 0 && (
+        <span className={`ml-1 text-[12px] ${active ? "opacity-60" : "opacity-40"}`}>
+          ({count})
+        </span>
+      )}
       {active && (
         <span
           className="absolute bottom-0 left-0 right-0 h-0.5 bg-navy"
@@ -203,7 +233,7 @@ function FeaturedLeadCard({ article }: { article: PortfolioArticle }) {
   const reduced = useReducedMotion();
 
   return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
+    <Link href={getArticleHref(article.slug)} className="block h-full">
       <motion.div
         ref={ref}
         className="group relative flex flex-col justify-between h-full p-8 md:p-10 border border-rule overflow-hidden cursor-pointer"
@@ -254,7 +284,7 @@ function FeaturedSecondaryCard({
   const reduced = useReducedMotion();
 
   return (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
+    <Link href={getArticleHref(article.slug)} className="block h-full">
       <motion.div
         ref={ref}
         className="group relative flex flex-col justify-between h-full p-6 md:p-7 border border-rule overflow-hidden cursor-pointer"
@@ -288,10 +318,19 @@ function FeaturedSecondaryCard({
 
 // ─── Current Thinking Card ────────────────────────────────────────────────────
 
-function ThinkingCard({ article, delay }: { article: Article; delay: number }) {
+function ThinkingCard({
+  article,
+  delay,
+  typeOverride,
+}: {
+  article: Article;
+  delay: number;
+  typeOverride?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduced = useReducedMotion();
+  const type = typeOverride ?? ARTICLE_TYPE[article.slug] ?? "Essay";
 
   const inner = (
     <motion.div
@@ -303,12 +342,18 @@ function ThinkingCard({ article, delay }: { article: Article; delay: number }) {
     >
       <HoverBorder />
       <div>
-        <ArticleMeta
-          slug={article.slug}
-          readTime={article.readTime}
-          date={article.date}
-        />
-        <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] mt-3 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
+        <div className="flex flex-wrap items-center gap-1.5 mb-3">
+          <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+            {type}
+          </span>
+          <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+          <ReadTimePill readTime={article.readTime} />
+          <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+          <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+            {getYear(article.date)}
+          </span>
+        </div>
+        <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
           {article.title}
         </h2>
         <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-2">
@@ -326,11 +371,60 @@ function ThinkingCard({ article, delay }: { article: Article; delay: number }) {
   );
 
   return article.live ? (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
+    <Link href={getArticleHref(article.slug)} className="block h-full">
       {inner}
     </Link>
   ) : (
     inner
+  );
+}
+
+// ─── Pipeline card (used in merged Current Thinking section) ──────────────────
+
+function PipelineCard({
+  article,
+  delay,
+}: {
+  article: PipelineArticleMeta;
+  delay: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const reduced = useReducedMotion();
+  const type = ARTICLE_TYPE[article.slug] ?? "Field Note";
+
+  return (
+    <Link href={getArticleHref(article.slug)} className="block h-full">
+      <motion.div
+        ref={ref}
+        className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer"
+        initial={reduced ? false : { opacity: 0, y: 18 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, ease: "easeOut", delay: reduced ? 0 : delay }}
+      >
+        <HoverBorder />
+        <div>
+          <div className="flex flex-wrap items-center gap-1.5 mb-3">
+            <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+              {type}
+            </span>
+            <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+            <ReadTimePill readTime={article.readTime} />
+          </div>
+          <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
+            {article.title}
+          </h2>
+          <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-2">
+            {article.description}
+          </p>
+        </div>
+        <div className="mt-4">
+          <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
+            Read <span aria-hidden="true">&rarr;</span>
+          </span>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 
@@ -357,12 +451,18 @@ function PersonalEssayCard({
     >
       <HoverBorder />
       <div>
-        <ArticleMeta
-          slug={article.slug}
-          readTime={article.readTime}
-          date={article.date}
-        />
-        <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.3] mt-4 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
+        <div className="flex flex-wrap items-center gap-1.5 mb-4">
+          <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+            Personal Essay
+          </span>
+          <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+          <ReadTimePill readTime={article.readTime} />
+          <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+          <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+            {getYear(article.date)}
+          </span>
+        </div>
+        <h2 className="font-jakarta font-bold text-navy text-[20px] md:text-[22px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
           {article.title}
         </h2>
         <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-3">
@@ -380,7 +480,7 @@ function PersonalEssayCard({
   );
 
   return article.live ? (
-    <Link href={`/insights/${article.slug}`} className="block h-full">
+    <Link href={getArticleHref(article.slug)} className="block h-full">
       {inner}
     </Link>
   ) : (
@@ -421,12 +521,18 @@ function FilteredGrid({ items }: { items: UnifiedArticle[] }) {
             <div className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer min-h-[180px]">
               <HoverBorder />
               <div>
-                <ArticleMeta
-                  slug={item.slug}
-                  readTime={item.readTime}
-                  date={item.date}
-                />
-                <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] mt-3 group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
+                <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                  <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+                    {ARTICLE_TYPE[item.slug] ?? "Essay"}
+                  </span>
+                  <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+                  <ReadTimePill readTime={item.readTime} />
+                  <span className="text-slate opacity-30 text-[10px]">&middot;</span>
+                  <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
+                    {getYear(item.date)}
+                  </span>
+                </div>
+                <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[4px] group-hover:underline-offset-4 transition-all duration-150">
                   {item.title}
                 </h2>
                 <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-3">
@@ -497,7 +603,7 @@ export function InsightsPageClient({
         excerpt: a.excerpt,
         readTime: a.readTime,
         date: a.date,
-        href: `/insights/${a.slug}`,
+        href: getArticleHref(a.slug),
       });
     }
     for (const a of articles) {
@@ -508,7 +614,7 @@ export function InsightsPageClient({
           excerpt: a.excerpt,
           readTime: a.readTime,
           date: a.date,
-          href: `/insights/${a.slug}`,
+          href: getArticleHref(a.slug),
         });
       }
     }
@@ -519,11 +625,21 @@ export function InsightsPageClient({
         excerpt: a.description,
         readTime: a.readTime,
         date: a.publishDate,
-        href: `/insights/${a.slug}`,
+        href: getArticleHref(a.slug),
       });
     }
     return items;
   }, [pipelineArticles]);
+
+  // Article counts per pillar (for filter tabs and archive)
+  const pillarCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: allWriting.length };
+    for (const item of allWriting) {
+      const pillar = ARTICLE_PILLAR[item.slug];
+      if (pillar) counts[pillar] = (counts[pillar] ?? 0) + 1;
+    }
+    return counts;
+  }, [allWriting]);
 
   const filteredItems = useMemo<UnifiedArticle[]>(() => {
     if (activeFilter === "All" || activeFilter === "Physical AI & Robotics")
@@ -577,11 +693,33 @@ export function InsightsPageClient({
               products move from experimentation to scale, and how intelligent
               systems create lasting value in the real world.
             </p>
-            <p className="font-jakarta text-slate text-[15px] leading-[1.75] mt-3">
-              These themes connect the work I have done in financial
-              infrastructure, the AI systems I am building today, and the
-              emerging technologies I am studying for the future.
+          </motion.div>
+
+          {/* Principles — positioned as an upfront positioning statement */}
+          <motion.div
+            className="mt-8 max-w-2xl"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.3 }}
+          >
+            <p className="font-jakarta font-bold text-navy text-[11px] tracking-[0.07em] uppercase mb-4">
+              Principles that shape my work
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+              {PRINCIPLES.map((principle, i) => (
+                <div
+                  key={i}
+                  className="flex gap-4 py-3 border-b border-rule md:odd:pr-8"
+                >
+                  <span className="font-mono font-semibold text-slate text-[11px] tracking-[0.04em] pt-[2px] flex-shrink-0 opacity-50">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-jakarta font-semibold text-navy text-[14px] leading-[1.5]">
+                    {principle}
+                  </p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Filter tabs */}
@@ -589,17 +727,23 @@ export function InsightsPageClient({
             className="mt-10 border-b border-rule"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.35 }}
           >
             <div className="flex flex-wrap gap-x-7 gap-y-0 overflow-x-auto">
-              {FILTERS.map((f) => (
-                <FilterTab
-                  key={f}
-                  label={f}
-                  active={activeFilter === f}
-                  onClick={() => setActiveFilter(f)}
-                />
-              ))}
+              {FILTERS.map((f) => {
+                const count = pillarCounts[f] ?? 0;
+                const isPhysical = f === "Physical AI & Robotics";
+                return (
+                  <FilterTab
+                    key={f}
+                    label={f}
+                    active={activeFilter === f}
+                    onClick={() => !isPhysical && setActiveFilter(f)}
+                    count={f === "All" ? undefined : count}
+                    disabled={isPhysical}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -631,11 +775,9 @@ export function InsightsPageClient({
               />
               {featuredArticles.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[minmax(260px,auto)]">
-                  {/* Flagship lead card — dominates 2 cols × 2 rows */}
                   <div className="md:col-span-2 md:row-span-2">
                     <FeaturedLeadCard article={featuredArticles[0]} />
                   </div>
-                  {/* Two supporting essays */}
                   {featuredArticles.slice(1, 3).map((a, i) => (
                     <div key={a.slug} className="md:col-span-1">
                       <FeaturedSecondaryCard
@@ -649,16 +791,23 @@ export function InsightsPageClient({
             </div>
           </section>
 
-          {/* ── Current Thinking ── */}
+          {/* ── Current Thinking (merged with Field Notes) ── */}
           <section className="section-spacing border-t border-rule">
             <div className="content-width">
               <SectionHeader
                 label="Current Thinking"
-                intro="Shorter observations from what I am building, reading, and noticing across fintech, AI systems, and emerging technology."
+                intro="Shorter observations, frameworks, and field notes from what I am building, reading, and noticing across fintech, AI systems, and emerging technology."
               />
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {currentThinkingArticles.map((a, i) => (
                   <ThinkingCard
+                    key={a.slug}
+                    article={a}
+                    delay={(i % 3) * 0.07}
+                  />
+                ))}
+                {pipelineArticles.map((a, i) => (
+                  <PipelineCard
                     key={a.slug}
                     article={a}
                     delay={(i % 3) * 0.07}
@@ -694,7 +843,10 @@ export function InsightsPageClient({
                           {area.title}
                         </h3>
                         {area.emerging && (
-                          <span className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag" style={{ background: "rgba(27,175,191,0.18)", color: "#24262B" }}>
+                          <span
+                            className="font-jakarta font-bold text-[9px] tracking-[0.08em] uppercase px-2 py-0.5 rounded-tag"
+                            style={{ background: "rgba(27,175,191,0.18)", color: "#24262B" }}
+                          >
                             Emerging Focus
                           </span>
                         )}
@@ -702,43 +854,15 @@ export function InsightsPageClient({
                       <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-2">
                         {area.body}
                       </p>
-                      <button
-                        onClick={() => setActiveFilter(area.filter)}
-                        className="font-jakarta font-medium text-navy text-[13px] mt-3 inline-block hover:opacity-70 transition-opacity duration-150 underline-cyan"
-                      >
-                        View related writing &rarr;
-                      </button>
+                      {!area.emerging && (
+                        <button
+                          onClick={() => setActiveFilter(area.filter)}
+                          className="font-jakarta font-medium text-navy text-[13px] mt-3 inline-block hover:opacity-70 transition-opacity duration-150 underline-cyan"
+                        >
+                          View related writing &rarr;
+                        </button>
+                      )}
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ── Principles That Shape My Work ── */}
-          <section className="section-spacing border-t border-rule">
-            <div className="content-width">
-              <SectionHeader label="Principles That Shape My Work" />
-              <div className="max-w-2xl flex flex-col gap-0">
-                {PRINCIPLES.map((principle, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex gap-6 py-6 border-b border-rule"
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{
-                      duration: 0.35,
-                      ease: "easeOut",
-                      delay: i * 0.06,
-                    }}
-                  >
-                    <span className="font-jakarta font-bold text-slate text-[12px] tracking-[0.04em] pt-[3px] flex-shrink-0 w-6 text-right opacity-50">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="font-jakarta font-semibold text-navy text-[17px] leading-[1.55]">
-                      {principle}
-                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -766,67 +890,6 @@ export function InsightsPageClient({
             </section>
           )}
 
-          {/* ── Field Notes (pipeline articles) ── */}
-          {pipelineArticles.length > 0 && (
-            <section className="section-spacing border-t border-rule">
-              <div className="content-width">
-                <SectionHeader
-                  label="Field Notes"
-                  intro="Short observations from current projects, research, and conversations."
-                />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {pipelineArticles.map((article, i) => (
-                    <motion.div
-                      key={article.slug}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{
-                        duration: 0.4,
-                        ease: "easeOut",
-                        delay: i * 0.08,
-                      }}
-                      className="h-full"
-                    >
-                      <Link
-                        href={`/insights/${article.slug}`}
-                        className="block h-full"
-                      >
-                        <div className="group relative flex flex-col justify-between h-full p-5 md:p-6 border border-rule overflow-hidden cursor-pointer">
-                          <HoverBorder />
-                          <div>
-                            <div className="flex flex-wrap items-center gap-1.5 mb-3">
-                              <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
-                                Field Note
-                              </span>
-                              <span className="text-slate opacity-30 text-[10px]">
-                                &middot;
-                              </span>
-                              <span className="font-jakarta font-bold text-slate text-[10px] tracking-[0.08em] uppercase">
-                                {article.readTime}
-                              </span>
-                            </div>
-                            <h2 className="font-jakarta font-bold text-navy text-[17px] leading-[1.3] group-hover:underline group-hover:decoration-cyan group-hover:decoration-[5px] group-hover:underline-offset-4 transition-all duration-150">
-                              {article.title}
-                            </h2>
-                            <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2.5 line-clamp-2">
-                              {article.description}
-                            </p>
-                          </div>
-                          <div className="mt-4">
-                            <span className="font-jakarta font-medium text-[12px] text-navy flex items-center gap-1 group-hover:gap-2 transition-[gap] duration-200">
-                              Read <span aria-hidden="true">&rarr;</span>
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          )}
-
           {/* ── Article Archive ── */}
           <section className="section-spacing border-t border-rule">
             <div className="content-width">
@@ -834,21 +897,31 @@ export function InsightsPageClient({
                 label="Article Archive"
                 intro="Browse the complete archive by topic and theme."
               />
-              <div className="flex flex-col gap-3 max-w-xl">
-                {ARCHIVE_PILLARS.map((pillar) => (
-                  <Link
-                    key={pillar}
-                    href={`/articles#${PILLAR_SLUGS[pillar]}`}
-                    className="group flex items-center justify-between py-3 border-b border-rule hover:border-navy transition-colors duration-150"
-                  >
-                    <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.08em] uppercase group-hover:text-navy transition-colors duration-150">
-                      {pillar}
-                    </span>
-                    <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em] group-hover:text-navy transition-colors duration-150">
-                      &rarr;
-                    </span>
-                  </Link>
-                ))}
+              <div className="flex flex-col gap-0 max-w-xl">
+                {ARCHIVE_PILLARS.map((pillar) => {
+                  const count = pillarCounts[pillar] ?? 0;
+                  return (
+                    <Link
+                      key={pillar}
+                      href={`/articles#${PILLAR_SLUGS[pillar]}`}
+                      className="group flex items-center justify-between py-3.5 border-b border-rule hover:border-navy transition-colors duration-150"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.08em] uppercase group-hover:text-navy transition-colors duration-150">
+                          {pillar}
+                        </span>
+                        {count > 0 && (
+                          <span className="font-mono text-[10px] text-slate opacity-50 group-hover:opacity-70 transition-opacity">
+                            {count} {count === 1 ? "article" : "articles"}
+                          </span>
+                        )}
+                      </div>
+                      <span className="font-jakarta font-bold text-slate text-[11px] tracking-[0.04em] group-hover:text-navy transition-colors duration-150">
+                        &rarr;
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
               <div className="mt-8">
                 <Link

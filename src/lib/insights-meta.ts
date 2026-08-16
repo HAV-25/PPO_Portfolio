@@ -80,3 +80,17 @@ export function getYear(date: string): string {
   const match = date.match(/\d{4}/);
   return match ? match[0] : date;
 }
+
+// Reverse map: pillar slug → pillar name
+export const SLUG_TO_PILLAR: Record<string, string> = Object.fromEntries(
+  Object.entries(PILLAR_SLUGS).map(([name, slug]) => [slug, name])
+);
+
+// Canonical href for any article slug — pillar-nested if mapped, flat otherwise
+export function getArticleHref(slug: string): string {
+  const pillar = ARTICLE_PILLAR[slug];
+  if (pillar && PILLAR_SLUGS[pillar]) {
+    return `/insights/${PILLAR_SLUGS[pillar]}/${slug}`;
+  }
+  return `/insights/${slug}`;
+}
