@@ -7,9 +7,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-
-[context.production]
-  environment = { NODE_ENV = "production" }
-
-[context.deploy-preview]
-  environment = { NODE_ENV = "production" }
+  # Ensure devDependencies (e.g. @types/node, typescript) install during the build.
+  # Netlify sets NODE_ENV=production at runtime automatically; forcing it at build
+  # time skips devDependencies and breaks `next build`'s type-check step.
+  NPM_FLAGS = "--include=dev"
