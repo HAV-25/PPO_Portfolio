@@ -13,43 +13,33 @@ const stats: Stat[] = [
     value: 18,
     suffix: "+",
     label: "Years in fintech & payments",
-    sublabel: "Mastercard, Wirecard, and regulated financial services across Europe and beyond.",
+    sublabel: "Payments, enterprise financial services and technology across Europe and global markets.",
   },
   {
     kind: "counter",
     value: 120,
     suffix: "+",
-    label: "Team led across 4 regions",
-    sublabel: "Global delivery and implementation specialists — Europe, North America, MEA, APAC.",
+    label: "Global delivery organisation",
+    sublabel: "Technical implementation and delivery specialists across four regions.",
   },
   {
     kind: "counter",
     value: 25,
     prefix: "$",
     suffix: "M+",
-    label: "Partnerships led",
-    sublabel: "Strategic technology programmes with Microsoft and Verizon at Mastercard.",
+    label: "Technology partnerships",
+    sublabel: "Strategic programmes involving Microsoft and Verizon at Mastercard.",
   },
   {
     kind: "counter",
-    value: 6,
-    suffix: "",
-    label: "AI ventures built hands-on",
-    sublabel: "Designed and shipped personally since 2024 — two live in production today.",
+    value: 30,
+    suffix: "%",
+    label: "Faster delivery cycles",
+    sublabel: "Delivery and programme-management redesign at enterprise scale.",
   },
 ];
 
-function Counter({
-  value,
-  prefix = "",
-  suffix = "",
-  started,
-}: {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  started: boolean;
-}) {
+function Counter({ value, prefix = "", suffix = "", started }: { value: number; prefix?: string; suffix?: string; started: boolean }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -89,31 +79,10 @@ export default function StatBand() {
       <div className="content-width py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
           {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-              className="flex flex-col"
-            >
-              {stat.kind === "counter" ? (
-                <Counter
-                  value={stat.value}
-                  prefix={stat.prefix}
-                  suffix={stat.suffix}
-                  started={inView}
-                />
-              ) : (
-                <span className="stat-number" style={{ fontVariantNumeric: "normal" }}>
-                  {stat.display}
-                </span>
-              )}
-              <p className="font-jakarta font-semibold text-navy text-[15px] mt-2 leading-tight">
-                {stat.label}
-              </p>
-              <p className="font-jakarta text-slate text-[14px] mt-1 leading-[1.55]">
-                {stat.sublabel}
-              </p>
+            <motion.div key={stat.label} initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }} className="flex flex-col">
+              {stat.kind === "counter" ? <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} started={inView} /> : <span className="stat-number" style={{ fontVariantNumeric: "normal" }}>{stat.display}</span>}
+              <p className="font-jakarta font-semibold text-navy text-[15px] mt-2 leading-tight">{stat.label}</p>
+              <p className="font-jakarta text-slate text-[14px] mt-1 leading-[1.55]">{stat.sublabel}</p>
             </motion.div>
           ))}
         </div>
