@@ -9,6 +9,7 @@ const BASE_URL = 'https://payalponkshe.com'
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${BASE_URL}/agentic-commerce`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.95 },
     { url: `${BASE_URL}/insights`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE_URL}/articles`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/insights/financial-infrastructure`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
@@ -19,11 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/insights/personal-essays`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/work`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/experience`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE_URL}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/book`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE_URL}/give-back`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE_URL}/causes`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/give-back`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/causes`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ]
 
   const portfolioArticlePages: MetadataRoute.Sitemap = portfolioArticles.map((article) => ({
@@ -49,10 +50,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
-  return [
-    ...staticPages,
-    ...portfolioArticlePages,
-    ...liveArticlePages,
-    ...pipelineArticlePages,
-  ]
+  return [...staticPages, ...portfolioArticlePages, ...liveArticlePages, ...pipelineArticlePages]
 }
