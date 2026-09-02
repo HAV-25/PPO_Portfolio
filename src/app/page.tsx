@@ -13,11 +13,11 @@ export default function Home() {
     <>
       <Hero />
       <StatBand />
-      <AgenticTransition />
       <ServicesSnapshot />
-      <AgenticCommercePreview />
+      <AgenticTransition />
       <PortfolioPreview />
       <ExperiencePreview />
+      <AgenticCommercePreview />
       <SelectedThinking />
       <FinalCTA />
     </>
