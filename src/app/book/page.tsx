@@ -1,24 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 
-const CALENDLY_URL = "https://calendly.com/payalponkshe/discovery-call";
-
-function CalendlyEmbed({ url }: { url: string }) {
-  useEffect(() => {
-    const existing = document.getElementById("calendly-script");
-    if (!existing) {
-      const script = document.createElement("script");
-      script.id = "calendly-script";
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
-  return <div className="calendly-inline-widget w-full rounded-none border border-rule" data-url={url} style={{ minWidth: "280px", height: "700px" }} />;
-}
+const PROJECT_CAL_URL = "https://cal.com/payal-ponkshe/explore";
 
 const expects = [
   "A focused discussion of the business problem or transaction journey",
@@ -34,9 +18,9 @@ export default function BookPage() {
       <div className="content-width">
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-14 md:gap-20 items-start">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut" }}>
-            <h1 className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]">Discuss a project.</h1>
+            <h1 className="font-display font-bold text-navy text-[40px] md:text-[52px] leading-[1.06]">Explore a project.</h1>
             <p className="font-jakarta text-slate text-[17px] leading-[1.7] mt-6 max-w-sm">Bring the problem that is not moving. In 30 minutes we can look at the current constraint, the outcome you need, and whether a defined engagement could help move it forward.</p>
-            <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-sm">If you are exploring Agentic Commerce, bring one customer, payment, procurement or service journey you think agents may eventually influence. We can use the conversation to identify where the likely readiness constraints sit and whether a Sprint or MVP would be useful.</p>
+            <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-sm">If you are exploring agent-mediated commerce, bring one customer, merchant, payment, procurement or service journey you think AI agents may influence. We can use the conversation to identify where the likely readiness constraints sit and whether a Sprint or MVP would be useful.</p>
             <p className="font-jakarta text-slate text-[15px] leading-[1.7] mt-4 max-w-sm">You do not need protocol knowledge or a prepared brief. A clear description of the journey and what makes it difficult is enough.</p>
 
             <div className="mt-10">
@@ -59,7 +43,16 @@ export default function BookPage() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut", delay: 0.15 }}>
-            <CalendlyEmbed url={CALENDLY_URL} />
+            <iframe
+              src={PROJECT_CAL_URL}
+              title="Explore a project with Payal Ponkshe"
+              className="w-full border border-rule bg-cream-card"
+              style={{ minWidth: "280px", height: "760px" }}
+              loading="lazy"
+            />
+            <p className="font-jakarta text-slate text-[12px] leading-[1.6] mt-3">
+              Calendar not loading? <a href={PROJECT_CAL_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-navy underline decoration-cyan decoration-2 underline-offset-2">Open the booking page →</a>
+            </p>
           </motion.div>
         </div>
       </div>
