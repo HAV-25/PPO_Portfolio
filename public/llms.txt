@@ -10,11 +10,13 @@ Payments · AI · Transformation Execution
 
 Payal's work sits at the point where technology strategy has to become operating reality. Her strongest domain depth is in payments, fintech and financial services; her current hands-on build work spans AI-enabled products, workflow systems and automation.
 
-Current focus: helping businesses understand what needs to change when AI agents move from recommendation toward action, and taking one priority commerce journey far enough to test the implementation pattern.
+Her broader working toolkit includes n8n, Supabase, React Native and MCP integrations, alongside Anthropic Claude, Claude Code and Cowork, plus OpenAI ChatGPT, Codex and APIs across research, product design, coding, workflow implementation and production systems.
 
 ## Agentic Commerce Readiness & Enablement
 
-Agentic Commerce is treated as a current market transition, not Payal's entire identity and not a bet on one protocol or platform.
+Agentic Commerce is treated as a current market transition, not Payal's entire identity and not a bet on one model, agent, protocol or platform.
+
+The current focus is helping organisations prepare commerce stacks for trusted agent-mediated buying and selling — whether the agent sits with the customer, merchant, marketplace or platform.
 
 The Agentic Commerce Readiness Stack examines eight layers:
 - Discoverable
@@ -24,18 +26,18 @@ The Agentic Commerce Readiness Stack examines eight layers:
 - Transactable
 - Fulfillable
 - Governable
-- Measurable
+- Measurable & Evaluable
 
 ### Agentic Commerce Launchpad
 
 **Assess — Agentic Commerce Readiness Sprint**
-Select one or more commercially important journeys, identify where an agent-mediated experience will break, map architecture and authority gaps, and define a prioritised MVP and 90-day path.
+Select one or more commercially important buying, selling or operational journeys, identify where an agent-mediated experience will break, map architecture, tool, authority and evaluation gaps, and define a prioritised MVP.
 
 **Prove — Agentic Commerce MVP**
-Take one deliberately narrow journey and implement enough of the end-to-end chain to test the data, interfaces, authority, transaction, fulfilment, controls and observability in practice.
+Take one deliberately narrow journey and implement enough of the end-to-end chain to test data, tools/interfaces, authority, transaction, fulfilment, controls, observability and evaluation in practice.
 
 **Scale — Agentic Commerce Operating Model**
-Translate a proven journey into repeatable internal capability across products, channels, markets and teams.
+Translate a proven pattern into repeatable capability across customer agents, merchant agents, products, channels, markets and teams.
 
 Agentic Commerce page: https://payalponkshe.com/agentic-commerce
 
@@ -51,13 +53,14 @@ Workflow prioritisation, future-state design, working proof or prototype where a
 For B2B payments, fintech and enterprise-technology companies where customer onboarding or implementation has become slow, bespoke or difficult to scale.
 
 Services page: https://payalponkshe.com/services
-Discuss a project: https://payalponkshe.com/book
+Explore a project: https://cal.com/payal-ponkshe/explore
+Give Back free 30-minute session: https://cal.com/payal-ponkshe/giveback
 
 ## Professional Evidence
 
 - Former VP, Global Head Delivery & Operations, Mastercard R&D: global delivery across four regions and a 120+ specialist organisation; $25M+ technology partnerships; approximately 30% faster development cycles.
 - Former Mastercard Director, Business Development — Digital Payments.
-- Former Wirecard Professional Services / enterprise payment implementation lead across issuing, digital wallets and payment infrastructure.
+- Former Wirecard Professional Services / enterprise payment implementation lead across issuing, digital wallets and payment infrastructure, including boon’s UK Apple Pay launch.
 - Co-founded Skyllfull and built a €250K+ qualified pipeline within 30 days of launch.
 - Delivered commercialisation and operating-model consulting work for thyssenkrupp's automotive circularity initiative.
 - Since 2024, has designed and shipped AI-enabled products and workflow systems hands-on.
