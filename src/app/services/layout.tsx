@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services & Advisory",
+  title: "Services — Payments, AI & Transformation Execution",
   description:
-    "Consulting and advisory services from a senior fintech executive: enterprise transformation, agentic transformation and AI operating model design, and fractional COO services for regulated financial services companies.",
-  keywords: [
-    "fintech consulting",
-    "agentic transformation services",
-    "AI operating model design",
-    "fractional COO fintech",
-    "enterprise transformation advisory",
-    "payments consulting Europe",
-  ],
+    "Defined consulting engagements across enterprise delivery, AI workflow and operating-model design, and implementation acceleration for payments, fintech and financial-services teams.",
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {

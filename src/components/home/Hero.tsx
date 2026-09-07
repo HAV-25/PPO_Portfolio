@@ -5,19 +5,19 @@ import Link from "next/link";
 
 const proofRows = [
   {
-    title: "Enterprise scale",
+    title: "Payments & implementation",
     description:
-      "VP Global Head of Delivery & Operations at Mastercard — 120+ specialists across 4 regions, $25M+ technology partnerships.",
+      "18+ years across payments and financial services, including enterprise issuing, digital-wallet programmes and customer implementation.",
   },
   {
-    title: "Hands-on AI builds",
+    title: "Enterprise execution",
     description:
-      "Production agentic systems designed and shipped personally — n8n, Claude, Supabase, React Native. Live products, not slideware.",
+      "Former Mastercard VP leading global R&D delivery and operations across 4 regions and a 120+ specialist organisation.",
   },
   {
-    title: "Regulated-market depth",
+    title: "Hands-on AI capability",
     description:
-      "18+ years in payments and regulated financial services across Europe — GDPR, EU AI Act, and compliance treated as design inputs.",
+      "AI-enabled products and workflow systems designed and shipped personally — grounding strategy in what can actually be implemented.",
   },
 ];
 
@@ -28,102 +28,39 @@ export default function Hero() {
     <section className="section-spacing pt-[140px] md:pt-[160px]">
       <div className="content-width">
         <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-12 items-start">
-          {/* Left column */}
           <div>
-            <motion.h1
-              className="font-display font-bold text-navy text-[38px] md:text-[52px] lg:text-[58px] leading-[1.05]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              The executive who runs the programme.{" "}
-              <span className="underline-cyan">The builder who ships the system.</span>
+            <motion.p className="font-mono font-medium text-slate text-[11px] tracking-[0.11em] uppercase mb-5" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: "easeOut" }}>
+              Payments · AI · Transformation Execution
+            </motion.p>
+            <motion.h1 className="font-display font-bold text-navy text-[38px] md:text-[52px] lg:text-[58px] leading-[1.05]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+              Turn complex technology shifts into <span className="underline-cyan">operating reality.</span>
             </motion.h1>
-
-            <motion.div
-              className="mt-7 space-y-4 max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            >
-              <p className="font-jakarta font-normal text-slate text-[18px] md:text-[19px] leading-[1.75]">
-                18+ years in fintech and payments — leading a 120+ person global
-                delivery organisation at Mastercard and $25M+ technology
-                partnerships across 4 regions.
-              </p>
-              <p className="font-jakarta font-normal text-slate text-[18px] md:text-[19px] leading-[1.75]">
-                Since 2024, an independent AI venture builder shipping production
-                agentic systems hands-on. I help organisations turn emerging
-                technology into operating reality — deepest in European fintech
-                and regulated financial services, and open across sectors to
-                AI-driven operating model redesign, agentic automation, and
-                new ventures built on emerging technology.
-              </p>
+            <motion.div className="mt-7 space-y-4 max-w-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}>
+              <p className="font-jakarta font-normal text-slate text-[18px] md:text-[19px] leading-[1.75]">I work with payments, fintech and financial-services teams at the point where strategy has to become execution — across enterprise delivery, operating models, AI-enabled workflows and new commercial infrastructure.</p>
+              <p className="font-jakarta font-normal text-slate text-[18px] md:text-[19px] leading-[1.75]">One area I am actively building around is Agentic Commerce: what changes when AI agents move from recommending to acting on behalf of customers and businesses. I approach it as a business and implementation problem, not a bet on one platform or protocol.</p>
             </motion.div>
-
-            <motion.div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-9"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.28 }}
-            >
-              <Link href="/book" className="btn-primary">
-                Book a 30-minute call <span aria-hidden="true">→</span>
-              </Link>
-              <Link href="#work" className="btn-secondary">
-                See what I&apos;ve built <span aria-hidden="true">↓</span>
-              </Link>
+            <motion.div className="mt-7 max-w-xl border-l-4 border-cyan pl-5" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.24 }}>
+              <p className="font-jakarta font-bold text-navy text-[16px] leading-[1.5]">The executive who runs the programme. The builder who ships the system.</p>
+              <p className="font-jakarta text-slate text-[14px] leading-[1.65] mt-2">18+ years across payments and financial services — now combined with hands-on AI product and workflow building.</p>
             </motion.div>
-
-            <motion.div
-              className="flex items-center gap-3 mt-8 flex-wrap"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
-            >
+            <motion.div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-9" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.32 }}>
+              <Link href="/agentic-commerce" className="btn-primary" data-analytics-event="agentic_home_cta">Explore current focus <span aria-hidden="true">→</span></Link>
+              <Link href="/services" className="btn-secondary">See how I work <span aria-hidden="true">→</span></Link>
+            </motion.div>
+            <motion.div className="flex items-center gap-3 mt-8 flex-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}>
               <span className="label-meta">Previously at</span>
               {previouslyAt.map((name, i) => (
-                <span key={name} className="flex items-center gap-3">
-                  <span className="font-jakarta font-semibold text-navy text-[14px]">
-                    {name}
-                  </span>
-                  {i < previouslyAt.length - 1 && (
-                    <span className="text-slate opacity-40 text-[13px]">·</span>
-                  )}
-                </span>
+                <span key={name} className="flex items-center gap-3"><span className="font-jakarta font-semibold text-navy text-[14px]">{name}</span>{i < previouslyAt.length - 1 && <span className="text-slate opacity-40 text-[13px]">·</span>}</span>
               ))}
             </motion.div>
           </div>
-
-          {/* Right column — proof card */}
-          <motion.div
-            className="bg-navy rounded-card p-8 lg:p-9"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.35 }}
-          >
-            <p className="font-mono font-medium text-cyan text-[12px] tracking-[0.1em] uppercase mb-6">
-              Why clients call
-            </p>
-
+          <motion.div className="bg-navy rounded-card p-8 lg:p-9" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.35 }}>
+            <p className="font-mono font-medium text-cyan text-[12px] tracking-[0.1em] uppercase mb-6">Why this mix</p>
             <div className="flex flex-col gap-0">
               {proofRows.map((item, i) => (
-                <div key={item.title}>
-                  <div className="py-5">
-                    <p className="font-jakarta font-bold text-cream text-[15px] leading-tight mb-2">
-                      {item.title}
-                    </p>
-                    <p className="font-jakarta font-normal text-[14px] leading-[1.65]" style={{ color: "rgba(245,243,239,0.65)" }}>
-                      {item.description}
-                    </p>
-                  </div>
-                  {i < proofRows.length - 1 && (
-                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }} />
-                  )}
-                </div>
+                <div key={item.title}><div className="py-5"><p className="font-jakarta font-bold text-cream text-[15px] leading-tight mb-2">{item.title}</p><p className="font-jakarta font-normal text-[14px] leading-[1.65]" style={{ color: "rgba(245,243,239,0.65)" }}>{item.description}</p></div>{i < proofRows.length - 1 && <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }} />}</div>
               ))}
             </div>
-
           </motion.div>
         </div>
       </div>
